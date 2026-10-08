@@ -14,35 +14,33 @@ class AnimeFramework extends HTMLElement {
 		user-select: none !important;
 	}
 </style>
-<script>
-	class AnimeInput extends HTMLElement {
-		connectedCallback() {
-			this.addEventListener('animationstart', (event) => {
-				if (event.animationName === "makeCheck") {
-					this.checked = true;
-				} else if (event.animationName === "makeUncheck") {
-					this.checked = false;
+		`;
+		
+		class AnimeInput extends HTMLElement {
+			connectedCallback() {
+				this.addEventListener('animationstart', (event) => {
+					if (event.animationName === "makeCheck") {
+						this.checked = true;
+					} else if (event.animationName === "makeUncheck") {
+						this.checked = false;
+					}
+				});
+			}
+			
+			get checked() {
+				return this.hasAttribute('checked');
+			}
+			
+			set checked(value) {
+				if (value) {
+					this.setAttribute('checked', '');
+				} else {
+					this.removeAttribute('checked');
 				}
-			});
-		}
-
-		get checked() {
-			return this.hasAttribute('checked');
-		}
-
-		set checked(value) {
-			if (value) {
-				this.setAttribute('checked', '');
-			} else {
-				this.removeAttribute('checked');
 			}
 		}
-	}
-
-	customElements.define('anime-input', AnimeInput);
-</script>
-		`;
-
+		
+		customElements.define('anime-input', AnimeInput);
 	}
 }
 
