@@ -5,7 +5,7 @@ class AnimeFramework extends HTMLElement {
 	constructor() {
 		super();
 		if (AnimeFramework.#isAnimeFrameworkLoaded) {
-			throw new Error("[AnimeFramework Error] <anime-framework> component can loaded only once.")
+			throw new Error("[AnimeFramework Error] <anime-framework> component can loaded only once.");
 		}
 		AnimeFramework.#isAnimeFrameworkLoaded = true;
 		this.#break_orderd = false;
