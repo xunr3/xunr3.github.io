@@ -8,37 +8,45 @@ function nullexcepted(func) {
 
 function falsyexcepted(func) {
 	return function (value) {
-		if (value === undefined) return;
+		//if (value === undefined) return; //undefined is falsy
 		if (value) return func(value);
 		return;
 	};
 }
 
-const nontruthyexcepted = (f => falsyexcepted(nullexcepted(f)));
+const nontruthyexcepted = falsyexcepted;//(f => falsyexcepted(nullexcepted(f))); //null is falsy
 
 const nontruthyexceptedJSONstringify = nontruthyexcepted(JSON.stringify);
 
 const nullexceptedTrutycheck = nullexcepted(v => !!v);
 
+const genConf = (attrfilter => ({attribute: true, attributeFilter: attrfilter}));
+
+const disconnectIfExist = (observer => {
+  if (observer) observer.disconnect();
+});
+
 class AutoComplete extends HTMLElement {
+  #idofit;
 	#observer = null;
 	#inputElement = null;
-	#dataclassElement = null;
+	#datalistElement = null;
 	#inputObserver = null;
 	#datalistObserver = null;
-	#idofit = null;
 	#inputID = null;
 	#datalistID = null;
-	#inputObservingConf = {attribute: true, attributeFilter: ['id', 'list']};
-	#datalistObservingConf = {attribute: true, attibuteFilter: ['id']};
+	#inputObservingConf = genConf(['id', 'list']);
+	#datalistObservingConf = genConf(['id']);
 	
 	connectedCallback() {
-		const id = this.getAttribute('id');
+		//step 1. setup <auto-compile> id-system
+    const id = this.getAttribute('id');
 		this.#idofit = id;
 		
 		this.#inputID = `${id}-data-input`;
 		this.#datalistID = `${id}-data-list`;
 		
+    //step 2. setup <<auto-complete> single-child-enforce-and-id-system-obeserve-operating-system>
 		this.#updateTags();
 
 		this.#observer = new MutationObserver(this.#updateTags);
@@ -46,15 +54,9 @@ class AutoComplete extends HTMLElement {
 	}
 
 	disconnectedCallback() {
-		if (this.#observer) {
-			this.#observer.disconnect();
-		}
-		if (this.#inputObserver) {
-			this.#inputObserver.disconnect();
-		}
-		if (this.#datalistObserver) {
-			this.#datalistObserver.disconnect();
-		}
+    disconnectIfExist(this.#observer);
+    disconnectIfExist(this.#inputObserver);
+    disconnectIfExist(this.#datalistObserver);
 	}
 
 	#updateTags() {
@@ -62,9 +64,9 @@ class AutoComplete extends HTMLElement {
 			const tags = Array.from(this.querySelecterAll(name));
 
 			if (tags.length > 1) {
-				console.warn(`<<auto-complete> single-child-enforer>: only one <${name}> are allowed.`);
+				console.warn(`<<auto-complete>'s single-child-enforce-and-id-system-obeserve-operating-system>'s : only one <${name}> are allowed.`);
 				tags.slice(1).forEach(rmtarget => rmtarget.remove());
-			}
+			} // <<auto-complete> single-child-enforce-and-id-system-obeserve-operating-system>
 
 			switch (name) {
 				case "input":
@@ -83,9 +85,9 @@ class AutoComplete extends HTMLElement {
 				case "datalist":
 					if (tags[0]) {
 						const tag = tags[0];
-						tag.id = tag.id || this.#datallistID;
+						tag.id = tag.id || this.#datalistID;
 					} else {
-						const tag = Object.assign(document.createElement('datalist'), {id : this.#datalistID : innerHTML : this.normalizedDefaultList2defaultDatalistInnerHTML()});
+						const tag = Object.assign(document.createElement('datalist'), {id : this.#datalistID, innerHTML : this.normalizedDefaultList2defaultDatalistInnerHTML()});
 					}
 					this.#datalistElement = tag;
 					if (this.#datalistObserver) this.#datalistObserver.disconnect();
@@ -93,14 +95,14 @@ class AutoComplete extends HTMLElement {
 					this.#datalistObserver.observe(tag, this.#datalistObservingConf);
 					break;
 				default:
-					throw Error("array object for that's forEach method in <<auto-complete> single-child-enforcer> also the only logic is broken. also my mental-helth is broken too. nahhhhhhhhhhhhhhhhhhhhhh whyyyyyyyyyyy")
+					throw Error("array object for that's forEach method in <<auto-complete> single-child-enforcer> also the only logic is broken. also my mental-helth is broken too. nahhhhhhhhhhhhhhhhhhhhhh whyyyyyyyyyyy");
 					break;
 			}
 		});
 	}
 	
 	#inputObserve(mutation) {
-		const [tag, id, list, observer, conf] = [this.#inputElement, this.#inputID, this.#datalistID, this.#inputObserver, this.#inputObservingConfig]
+		const [tag, id, list, observer, conf] = [this.#inputElement, this.#inputID, this.#datalistID, this.#inputObserver, this.#inputObservingConf];
 		if (mutation.attributeName === "id" && tag.id !== id) {
 			observer.disconnect();
 			tag.id = id;
@@ -114,7 +116,7 @@ class AutoComplete extends HTMLElement {
 	}
 	
 	#datalistObserve() {
-		const [tag, id, observer, conf] = [this.#datalistElement, this.#datalistID, this.#datalistObserver, this.#datalistObservingConfig]
+		const [tag, id, observer, conf] = [this.#datalistElement, this.#datalistID, this.#datalistObserver, this.#datalistObservingConf];
 		if (mutation.attributeName === "id" && tag.id !== id) {
 			observer.disconnect();
 			tag.id = id;
@@ -201,7 +203,7 @@ class AutoComplete extends HTMLElement {
 	}
 
 	get datalist() {
-		return this.#dataclassElement;
+		return this.#datalistElement;
 	}
 
 	set input(elem) {
@@ -213,8 +215,8 @@ class AutoComplete extends HTMLElement {
 	}
 	
 	set datalist(elem) {
-		if (this.#dataclassElement) {
-			this.#dataclasElement.before(elem);
+		if (this.#datalistElement) {
+			this.#datalistElement.before(elem);
 		} else {
 			this.appendChild(elem);
 		}
