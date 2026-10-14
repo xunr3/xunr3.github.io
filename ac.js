@@ -124,27 +124,18 @@ class AutoComplete extends HTMLElement {
 			switch (name) {
 				case "input":
 					//set tag into this.#inputElement
+          this.#inputElement = (tags[0])?(tags[0]):(Object.assign(document.createElement('input'), this.#defaultInputConf));
+
+          this.#reallocInputObserver();
+          
           if (tags[0]) {
-            //setup tag as id and list is exist if tag is exist
-						const tag = tags[0];
-						tag.id = tag.id || this.#inputID;
-						tag.list = tag.list || this.#datalistID;
-					} else {
-            //setup tag by constructing if tag is not exist
-						const tag = Object.assign(document.createElement('input'), this.#defaultInputConf);
-            this.#inputElement = null;
-            this.input = tag;
+						this.input.id = this.input.id || this.#inputID;
+						this.input.list = this.input.list || this.#datalistID;
 					}
-					this.#inputElement = tag;
-
-					if (this.#inputObserver) this.#inputObserver.disconnect(); //not observe when allocate new observer, begin allocate new observer
-					this.#inputObserver = new MutationObserver(this.#inputObserve);
-					this.#inputObserver.observe(tag, this.#inputObservingConf); //finish allocate new observer
-
-          this.querySelecter('input').type = text; //try update
 					break;
 				case "datalist":
 					//set tag into this.#datalistElement
+          this.
 					if (tags[0]) {
             //setup tag as id is exist if tag is exist
 						const tag = tags[0];
@@ -157,9 +148,7 @@ class AutoComplete extends HTMLElement {
 					}
 					this.#datalistElement = tag;
 
-					if (this.#datalistObserver) this.#datalistObserver.disconnect(); //not observe when allocate new observer, begin allocate new observer
-					this.#datalistObserver = new MutationObserver(this.#datalistObserve);
-					this.#datalistObserver.observe(tag, this.#datalistObservingConf); //finish allocate new observer
+          this.#reallocDatalistObserver();
 
           //try update
           const the_tag = this.querySelecter('datalist');
