@@ -171,7 +171,7 @@ class AnimeBox extends HTMLElement {
         if (this.#style) {
             //pass;
         } else {
-            //pass;
+            if (elem.hasAttribute("style")) elem.removeAttribute("style");
         }
     }
 }
