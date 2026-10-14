@@ -141,30 +141,30 @@ class AnimeBox extends HTMLElement {
 
     #delSize(is_width) {
         if (is_width) {
-            this.#style = this.#style.replace(`--anime-box-width ${this.#width}`, "");
+            this.#style = this.#style.replace(`--anime-box-width: ${this.#width};`, "");
             this.#width = null;
         } else {
-            this.#style = this.#style.replace(`--anime-box-height ${this.#height}`, "");
+            this.#style = this.#style.replace(`--anime-box-height: ${this.#height};`, "");
             this.#height = null;
         }
     }
 
     #genSize(is_width, value) {
         if (is_width) {
-            this.#style += `--anime-box-width ${value}`;
+            this.#style += `--anime-box-width: ${value};`;
             this.#width = value;
         } else {
-            this.#style += `--anime-box-height ${value}`;
+            this.#style += `--anime-box-height: ${value};`;
             this.#width = value;
         }
     }
 
     #setSize(is_width, value) {
         if (is_width) {
-            this.#style = this.#style.replace(`th ${this.#width}`, `th ${value}`);
+            this.#style = this.#style.replace(`th: ${this.#width}`, `th: ${value}`);
             this.#width = value;
         } else {
-            this.#style = this.#style.replace(`ht ${this.#height}`, `th ${value}`);
+            this.#style = this.#style.replace(`ht: ${this.#height}`, `ht: ${value}`);
             this.#height = value;
         }
     }
