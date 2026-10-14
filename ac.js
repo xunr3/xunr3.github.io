@@ -59,10 +59,58 @@ class AutoComplete extends HTMLElement {
 	}
 
 	disconnectedCallback() {
-    disconnectIfExist(this.#observer);
-    disconnectIfExist(this.#inputObserver);
-    disconnectIfExist(this.#datalistObserver);
+    this.#disconnectObserver();
 	}
+
+  #disconnectObserver() {
+    disconnectIfExist(this.#observer);
+    this.#disconnectInputObserver();
+    this.#disconnectDatalistObserver();
+  }
+
+  #disconnectInputObserver() {
+    disconnectIfExist(this.#inputObserver);
+  }
+
+  #createInputObserver() {
+    this.#inputObserver = new MutationObserver(this.#inputObserve);
+  }
+
+  #connectInputObserver() {
+    this.#inputObserver(this.#inputElement, this.#inputObservingConf);
+  }
+
+  #constructInputObserver() {
+    this.#createInputObserver();
+    this.#connectInputObserver();
+  }
+
+  #reallocInputObserver() {
+    this.#disconnectInputObserver();
+    this.#constructInputObserver();
+  }
+
+  #disconnectDatalistObserver() {
+    disconnectIfExist(this.#datalistObserver);
+  }
+
+  #createDatalistObserver() {
+    this.#datalistObserver = new MutationObserver(this.#datalistObserve);
+  }
+
+  #connectDatalistObserver() {
+    this.#datalistObserver(this.#datalistElement, this.#datalistObservingConf);
+  }
+
+  #constructDatalistObserver() {
+    this.#createDatalistObserver();
+    this.#connectDatalistObserver();
+  }
+
+  #reallocDatalistObserver() {
+    this.#disconnectDatalistObserver();
+    this.#constructDatalistObserver();
+  }
 
 	#updateTags() {
 		['input', 'datalist'].forEach(name => {
@@ -151,7 +199,52 @@ class AutoComplete extends HTMLElement {
     if (datalist.innerHTML = "") {
       this.innerHTML = this.normalizedDefaultList2defaultDatalistInnerHTML();
     }
-	};
+	}
+	
+	get defaultlist() {
+		const ret = this.getAttribute('default-list');
+		if (ret) return ret;
+		return;
+	}
+	
+	set defaultlist(value) {
+		typ = typeof value;
+		
+		if (typ !== 'string') {
+			throw new TypeError(`<<auto-complete> element's default-list attribute is string not ${typ}`);
+		}
+		
+		this.setAttribute('default-list', value);
+	}
+
+	get input() {
+		return this.#inputElement;
+	}
+
+	get datalist() {
+		return this.#datalistElement;
+	}
+
+	set input(elem) {
+		if (this.#inputElement) {
+			this.#inputElement.before(elem);
+		} else {
+      const datalist = this.querySelecter('datalist');
+      this.#observer.disconnect();
+      this.#inputObserver.disconnect();
+      this.insertBefore(elem, datalist?datalist:this.firstElementChild);
+      this.#inputObserver.observe(elem, this.#inputObservingConf);
+      this.#observer.observe(this, {childList: true});
+		}
+	}
+	
+	set datalist(elem) {
+		if (this.#datalistElement) {
+			this.#datalistElement.before(elem);
+		} else {
+			this.appendChild(elem);
+		}
+	}
 
 	normalizedDefaultList2defaultDatalistInnerHTML() {
 		const getAttribute = (x => [
@@ -215,51 +308,6 @@ class AutoComplete extends HTMLElement {
 		});
 
 		return json_parse(defaultlist).map(objectize).filter(x => (x !== undefined));
-	}
-	
-	get defaultlist() {
-		const ret = this.getAttribute('default-list');
-		if (ret) return ret;
-		return;
-	}
-	
-	set defaultlist(value) {
-		typ = typeof value;
-		
-		if (typ !== 'string') {
-			throw new TypeError(`<<auto-complete> element's default-list attribute is string not ${typ}`);
-		}
-		
-		this.setAttribute('default-list', value);
-	}
-
-	get input() {
-		return this.#inputElement;
-	}
-
-	get datalist() {
-		return this.#datalistElement;
-	}
-
-	set input(elem) {
-		if (this.#inputElement) {
-			this.#inputElement.before(elem);
-		} else {
-      const datalist = this.querySelecter('datalist');
-      this.#observer.disconnect();
-      this.#inputObserver.disconnect();
-      this.insertBefore(elem, datalist?datalist:this.firstElementChild);
-      this.#inputObserver.observe(elem, this.#inputObservingConf);
-      this.#observer.observe(this, {childList: true});
-		}
-	}
-	
-	set datalist(elem) {
-		if (this.#datalistElement) {
-			this.#datalistElement.before(elem);
-		} else {
-			this.appendChild(elem);
-		}
 	}
 }
 
