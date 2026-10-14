@@ -1,63 +1,175 @@
-class AnimeFramework extends HTMLElement {
-	static #isAnimeFrameworkLoaded = false;
-	#break_orderd = true;
-	
-	constructor() {
-		super();
-		if (AnimeFramework.#isAnimeFrameworkLoaded) {
-			throw new Error("[AnimeFramework Error] <anime-framework> component can loaded only once.");
-		}
-		AnimeFramework.#isAnimeFrameworkLoaded = true;
-		this.#break_orderd = false;
-	}
-	
-	connectedCallback() {
-		if (this.#break_orderd) return;
-		this.innerHTML = `
-<style>
-	@import url("data:text/css;base64,QGtleWZyYW1lcyBtYWtlQ2hlY2t7MCV7ei1pbmRleDoxO30xMDAle3otaW5kZXg6MTt9fUBrZXlmcmFtZXMgbWFrZVVuY2hlY2t7MCV7ei1pbmRleDoxO30xMDAle3otaW5kZXg6MTt9fQ==");
+class AnimeBox extends HTMLElement {
+	#style = "";
+	#class = "anime-box-class anime-box-input-target";
+    #width = null;
+    #height = null;
 
-	anime-framework {
-		display: block !important;
-		width: 0 !important;
-		height: 0 !important;
-		overflow: hidden !important;
-		visibility: hidden !important;
-		pointer-events: none !important;
-		user-select: none !important;
+    connectedCallback() {
+        if (this.width) this.#setSize(true, this.width);
+        if (this.height) this.#setSize(false, this.height);
+        if (this.animeColoring) this.#changeStyle(true, true);
+        if (this.animeInputTargeting) this.#changeStyle(false, true);
+        this.#changeStyle(null, false);
+        this.#appSize(false);
+        if (this.#animeBoxBordering) this.#animeBoxBordering(true);
+    }
+	
+	static get observedAttributes() {
+		return ['width', 'height', 'anime-input-targeting', 'anime-box-bordering', 'anime-coloring'];
 	}
-</style>
-		`;
-		
-		class AnimeInput extends HTMLElement {
-			connectedCallback() {
-				this.addEventListener('animationstart', (event) => {
-					if (event.animationName === "makeCheck") {
-						this.checked = true;
-					} else if (event.animationName === "makeUncheck") {
-						this.checked = false;
-					}
-				});
-			}
-			
-			get checked() {
-				return this.hasAttribute('checked');
-			}
-			
-			set checked(value) {
-				if (value) {
-					this.setAttribute('checked', '');
-				} else {
-					this.removeAttribute('checked');
-				}
-			}
+	
+	get animeInputTargeting() {
+		return this.hasAttribute('anime-input-targeting');
+	}
+	
+	set animeInputTargeting(val)  {
+		if (val) {
+			this.setAttribute('anime-input-targeting', '');
+		} else {
+			this.removeAttribute('anime-input-targeting');
 		}
-		
-		customElements.define('anime-input', AnimeInput);
 	}
+	
+	get animeBoxBordering() {
+		return this.hasAttribute('anime-box-bordering');
+	}
+	
+	set animeBoxBordering(val)  {
+		if (val) {
+			this.setAttribute('anime-box-bordering', '');
+		} else {
+			this.removeAttribute('anime-box-bordering');
+		}
+	}
+	
+	get animeColoring() {
+		return this.hasAttribute('anime-coloring');
+	}
+	
+	set animeColoring(val)  {
+		if (val) {
+			this.setAttribute('anime-coloring', '');
+		} else {
+			this.removeAttribute('anime-coloring');
+		}
+	}
+	
+	get width() {
+		if (!this.hasAttribute('width')) return;
+		return this.getAttribute('width');
+	}
+	
+	set width(value) {
+		this.setAttribute('width', value);
+	}
+	
+	get height() {
+		if (!this.hasAttribute('height')) return;
+		return this.getAttribute('height');
+	}
+	
+	set height(value) {
+		this.setAttribute('height', value);
+	}
+	
+	attributeChangedCallback(name, oldValue, newValue) {
+		flag = false;
+		switch (name) {
+			case 'width':
+				flag = true
+			case 'height':
+				if (oldValue || newValue) {
+					if (flag) {
+						this.#delSize(flag);
+					} else if (newValue) {
+						this.#genSize(flag, newValue);
+					} else if (oldValue !== newValue) {
+						this.#setSize(flag, newValue);
+					}
+					this.#appSize(this.animeBoxBordering);
+				}
+				break;
+			case 'anime-coloring':
+				flag = true;
+			case 'anime-input-targeting':
+				if (oldValue || newValue) {
+					if ((!oldValue) && newValue) {
+						this.#changeStyle(flag, true);
+					} else if ((!newValue) && oldValue) {
+						this.#changeStyle(flag, false);
+					}
+					this.#changeStyle(null, this.animeBoxBordering);
+				}
+				break;
+			case 'anime-box-bordering':
+				if ((!oldValue) && newValue) {
+					this.#animeBoxBordering(true);
+				} else if ((!newValue) && oldValue) {
+					this.#animeBoxBordering(false);
+				}
+				break;
+		}
+	}
+
+    #animeBoxBordering(dose_it) {
+        //pass
+    }
+
+    #changeStyle(mode, argument) {
+        if (mode === null) {
+            //pass
+        } else if (mode) { //it's doColoring mode bool
+            if (argument) {
+                this.#class += " anime-coloring"
+            } else {
+                this.#class = this.#class.replace(" anime-coloring", "")
+            }
+        } else {
+            if (argument) {
+                this.#class = this.#class.replace("anime-box-input-target", "anime-box-anime-input-target");
+            } else {
+                this.#class = this.#class.replace("anime-box-anime-input-target", "anime-box-input-target");
+            }
+        }
+    }
+
+    
+
+    #delSize(is_width) {
+        if (is_width) {
+            this.#style = this.#style.replace(`--anime-box-width ${this.#width}`, "");
+            this.#width = null;
+        } else {
+            this.#style = this.#style.replace(`--anime-box-height ${this.#height}`, "");
+            this.#height = null;
+        }
+    }
+
+    #genSize(is_width, value) {
+        if (is_width) {
+            this.#style += `--anime-box-width ${value}`;
+            this.#width = value;
+        } else {
+            this.#style += `--anime-box-height ${value}`;
+            this.#width = value;
+        }
+    }
+
+    #setSize(is_width, value) {
+        if (is_width) {
+            this.#style = this.#style.replace(`th ${this.#width}`, `th ${value}`);
+            this.#width = value;
+        } else {
+            this.#style = this.#style.replace(`ht ${this.#height}`, `th ${value}`);
+            this.#height = value;
+        }
+    }
+
+    #appSize(isBoxBordered) {
+        //pass
+    }
 }
 
-customElements.define('anime-framework', AnimeFramework);
+customElements.define('anime-box', AnimeBox);
 
-const af_webcode = (_ => console.log('<script src="https://xunr3.github.io/af.js" fetchpriority="high"></script>'));
-const af_shortcode = (_ => console.log('<script src="data:text/javascript;base64,Y3VzdG9tRWxlbWVudHMuZGVmaW5lKCdhbmltZS1mcmFtZXdvcmsnLGNsYXNzIHggZXh0ZW5kcyBIVE1MRWxlbWVudHtzdGF0aWMgI3A9ZmFsc2U7I3E9ZmFsc2U7Y29uc3RydWN0b3IoKXtzdXBlcigpO3guI3AmJihfPT57dGhyb3cgbmV3IEVycm9yKCJbQW5pbWVGcmFtZXdvcmsgRXJyb3JdIDxhbmltZS1mcmFtZXdvcms+IGNvbXBvbmVudCBjYW4gbG9hZGVkIG9ubHkgb25jZS4iKTt9KSgpO3guI3A9dHJ1ZTt0aGlzLiNxPXRydWU7fWNvbm5lY3RlZENhbGxiYWNrKCl7dGhpcy4jcSYmKF89Pnt0aGlzLmlubmVySFRNTD0nPHN0eWxlPkBpbXBvcnQgdXJsKCJkYXRhOnRleHQvY3NzO2Jhc2U2NCxRR3RsZVdaeVlXMWxjeUJ0WVd0bFEyaGxZMnQ3TUNWN2VpMXBibVJsZURveE8zMHhNREFsZTNvdGFXNWtaWGc2TVR0OWZVQnJaWGxtY21GdFpYTWdiV0ZyWlZWdVkyaGxZMnQ3TUNWN2VpMXBibVJsZURveE8zMHhNREFsZTNvdGFXNWtaWGc2TVR0OWZRPT0iKTthbmltZS1mcmFtZXdvcmt7ZGlzcGxheTpibG9jayFpbXBvcnRhbnQ7d2lkdGg6MCFpbXBvcnRhbnQ7aGVpZ2h0OjAhaW1wb3J0YW50O292ZXJmbG93OmhpZGRlbiFpbXBvcnRhbnQ7dmlzaWJpbGl0eTpoaWRkZW4haW1wb3J0YW50O3BvaW50ZXItZXZlbnRzOm5vbmUhaW1wb3J0YW50O3VzZXItc2VsZWN0Om5vbmUhaW1wb3J0YW50O308L3N0eWxlPic7Y3VzdG9tRWxlbWVudHMuZGVmaW5lKCdhbmltZS1pbnB1dCcsY2xhc3MgZXh0ZW5kcyBIVE1MRWxlbWVudHtjb25uZWN0ZWRDYWxsYmFjaygpe3RoaXMuYWRkRXZlbnRMaXN0ZW5lcignYW5pbWF0aW9uc3RhcnQnLGU9PntpZihlLmFuaW1hdGlvbk5hbWU9PT0ibWFrZUNoZWNrIil0aGlzLmNoZWNrZWQ9dHJ1ZTtlbHNlIGlmKGUuYW5pbWF0aW9uTmFtZT09PSJtYWtlVW5jaGVjayIpdGhpcy5jaGVja2VkPWZhbHNlO30pO31nZXQgY2hlY2tlZCgpe3JldHVybiB0aGlzLmhhc0F0dHJpYnV0ZSgnY2hlY2tlZCcpO31zZXQgY2hlY2tlZCh2KXt2Pyh0aGlzLnNldEF0dHJpYnV0ZSgnY2hlY2tlZCcsJycpKToodGhpcy5yZW1vdmVBdHRyaWJ1dGUoJ2NoZWNrZWQnKSk7fX0pO30pKCk7fX0pOw==" fetchpriority="high"></script>'));
+const ab_webcode = (_ => console.log('<script src="https://xunr3.github.io/ab.js" fetchpriority="high"></script>'));
