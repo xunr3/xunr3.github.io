@@ -117,11 +117,8 @@ class AnimeBox extends HTMLElement {
 
     #changeStyle(mode, argument) {
         if (mode === null) {
-            if (argument) {
-                //pass;
-            } else {
-                //pass;
-            }
+            elem = isBoxBordered?this.querySelector("fieldset"):this;
+            //pass;
         } else if (mode) { //it's doColoring mode bool
             if (argument) {
                 this.#class += " anime-coloring"
@@ -170,18 +167,11 @@ class AnimeBox extends HTMLElement {
     }
 
     #appSize(isBoxBordered) {
+        elem = isBoxBordered?this.querySelector("fieldset"):this;
         if (this.#style) {
-            if (isBoxBordered) {
-                //pass;
-            } else {
-                //pass;
-            }
+            //pass;
         } else {
-            if (isBoxBordered) {
-                //pass;
-            } else {
-                //pass;
-            }
+            //pass;
         }
     }
 }
