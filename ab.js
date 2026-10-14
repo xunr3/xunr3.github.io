@@ -176,6 +176,12 @@ class AnimeBox extends HTMLElement {
             } else {
                 //pass;
             }
+        } else {
+            if (isBoxBordered) {
+                //pass;
+            } else {
+                //pass;
+            }
         }
     }
 }
