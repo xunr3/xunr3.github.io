@@ -1,4 +1,7 @@
 class AnimeBox extends HTMLElement {
+	#style = "";
+	#class = "anime-box-class";
+	
 	static get observedAttributes() {
 		return ['width', 'height', 'anime-input-targeting', 'anime-box-bordering', 'anime-coloring'];
 	}
@@ -58,72 +61,39 @@ class AnimeBox extends HTMLElement {
 	}
 	
 	attributeChangedCallback(name, oldValue, newValue) {
+		flag = false;
 		switch (name) {
 			case 'width':
-				if (this.animeBoxing) {
-					if (!(oldValue && newValue)) {
-						//pass
-					} else if (oldValue) {
-						//pass
-					} else if (newValue) {
-						//pass
-					} else if (oldValue !== newValue) {
-						//pass
-					}
-				} else {
-					if (!(oldValue && newValue)) {
-						//pass
-					} else if (oldValue) {
-						//pass
-					} else if (newValue) {
-						//pass
-					} else if (oldValue !== newValue) {
-						//pass
-					}
-				}
-				break;
+				flag = true
 			case 'height':
-				if (this.animeBoxing) {
-					if (!(oldValue && newValue)) {
-						//pass
-					} else if (oldValue) {
-						//pass
+				if (oldValue || newValue) {
+					if (flag) {
+						this.#delSize(flag);
 					} else if (newValue) {
-						//pass
+						this.#genSize(flag, newValue);
 					} else if (oldValue !== newValue) {
-						//pass
+						this.#setSize(flag, newValue);
 					}
-				} else {
-					if (!(oldValue && newValue)) {
-						//pass
-					} else if (oldValue) {
-						//pass
-					} else if (newValue) {
-						//pass
-					} else if (oldValue !== newValue) {
-						//pass
-					}
+					this.#appSize(this.animeBoxBordering, this.animeInputTargeting);
 				}
 				break;
 			case 'anime-coloring':
-				if ((!oldValue) && newValue) {
-					//pass
-				} else if ((!newValue) && oldValue) {
-					//pass
-				}
-				break;
+				flag = true;
 			case 'anime-input-targeting':
-				if ((!oldValue) && newValue) {
-					//pass
-				} else if ((!newValue) && oldValue) {
-					//pass
+				if (oldValue || newValue) {
+					if ((!oldValue) && newValue) {
+						this.#changeStyle(flag, true);
+					} else if ((!newValue) && oldValue) {
+						this.#changeStyle(flag, false);
+					}
+					this.#changeStyle(null, this.BoxBordering);
 				}
 				break;
 			case 'anime-box-bordering':
 				if ((!oldValue) && newValue) {
-					//pass
+					this.#animeBoxBordering(true);
 				} else if ((!newValue) && oldValue) {
-					//pass
+					this.#animeBoxBordering(false);
 				}
 				break;
 		}
