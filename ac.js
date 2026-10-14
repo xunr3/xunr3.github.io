@@ -84,8 +84,8 @@ class AutoComplete extends HTMLElement {
 					} else {
             //setup tag by constructing if tag is not exist
 						const tag = Object.assign(document.createElement('input'), this.#defaultInputConf);
-            const datalist = this.querySelecter('datalist');
-            this.insertBefore(tag, datalist?datalist:this.firstElementChild);
+            this.#inputElement = null;
+            this.input = tag;
 					}
 					this.#inputElement = tag;
 
@@ -104,6 +104,8 @@ class AutoComplete extends HTMLElement {
 					} else {
             //setup tag by constructing if tag is not exist
 						const tag = Object.assign(document.createElement('datalist'), {id : this.#datalistID, innerHTML : this.normalizedDefaultList2defaultDatalistInnerHTML()});
+            this.#datalistElement = null;
+            this.datalist = tag;
 					}
 					this.#datalistElement = tag;
 
@@ -243,7 +245,12 @@ class AutoComplete extends HTMLElement {
 		if (this.#inputElement) {
 			this.#inputElement.before(elem);
 		} else {
-			this.appendChild(elem);
+      const datalist = this.querySelecter('datalist');
+      this.#observer.disconnect();
+      this.#inputObserver.disconnect();
+      this.insertBefore(elem, datalist?datalist:this.firstElementChild);
+      this.#inputObserver.observe(elem, this.#inputObservingConf);
+      this.#observer.observe(this, {childList: true});
 		}
 	}
 	
