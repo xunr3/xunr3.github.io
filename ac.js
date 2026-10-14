@@ -37,6 +37,7 @@ class AutoComplete extends HTMLElement {
 	#datalistID = null;
 	#inputObservingConf = genConf(['id', 'list']);
 	#datalistObservingConf = genConf(['id']);
+  #defaultInputConf = {id : null, list : null};
 	
 	connectedCallback() {
 		//step 1. setup <auto-compile> id-system
@@ -45,8 +46,12 @@ class AutoComplete extends HTMLElement {
 		
 		this.#inputID = `${id}-data-input`;
 		this.#datalistID = `${id}-data-list`;
+
+    //step 2. caching defaultInputConf
+    this.#defaultInputConf.id = this.#inputID;
+    this.#defaultInputConf.list = this.#datalistID;
 		
-    //step 2. setup <<auto-complete> single-child-enforce-and-id-system-obeserve-operating-system>
+    //step 3. setup <<auto-complete>'s single-child-enforce-and-id-system-obeserve-operating-system>
 		this.#updateTags();
 
 		this.#observer = new MutationObserver(this.#updateTags);
@@ -64,35 +69,53 @@ class AutoComplete extends HTMLElement {
 			const tags = Array.from(this.querySelecterAll(name));
 
 			if (tags.length > 1) {
-				console.warn(`<<auto-complete>'s single-child-enforce-and-id-system-obeserve-operating-system>'s : only one <${name}> are allowed.`);
+				console.warn(`<<auto-complete>'s single-child-enforce-and-id-system-obeserve-operating-system>'s single-child-enforcer : only one <${name}> are allowed.`);
 				tags.slice(1).forEach(rmtarget => rmtarget.remove());
-			} // <<auto-complete> single-child-enforce-and-id-system-obeserve-operating-system>
+			} // <<auto-complete>'s single-child-enforce-and-id-system-obeserve-operating-system>'s single-child-enforcer
 
 			switch (name) {
 				case "input":
-					if (tags[0]) {
+					//set tag into this.#inputElement
+          if (tags[0]) {
+            //setup tag as id and list is exist if tag is exist
 						const tag = tags[0];
 						tag.id = tag.id || this.#inputID;
 						tag.list = tag.list || this.#datalistID;
 					} else {
-						const tag = Object.assign(document.createElement('input'), {id : this.#inputID, type : text, class : this.#datalistID});
+            //setup tag by constructing if tag is not exist
+						const tag = Object.assign(document.createElement('input'), this.#defaultInputConf);
+            const datalist = this.querySelecter('datalist');
+            this.insertBefore(tag, datalist?datalist:this.firstElementChild);
 					}
 					this.#inputElement = tag;
-					if (this.#inputObserver) this.#inputObserver.disconnect();
+
+					if (this.#inputObserver) this.#inputObserver.disconnect(); //not observe when allocate new observer, begin allocate new observer
 					this.#inputObserver = new MutationObserver(this.#inputObserve);
-					this.#inputObserver.observe(tag, this.#inputObservingConf);
+					this.#inputObserver.observe(tag, this.#inputObservingConf); //finish allocate new observer
+
+          this.querySelecter('input').type = text; //try update
 					break;
 				case "datalist":
+					//set tag into this.#datalistElement
 					if (tags[0]) {
+            //setup tag as id is exist if tag is exist
 						const tag = tags[0];
 						tag.id = tag.id || this.#datalistID;
 					} else {
+            //setup tag by constructing if tag is not exist
 						const tag = Object.assign(document.createElement('datalist'), {id : this.#datalistID, innerHTML : this.normalizedDefaultList2defaultDatalistInnerHTML()});
 					}
 					this.#datalistElement = tag;
-					if (this.#datalistObserver) this.#datalistObserver.disconnect();
+
+					if (this.#datalistObserver) this.#datalistObserver.disconnect(); //not observe when allocate new observer, begin allocate new observer
 					this.#datalistObserver = new MutationObserver(this.#datalistObserve);
-					this.#datalistObserver.observe(tag, this.#datalistObservingConf);
+					this.#datalistObserver.observe(tag, this.#datalistObservingConf); //finish allocate new observer
+
+          //try update
+          const the_tag = this.querySelecter('datalist');
+          const the_innerHTML = the_tag.innerHTML;
+          the_innerHTML.innerHTML = "";
+          the_innerHTML.innerHTML = the_innerHTML;
 					break;
 				default:
 					throw Error("array object for that's forEach method in <<auto-complete> single-child-enforcer> also the only logic is broken. also my mental-helth is broken too. nahhhhhhhhhhhhhhhhhhhhhh whyyyyyyyyyyy");
@@ -122,6 +145,10 @@ class AutoComplete extends HTMLElement {
 			tag.id = id;
 			observer.observe(tag, conf);
 		}
+    const datalist = this.querySelecter('datalist');
+    if (datalist.innerHTML = "") {
+      this.innerHTML = this.normalizedDefaultList2defaultDatalistInnerHTML();
+    }
 	};
 
 	normalizedDefaultList2defaultDatalistInnerHTML() {
@@ -141,14 +168,19 @@ class AutoComplete extends HTMLElement {
 		
 		const json_parse = (json => JSON.parse(json, (k, v) => {
 			switch (k) {
-				case "disabled": return nullexceptedTruthcheck(v);
-				case "selected": return nullexceptedTruthcheck(v);
-				case "label": return nontruthyexceptedJSONstringify(v);
-				case "value": return nontruthyexceptedJSONstringify(v);
-				case "text": return nontruthyexceptedJSONstringify(v);
+				case "disabled":
+          /* falls through */
+				case "selected":
+          return nullexceptedTruthcheck(v);
+				case "label":
+          /* falls through */
+				case "value":
+          /* falls through */
+				case "text":
+          return nontruthyexceptedJSONstringify(v);
 				case "":
-					if (Array.isArray(v)) return v;
-					return [v];
+					if (!Array.isArray(v)) return [v];
+					/* falls through */
 				default: return v;
 			}
 		}));
@@ -168,6 +200,7 @@ class AutoComplete extends HTMLElement {
 				case "string":
 					return {text: v};
 				case "boolean":
+          /* falls through */
 				case "number":
 					if (typ === "number") v = !!v;
 					return {disabled: v};
@@ -192,7 +225,7 @@ class AutoComplete extends HTMLElement {
 		typ = typeof value;
 		
 		if (typ !== 'string') {
-			throw new TypeError(`<<auto-complete> element's default-list attribute is string not {typ}`);
+			throw new TypeError(`<<auto-complete> element's default-list attribute is string not ${typ}`);
 		}
 		
 		this.setAttribute('default-list', value);
