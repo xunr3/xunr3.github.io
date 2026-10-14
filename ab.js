@@ -170,10 +170,12 @@ class AnimeBox extends HTMLElement {
     }
 
     #appSize(isBoxBordered) {
-        if (isBoxBordered) {
-            //pass;
-        } else {
-            //pass;
+        if (this.#style) {
+            if (isBoxBordered) {
+                //pass;
+            } else {
+                //pass;
+            }
         }
     }
 }
