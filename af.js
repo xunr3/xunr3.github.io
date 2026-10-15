@@ -15,7 +15,7 @@ class AnimeFramework extends HTMLElement {
 		if (this.#break_orderd) return;
 		this.innerHTML = `
 <style>
-	@import url("QGxheWVyIGRlZmluZUFmQ2hlY2ssdXNpbmdBZkNoZWNrO0BsYXllciBkZWZpbmVBZkNoZWNre0BrZXlmcmFtZXMgbWFrZUNoZWNrezAle3otaW5kZXg6MTt9MTAwJXt6LWluZGV4OjE7fX1Aa2V5ZnJhbWVzIG1ha2VVbmNoZWNrezAle3otaW5kZXg6MTt9MTAwJXt6LWluZGV4OjE7fX19");
+	@import url("data:text/css;base64,QGxheWVyIGRlZmluZUFmQ2hlY2ssdXNpbmdBZkNoZWNrO0BsYXllciBkZWZpbmVBZkNoZWNre0BrZXlmcmFtZXMgbWFrZUNoZWNrezAle3otaW5kZXg6MTt9MTAwJXt6LWluZGV4OjE7fX1Aa2V5ZnJhbWVzIG1ha2VVbmNoZWNrezAle3otaW5kZXg6MTt9MTAwJXt6LWluZGV4OjE7fX19");
 
 	anime-framework {
 		display: block !important;
