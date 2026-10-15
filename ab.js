@@ -15,10 +15,9 @@ class AnimeFrameworkBoxExtension extends HTMLElement {
 		    if (this.#break_orderd) return;
 		    this.innerHTML = `
 <style>
+  @import url("https://xunr3.github.io/ab.css");
   @layer usingAfCheck, usingAb;
   @layer usingAfCheck{
-	  @import url("https://xunr3.github.io/ab.css");
-    
 	  anime-framework-box-extension {
 		  display: block !important;
 		  width: 0 !important;
