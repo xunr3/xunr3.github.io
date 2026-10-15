@@ -6,8 +6,8 @@ class AnimeBox extends HTMLElement {
     #ALLOWattributeChangedCallback = true;
 
     connectedCallback() {
-        if (this.width) this.#setSize(true, this.width);
-        if (this.height) this.#setSize(false, this.height);
+        if (this.width) this.#genSize(true, this.width);
+        if (this.height) this.#genSize(false, this.height);
         if (this.animeColoring) this.#changeStyle(true, true);
         if (this.animeInputTargeting) this.#changeStyle(false, true);
         this.#changeStyle(null, false);
@@ -117,6 +117,7 @@ class AnimeBox extends HTMLElement {
     }
 
     #animeBoxBordering(dose_it) {
+        this.#ALLOWattributeChangedCallback = false;
         if (dose_it) {
             const boxBorder = document.createElement('fieldset');
             if (this.hasAttribute("style")) {
@@ -134,6 +135,7 @@ class AnimeBox extends HTMLElement {
             this.setAttribute("class", boxBorder.getAttribute("class"));
             this.innerHTML = boxBorder.innerHTML;
         }
+        this.#ALLOWattributeChangedCallback = true;
     }
 
     #changeStyle(mode, argument) {
