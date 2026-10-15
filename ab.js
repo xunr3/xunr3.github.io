@@ -1,6 +1,6 @@
 class AnimeBox extends HTMLElement {
-        #style = "";
-        #class = "anime-box-class anime-box-input-target";
+    #style = "";
+    #class = "anime-box-class anime-box-input-target";
     #width = null;
     #height = null;
 
@@ -14,116 +14,133 @@ class AnimeBox extends HTMLElement {
         if (this.#animeBoxBordering) this.#animeBoxBordering(true);
     }
 
-        static get observedAttributes() {
-                return ['width', 'height', 'anime-input-targeting', 'anime-box-bordering', 'anime-coloring'];
-        }
+    static get observedAttributes() {
+        return ['width', 'height', 'anime-input-targeting', 'anime-box-bordering', 'anime-coloring'];
+    }
 
-        get animeInputTargeting() {
-                return this.hasAttribute('anime-input-targeting');
-        }
+    get animeInputTargeting() {
+        return this.hasAttribute('anime-input-targeting');
+    }
 
-        set animeInputTargeting(val)  {
-                if (val) {
-                        this.setAttribute('anime-input-targeting', '');
-                } else {
-                        this.removeAttribute('anime-input-targeting');
+    set animeInputTargeting(val)  {
+        if (val) {
+            this.setAttribute('anime-input-targeting', '');
+        } else {
+            this.removeAttribute('anime-input-targeting');
+        }
+    }
+
+    get animeBoxBordering() {
+        return this.hasAttribute('anime-box-bordering');
+    }
+
+    set animeBoxBordering(val)  {
+        if (val) {
+            this.setAttribute('anime-box-bordering', '');
+        } else {
+            this.removeAttribute('anime-box-bordering');
+        }
+    }
+
+    get animeColoring() {
+        return this.hasAttribute('anime-coloring');
+    }
+
+    set animeColoring(val)  {
+        if (val) {
+            this.setAttribute('anime-coloring', '');
+        } else {
+            this.removeAttribute('anime-coloring');
+        }
+    }
+
+    get width() {
+        if (!this.hasAttribute('width')) return;
+        return this.getAttribute('width');
+    }
+
+    set width(value) {
+        this.setAttribute('width', value);
+    }
+
+    get height() {
+        if (!this.hasAttribute('height')) return;
+        return this.getAttribute('height');
+    }
+
+    set height(value) {
+        this.setAttribute('height', value);
+    }
+
+    attributeChangedCallback(name, oldValue, newValue) {
+        flag = false;
+        switch (name) {
+            case 'width':
+                flag = true;
+                /* falls through */
+            case 'height':
+                if (oldValue || newValue) {
+                    if (flag) {
+                        this.#delSize(flag);
+                    } else if (newValue) {
+                        this.#genSize(flag, newValue);
+                    } else if (oldValue !== newValue) {
+                        this.#setSize(flag, newValue);
+                    }
+                    this.#appSize(this.animeBoxBordering);
                 }
+                break;
+          case 'anime-coloring':
+              flag = true;
+              /* falls through */
+          case 'anime-input-targeting':
+              if (oldValue || newValue) {
+                  if ((!oldValue) && newValue) {
+                      this.#changeStyle(flag, true);
+                  } else if ((!newValue) && oldValue) {
+                      this.#changeStyle(flag, false);
+                  }
+                  this.#changeStyle(null, this.animeBoxBordering);
+              }
+              break;
+          case 'anime-box-bordering':
+              if ((!oldValue) && newValue) {
+                  this.#animeBoxBordering(true);
+              } else if ((!newValue) && oldValue) {
+                  this.#animeBoxBordering(false);
+              }
+              break;
         }
-
-        get animeBoxBordering() {
-                return this.hasAttribute('anime-box-bordering');
-        }
-
-        set animeBoxBordering(val)  {
-                if (val) {
-                        this.setAttribute('anime-box-bordering', '');
-                } else {
-                        this.removeAttribute('anime-box-bordering');
-                }
-        }
-
-        get animeColoring() {
-                return this.hasAttribute('anime-coloring');
-        }
-
-        set animeColoring(val)  {
-                if (val) {
-                        this.setAttribute('anime-coloring', '');
-                } else {
-                        this.removeAttribute('anime-coloring');
-                }
-        }
-
-        get width() {
-                if (!this.hasAttribute('width')) return;
-                return this.getAttribute('width');
-        }
-
-        set width(value) {
-                this.setAttribute('width', value);
-        }
-
-        get height() {
-                if (!this.hasAttribute('height')) return;
-                return this.getAttribute('height');
-        }
-
-        set height(value) {
-                this.setAttribute('height', value);
-        }
-
-        attributeChangedCallback(name, oldValue, newValue) {
-                flag = false;
-                switch (name) {
-                        case 'width':
-                                flag = true
-                        case 'height':
-                                if (oldValue || newValue) {
-                                        if (flag) {
-                                                this.#delSize(flag);
-                                        } else if (newValue) {
-                                                this.#genSize(flag, newValue);
-                                        } else if (oldValue !== newValue) {
-                                                this.#setSize(flag, newValue);
-                                        }
-                                        this.#appSize(this.animeBoxBordering);
-                                }
-                                break;
-                        case 'anime-coloring':
-                                flag = true;
-                        case 'anime-input-targeting':
-                                if (oldValue || newValue) {
-                                        if ((!oldValue) && newValue) {
-                                                this.#changeStyle(flag, true);
-                                        } else if ((!newValue) && oldValue) {
-                                                this.#changeStyle(flag, false);
-                                        }
-                                        this.#changeStyle(null, this.animeBoxBordering);
-                                }
-                                break;
-                        case 'anime-box-bordering':
-                                if ((!oldValue) && newValue) {
-                                        this.#animeBoxBordering(true);
-                                } else if ((!newValue) && oldValue) {
-                                        this.#animeBoxBordering(false);
-                                }
-                                break;
-                }
-        }
+    }
 
     #animeBoxBordering(dose_it) {
-        //pass
+        if (dose_it) {
+            const boxBorder = document.createElement('fieldset');
+            if (this.hasAttribute("style")) {
+                boxBorder.setAttribute("style", this.getAttribute("style"));
+                this.removeAttribute("style");
+            }
+            boxBorder.setAttribute("class", this.getAttribute("class"));
+            boxBorder.removeAttribute("class");
+            boxBorder.innerHTML = this.innerHTML;
+            this.innerHTML = "";
+            this.appendChild(boxBorder);
+        } else {
+            const boxBorder = this.querySelector("fieldset");
+            if (boxBorder.hasAttribute("style")) this.setAttribute("style", boxBorder.getAttribute("style"));
+            this.setAttribute("class", boxBorder.getAttribute("class"));
+            this.innerHTML = boxBorder.innerHTML;
+        }
     }
 
     #changeStyle(mode, argument) {
         if (mode === null) {
-            elem = isBoxBordered?this.querySelector("fieldset"):this;
-            elem.setAttribute("class", );
+            (argument?this.querySelector("fieldset"):this).setAttribute("class", this.#class);
         } else if (mode) { //it's doColoring mode bool
             if (argument) {
-                this.#class += " anime-coloring"
+                this.#class += " anime-coloring";
             } else {
-                this.#class = this.#class.replace(" anime-coloring", "")
+                this.#class = this.#class.replace(" anime-coloring", "");
             }
         } else {
             if (argument) {
@@ -167,9 +184,9 @@ class AnimeBox extends HTMLElement {
     }
 
     #appSize(isBoxBordered) {
-        elem = isBoxBordered?this.querySelector("fieldset"):this;
+        const elem = isBoxBordered?this.querySelector("fieldset"):this;
         if (this.#style) {
-            elem.setAttribute("style", );
+            elem.setAttribute("style", this.#style);
         } else {
             if (elem.hasAttribute("style")) elem.removeAttribute("style");
         }
