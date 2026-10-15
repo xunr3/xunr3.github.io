@@ -2,7 +2,7 @@
 
 @layer usingAb {
   :root {
-    --anime-on : makeCheck 0.1ms;
-    --anime-off : makeUncheck 0.1ms;
+    --anime-on : makeCheck 0.1ms !important;
+    --anime-off : makeUncheck 0.1ms !important;
   }
 }
