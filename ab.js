@@ -11,7 +11,7 @@ class AnimeBox extends HTMLElement {
         if (this.animeInputTargeting) this.#changeStyle(false, true);
         this.#changeStyle(null, false);
         this.#appSize(false);
-        if (this.#animeBoxBordering) this.#animeBoxBordering(true);
+        if (this.animeBoxBordering) this.#animeBoxBordering(true);
     }
 
     static get observedAttributes() {
@@ -138,9 +138,9 @@ class AnimeBox extends HTMLElement {
             (argument?this.querySelector("fieldset"):this).setAttribute("class", this.#class);
         } else if (mode) { //it's doColoring mode bool
             if (argument) {
-                this.#class += " anime-coloring";
+                this.#class = this.#class.replace(`anime-box-${this.animeInputTargeting?"anime-":""}input-target`, `anime-box-coloringed-${this.animeInputTargeting?"anime-":""}input-target`);
             } else {
-                this.#class = this.#class.replace(" anime-coloring", "");
+                this.#class = this.#class.replace(`anime-box-coloringed-${this.animeInputTargeting?"anime-":""}input-target`, `anime-box-${this.animeInputTargeting?"anime-":""}input-target`);
             }
         } else {
             if (argument) {
