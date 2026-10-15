@@ -3,7 +3,7 @@ class AnimeBox extends HTMLElement {
     #class = "anime-box-class anime-box-input-target";
     #width = null;
     #height = null;
-    #ALLOWattributeChangedCallback = true;
+    #ALLOWattributeChangedCallback = null;
 
     connectedCallback() {
         if (this.width) this.#genSize(true, this.width);
@@ -13,6 +13,7 @@ class AnimeBox extends HTMLElement {
         this.#changeStyle(null, false);
         this.#appSize(false);
         if (this.animeBoxBordering) this.#animeBoxBordering(true);
+        this.#ALLOWattributeChangedCallback = true;
     }
 
     static get observedAttributes() {
@@ -117,32 +118,32 @@ class AnimeBox extends HTMLElement {
     }
 
     #animeBoxBordering(dose_it) {
-        this.#ALLOWattributeChangedCallback = false;
+        if (this.#ALLOWattributeChangedCallback !== null) this.#ALLOWattributeChangedCallback = false;
         if (dose_it) {
-            const boxBorder = document.createElement('fieldset');
-            if (this.hasAttribute("style")) {
-                boxBorder.setAttribute("style", this.getAttribute("style"));
+            const boxBorder = Object.assign(document.createElement('fieldset'), {className: this.#class, innerHTML: this.innerHTML});
+            this.removeAttribute("class");
+            
+            if (this.#style) {
+                Object.assign(boxBorder.style, {cssText: this.#style})
                 this.removeAttribute("style");
             }
-            boxBorder.setAttribute("class", this.getAttribute("class"));
-            boxBorder.removeAttribute("class");
-            boxBorder.innerHTML = this.innerHTML;
+
             this.innerHTML = "";
             this.appendChild(boxBorder);
         } else {
             const boxBorder = this.querySelector("fieldset");
-            if (boxBorder.hasAttribute("style")) this.setAttribute("style", boxBorder.getAttribute("style"));
-            this.setAttribute("class", boxBorder.getAttribute("class"));
+            if (this.#style) this.setAttribute("style", this.#style);
+            this.setAttribute("class", this.#class);
             this.innerHTML = boxBorder.innerHTML;
         }
-        this.#ALLOWattributeChangedCallback = true;
+        if (this.#ALLOWattributeChangedCallback !== null) this.#ALLOWattributeChangedCallback = true;
     }
 
     #changeStyle(mode, argument) {
         if (mode === null) {
-            this.#ALLOWattributeChangedCallback = false;
+            if (this.#ALLOWattributeChangedCallback !== null) this.#ALLOWattributeChangedCallback = false;
             (argument?this.querySelector("fieldset"):this).setAttribute("class", this.#class);
-            this.#ALLOWattributeChangedCallback = true;
+            if (this.#ALLOWattributeChangedCallback !== null) this.#ALLOWattributeChangedCallback = true;
         } else if (mode) { //it's doColoring mode bool
             if (argument) {
                 this.#class = this.#class.replace(`anime-box-${this.animeInputTargeting?"anime-":""}input-target`, `anime-box-coloringed-${this.animeInputTargeting?"anime-":""}input-target`);
@@ -176,7 +177,7 @@ class AnimeBox extends HTMLElement {
             this.#width = value;
         } else {
             this.#style += `--anime-box-height: ${value};`;
-            this.#width = value;
+            this.#height = value;
         }
     }
 
@@ -191,14 +192,14 @@ class AnimeBox extends HTMLElement {
     }
 
     #appSize(isBoxBordered) {
-        this.#ALLOWattributeChangedCallback = false;
+        if (this.#ALLOWattributeChangedCallback !== null) this.#ALLOWattributeChangedCallback = false;
         const elem = isBoxBordered?this.querySelector("fieldset"):this;
         if (this.#style) {
             elem.setAttribute("style", this.#style);
         } else {
             if (elem.hasAttribute("style")) elem.removeAttribute("style");
         }
-        this.#ALLOWattributeChangedCallback = true;
+        if (this.#ALLOWattributeChangedCallback !== null) this.#ALLOWattributeChangedCallback = true;
     }
 }
 
