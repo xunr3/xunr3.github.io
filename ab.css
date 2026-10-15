@@ -1,0 +1,47 @@
+.anime-box-class {
+    --anime-box-width: 1;
+    --anime-box-height: 4;
+    --anime-display: inline-block;
+    --anime-off-color: gray;
+    --anime-on-color: yellow;
+}
+
+.anime-box-input-target {
+    width: var(--anime-box-width);
+    height: var(--anime-box-height);
+    display: var(--anime-display);
+}
+
+.anime-box-anime-input-target {
+    width: var(--anime-box-width);
+    height: var(--anime-box-height);
+    display: var(--anime-display);
+}
+
+.anime-box-coloringed-input-target {
+    width: var(--anime-box-width);
+    height: var(--anime-box-height);
+    display: var(--anime-display);
+    background-color: var(--anime-off-color);
+}
+
+.anime-box-coloringed-input-target:has(input[type=checkbox]:checked) {
+    width: var(--anime-box-width);
+    height: var(--anime-box-height);
+    display: var(--anime-display);
+    background-color: var(--anime-on-color);
+}
+
+.anime-box-coloringed-anime-input-target {
+    width: var(--anime-box-width);
+    height: var(--anime-box-height);
+    display: var(--anime-display);
+    background-color: var(--anime-off-color);
+}
+
+.anime-box-coloringed-anime-input-target:has(anime-input[checked]) {
+    width: var(--anime-box-width);
+    height: var(--anime-box-height);
+    display: var(--anime-display);
+    background-color: var(--anime-on-color);
+}
