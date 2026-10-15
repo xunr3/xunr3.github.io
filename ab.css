@@ -1,47 +1,47 @@
 .anime-box-class {
     --anime-box-width: 1px;
     --anime-box-height: 4px;
-    --anime-display: inline-block;
-    --anime-off-color: gray;
-    --anime-on-color: yellow;
+    --anime-box-display: inline-block;
+    --anime-box-off-color: gray;
+    --anime-box-on-color: yellow;
 }
 
 .anime-box-input-target {
     width: var(--anime-box-width);
     height: var(--anime-box-height);
-    display: var(--anime-display);
+    display: var(--anime-box-display);
 }
 
 .anime-box-anime-input-target {
     width: var(--anime-box-width);
     height: var(--anime-box-height);
-    display: var(--anime-display);
+    display: var(--anime-box-display);
 }
 
 .anime-box-coloringed-input-target {
     width: var(--anime-box-width);
     height: var(--anime-box-height);
-    display: var(--anime-display);
-    background-color: var(--anime-off-color);
+    display: var(--anime-box-display);
+    background-color: var(--anime-box-off-color);
 }
 
 .anime-box-coloringed-input-target:has(input[type=checkbox]:checked) {
     width: var(--anime-box-width);
     height: var(--anime-box-height);
-    display: var(--anime-display);
-    background-color: var(--anime-on-color);
+    display: var(--anime-box-display);
+    background-color: var(--anime-box-on-color);
 }
 
 .anime-box-coloringed-anime-input-target {
     width: var(--anime-box-width);
     height: var(--anime-box-height);
-    display: var(--anime-display);
-    background-color: var(--anime-off-color);
+    display: var(--anime-box-display);
+    background-color: var(--anime-box-off-color);
 }
 
 .anime-box-coloringed-anime-input-target:has(anime-input[checked]) {
     width: var(--anime-box-width);
     height: var(--anime-box-height);
-    display: var(--anime-display);
-    background-color: var(--anime-on-color);
+    display: var(--anim-box-display);
+    background-color: var(--anime-box-on-color);
 }
