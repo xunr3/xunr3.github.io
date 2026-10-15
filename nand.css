@@ -1,0 +1,7 @@
+.nand-gate:has(.nand-gate-i0[checked]):has(.nand-gate-i1[checked]) .nand-gate-o {
+  animation: makeUncheck 0.1ms;
+}
+
+.nand-gate:has(.nand-gate-i0:not([checked]), .nand-gate-i1:not([checked])) .nand-gate-o {
+  animation: makeCheck 0.1ms;
+}
