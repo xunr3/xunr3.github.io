@@ -1,47 +1,49 @@
-.anime-box-class {
-    --anime-box-width: 1px;
-    --anime-box-height: 4px;
-    --anime-box-display: inline-block;
-    --anime-box-off-color: gray;
-    --anime-box-on-color: yellow;
-}
-
-.anime-box-input-target {
-    width: var(--anime-box-width);
-    height: var(--anime-box-height);
-    display: var(--anime-box-display);
-}
-
-.anime-box-anime-input-target {
-    width: var(--anime-box-width);
-    height: var(--anime-box-height);
-    display: var(--anime-box-display);
-}
-
-.anime-box-coloringed-input-target {
-    width: var(--anime-box-width);
-    height: var(--anime-box-height);
-    display: var(--anime-box-display);
-    background-color: var(--anime-box-off-color);
-}
-
-.anime-box-coloringed-input-target:has(input[type=checkbox]:checked) {
-    width: var(--anime-box-width);
-    height: var(--anime-box-height);
-    display: var(--anime-box-display);
-    background-color: var(--anime-box-on-color);
-}
-
-.anime-box-coloringed-anime-input-target {
-    width: var(--anime-box-width);
-    height: var(--anime-box-height);
-    display: var(--anime-box-display);
-    background-color: var(--anime-box-off-color);
-}
-
-.anime-box-coloringed-anime-input-target:has(anime-input[checked]) {
-    width: var(--anime-box-width);
-    height: var(--anime-box-height);
-    display: var(--anim-box-display);
-    background-color: var(--anime-box-on-color);
+@layer usingAfCheck{
+    .anime-box-class {
+        --anime-box-width: 1px;
+        --anime-box-height: 4px;
+        --anime-box-display: inline-block;
+        --anime-box-off-color: gray;
+        --anime-box-on-color: yellow;
+    }
+    
+    .anime-box-input-target {
+        width: var(--anime-box-width);
+        height: var(--anime-box-height);
+        display: var(--anime-box-display);
+    }
+    
+    .anime-box-anime-input-target {
+        width: var(--anime-box-width);
+        height: var(--anime-box-height);
+        display: var(--anime-box-display);
+    }
+    
+    .anime-box-coloringed-input-target {
+        width: var(--anime-box-width);
+        height: var(--anime-box-height);
+        display: var(--anime-box-display);
+        background-color: var(--anime-box-off-color);
+    }
+    
+    .anime-box-coloringed-input-target:has(input[type=checkbox]:checked) {
+        width: var(--anime-box-width);
+        height: var(--anime-box-height);
+        display: var(--anime-box-display);
+        background-color: var(--anime-box-on-color);
+    }
+    
+    .anime-box-coloringed-anime-input-target {
+        width: var(--anime-box-width);
+        height: var(--anime-box-height);
+        display: var(--anime-box-display);
+        background-color: var(--anime-box-off-color);
+    }
+    
+    .anime-box-coloringed-anime-input-target:has(anime-input[checked]) {
+        width: var(--anime-box-width);
+        height: var(--anime-box-height);
+        display: var(--anim-box-display);
+        background-color: var(--anime-box-on-color);
+    }
 }
