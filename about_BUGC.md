@@ -423,6 +423,14 @@ const ab_webcode = (_ => console.log('<script src="https://xunr3.github.io/ab.js
 @import url("https://xunr3.github.io/nand.css");
 
 /* # BUGC is Universal Gate Circuit */
+
+@layer usingBugccore{
+    .about-bugc::after {
+        content: "link : https://xunr3.github.io/about_BUGC" !important;
+        font-size: 24px !important;
+        color: green !important;
+    }
+}
 ```
 
 ## [https://xunr3.github.io/nand.css]
@@ -4055,6 +4063,11 @@ const ab_webcode = (_ => console.log('<script src="https://xunr3.github.io/ab.js
 
 ## example code
 
+1. ex1
+2. ex2
+
+# 1. [ex1](https://FawAway6834.github.io/abtest3)
+
 ```html
 <!DOCTYPE html>
 <html>
@@ -4109,6 +4122,83 @@ const ab_webcode = (_ => console.log('<script src="https://xunr3.github.io/ab.js
       </div>
       <anime-box width="20px" height="20px" anime-input-targeting anime-box-bordering anime-coloring><anime-input class="in-out-out nand-gate-o"></anime-input></anime-box>
     </div>
+  </body>
+</html>
+```
+
+# 1. [ex2](https://FawAway6834.github.io/abtest4)
+
+```html
+<!DOCTYPE html>
+<html>
+  <head>
+    <title> gate 1 </title>
+    <script src="https://xunr3.github.io/af.js" fetchpriority="high"></script>
+    <script src="https://xunr3.github.io/ab.js" fetchpriority="high"></script>
+  </head>
+  <body>  
+    <h1> gate 1 </h1>
+    <anime-framework></anime-framework>
+    <anime-framework-box-extension></anime-framework-box-extension>
+    <style>
+      @import url("https://xunr3.github.io/bugc.css");
+
+      .in-out:has(.in-out-in:checked) .in-out-out {
+        animation: var(--anime-on);
+      }
+
+      .in-out:has(.in-out-in:not(:checked)) .in-out-out {
+        animation: var(--anime-off);
+      }
+
+      .not-gate:has(.not-gate-in[checked]) .not-gate-out {
+        animation: var(--anime-off);
+      }
+
+      .not-gate:has(.not-gate-in:not([checked])) .not-gate-out {
+        animation: var(--anime-on);
+      }
+    </style>
+    <div class="wps-p0">
+      
+      <div id="ui">
+      
+        <anime-box anime-box-bordering anime-coloring>
+          <div class="in-out">
+            <input type="checkbox" class="in-out-in">
+            <anime-input class="in-out-out wps-p0-i0"></anime-input>
+          </div>
+        </anime-box>
+      
+        <anime-box anime-box-bordering anime-coloring>
+          <div class="in-out">
+            <input type="checkbox" class="in-out-in">
+            <anime-input class="in-out-out wps-p0-i1"></anime-input>
+          </div>
+      </anime-box>
+      
+      </div>
+      
+      <div class="wps-w0" id="circuit">
+        
+        <div class="nand-gate">
+          <anime-input class="wps-p0-o0 nand-gate-i0"></anime-input>
+          <anime-input class="wps-w0-o1 nand-gate-i1"></anime-input>
+          <anime-box anime-box-bordering anime-input-targeting anime-coloring>
+            <anime-input class="wps-w0-i0 nand-gate-o"></anime-input>
+          </anime-box>
+        </div>
+        
+        <div class="nand-gate">
+          <anime-input class="wps-p0-o1 nand-gate-i0"></anime-input>
+          <anime-input class="wps-w0-o0 nand-gate-i1"></anime-input>
+          <anime-input class="wps-w0-i1 nand-gate-o"></anime-input>
+        </div>
+        
+      </div>
+      
+    </div>
+    <div class="about-bugc"></div>
   </body>
 </html>
 ```
