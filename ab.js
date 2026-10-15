@@ -73,7 +73,7 @@ class AnimeBox extends HTMLElement {
     }
 
     attributeChangedCallback(name, oldValue, newValue) {
-        const flag = false;
+        let flag = false;
         switch (name) {
             case 'width':
                 flag = true;
