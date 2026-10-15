@@ -1,311 +1,198 @@
-function nullexcepted(func) {
-	return function (value) {
-		if (value === undefined) return;
-		if (value === null) return;
-		return func(value);
-	};
-}
+class AnimeBox extends HTMLElement {
+    #style = "";
+    #class = "anime-box-class anime-box-input-target";
+    #width = null;
+    #height = null;
 
-function falsyexcepted(func) {
-	return function (value) {
-		//if (value === undefined) return; //undefined is falsy
-		if (value) return func(value);
-		return;
-	};
-}
-
-const nontruthyexcepted = falsyexcepted;//(f => falsyexcepted(nullexcepted(f))); //null is falsy
-
-const nontruthyexceptedJSONstringify = nontruthyexcepted(JSON.stringify);
-
-const nullexceptedTrutycheck = nullexcepted(v => !!v);
-
-const genConf = (attrfilter => ({attribute: true, attributeFilter: attrfilter}));
-
-const disconnectIfExist = (observer => {
-  if (observer) observer.disconnect();
-});
-
-class AutoComplete extends HTMLElement {
-  #idofit;
-	#observer = null;
-	#inputElement = null;
-	#datalistElement = null;
-	#inputObserver = null;
-	#datalistObserver = null;
-	#inputID = null;
-	#datalistID = null;
-	#inputObservingConf = genConf(['id', 'list']);
-	#datalistObservingConf = genConf(['id']);
-  #defaultInputConf = {id : null, list : null};
-	
-	connectedCallback() {
-		//step 1. setup <auto-compile> id-system
-    const id = this.getAttribute('id');
-		this.#idofit = id;
-		
-		this.#inputID = `${id}-data-input`;
-		this.#datalistID = `${id}-data-list`;
-
-    //step 2. caching defaultInputConf
-    this.#defaultInputConf.id = this.#inputID;
-    this.#defaultInputConf.list = this.#datalistID;
-		
-    //step 3. setup <<auto-complete>'s single-child-enforce-and-id-system-obeserve-operating-system>
-		this.#updateTags();
-
-		this.#observer = new MutationObserver(this.#updateTags);
-		this.#observer.observe(this, {childList: true});
-	}
-
-	disconnectedCallback() {
-    this.#disconnectObserver();
-	}
-
-  #disconnectObserver() {
-    disconnectIfExist(this.#observer);
-    this.#disconnectInputObserver();
-    this.#disconnectDatalistObserver();
-  }
-
-  #disconnectInputObserver() {
-    disconnectIfExist(this.#inputObserver);
-  }
-
-  #createInputObserver() {
-    this.#inputObserver = new MutationObserver(this.#inputObserve);
-  }
-
-  #connectInputObserver() {
-    this.#inputObserver(this.#inputElement, this.#inputObservingConf);
-  }
-
-  #constructInputObserver() {
-    this.#createInputObserver();
-    this.#connectInputObserver();
-  }
-
-  #reallocInputObserver() {
-    this.#disconnectInputObserver();
-    this.#constructInputObserver();
-  }
-
-  #disconnectDatalistObserver() {
-    disconnectIfExist(this.#datalistObserver);
-  }
-
-  #createDatalistObserver() {
-    this.#datalistObserver = new MutationObserver(this.#datalistObserve);
-  }
-
-  #connectDatalistObserver() {
-    this.#datalistObserver(this.#datalistElement, this.#datalistObservingConf);
-  }
-
-  #constructDatalistObserver() {
-    this.#createDatalistObserver();
-    this.#connectDatalistObserver();
-  }
-
-  #reallocDatalistObserver() {
-    this.#disconnectDatalistObserver();
-    this.#constructDatalistObserver();
-  }
-
-	#updateTags() {
-		['input', 'datalist'].forEach(name => {
-			const tags = Array.from(this.querySelecterAll(name));
-
-			if (tags.length > 1) {
-				console.warn(`<<auto-complete>'s single-child-enforce-and-id-system-obeserve-operating-system>'s single-child-enforcer : only one <${name}> are allowed.`);
-				tags.slice(1).forEach(rmtarget => rmtarget.remove());
-			} // <<auto-complete>'s single-child-enforce-and-id-system-obeserve-operating-system>'s single-child-enforcer
-
-			switch (name) {
-				case "input":
-					//set tag into this.#inputElement
-          this.#inputElement = (tags[0])?(tags[0]):(Object.assign(document.createElement('input'), this.#defaultInputConf));
-
-          this.#reallocInputObserver();
-          
-          if (tags[0]) {
-						this.input.id = this.input.id || this.#inputID;
-						this.input.list = this.input.list || this.#datalistID;
-					}
-					break;
-				case "datalist":
-					//set tag into this.#datalistElement
-          this.
-					if (tags[0]) {
-            //setup tag as id is exist if tag is exist
-						const tag = tags[0];
-						tag.id = tag.id || this.#datalistID;
-					} else {
-            //setup tag by constructing if tag is not exist
-						const tag = Object.assign(document.createElement('datalist'), {id : this.#datalistID, innerHTML : this.normalizedDefaultList2defaultDatalistInnerHTML()});
-            this.#datalistElement = null;
-            this.datalist = tag;
-					}
-					this.#datalistElement = tag;
-
-          this.#reallocDatalistObserver();
-
-          //try update
-          const the_tag = this.querySelecter('datalist');
-          const the_innerHTML = the_tag.innerHTML;
-          the_innerHTML.innerHTML = "";
-          the_innerHTML.innerHTML = the_innerHTML;
-					break;
-				default:
-					throw Error("array object for that's forEach method in <<auto-complete> single-child-enforcer> also the only logic is broken. also my mental-helth is broken too. nahhhhhhhhhhhhhhhhhhhhhh whyyyyyyyyyyy");
-					break;
-			}
-		});
-	}
-	
-	#inputObserve(mutation) {
-		const [tag, id, list, observer, conf] = [this.#inputElement, this.#inputID, this.#datalistID, this.#inputObserver, this.#inputObservingConf];
-		if (mutation.attributeName === "id" && tag.id !== id) {
-			observer.disconnect();
-			tag.id = id;
-			observer.observe(tag, conf);
-		}
-		if (mutation.attributeName === "list" && tag.list !== list) {
-			observer.disconnect();
-			tag.list = list;
-			observer.observe(tag, conf);
-		}
-	}
-	
-	#datalistObserve() {
-		const [tag, id, observer, conf] = [this.#datalistElement, this.#datalistID, this.#datalistObserver, this.#datalistObservingConf];
-		if (mutation.attributeName === "id" && tag.id !== id) {
-			observer.disconnect();
-			tag.id = id;
-			observer.observe(tag, conf);
-		}
-    const datalist = this.querySelecter('datalist');
-    if (datalist.innerHTML = "") {
-      this.innerHTML = this.normalizedDefaultList2defaultDatalistInnerHTML();
+    connectedCallback() {
+        if (this.width) this.#setSize(true, this.width);
+        if (this.height) this.#setSize(false, this.height);
+        if (this.animeColoring) this.#changeStyle(true, true);
+        if (this.animeInputTargeting) this.#changeStyle(false, true);
+        this.#changeStyle(null, false);
+        this.#appSize(false);
+        if (this.#animeBoxBordering) this.#animeBoxBordering(true);
     }
-	}
-	
-	get defaultlist() {
-		const ret = this.getAttribute('default-list');
-		if (ret) return ret;
-		return;
-	}
-	
-	set defaultlist(value) {
-		typ = typeof value;
-		
-		if (typ !== 'string') {
-			throw new TypeError(`<<auto-complete> element's default-list attribute is string not ${typ}`);
-		}
-		
-		this.setAttribute('default-list', value);
-	}
 
-	get input() {
-		return this.#inputElement;
-	}
+    static get observedAttributes() {
+        return ['width', 'height', 'anime-input-targeting', 'anime-box-bordering', 'anime-coloring'];
+    }
 
-	get datalist() {
-		return this.#datalistElement;
-	}
+    get animeInputTargeting() {
+        return this.hasAttribute('anime-input-targeting');
+    }
 
-	set input(elem) {
-		if (this.#inputElement) {
-			this.#inputElement.before(elem);
-		} else {
-      const datalist = this.querySelecter('datalist');
-      this.#observer.disconnect();
-      this.#inputObserver.disconnect();
-      this.insertBefore(elem, datalist?datalist:this.firstElementChild);
-      this.#inputObserver.observe(elem, this.#inputObservingConf);
-      this.#observer.observe(this, {childList: true});
-		}
-	}
-	
-	set datalist(elem) {
-		if (this.#datalistElement) {
-			this.#datalistElement.before(elem);
-		} else {
-			this.appendChild(elem);
-		}
-	}
+    set animeInputTargeting(val)  {
+        if (val) {
+            this.setAttribute('anime-input-targeting', '');
+        } else {
+            this.removeAttribute('anime-input-targeting');
+        }
+    }
 
-	normalizedDefaultList2defaultDatalistInnerHTML() {
-		const getAttribute = (x => [
-			...Object.hasOwn(x, 'value')?[`value="${x.value}"`]:[],
-			...Object.hasOwn(x, 'lable')?[`lable="${x.lable}"`]:[],
-			...(Object.hasOwn(x, 'disabled')?x.disabled:false)?['disabled']:[],
-			...(Object.hasOwn(x, 'selected')?x.selected:false)?['selected']:[]
-		].join(' '));
+    get animeBoxBordering() {
+        return this.hasAttribute('anime-box-bordering');
+    }
 
-		return this.normalizedDefaultList.map(x => `<option${(v=>v?(' '+v):'')(getAttribute(x))}>${Object.hasOwn(x, 'text')?x.text:''}</option>`).join();
-	}
-	
-	normalizedDefaultList() {
-		const defaultlist = this.defaultlist;
-		if (!defaultlist) return;
-		
-		const json_parse = (json => JSON.parse(json, (k, v) => {
-			switch (k) {
-				case "disabled":
-          /* falls through */
-				case "selected":
-          return nullexceptedTruthcheck(v);
-				case "label":
-          /* falls through */
-				case "value":
-          /* falls through */
-				case "text":
-          return nontruthyexceptedJSONstringify(v);
-				case "":
-					if (!Array.isArray(v)) return [v];
-					/* falls through */
-				default: return v;
-			}
-		}));
+    set animeBoxBordering(val)  {
+        if (val) {
+            this.setAttribute('anime-box-bordering', '');
+        } else {
+            this.removeAttribute('anime-box-bordering');
+        }
+    }
 
-		const defaultlistArray2object = (v => {
-			//pass
-			throw new Error("IndevError : incomplete to developed feature");
-		});
+    get animeColoring() {
+        return this.hasAttribute('anime-coloring');
+    }
 
-		const objectize = (v => {
-			const typ = typeof v;
-			switch (typ) {
-				case "object":
-					if (v === null) return {text: ""};
-					if (!Array.isArray(v)) return v;
-					return defaultlistArray2object(v);
-				case "string":
-					return {text: v};
-				case "boolean":
-          /* falls through */
-				case "number":
-					if (typ === "number") v = !!v;
-					return {disabled: v};
-				case "undefined":
-					return;
-				default:
-					throw new Error("whie defaultlist json normalize parsing of <auto-complete>, unjsonic type is detected. and also my broken mental health is also detected.");
-					break;
-			}
-		});
+    set animeColoring(val)  {
+        if (val) {
+            this.setAttribute('anime-coloring', '');
+        } else {
+            this.removeAttribute('anime-coloring');
+        }
+    }
 
-		return json_parse(defaultlist).map(objectize).filter(x => (x !== undefined));
-	}
+    get width() {
+        if (!this.hasAttribute('width')) return;
+        return this.getAttribute('width');
+    }
+
+    set width(value) {
+        this.setAttribute('width', value);
+    }
+
+    get height() {
+        if (!this.hasAttribute('height')) return;
+        return this.getAttribute('height');
+    }
+
+    set height(value) {
+        this.setAttribute('height', value);
+    }
+
+    attributeChangedCallback(name, oldValue, newValue) {
+        flag = false;
+        switch (name) {
+            case 'width':
+                flag = true;
+                /* falls through */
+            case 'height':
+                if (oldValue || newValue) {
+                    if (flag) {
+                        this.#delSize(flag);
+                    } else if (newValue) {
+                        this.#genSize(flag, newValue);
+                    } else if (oldValue !== newValue) {
+                        this.#setSize(flag, newValue);
+                    }
+                    this.#appSize(this.animeBoxBordering);
+                }
+                break;
+          case 'anime-coloring':
+              flag = true;
+              /* falls through */
+          case 'anime-input-targeting':
+              if (oldValue || newValue) {
+                  if ((!oldValue) && newValue) {
+                      this.#changeStyle(flag, true);
+                  } else if ((!newValue) && oldValue) {
+                      this.#changeStyle(flag, false);
+                  }
+                  this.#changeStyle(null, this.animeBoxBordering);
+              }
+              break;
+          case 'anime-box-bordering':
+              if ((!oldValue) && newValue) {
+                  this.#animeBoxBordering(true);
+              } else if ((!newValue) && oldValue) {
+                  this.#animeBoxBordering(false);
+              }
+              break;
+        }
+    }
+
+    #animeBoxBordering(dose_it) {
+        if (dose_it) {
+            const boxBorder = document.createElement('fieldset');
+            if (this.hasAttribute("style")) {
+                boxBorder.setAttribute("style", this.getAttribute("style"));
+                this.removeAttribute("style");
+            }
+            boxBorder.setAttribute("class", this.getAttribute("class"));
+            boxBorder.removeAttribute("class");
+            boxBorder.innerHTML = this.innerHTML;
+            this.innerHTML = "";
+            this.appendChild(boxBorder);
+        } else {
+            const boxBorder = this.querySelector("fieldset");
+            if (boxBorder.hasAttribute("style")) this.setAttribute("style", boxBorder.getAttribute("style"));
+            this.setAttribute("class", boxBorder.getAttribute("class"));
+            this.innerHTML = boxBorder.innerHTML;
+        }
+    }
+
+    #changeStyle(mode, argument) {
+        if (mode === null) {
+            (isBoxBordered?this.querySelector("fieldset"):this).setAttribute("class", this.#class);
+        } else if (mode) { //it's doColoring mode bool
+            if (argument) {
+                this.#class += " anime-coloring";
+            } else {
+                this.#class = this.#class.replace(" anime-coloring", "");
+            }
+        } else {
+            if (argument) {
+                this.#class = this.#class.replace("anime-box-input-target", "anime-box-anime-input-target");
+            } else {
+                this.#class = this.#class.replace("anime-box-anime-input-target", "anime-box-input-target");
+            }
+        }
+    }
+
+
+
+    #delSize(is_width) {
+        if (is_width) {
+            this.#style = this.#style.replace(`--anime-box-width: ${this.#width};`, "");
+            this.#width = null;
+        } else {
+            this.#style = this.#style.replace(`--anime-box-height: ${this.#height};`, "");
+            this.#height = null;
+        }
+    }
+
+    #genSize(is_width, value) {
+        if (is_width) {
+            this.#style += `--anime-box-width: ${value};`;
+            this.#width = value;
+        } else {
+            this.#style += `--anime-box-height: ${value};`;
+            this.#width = value;
+        }
+    }
+
+    #setSize(is_width, value) {
+        if (is_width) {
+            this.#style = this.#style.replace(`th: ${this.#width}`, `th: ${value}`);
+            this.#width = value;
+        } else {
+            this.#style = this.#style.replace(`ht: ${this.#height}`, `ht: ${value}`);
+            this.#height = value;
+        }
+    }
+
+    #appSize(isBoxBordered) {
+        const elem = isBoxBordered?this.querySelector("fieldset"):this;
+        if (this.#style) {
+            elem.setAttribute("style", this.#style);
+        } else {
+            if (elem.hasAttribute("style")) elem.removeAttribute("style");
+        }
+    }
 }
 
-customElements.define("auto-complete", AutoComplete);
+customElements.define('anime-box', AnimeBox);
 
-const as_webcode = (_ => console.log('<script src="https://xunr3.github.io/ac.js" fetchpriority="high"></script>'));
-
-/*
-FUCKFUCKFUCKFUCKFUCKFUCKFUCKFUCKFUKCFUCKFKUCKIUKIUFCKUKFKCUJJFCCJIFODSJCIEshdgoi
-
-const as_shortcode = (_ => console.log(`<script src="data:text/javascript;base64,${SRC}" fetchpriority="high" /></script>`));
-*/
+const ab_webcode = (_ => console.log('<script src="https://xunr3.github.io/ab.js" fetchpriority="high"></script>'));
