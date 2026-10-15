@@ -1,13 +1,13 @@
 class AnimeFrameworkBoxExtension extends HTMLElement {
-	  static #isAnimeFrameworkLoaded = false;
+	  static #isFrameworkLoaded = false;
 	  #break_orderd = true;
 
   	constructor() {
 	    	super();
-		    if (AnimeFramework.#isAnimeFrameworkLoaded) {
+		    if (AnimeFrameworkBoxExtension.#isFrameworkLoaded) {
 			      throw new Error("[AnimeFrameworkBoxExtension Error] <anime-framework-box-extension> component can loaded only once.");
 		    }
-		    AnimeFramework.#isAnimeFrameworkLoaded = true;
+		    AnimeFrameworkBoxExtension.#isFrameworkLoaded = true;
 		    this.#break_orderd = false;
 	  }
     
