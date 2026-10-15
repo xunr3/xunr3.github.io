@@ -5,16 +5,21 @@
 1. custom tags
  - `<anime-framework>` : define custom tag `<anime-input>`
  - `<anime-framework-box-extension>` : define custom tag `<anime-box>`
- - `<anime-box [width="[1-9][0-9]*px"] [height="[1-9][0-9]*px"] [anime-input-targeting] [anime-coloring] [anime-box-bordering]>` : the fieldset (when it's anime-box-bordering) or custom tag which classed as "anime-box-class" and the "anime-box-input-target" (not anime-coloring nor anime-input-targeting) or "anime-box-anime-input-targeting" (not anime-coloring but anime-input-targrting) or "anime-box-coloringed-input-target" (not anime-input-targeting but anime-coloring) or "anime-box-coloringed-anime-input-target" (anime-input-targeting and anime-coloring one) and styled as "--anime-box-width" and "--anime-box-height"
+ - `<anime-box [width="[1-9][0-9]*px"] [height="[1-9][0-9]*px"] [anime-input-targeting] [anime-coloring] [anime-box-bordering]>` : the fieldset (when it's anime-box-bordering) or custom tag which classed as "anime-box-class" and the "anime-box-input-target" (not anime-coloring nor anime-input-targeting) or "anime-box-anime-input-targeting" (not anime-coloring but anime-input-targrting) or "anime-box-coloringed-input-target" (not anime-input-targeting but anime-coloring) or "anime-box-coloringed-anime-input-target" (anime-input-targeting and anime-coloring one) and styled as "--anime-box-width" and "--anime-box-height" (If an `anime-input` or `input` is detected inside an `anime-box`, when that element is checked, its color will light up like a lamp to verify it visually. To match a difficulty level similar to developing Minecraft redstone circuits, we provide `anime-box` by default. it's also css)
  - `<anime-input>` : the custom element which JS is used that actaully the tag which — be "anime-input[checked]" when "makeCheck" anime caused and undo when "makeUncheck anime caused"
 2. processing loads
  - JS processing load when initializing : `<anime-box>` is actually compiler of markup language. so it have some processing loads. but that long as loading pannel is not required.
  - JS processing load when CSS anime is causing In a row like a CPE(Carnian Pluvial Episode) : DOM manipulation processing load is caused as much as CSS Anime is caused.
  - CSS processing load of searching `:has()` : acutally, the classed child which checked by has is apper only once, so `O(1)` overhead is caused. but that `O(1)` overhead is raised over and over as much as CPE(Carnian Pluvial Episode)
+ - The Latency : Unfortunately, 0.1ms delay is max-speed. so, the purple-yellow loop is actually repeated by 0.1ms
 3. css source code (code of framework) (main logic) (no scripted)
  -  `bugccore.css` system : set `--anime-on` and `--anime-off` as minimum-timed(=0.1ms) anime value.
  - `nand.css` system : set "nand-gate-o" classed child(which `<anime-input>`)'s check status as nand value of "nand-gate-i0" classed child(which `<anime-input>`)'s check status and "nand-gate-i1" classed child(which `<anime-input>`)'s check status
  - `wps.css` system : it has 16 wirebut16bit bus and 16 wirebus16bit port, it's 512bit. 512 wire and port included. in standard form, port is used on module to module. and wire is used on closed single module. in single wire (or port) has 16 inputs and 16 outputs. each i0~i15, o0~o15 object is classed child(which `<anime-input>`) which wire's terminate that check status is carried. the wire system is inspired by Verilog
+4. About Bug
+ - it's already debuged. it's work
+5. dose browser deny it?
+ - Absolutely NOT.
 
  > On the performance graph, the yellow processing load (view randering) rises like a normal distribution, while the purple processing load (non-view processing load) rises as the yellow processing load is goes down. CONSISTENTLY
 
