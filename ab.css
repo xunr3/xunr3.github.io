@@ -1,6 +1,6 @@
 .anime-box-class {
-    --anime-box-width: 1;
-    --anime-box-height: 4;
+    --anime-box-width: 1px;
+    --anime-box-height: 4px;
     --anime-display: inline-block;
     --anime-off-color: gray;
     --anime-on-color: yellow;
