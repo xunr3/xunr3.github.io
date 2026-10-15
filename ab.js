@@ -6,14 +6,16 @@ class AnimeBox extends HTMLElement {
     #ALLOWattributeChangedCallback = null;
 
     connectedCallback() {
-        if (this.width) this.#genSize(true, this.width);
-        if (this.height) this.#genSize(false, this.height);
-        if (this.animeColoring) this.#changeStyle(true, true);
-        if (this.animeInputTargeting) this.#changeStyle(false, true);
-        this.#changeStyle(null, false);
-        this.#appSize(false);
-        if (this.animeBoxBordering) this.#animeBoxBordering(true);
-        this.#ALLOWattributeChangedCallback = true;
+        setTimeout(() => {
+            if (this.width) this.#genSize(true, this.width);
+            if (this.height) this.#genSize(false, this.height);
+            if (this.animeColoring) this.#changeStyle(true, true);
+            if (this.animeInputTargeting) this.#changeStyle(false, true);
+            this.#changeStyle(null, false);
+            this.#appSize(false);
+            if (this.animeBoxBordering) this.#animeBoxBordering(true);
+            this.#ALLOWattributeChangedCallback = true;
+        }, 0);
     }
 
     static get observedAttributes() {
