@@ -23,6 +23,12 @@
 
  > On the performance graph, the yellow processing load (view randering) rises like a normal distribution, while the purple processing load (non-view processing load) rises as the yellow processing load is goes down. CONSISTENTLY
 
+## why use it?
+
+ > HTML要素のクラス明記がプログラミングできるように
+ > 
+ > (To make HTML class declarations programmable)
+
 ## [https://xunr3.github.io/af.js]
 
 ```javascript
@@ -4045,4 +4051,64 @@ const ab_webcode = (_ => console.log('<script src="https://xunr3.github.io/ab.js
 
   /* end, 16 wirebut16bit bus and 16 wirebus16bit port, 512bit */
 }
+```
+
+## example code
+
+```html
+<!DOCTYPE html>
+<html>
+  <head>
+    <title> anime framework and anime box </title>
+    <script src="https://xunr3.github.io/af.js" fetchpriority="high"></script>
+    <script src="https://xunr3.github.io/ab.js" fetchpriority="high"></script>
+  </head>
+  <body>  
+    <h1> anime framework and anime box </h1>
+    <anime-framework></anime-framework>
+    <anime-framework-box-extension></anime-framework-box-extension>
+    <style>
+      @import url("https://xunr3.github.io/bugc.css");
+
+      .in-out:has(.in-out-in:checked) .in-out-out {
+        animation: var(--anime-on);
+      }
+
+      .in-out:has(.in-out-in:not(:checked)) .in-out-out {
+        animation: var(--anime-off);
+      }
+
+      .not-gate:has(.not-gate-in[checked]) .not-gate-out {
+        animation: var(--anime-off);
+      }
+
+      .not-gate:has(.not-gate-in:not([checked])) .not-gate-out {
+        animation: var(--anime-on);
+      }
+    </style>
+    <table class="in-out not-gate">
+      <tbody>
+        <tr><td> <anime-box width="20px" height="20px" anime-box-bordering anime-coloring><input type="checkbox" class="in-out-in"></anime-box> </td><td> <anime-box width="20px" height="20px" anime-input-targeting anime-box-bordering anime-coloring><anime-input class="in-out-out not-gate-in"></anime-input></anime-box> </td><td> <anime-box width="20px" height="20px" anime-input-targeting anime-box-bordering anime-coloring><anime-input class="not-gate-out"></anime-input></anime-box> </td></tr>
+      </tbody>
+    </table>
+    <div class="wps-w0">
+      <div class="in-out">
+        <anime-box width="20px" height="20px" anime-box-bordering anime-coloring><input type="checkbox" class="in-out-in"></anime-box> <br>
+        <anime-box width="20px" height="20px" anime-input-targeting anime-box-bordering anime-coloring><anime-input class="in-out-out wps-w0-i0"></anime-input></anime-box> <br>
+      </div>
+      <anime-box width="20px" height="20px" anime-input-targeting anime-box-bordering anime-coloring><anime-input class="wps-w0-o0"></anime-input></anime-box> <br>
+    </div>
+    <div class="nand-gate">
+      <div class="in-out">
+        <anime-box width="20px" height="20px" anime-box-bordering anime-coloring><input type="checkbox" class="in-out-in"></anime-box> <br>
+        <anime-box width="20px" height="20px" anime-input-targeting anime-box-bordering anime-coloring><anime-input class="in-out-out nand-gate-i0"></anime-input></anime-box> <br>
+      </div>
+      <div class="in-out">
+        <anime-box width="20px" height="20px" anime-box-bordering anime-coloring><input type="checkbox" class="in-out-in"></anime-box> <br>
+        <anime-box width="20px" height="20px" anime-input-targeting anime-box-bordering anime-coloring><anime-input class="in-out-out nand-gate-i1"></anime-input></anime-box> <br>
+      </div>
+      <anime-box width="20px" height="20px" anime-input-targeting anime-box-bordering anime-coloring><anime-input class="in-out-out nand-gate-o"></anime-input></anime-box>
+    </div>
+  </body>
+</html>
 ```
