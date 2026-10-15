@@ -3,6 +3,7 @@ class AnimeBox extends HTMLElement {
     #class = "anime-box-class anime-box-input-target";
     #width = null;
     #height = null;
+    #ALLOWattributeChangedCallback = true;
 
     connectedCallback() {
         if (this.width) this.#setSize(true, this.width);
@@ -73,43 +74,45 @@ class AnimeBox extends HTMLElement {
     }
 
     attributeChangedCallback(name, oldValue, newValue) {
-        let flag = false;
-        switch (name) {
-            case 'width':
-                flag = true;
-                /* falls through */
-            case 'height':
-                if (oldValue || newValue) {
-                    if (flag) {
-                        this.#delSize(flag);
-                    } else if (newValue) {
-                        this.#genSize(flag, newValue);
-                    } else if (oldValue !== newValue) {
-                        this.#setSize(flag, newValue);
+        if (this.#ALLOWattributeChangedCallback) {
+            let flag = false;
+            switch (name) {
+                case 'width':
+                    flag = true;
+                    /* falls through */
+                case 'height':
+                    if (oldValue || newValue) {
+                        if (flag) {
+                            this.#delSize(flag);
+                        } else if (newValue) {
+                            this.#genSize(flag, newValue);
+                        } else if (oldValue !== newValue) {
+                            this.#setSize(flag, newValue);
+                        }
+                        this.#appSize(this.animeBoxBordering);
                     }
-                    this.#appSize(this.animeBoxBordering);
-                }
-                break;
-          case 'anime-coloring':
-              flag = true;
-              /* falls through */
-          case 'anime-input-targeting':
-              if (oldValue || newValue) {
-                  if ((!oldValue) && newValue) {
-                      this.#changeStyle(flag, true);
-                  } else if ((!newValue) && oldValue) {
-                      this.#changeStyle(flag, false);
+                    break;
+              case 'anime-coloring':
+                  flag = true;
+                  /* falls through */
+              case 'anime-input-targeting':
+                  if (oldValue || newValue) {
+                      if ((!oldValue) && newValue) {
+                          this.#changeStyle(flag, true);
+                      } else if ((!newValue) && oldValue) {
+                          this.#changeStyle(flag, false);
+                      }
+                      this.#changeStyle(null, this.animeBoxBordering);
                   }
-                  this.#changeStyle(null, this.animeBoxBordering);
-              }
-              break;
-          case 'anime-box-bordering':
-              if ((!oldValue) && newValue) {
-                  this.#animeBoxBordering(true);
-              } else if ((!newValue) && oldValue) {
-                  this.#animeBoxBordering(false);
-              }
-              break;
+                  break;
+              case 'anime-box-bordering':
+                  if ((!oldValue) && newValue) {
+                      this.#animeBoxBordering(true);
+                  } else if ((!newValue) && oldValue) {
+                      this.#animeBoxBordering(false);
+                  }
+                  break;
+            }
         }
     }
 
@@ -135,7 +138,9 @@ class AnimeBox extends HTMLElement {
 
     #changeStyle(mode, argument) {
         if (mode === null) {
+            this.#ALLOWattributeChangedCallback = false;
             (argument?this.querySelector("fieldset"):this).setAttribute("class", this.#class);
+            this.#ALLOWattributeChangedCallback = true;
         } else if (mode) { //it's doColoring mode bool
             if (argument) {
                 this.#class = this.#class.replace(`anime-box-${this.animeInputTargeting?"anime-":""}input-target`, `anime-box-coloringed-${this.animeInputTargeting?"anime-":""}input-target`);
@@ -184,12 +189,14 @@ class AnimeBox extends HTMLElement {
     }
 
     #appSize(isBoxBordered) {
+        this.#ALLOWattributeChangedCallback = false;
         const elem = isBoxBordered?this.querySelector("fieldset"):this;
         if (this.#style) {
             elem.setAttribute("style", this.#style);
         } else {
             if (elem.hasAttribute("style")) elem.removeAttribute("style");
         }
+        this.#ALLOWattributeChangedCallback = true;
     }
 }
 
