@@ -16,6 +16,8 @@
  - `nand.css` system : set "nand-gate-o" classed child(which `<anime-input>`)'s check status as nand value of "nand-gate-i0" classed child(which `<anime-input>`)'s check status and "nand-gate-i1" classed child(which `<anime-input>`)'s check status
  - `wps.css` system : it has 16 wirebut16bit bus and 16 wirebus16bit port, it's 512bit. 512 wire and port included. in standard form, port is used on module to module. and wire is used on closed single module. in single wire (or port) has 16 inputs and 16 outputs. each i0~i15, o0~o15 object is classed child(which `<anime-input>`) which wire's terminate that check status is carried. the wire system is inspired by Verilog
 
+ > On the performance graph, the yellow processing load (view randering) rises like a normal distribution, while the purple processing load (non-view processing load) rises as the yellow processing load is goes down. CONSISTENTLY
+
 ## [https://xunr3.github.io/af.js]
 
 ```javascript
