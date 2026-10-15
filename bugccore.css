@@ -1,4 +1,4 @@
-@layer defineAfCheck, usingAb, usingBugccore;
+@layer defineAfCheck, usingAfCheck, usingAb, usingBugccore;
 
 @layer usingAb {
   :root {
