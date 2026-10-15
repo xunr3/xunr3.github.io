@@ -2,10 +2,10 @@
 
 @layer usingBugccore {
   .nand-gate:has(.nand-gate-i0[checked]):has(.nand-gate-i1[checked]) .nand-gate-o {
-    animation: --anime-off;
+    animation: var(--anime-off) !important;
   }
   
   .nand-gate:has(.nand-gate-i0:not([checked]), .nand-gate-i1:not([checked])) .nand-gate-o {
-    animation: --anime-on;
+    animation: var(--anime-on) !important;
   }
 }
