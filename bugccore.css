@@ -1,0 +1,8 @@
+@layer usingAb, usingBugccore;
+
+@layer usingAb {
+  :root {
+    --anime-on : makeCheck 0.1ms;
+    --anime-off : makeUncheck 0.1ms;
+  }
+}
