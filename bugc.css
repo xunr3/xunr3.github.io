@@ -2,3 +2,11 @@
 @import url("https://xunr3.github.io/nand.css");
 
 /* # BUGC is Universal Gate Circuit */
+
+@layer usingBugccore{
+    .about-bugc::after {
+        content: "link : https://xunr3.github.io/about_BUGC" !important;
+        font-size: 24px !important;
+        color: green !important;
+    }
+}
