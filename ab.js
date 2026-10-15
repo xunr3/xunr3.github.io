@@ -9,8 +9,8 @@ class AnimeBox extends HTMLElement {
         setTimeout(() => {
             if (this.width) this.#genSize(true, this.width);
             if (this.height) this.#genSize(false, this.height);
-            if (this.animeColoring) this.#changeStyle(true, true);
             if (this.animeInputTargeting) this.#changeStyle(false, true);
+            if (this.animeColoring) this.#changeStyle(true, true);
             this.#changeStyle(null, false);
             this.#appSize(false);
             if (this.animeBoxBordering) this.#animeBoxBordering(true);
