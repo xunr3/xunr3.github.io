@@ -1,7 +1,11 @@
-.nand-gate:has(.nand-gate-i0[checked]):has(.nand-gate-i1[checked]) .nand-gate-o {
-  animation: makeUncheck 0.1ms;
-}
+@import url("https://xunr3.github.io/bugccore.css");
 
-.nand-gate:has(.nand-gate-i0:not([checked]), .nand-gate-i1:not([checked])) .nand-gate-o {
-  animation: makeCheck 0.1ms;
+@layer usingBugccore {
+  .nand-gate:has(.nand-gate-i0[checked]):has(.nand-gate-i1[checked]) .nand-gate-o {
+    animation: --anime-off;
+  }
+  
+  .nand-gate:has(.nand-gate-i0:not([checked]), .nand-gate-i1:not([checked])) .nand-gate-o {
+    animation: --anime-on;
+  }
 }
