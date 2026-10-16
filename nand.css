@@ -24,7 +24,7 @@
   }
   
   .nand-src::after {
-    content: "tag : <link rel=\"stylesheet\" src= \"nand\" fetchpriority=\"high\">" !important;
+    content: "tag : <link rel=\"stylesheet\" src= \"https://xunr3.github.io/nand.css\" fetchpriority=\"high\">" !important;
     font-size: 24px !important;
     color: green !important;
   }
