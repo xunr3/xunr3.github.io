@@ -14,6 +14,8 @@ class AnimeFrameworkBoxExtension extends HTMLElement {
 	  connectedCallback() {
 		    if (this.#break_orderd) return;
 		    this.innerHTML = `
+<script src="https://xunr3.github.io/af.js" fetchpriority="high"></script>
+<anime-framework></anime-framework>
 <style>
   @import url("https://xunr3.github.io/ab.css");
   @layer usingAfCheck, usingAb;
