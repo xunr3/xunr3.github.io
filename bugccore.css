@@ -5,4 +5,28 @@
     --anime-on : makeCheck 0.1ms !important;
     --anime-off : makeUncheck 0.1ms !important;
   }
+
+  .bugccore-short-src::after {
+    content: "tag : <link rel=\"stylesheet\" src= \"data:text/css;base64,QGxheWVyIGRlZmluZUFmQ2hlY2ssdXNpbmdBZkNoZWNrLHVzaW5nQWIsdXNpbmdCdWdjY29yZTtAbGF5ZXIgdXNpbmdBYns6cm9vdHstLWFuaW1lLW9uOm1ha2VDaGVjayAwLjFtcyFpbXBvcnRhbnQ7LS1hbmltZS1vZmY6bWFrZVVuY2hlY2sgMC4xbXMhaW1wb3J0YW50O319\" fetchpriority=\"high\">" !important;
+    font-size: 24px !important;
+    color: green !important;
+  }
+  
+  .bugccore-src::after {
+    content: "tag : <link rel=\"stylesheet\" src= \"https://xunr3.github.io/bugccore.css\" fetchpriority=\"high\">" !important;
+    font-size: 24px !important;
+    color: green !important;
+  }
+
+  .bugccore-short-import-src::after {
+    content: "src : @import url(\"data:text/css;base64,QGxheWVyIGRlZmluZUFmQ2hlY2ssdXNpbmdBZkNoZWNrLHVzaW5nQWIsdXNpbmdCdWdjY29yZTtAbGF5ZXIgdXNpbmdBYns6cm9vdHstLWFuaW1lLW9uOm1ha2VDaGVjayAwLjFtcyFpbXBvcnRhbnQ7LS1hbmltZS1vZmY6bWFrZVVuY2hlY2sgMC4xbXMhaW1wb3J0YW50O319\");" !important;
+    font-size: 24px !important;
+    color: green !important;
+  }
+
+  .bugccore-import-src::after {
+    content: "src : @import url(\"https://xunr3.github.io/bugccore.css\");" !important;
+    font-size: 24px !important;
+    color: green !important;
+  }
 }
