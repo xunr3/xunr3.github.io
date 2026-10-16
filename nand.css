@@ -16,15 +16,27 @@
   .in-out:has(.in-out-i:not(:checked)) .in-out-o {
     animation: var(--anime-off) !important;
   }
-  
+
   .nand-short-src::after {
-    content: "tag : <link rel=\"stylesheet\" src= \"data:text/css;base64,QGltcG9ydCB1cmwoImh0dHBzOi8veHVucjMuZ2l0aHViLmlvL2J1Z2Njb3JlLmNzcyIpO0BsYXllciB1c2luZ0J1Z2Njb3JlIHsubmFuZC1nYXRlOmhhcygubmFuZC1nYXRlLWkwW2NoZWNrZWRdKTpoYXMoLm5hbmQtZ2F0ZS1pMVtjaGVja2VkXSkgLm5hbmQtZ2F0ZS1ve2FuaW1hdGlvbjp2YXIoLS1hbmltZS1vZmYpIWltcG9ydGFudDt9Lm5hbmQtZ2F0ZTpoYXMoLm5hbmQtZ2F0ZS1pMDpub3QoW2NoZWNrZWRdKSwubmFuZC1nYXRlLWkxOm5vdChbY2hlY2tlZF0pKSAubmFuZC1nYXRlLW97YW5pbWF0aW9uOnZhcigtLWFuaW1lLW9uKSFpbXBvcnRhbnQ7fX0=\" fetchpriority=\"high\">"!important;
+    content: "tag : <link rel=\"stylesheet\" src= \"data:text/css;base64,QGltcG9ydCB1cmwoImRhdGE6dGV4dC9jc3M7YmFzZTY0LFFHeGhlV1Z5SUdSbFptbHVaVUZtUTJobFkyc3NkWE5wYm1kQlprTm9aV05yTEhWemFXNW5RV0lzZFhOcGJtZENkV2RqWTI5eVpUdEFiR0Y1WlhJZ2RYTnBibWRCWW5zNmNtOXZkSHN0TFdGdWFXMWxMVzl1T20xaGEyVkRhR1ZqYXlBd0xqRnRjeUZwYlhCdmNuUmhiblE3TFMxaGJtbHRaUzF2Wm1ZNmJXRnJaVlZ1WTJobFkyc2dNQzR4YlhNaGFXMXdiM0owWVc1ME8zMTkiKTtAbGF5ZXIgdXNpbmdCdWdjY29yZXsubmFuZC1nYXRlOmhhcygubmFuZC1nYXRlLWkwW2NoZWNrZWRdKTpoYXMoLm5hbmQtZ2F0ZS1pMVtjaGVja2VkXSkgLm5hbmQtZ2F0ZS1ve2FuaW1hdGlvbjp2YXIoLS1hbmltZS1vZmYpIWltcG9ydGFudDt9Lm5hbmQtZ2F0ZTpoYXMoLm5hbmQtZ2F0ZS1pMDpub3QoW2NoZWNrZWRdKSwubmFuZC1nYXRlLWkxOm5vdChbY2hlY2tlZF0pKSAubmFuZC1nYXRlLW97YW5pbWF0aW9uOnZhcigtLWFuaW1lLW9uKSFpbXBvcnRhbnQ7fS5pbi1vdXQ6aGFzKC5pbi1vdXQtaTpjaGVja2VkKSAuaW4tb3V0LW97YW5pbWF0aW9uOnZhcigtLWFuaW1lLW9uKSFpbXBvcnRhbnQ7fS5pbi1vdXQ6aGFzKC5pbi1vdXQtaTpub3QoOmNoZWNrZWQpKSAuaW4tb3V0LW97YW5pbWF0aW9uOnZhcigtLWFuaW1lLW9mZikhaW1wb3J0YW50O319\" fetchpriority=\"high\">" !important;
+    font-size: 24px !important;
+    color: green !important;
+  }
+  
+  .nand-src::after {
+    content: "tag : <link rel=\"stylesheet\" src= \"nand\" fetchpriority=\"high\">" !important;
     font-size: 24px !important;
     color: green !important;
   }
 
-  .nand-src::after {
-    content "tag : <link rel=\"stylesheet\" src=\"https://xunr3.github.io/nand.css\" fetchpriority=\"high\">" !important;
+  .nand-short-import-src::after {
+    content: "src : @import url(\"data:text/css;base64,QGltcG9ydCB1cmwoImRhdGE6dGV4dC9jc3M7YmFzZTY0LFFHeGhlV1Z5SUdSbFptbHVaVUZtUTJobFkyc3NkWE5wYm1kQlprTm9aV05yTEhWemFXNW5RV0lzZFhOcGJtZENkV2RqWTI5eVpUdEFiR0Y1WlhJZ2RYTnBibWRCWW5zNmNtOXZkSHN0TFdGdWFXMWxMVzl1T20xaGEyVkRhR1ZqYXlBd0xqRnRjeUZwYlhCdmNuUmhiblE3TFMxaGJtbHRaUzF2Wm1ZNmJXRnJaVlZ1WTJobFkyc2dNQzR4YlhNaGFXMXdiM0owWVc1ME8zMTkiKTtAbGF5ZXIgdXNpbmdCdWdjY29yZXsubmFuZC1nYXRlOmhhcygubmFuZC1nYXRlLWkwW2NoZWNrZWRdKTpoYXMoLm5hbmQtZ2F0ZS1pMVtjaGVja2VkXSkgLm5hbmQtZ2F0ZS1ve2FuaW1hdGlvbjp2YXIoLS1hbmltZS1vZmYpIWltcG9ydGFudDt9Lm5hbmQtZ2F0ZTpoYXMoLm5hbmQtZ2F0ZS1pMDpub3QoW2NoZWNrZWRdKSwubmFuZC1nYXRlLWkxOm5vdChbY2hlY2tlZF0pKSAubmFuZC1nYXRlLW97YW5pbWF0aW9uOnZhcigtLWFuaW1lLW9uKSFpbXBvcnRhbnQ7fS5pbi1vdXQ6aGFzKC5pbi1vdXQtaTpjaGVja2VkKSAuaW4tb3V0LW97YW5pbWF0aW9uOnZhcigtLWFuaW1lLW9uKSFpbXBvcnRhbnQ7fS5pbi1vdXQ6aGFzKC5pbi1vdXQtaTpub3QoOmNoZWNrZWQpKSAuaW4tb3V0LW97YW5pbWF0aW9uOnZhcigtLWFuaW1lLW9mZikhaW1wb3J0YW50O319\");" !important;
+    font-size: 24px !important;
+    color: green !important;
+  }
+
+  .nand-import-src::after {
+    content: "src : @import url(\"https://xunr3.github.io/nand.css\");" !important;
     font-size: 24px !important;
     color: green !important;
   }
