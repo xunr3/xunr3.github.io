@@ -8,4 +8,16 @@
   .nand-gate:has(.nand-gate-i0:not([checked]), .nand-gate-i1:not([checked])) .nand-gate-o {
     animation: var(--anime-on) !important;
   }
+  
+  .nand-short-src::after {
+    content: "tag : <link rel=\"stylesheet\" src= \"data:text/css;base64,QGltcG9ydCB1cmwoImh0dHBzOi8veHVucjMuZ2l0aHViLmlvL2J1Z2Njb3JlLmNzcyIpO0BsYXllciB1c2luZ0J1Z2Njb3JlIHsubmFuZC1nYXRlOmhhcygubmFuZC1nYXRlLWkwW2NoZWNrZWRdKTpoYXMoLm5hbmQtZ2F0ZS1pMVtjaGVja2VkXSkgLm5hbmQtZ2F0ZS1ve2FuaW1hdGlvbjp2YXIoLS1hbmltZS1vZmYpIWltcG9ydGFudDt9Lm5hbmQtZ2F0ZTpoYXMoLm5hbmQtZ2F0ZS1pMDpub3QoW2NoZWNrZWRdKSwubmFuZC1nYXRlLWkxOm5vdChbY2hlY2tlZF0pKSAubmFuZC1nYXRlLW97YW5pbWF0aW9uOnZhcigtLWFuaW1lLW9uKSFpbXBvcnRhbnQ7fX0=\" fetchpriority=\"high\">"!important;
+    font-size: 24px !important;
+    color: green !important;
+  }
+
+  .nand-src::after {
+    content "tag : <link rel=\"stylesheet\" src=\"https://xunr3.github.io/nand.css\" fetchpriority=\"high\">" !important;
+    font-size: 24px !important;
+    color: green !important;
+  }
 }
