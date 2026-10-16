@@ -4880,7 +4880,7 @@ const af_shortcode = (_ => console.log('<script src="YXN5bmMgZnVuY3Rpb24gZigpe3R
 
 #### the ignorance in 0.1ms ~ 16.6ms delay
 
-if anime delay is 0.1ms~16.6ms, the Invalidation Bailout can caused. the DOM changes caused by JS by near 0.1ms~16.6ms, and CSS cannot processes it once(once is 1/60s). so Invalidation Bailout cause "DROP" (bail-out drop Slow-path)... but....
+if anime delay is `0.1ms~16.6ms`, the Invalidation Bailout can caused. the DOM changes caused by JS by near `0.1ms~16.6ms`, and CSS cannot processes it once(once is 1/60s). so Invalidation Bailout cause "DROP" (bail-out drop Slow-path)... but....
 
 #### when anime delay is over "1/60s"
 
@@ -4988,9 +4988,7 @@ so that CSS is processing multiple DOM changes in once...
                     <div class="nand-gate">
                         <anime-input class="nand-gate-i0 wps-w0-o2"></anime-input>
                         <anime-input class="nand-gate-i1 wps-w0-o2"></anime-input>
-                        <anime-box anime-box-bordering anime-input-targeting anime-coloring>
-                            <anime-input class="nand-gate-o wps-w1-i0"></anime-input>
-                        </anime-box>
+                        <anime-input class="nand-gate-o wps-w1-i0"></anime-input>
                     </div>
         
                 </div>
@@ -5018,9 +5016,7 @@ so that CSS is processing multiple DOM changes in once...
                     <div class="nand-gate">
                         <anime-input class="nand-gate-i0 wps-w0-o2"></anime-input>
                         <anime-input class="nand-gate-i1 wps-w0-o2"></anime-input>
-                        <anime-box anime-box-bordering anime-input-targeting anime-coloring>
-                            <anime-input class="nand-gate-o wps-w1-i1 wps-p0-i2"></anime-input>
-                        </anime-box>
+                        <anime-input class="nand-gate-o wps-w1-i1 wps-p0-i2"></anime-input>
                     </div>
         
                 </div>
