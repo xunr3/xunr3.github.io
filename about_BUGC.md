@@ -4877,7 +4877,7 @@ const bugc_shortcode = (_ => console.log('<script src="YXN5bmMgZnVuY3Rpb24gZigpe
  - `<bus-init>` : load bugc.js then `<bugc></bugc>` then link the bugc (the bugc.css, by `<link rel="stylesheet" src= "https://xunr3.github.io/bugc_underclock_style.css" fetchpriority="high">`)... yes. this is bus enviroment initializer.
   - about loading BUS : actually, BUS is CSS (except for init feature. also init feature is extension of bus.)
    + the `bus-short-src` ver : non-fetching version css src
-   + the `bus-src` ver : web fetching version css src
+{   + the `bus-src` ver : web fetching version css src
    + the dependancy of BUS : BUS dependent on bugc ... and bugc is actually framework of `HTML/CSS`... so... **BUS is actually run on bugc framework.**
 
 ### why it requires 16.7ms?
