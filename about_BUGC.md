@@ -4984,7 +4984,7 @@ const bugc_shortcode = (_ => console.log('<script src="YXN5bmMgZnVuY3Rpb24gZigpe
     </head>
     <body>
         <h1> NOR S-R Latch </h1>
-        <bus-init></bus-init> fetchpriority="high">
+        <bus-init></bus-init>
         
         <div class="wps-p0 bus">
       
