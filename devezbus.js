@@ -16,10 +16,10 @@ class DevEzbus extends HTMLElement {
 
           constructor() {
                     super();
-                    if (BusInit.#isFrameworkLoaded) {
+                    if (DevEzbus.#isFrameworkLoaded) {
                               throw new Error("[DevEzbus Error] <dev-ezbus> component can loaded only once.");
                     }
-                    BusInit.#isFrameworkLoaded = true;
+                    DevEzbus.#isFrameworkLoaded = true;
                     this.#break_orderd = false;
           }
 
@@ -43,12 +43,6 @@ class DevEzbus extends HTMLElement {
     }
 </style>
                     `;
-                    
-                    class Ezbus extends HTMLElement {
-                    	//pass
-                    }
-                    
-                    customElements.define('dev-ezbus', Ezbus);
                     
                     class EzbusBox extends HTMLElement {
                         #box = null;
