@@ -1,15 +1,26 @@
-async function loadbus() {
+export async function loadbus() {
     try {
         const module = await import('https://xunr3.github.io/bus.js');
-		Object.assign(window, module); 
+        Object.assign(window, module); 
     } catch (error) {
         console.error('faild to load bus.js', error);
     }
 }
 
-const swap = (_ => {[console.log, window.alert] = [window.alert, console.log.bind(console)];});
-const rollback = (_ => {[console.log, window.alert] = [window.alert.bind(console), console.log];});
-const log2alert = (f => {swap(); f(); alert();});
+export const originalLog = console.log.bind(console);
+export const originalAlert = window.alert.bind(window);
+
+export const swap = () => {
+    window.console.log = originalAlert;
+    window.alert = originalLog;
+};
+
+export const rollback = () => {
+    window.console.log = originalLog;
+    window.alert = originalAlert;
+};
+
+export const log2alert = (f => {swap(); f(); alert();});
 
 class DevEzbus extends HTMLElement {
           static #isFrameworkLoaded = false;
@@ -398,4 +409,5 @@ class DevEzbus extends HTMLElement {
 
 customElements.define('dev-ezbus', DevEzbus);
 
-const devezbus_webcode = (_ => console.log('<script src="https://xunr3.github.io/devezbus.js" fetchpriority="high"></script>'));
+export const devezbus_webcode = (_ => console.log('<script src="https://xunr3.github.io/devezbus.js" fetchpriority="high"></script>'));
+export const devezbus_shortcode = (_ => console.log('GET OUT I AM FUCKING DEBGING NOW'));
