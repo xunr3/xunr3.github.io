@@ -1,6 +1,7 @@
 async function loadbus() {
     try {
         const module = await import('https://xunr3.github.io/bus.js');
+		Object.assign(window, module); 
     } catch (error) {
         console.error('faild to load bus.js', error);
     }
