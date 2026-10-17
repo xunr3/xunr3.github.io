@@ -29,7 +29,7 @@ class DevEzbus extends HTMLElement {
                     this.innerHTML = `
 <bus-init></bus-init>
 <style>
-    @import url("https://xunr3.github.io/bus.css");
+    @import url("https://xunr3.github.io/bugc_underclock_style.css");
     @layer usingBugc{
   	  dev-ezbus {
 		    display: block !important;
