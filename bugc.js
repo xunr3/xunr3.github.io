@@ -1,6 +1,7 @@
 async function loadab() {
     try {
         const module = await import('https://xunr3.github.io/ab.js');
+        Object.assign(window, module); 
     } catch (error) {
         console.error('faild to load ab.js', error);
     }
