@@ -4980,12 +4980,11 @@ const bugc_shortcode = (_ => console.log('<script src="YXN5bmMgZnVuY3Rpb24gZigpe
 <html>
     <head>
         <title> NOR S-R Latch </title>
-        <script src="https://xunr3.github.io/bugc.js" fetchpriority="high"></script>
+        <script src="https://xunr3.github.io/bus.js" fetchpriority="high"></script>
     </head>
     <body>
         <h1> NOR S-R Latch </h1>
-        <bugc-init></bugc-init>
-        <link rel="stylesheet" href="https://xunr3.github.io/bugc_underclock_style.css" fetchpriority="high">
+        <bus-init></bus-init> fetchpriority="high">
         
         <div class="wps-p0 bus">
       
