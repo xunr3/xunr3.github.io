@@ -1,7 +1,6 @@
-export async function loadbus() {
+async function loadbus() {
     try {
         const module = await import('https://xunr3.github.io/bus.js');
-        Object.assign(window, module); 
     } catch (error) {
         console.error('faild to load bus.js', error);
     }
@@ -409,5 +408,5 @@ class DevEzbus extends HTMLElement {
 
 customElements.define('dev-ezbus', DevEzbus);
 
-export const devezbus_webcode = (_ => console.log('<script src="https://xunr3.github.io/devezbus.js" fetchpriority="high"></script>'));
-export const devezbus_shortcode = (_ => console.log('GET OUT I AM FUCKING DEBGING NOW'));
+const devezbus_webcode = (_ => console.log('<script src="https://xunr3.github.io/devezbus.js" fetchpriority="high"></script>'));
+const devezbus_shortcode = (_ => console.log('GET OUT I AM FUCKING DEBGING NOW'));
