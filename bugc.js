@@ -1,4 +1,4 @@
-export async function loadab() {
+async function loadab() {
     try {
         const module = await import('https://xunr3.github.io/ab.js'); 
     } catch (error) {
