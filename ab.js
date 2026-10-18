@@ -1,4 +1,4 @@
-export async function loadaf() {
+async function loadaf() {
     try {
         const module = await import('https://xunr3.github.io/af.js');
     } catch (error) {
