@@ -224,10 +224,11 @@ export class AnimeFrameworkBoxExtension extends HTMLElement {
                         this.#class = this.#class.replace(`anime-box-coloringed-${this.animeInputTargeting?"anime-":""}input-target`, `anime-box-${this.animeInputTargeting?"anime-":""}input-target`);
                     }
                 } else {
+					const p = (this.#ALLOWattributeChangedCallback !== null) && this.animeColoring;
                     if (argument) {
-                        this.#class = this.#class.replace(`anime-box-${this.animeColoring?"coloringed-":""}input-target`, `anime-box-${this.animeColoring?"coloringed-":""}anime-input-target`);
+                        this.#class = this.#class.replace(`anime-box-${p?"coloringed-":""}input-target`, `anime-box-${p?"coloringed-":""}anime-input-target`);
                     } else {
-                        this.#class = this.#class.replace(`anime-box-${this.animeColoring?"coloringed-":""}anime-input-target`, `anime-box-${this.animeColoring?"coloringed-":""}input-target`);
+                        this.#class = this.#class.replace(`anime-box-${p?"coloringed-":""}anime-input-target`, `anime-box-${p?"coloringed-":""}input-target`);
                     }
                 }
             }
