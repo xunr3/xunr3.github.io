@@ -1,1 +1,1 @@
-import {loadab, BugcInit, bugc_webcode, bugc_shortcode} from "https://xunr3.github.io/bugc.mjs";
+import('https://xunr3.github.io/bugc.mjs').then(module => Object.assign(window, module));
