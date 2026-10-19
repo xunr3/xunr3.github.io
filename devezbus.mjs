@@ -1157,8 +1157,6 @@ export class DevEzbus extends HTMLElement {
                     
                     customElements.define('dev-ezbus-normal-form-0010', EzbusNormalForm0010);
                     
-                    customElements.define('dev-ezbus-normal-form-0010', EzbusNormalForm0010);
-                    
                     /*class Ezbus extends HTMLElement {
                     	//pass
                     }
