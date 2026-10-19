@@ -380,7 +380,7 @@ export class DevEzbus extends HTMLElement {
         <li>
             <details>
                 <summary> ℹ️ anime fw box extension </summary>
-                <dev-ezbus-alert-anime-ab></dev-ezbus-alert-ab>
+                <dev-ezbus-alert-ab></dev-ezbus-alert-ab>
             </details>
         </li>
         
@@ -409,4 +409,4 @@ export class DevEzbus extends HTMLElement {
 customElements.define('dev-ezbus', DevEzbus);
 
 export const devezbus_webcode = (_ => console.log('<script src="https://xunr3.github.io/devezbus.js" fetchpriority="high"></script>'));
-export const devezbus_shortcode = (_ => console.log('GET OUT I AM FUCKING DEBGING NOW'));
+export const devezbus_shortcode = (_ => console.log('IT CANNOT HAVE AN SHORTCODE SORRY. MAYBE IT CAN BE UPDATED SOON.....'));
