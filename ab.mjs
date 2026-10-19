@@ -142,6 +142,8 @@ export class AnimeFrameworkBoxExtension extends HTMLElement {
                           flag = true;
                           /* falls through */
                       case 'anime-input-targeting':
+                          oldValue = (oldValue !== null);
+                          newValue = (newValue !== null);
                           if (oldValue || newValue) {
                               if ((!oldValue) && newValue) {
                                   this.#changeStyle(flag, true);
@@ -152,9 +154,9 @@ export class AnimeFrameworkBoxExtension extends HTMLElement {
                           }
                           break;
                       case 'anime-box-bordering':
+                          oldValue = (oldValue !== null);
+                          newValue = (newValue !== null);
                           console.log("animeBoxBordering");
-                          console.log(oldValue);
-                          console.log(newValue);
                           if ((!oldValue) && newValue) {
                               this.#animeBoxBordering(true);
                           } else if ((!newValue) && oldValue) {
