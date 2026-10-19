@@ -1,6 +1,6 @@
 export async function loadbus() {
     try {
-        Object.assign(window, await import('https://xunr3.github.io/bus.js'));
+        Object.assign(window, await import('https://xunr3.github.io/bus.mjs'));
     } catch (error) {
         console.error('faild to load bus.js', error);
     }
