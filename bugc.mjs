@@ -1,6 +1,6 @@
 export async function loadab() {
     try {
-        Object.assign(window, await import('https://xunr3.github.io/ab.js')); 
+        Object.assign(window, await import('https://xunr3.github.io/ab.mjs')); 
     } catch (error) {
         console.error('faild to load ab.js', error);
     }
