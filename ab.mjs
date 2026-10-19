@@ -128,7 +128,7 @@ export class AnimeFrameworkBoxExtension extends HTMLElement {
                             /* falls through */
                         case 'height':
                             if (oldValue || newValue) {
-                                if (flag) {
+                                if (oldValue) {
                                     this.#delSize(flag);
                                 } else if (newValue) {
                                     this.#genSize(flag, newValue);
