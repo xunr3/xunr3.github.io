@@ -129,24 +129,26 @@ export class DevEzbus extends HTMLElement {
                         }
                         
                         #compileAttribute() {
-                            if (this.#ALLOWattributeChangedCallback !== null) this.#ALLOWattributeChangedCallback = false;
-                            if (this.width) {
-                                this.#setupWidth();
-                            } else {
-                                this.#removeWidth();
-                            };
-                            if (this.height) {
-                                this.#setupHeight();
-                            } else {
-                                this.#removeHeight();
-                            };
-                            this.#setupNonCheckbox();
-                            if (this.debugMode) {
-                            	this.#setupDetecterOn(true);
-                            } else {
-                                this.#setupDetecterOn(this.detecterOn);
-                            }
-                            if (this.#ALLOWattributeChangedCallback !== null) this.#ALLOWattributeChangedCallback = true;
+                            if (this.#ALLOWattributeChangedCallback !== null) {
+								this.#ALLOWattributeChangedCallback = false;
+								if (this.width) {
+                                	this.#setupWidth();
+                           	 	} else {
+                                	this.#removeWidth();
+                            	};
+                            	if (this.height) {
+                                	this.#setupHeight();
+                            	} else {
+                                	this.#removeHeight();
+                            	};
+                            	this.#setupNonCheckbox();
+                            	if (this.debugMode) {
+                            		this.#setupDetecterOn(true);
+                            	} else {
+                                	this.#setupDetecterOn(this.detecterOn);
+                            	}
+                            	this.#ALLOWattributeChangedCallback = true;
+							}
                         }
                         
                         attributeChangedCallback(name, oldValue, newValue) {
