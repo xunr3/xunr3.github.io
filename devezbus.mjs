@@ -1085,7 +1085,7 @@ export class DevEzbus extends HTMLElement {
                         }
                     }
                     
-                    customElements.define('dev-ezbus-normal-form-1011', EzbusNormalForm1011);
+                    customElements.define('dev-ezbus-normal-form-0100', EzbusNormalForm0100);
 
                     class EzbusNormalForm0010 extends HTMLElement {
                         #ALLOWattributeChangedCallback = null;
