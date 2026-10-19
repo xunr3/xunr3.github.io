@@ -179,7 +179,11 @@ export class DevEzbus extends HTMLElement {
                         }
                         
                         #removeWidth() {
-                        	this.#box.removeAttribute("width");
+                        	if (this.#ALLOWattributeChangedCallback === null) {
+                                if (Object.hasOwn(this.#box, 'width')) delete this.#box.width;
+                            } else {
+                                if (this.#box.hasAttribute("width")) this.#box.removeAttribute("width");
+                            }
                         }
                         
                         #setupHeight() {
@@ -187,7 +191,11 @@ export class DevEzbus extends HTMLElement {
                         }
                         
                         #removeHeight() {
-                        	this.#box.removeAttribute("height");
+                        	if (this.#ALLOWattributeChangedCallback === null) {
+                                if (Object.hasOwn(this.#box, 'height')) delete this.#box.height;
+                            } else {
+                                if (this.#box.hasAttribute("height")) this.#box.removeAttribute("height");
+                            }
                         }
                         
                         #setupNonCheckbox() {
