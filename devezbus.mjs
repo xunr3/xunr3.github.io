@@ -61,7 +61,9 @@ export class DevEzbus extends HTMLElement {
                         
                         connectedCallback() {
                             setTimeout(() => {
-                            	this.#box = Object.assign(document.createElement('anime-box'), {innerHTML: this.innerHTML});
+								this.#box = {innerHTML: this.innerHTML}
+								this.#compileAttribute();
+                            	this.#box = Object.assign(document.createElement('anime-box'), this.#box);
                             	this.innerHTML = "";
                 	            this.appendChild(this.#box);
                             	this.#box = this.querySelector('anime-box');
@@ -134,12 +136,12 @@ export class DevEzbus extends HTMLElement {
                                     this.#setupWidth();
                                 } else {
                                     this.#removeWidth();
-                                };
+                                }
                                 if (this.height) {
                                     this.#setupHeight();
                                 } else {
                                     this.#removeHeight();
-                                };
+                                }
                                 this.#setupNonCheckbox();
                                 if (this.debugMode) {
                                      this.#setupDetecterOn(true);
@@ -152,12 +154,12 @@ export class DevEzbus extends HTMLElement {
                                     this.#setupWidth();
                                 } else {
                                     this.#removeWidth();
-                                };
+                                }
                                 if (this.height) {
                                     this.#setupHeight();
                                 } else {
                                     this.#removeHeight();
-                                };
+                                }
                                 this.#setupNonCheckbox();
                                 if (this.debugMode) {
                                      this.#setupDetecterOn(true);
