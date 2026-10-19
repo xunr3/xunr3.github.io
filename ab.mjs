@@ -156,7 +156,6 @@ export class AnimeFrameworkBoxExtension extends HTMLElement {
                       case 'anime-box-bordering':
                           oldValue = (oldValue !== null);
                           newValue = (newValue !== null);
-                          console.log("animeBoxBordering");
                           if ((!oldValue) && newValue) {
                               this.#animeBoxBordering(true);
                           } else if ((!newValue) && oldValue) {
@@ -168,8 +167,6 @@ export class AnimeFrameworkBoxExtension extends HTMLElement {
             }
         
             #animeBoxBordering(dose_it) {
-                console.log(this.#ALLOWattributeChangedCallback );
-                console.log(dose_it);
                 if (this.#ALLOWattributeChangedCallback === null) {
                     if (dose_it) {
                         const boxBorder = Object.assign(document.createElement('fieldset'), {className: this.#class, innerHTML: this.innerHTML});
@@ -221,11 +218,15 @@ export class AnimeFrameworkBoxExtension extends HTMLElement {
                         this.#ALLOWattributeChangedCallback = true;
                     }
                 } else if (mode) { //it's doColoring mode bool
+					console.log(this.animeInputTargeting);
+					console.log(this.#class);
                     if (argument) {
                         this.#class = this.#class.replace(`anime-box-${this.animeInputTargeting?"anime-":""}input-target`, `anime-box-coloringed-${this.animeInputTargeting?"anime-":""}input-target`);
                     } else {
                         this.#class = this.#class.replace(`anime-box-coloringed-${this.animeInputTargeting?"anime-":""}input-target`, `anime-box-${this.animeInputTargeting?"anime-":""}input-target`);
                     }
+					console.log(this.animeInputTargeting);
+					console.log(this.#class);
                 } else {
                     if (argument) {
                         this.#class = this.#class.replace("anime-box-input-target", "anime-box-anime-input-target");
