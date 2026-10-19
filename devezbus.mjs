@@ -61,14 +61,15 @@ export class DevEzbus extends HTMLElement {
                         
                         connectedCallback() {
                             setTimeout(() => {
-								this.#box = {innerHTML: this.innerHTML}
-								this.#compileAttribute();
-                            	this.#box = Object.assign(document.createElement('anime-box'), this.#box);
+                            	this.#box = Object.assign(document.createElement('anime-box'), {innerHTML: this.innerHTML});
                             	this.innerHTML = "";
                 	            this.appendChild(this.#box);
                             	this.#box = this.querySelector('anime-box');
-                            	this.#compileAttribute();
-                                this.#ALLOWattributeChangedCallback = true;
+                            	(async () => {
+                              	    while (!this.#box.available) await new Promise(resolve => requestAnimationFrame(resolve));
+                            	    this.#compileAttribute();
+                            	    this.#ALLOWattributeChangedCallback = true;
+                            	})();
                             }, 0);
                         }
                         
@@ -179,11 +180,7 @@ export class DevEzbus extends HTMLElement {
                         }
                         
                         #removeWidth() {
-                        	if (this.#ALLOWattributeChangedCallback === null) {
-                                if (Object.hasOwn(this.#box, 'width')) delete this.#box.width;
-                            } else {
-                                if (this.#box.hasAttribute("width")) this.#box.removeAttribute("width");
-                            }
+                        	if (this.#box.hasAttribute("width")) this.#box.removeAttribute("width");
                         }
                         
                         #setupHeight() {
@@ -191,11 +188,7 @@ export class DevEzbus extends HTMLElement {
                         }
                         
                         #removeHeight() {
-                        	if (this.#ALLOWattributeChangedCallback === null) {
-                                if (Object.hasOwn(this.#box, 'height')) delete this.#box.height;
-                            } else {
-                                if (this.#box.hasAttribute("height")) this.#box.removeAttribute("height");
-                            }
+                        	if (this.#box.hasAttribute("height")) this.#box.removeAttribute("height");
                         }
                         
                         #setupNonCheckbox() {
