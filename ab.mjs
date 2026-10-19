@@ -218,20 +218,16 @@ export class AnimeFrameworkBoxExtension extends HTMLElement {
                         this.#ALLOWattributeChangedCallback = true;
                     }
                 } else if (mode) { //it's doColoring mode bool
-					console.log(this.animeInputTargeting);
-					console.log(this.#class);
                     if (argument) {
                         this.#class = this.#class.replace(`anime-box-${this.animeInputTargeting?"anime-":""}input-target`, `anime-box-coloringed-${this.animeInputTargeting?"anime-":""}input-target`);
                     } else {
                         this.#class = this.#class.replace(`anime-box-coloringed-${this.animeInputTargeting?"anime-":""}input-target`, `anime-box-${this.animeInputTargeting?"anime-":""}input-target`);
                     }
-					console.log(this.animeInputTargeting);
-					console.log(this.#class);
                 } else {
                     if (argument) {
-                        this.#class = this.#class.replace("anime-box-input-target", "anime-box-anime-input-target");
+                        this.#class = this.#class.replace(`anime-box-${this.animeColoring?"coloringed-":""}input-target`, `anime-box-${this.animeColoring?"coloringed-":""}anime-input-target`);
                     } else {
-                        this.#class = this.#class.replace("anime-box-anime-input-target", "anime-box-input-target");
+                        this.#class = this.#class.replace(`anime-box-${this.animeColoring?"coloringed-":""}anime-input-target`, `anime-box-${this.animeColoring?"coloringed-":""}input-target`);
                     }
                 }
             }
