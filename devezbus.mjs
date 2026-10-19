@@ -442,7 +442,7 @@ export class DevEzbus extends HTMLElement {
                         }
                         
                         connectedCallback() {
-                            setTimeout(this.#setupNand, 0);
+                            setTimeout(_ => this.#setupNand(), 0);
                             this.#ALLOWattributeChangedCallback = true;
                         }
 
@@ -504,7 +504,7 @@ export class DevEzbus extends HTMLElement {
                         }
                         
                         connectedCallback() {
-                            setTimeout(this.#setupNot, 0);
+                            setTimeout(_ => this.#setupNot(), 0);
                             this.#ALLOWattributeChangedCallback = true;
                         }
 
@@ -571,7 +571,7 @@ export class DevEzbus extends HTMLElement {
                         }
                         
                         connectedCallback() {
-                            setTimeout(this.#setupAnd, 0);
+                            setTimeout(_ => this.#setupAnd(), 0);
                             this.#ALLOWattributeChangedCallback = true;
                         }
 
@@ -641,7 +641,7 @@ export class DevEzbus extends HTMLElement {
                         }
                         
                         connectedCallback() {
-                            setTimeout(this.#setupOr, 0);
+                            setTimeout(_ => this.#setupOr(), 0);
                             this.#ALLOWattributeChangedCallback = true;
                         }
 
@@ -711,7 +711,7 @@ export class DevEzbus extends HTMLElement {
                         }
                         
                         connectedCallback() {
-                            setTimeout(this.#setupNor, 0);
+                            setTimeout(_ => this.#setupNor(), 0);
                             this.#ALLOWattributeChangedCallback = true;
                         }
 
@@ -781,7 +781,7 @@ export class DevEzbus extends HTMLElement {
                         }
                         
                         connectedCallback() {
-                            setTimeout(this.#setupXor, 0);
+                            setTimeout(_ => this.#setupXor(), 0);
                             this.#ALLOWattributeChangedCallback = true;
                         }
 
@@ -851,7 +851,7 @@ export class DevEzbus extends HTMLElement {
                         }
                         
                         connectedCallback() {
-                            setTimeout(this.#setupNxor, 0);
+                            setTimeout(_ => this.#setupNxor(), 0);
                             this.#ALLOWattributeChangedCallback = true;
                         }
 
@@ -921,7 +921,7 @@ export class DevEzbus extends HTMLElement {
                         }
                         
                         connectedCallback() {
-                            setTimeout(this.#setupNormalForm1011, 0);
+                            setTimeout(_ => this.#setupNormalForm1011(), 0);
                             this.#ALLOWattributeChangedCallback = true;
                         }
 
@@ -991,7 +991,7 @@ export class DevEzbus extends HTMLElement {
                         }
                         
                         connectedCallback() {
-                            setTimeout(this.#setupNormalForm1101, 0);
+                            setTimeout(_ => this.#setupNormalForm1101(), 0);
                             this.#ALLOWattributeChangedCallback = true;
                         }
 
@@ -1061,7 +1061,7 @@ export class DevEzbus extends HTMLElement {
                         }
                         
                         connectedCallback() {
-                            setTimeout(this.#setupNormalForm0100, 0);
+                            setTimeout(_ => this.#setupNormalForm0100(), 0);
                             this.#ALLOWattributeChangedCallback = true;
                         }
 
@@ -1131,7 +1131,7 @@ export class DevEzbus extends HTMLElement {
                         }
                         
                         connectedCallback() {
-                            setTimeout(this.#setupNormalForm0010, 0);
+                            setTimeout(_ => this.#setupNormalForm0010(), 0);
                             this.#ALLOWattributeChangedCallback = true;
                         }
 
