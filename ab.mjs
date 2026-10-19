@@ -152,6 +152,7 @@ export class AnimeFrameworkBoxExtension extends HTMLElement {
                           }
                           break;
                       case 'anime-box-bordering':
+				          console.log("animeBoxBordering");
                           if ((!oldValue) && newValue) {
                               this.#animeBoxBordering(true);
                           } else if ((!newValue) && oldValue) {
@@ -163,6 +164,8 @@ export class AnimeFrameworkBoxExtension extends HTMLElement {
             }
         
             #animeBoxBordering(dose_it) {
+                console.log(this.#ALLOWattributeChangedCallback );
+                console.log(dose_it);
                 if (this.#ALLOWattributeChangedCallback === null) {
                     if (dose_it) {
                         const boxBorder = Object.assign(document.createElement('fieldset'), {className: this.#class, innerHTML: this.innerHTML});
@@ -184,23 +187,18 @@ export class AnimeFrameworkBoxExtension extends HTMLElement {
                 } else if (this.#ALLOWattributeChangedCallback) {
                     this.#ALLOWattributeChangedCallback = false;
                     if (dose_it) {
-						console.log(dose_it);
                         const boxBorder = Object.assign(document.createElement('fieldset'), {className: this.#class, innerHTML: this.innerHTML});
-						console.log(boxBorder);
                         this.removeAttribute("class");
                         
                         if (this.#style) {
                             Object.assign(boxBorder.style, {cssText: this.#style})
                             this.removeAttribute("style");
                         }
-						console.log(boxBorder);
         
                         this.innerHTML = "";
                         this.appendChild(boxBorder);
                     } else {
-						console.log(dose_it);
                         const boxBorder = this.querySelector("fieldset");
-						console.log(boxBorder);
                         if (this.#style) this.setAttribute("style", this.#style);
                         this.setAttribute("class", this.#class);
                         this.innerHTML = boxBorder.innerHTML;
