@@ -397,7 +397,7 @@ export class DevEzbus extends HTMLElement {
                     }
                     
                     customElements.define('dev-ezbus-info', EzbusInfo);
-
+			  		
                     class EzbusNand extends HTMLElement {
                         #ALLOWattributeChangedCallback = null;
                         
@@ -454,8 +454,8 @@ export class DevEzbus extends HTMLElement {
                             }
                         }
 
-                        #setupNand() {
-                            const classv = this.getAttribute("class");
+                        #setupNand() {console.log(this.constructor.name);
+                            const classv = this.hasAttribute("class")?this.getAttribute("class"):'';
                             if (!(classv.includes("nand-gate"))) this.setAttribute("class", classv?`${classv} nand-gate`:"nand-gate");
                             
                             let i0 = this.dataI0?` ${this.dataI0}`:'';
@@ -516,8 +516,8 @@ export class DevEzbus extends HTMLElement {
                             }
                         }
 
-                        #setupNot() {
-                            const classv = this.getAttribute("class");
+                        #setupNot() {console.log(this.constructor.name);
+                            const classv = this.hasAttribute("class")?this.getAttribute("class"):'';
                             if (!(classv.includes("nand-gate"))) this.setAttribute("class", classv?`${classv} nand-gate`:"nand-gate");
                             
                             let i = this.dataI?` data-i0=${this.dataI} data-i1=${this.dataI}`:'';
@@ -583,8 +583,8 @@ export class DevEzbus extends HTMLElement {
                             }
                         }
 
-                        #setupAnd() {
-                            const classv = this.getAttribute("class");
+                        #setupAnd() {console.log(this.constructor.name);
+                            const classv = this.hasAttribute("class")?this.getAttribute("class"):'';
                             if (!(classv.includes("wps-w15"))) this.setAttribute("class", classv?`${classv} wps-w15`:"wps-w15");
                             
                             let i0 = this.dataI0?` data-i0=${this.dataI0}`:'';
@@ -653,8 +653,8 @@ export class DevEzbus extends HTMLElement {
                             }
                         }
 
-                        #setupOr() {
-                            const classv = this.getAttribute("class");
+                        #setupOr() {console.log(this.constructor.name);
+                            const classv = this.hasAttribute("class")?this.getAttribute("class"):'';
                             if (!(classv.includes("wps-w15"))) this.setAttribute("class", classv?`${classv} wps-w15`:"wps-w15");
                             
                             const i0 = this.dataI0?`<dev-ezbus-not data-i="${this.dataI0}" data-o="wps-w15-i15"></dev-ezbus-not>`:'<dev-ezbus-not data-o="wps-w15-i15"></dev-ezbus-not>';
@@ -723,8 +723,8 @@ export class DevEzbus extends HTMLElement {
                             }
                         }
 
-                        #setupNor() {
-                            const classv = this.getAttribute("class");
+                        #setupNor() {console.log(this.constructor.name);
+                            const classv = this.hasAttribute("class")?this.getAttribute("class"):'';
                             if (!(classv.includes("wps-w15"))) this.setAttribute("class", classv?`${classv} wps-w15`:"wps-w15");
                             
                             const i0 = this.dataI0?`<dev-ezbus-not data-i="${this.dataI0}" data-o="wps-w15-i15"></dev-ezbus-not>`:'<dev-ezbus-not data-o="wps-w15-i15"></dev-ezbus-not>';
@@ -793,8 +793,8 @@ export class DevEzbus extends HTMLElement {
                             }
                         }
 
-                        #setupXor() {
-                            const classv = this.getAttribute("class");
+                        #setupXor() {console.log(this.constructor.name);
+                            const classv = this.hasAttribute("class")?this.getAttribute("class"):'';
                             if (!(classv.includes("wps-w15"))) this.setAttribute("class", classv?`${classv} wps-w15`:"wps-w15");
                             
                             const i0 = this.dataI0?` data-i0="${this.dataI0}"`:'';
@@ -863,8 +863,8 @@ export class DevEzbus extends HTMLElement {
                             }
                         }
 
-                        #setupNxor() {
-                            const classv = this.getAttribute("class");
+                        #setupNxor() {console.log(this.constructor.name);
+                            const classv = this.hasAttribute("class")?this.getAttribute("class"):'';
                             if (!(classv.includes("wps-w15"))) this.setAttribute("class", classv?`${classv} wps-w15`:"wps-w15");
                             
                             const i0 = this.dataI0?` data-i0="${this.dataI0}"`:'';
@@ -933,8 +933,8 @@ export class DevEzbus extends HTMLElement {
                             }
                         }
 
-                        #setupNormalForm1011() {
-                            const classv = this.getAttribute("class");
+                        #setupNormalForm1011() {console.log(this.constructor.name);
+                            const classv = this.hasAttribute("class")?this.getAttribute("class"):'';
                             if (!(classv.includes("wps-w15"))) this.setAttribute("class", classv?`${classv} wps-w15`:"wps-w15");
                             
                             const i0 = this.dataI0?`<dev-ezbus-not data-i="${this.dataI0}" data-o="wps-w15-i15"></dev-ezbus-not>`:'<dev-ezbus-not data-o="wps-w15-i15"></dev-ezbus-not>';
@@ -1003,8 +1003,8 @@ export class DevEzbus extends HTMLElement {
                             }
                         }
 
-                        #setupNormalForm1101() {
-                            const classv = this.getAttribute("class");
+                        #setupNormalForm1101() {console.log(this.constructor.name);
+                            const classv = this.hasAttribute("class")?this.getAttribute("class"):'';
                             if (!(classv.includes("wps-w15"))) this.setAttribute("class", classv?`${classv} wps-w15`:"wps-w15");
                             
                             const i0 = this.dataI0?` data-i0="${this.dataI0}"`:'';
@@ -1073,8 +1073,8 @@ export class DevEzbus extends HTMLElement {
                             }
                         }
 
-                        #setupNormalForm0100() {
-                            const classv = this.getAttribute("class");
+                        #setupNormalForm0100() {console.log(this.constructor.name);
+                            const classv = this.hasAttribute("class")?this.getAttribute("class"):'';
                             if (!(classv.includes("wps-w15"))) this.setAttribute("class", classv?`${classv} wps-w15`:"wps-w15");
                             
                             const i0 = this.dataI0?`<dev-ezbus-not data-i="${this.dataI0}" data-o="wps-w15-i15"></dev-ezbus-not>`:'<dev-ezbus-not data-o="wps-w15-i15"></dev-ezbus-not>';
@@ -1085,7 +1085,7 @@ export class DevEzbus extends HTMLElement {
                         }
                     }
                     
-                    customElements.define('dev-ezbus-normal-form-0100', EzbusNormalForm0100);
+                    customElements.define('dev-ezbus-normal-form-1011', EzbusNormalForm1011);
 
                     class EzbusNormalForm0010 extends HTMLElement {
                         #ALLOWattributeChangedCallback = null;
@@ -1143,8 +1143,8 @@ export class DevEzbus extends HTMLElement {
                             }
                         }
 
-                        #setupNormalForm0010() {
-                            const classv = this.getAttribute("class");
+                        #setupNormalForm0010() {console.log(this.constructor.name);
+                            const classv = this.hasAttribute("class")?this.getAttribute("class"):'';
                             if (!(classv.includes("wps-w15"))) this.setAttribute("class", classv?`${classv} wps-w15`:"wps-w15");
                             
                             const i0 = this.dataI0?` data-i0="${this.dataI0}"`:'';
@@ -1154,6 +1154,8 @@ export class DevEzbus extends HTMLElement {
                             this.innerHTML = `${i1}${o}`;
                         }
                     }
+                    
+                    customElements.define('dev-ezbus-normal-form-0010', EzbusNormalForm0010);
                     
                     customElements.define('dev-ezbus-normal-form-0010', EzbusNormalForm0010);
                     
