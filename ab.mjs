@@ -152,7 +152,9 @@ export class AnimeFrameworkBoxExtension extends HTMLElement {
                           }
                           break;
                       case 'anime-box-bordering':
-				          console.log("animeBoxBordering");
+                          console.log("animeBoxBordering");
+                          console.log(oldValue);
+                          console.log(newValue);
                           if ((!oldValue) && newValue) {
                               this.#animeBoxBordering(true);
                           } else if ((!newValue) && oldValue) {
