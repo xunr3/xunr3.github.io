@@ -1,1 +1,1 @@
-Object.assign(window, await import('https://xunr3.github.io/af.mjs'));
+import('https://xunr3.github.io/af.mjs').then(module => Object.assign(window, module));
