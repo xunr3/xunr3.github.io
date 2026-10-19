@@ -752,7 +752,7 @@ export class DevEzbus extends HTMLElement {
                             const i1 = this.dataI1?` data-i1="${this.dataI1}"`:'';
                             const o = this.dataO?`<dev-ezbus-nand data-i0="wps-w15-o14" data-i1="wps-w15-o13" data-o="${this.dataO}"></dev-ezbus-nand>`:'<dev-ezbus-nand data-i0="wps-w15-o14" data-i1="wps-w15-o13"></dev-ezbus-nand>';
 
-                            this.innerHTML = `<dev-ezbus-nand${i0}${i1} data-o="wps-w15-i15"></dev-ezbus-nand><dev-ezbus-nand${i0} data-i1="wps-w15-o15" data-o="wps-w15-i14"></dev-ezbus-nand>${o}`;
+                            this.innerHTML = `<dev-ezbus-nand${i0}${i1} data-o="wps-w15-i15"></dev-ezbus-nand><dev-ezbus-nand${i0} data-i1="wps-w15-o15" data-o="wps-w15-i14"></dev-ezbus-nand><dev-ezbus-nand data-i0="wps-w15-o15"${i1} data-o="wps-w15-i14"></dev-ezbus-nand>${o}`;
                         }
                     }
                     
@@ -813,7 +813,7 @@ export class DevEzbus extends HTMLElement {
                             const i1 = this.dataI1?` data-i1="${this.dataI1}"`:'';
                             const o = this.dataO?`<dev-ezbus-not data-i="wps-w15-o12" data-o="${this.dataO}"></dev-ezbus-not>`:'<dev-ezbus-not data-i="wps-w15-o12"></dev-ezbus-not>';
                             
-                            this.innerHTML = `<dev-ezbus-nand${i0}${i1} data-o="wps-w15-i15"></dev-ezbus-nand><dev-ezbus-nand${i0} data-i1="wps-w15-o15" data-o="wps-w15-i14"></dev-ezbus-nand><dev-ezbus-nand data-i0="wps-w15-o14" data-i1="wps-w15-o13" data-o="wps-w15-i12"></dev-ezbus-nand>${o}`;
+                            this.innerHTML = `<dev-ezbus-nand${i0}${i1} data-o="wps-w15-i15"></dev-ezbus-nand><dev-ezbus-nand${i0} data-i1="wps-w15-o15" data-o="wps-w15-i14"></dev-ezbus-nand><dev-ezbus-nand data-i0="wps-w15-o15"${i1} data-o="wps-w15-i14"></dev-ezbus-nand><dev-ezbus-nand data-i0="wps-w15-o14" data-i1="wps-w15-o13" data-o="wps-w15-i12"></dev-ezbus-nand>${o}`;
                         }
                     }
                     
