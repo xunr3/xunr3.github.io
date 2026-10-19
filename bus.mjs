@@ -1,6 +1,6 @@
 export async function loadbugc() {
     try {
-        Object.assign(window, await import('https://xunr3.github.io/bugc.js'));
+        Object.assign(window, await import('https://xunr3.github.io/bugc.mjs'));
     } catch (error) {
         console.error('faild to load bugc.js', error);
     }
