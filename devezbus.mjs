@@ -511,6 +511,8 @@ export class DevEzbus extends HTMLElement {
                             this.innerHTML = `<dev-ezbus-nand${i}${o}></dev-ezbus-nand>`;
                         }
                     }
+                    
+                    customElements.define('dev-ezbus-not', EzbusNot);
 
                     class EzbusAnd extends HTMLElement {
                         #ALLOWattributeChangedCallback = null;
