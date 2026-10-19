@@ -181,26 +181,31 @@ export class AnimeFrameworkBoxExtension extends HTMLElement {
                         this.setAttribute("class", this.#class);
                         this.innerHTML = boxBorder.innerHTML;
                     }
-				} else if (this.#ALLOWattributeChangedCallback) {
-                this.#ALLOWattributeChangedCallback = false;
+                } else if (this.#ALLOWattributeChangedCallback) {
+                    this.#ALLOWattributeChangedCallback = false;
                     if (dose_it) {
+						console.log(dose_it);
                         const boxBorder = Object.assign(document.createElement('fieldset'), {className: this.#class, innerHTML: this.innerHTML});
+						console.log(boxBorder);
                         this.removeAttribute("class");
                         
                         if (this.#style) {
                             Object.assign(boxBorder.style, {cssText: this.#style})
                             this.removeAttribute("style");
                         }
+						console.log(boxBorder);
         
                         this.innerHTML = "";
                         this.appendChild(boxBorder);
                     } else {
+						console.log(dose_it);
                         const boxBorder = this.querySelector("fieldset");
+						console.log(boxBorder);
                         if (this.#style) this.setAttribute("style", this.#style);
                         this.setAttribute("class", this.#class);
                         this.innerHTML = boxBorder.innerHTML;
                     }
-                this.#ALLOWattributeChangedCallback = true;
+                    this.#ALLOWattributeChangedCallback = true;
                 }
             }
         
