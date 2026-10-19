@@ -406,39 +406,30 @@ export class DevEzbus extends HTMLElement {
                         }
                         
                         get dataI0() {
-                            return this.hasAttribute('data-i0');
+                            if (!this.hasAttribute('data-i0')) return;
+                            return this.getAttribute('data-i0');
                         }
                         
                         set dataI0(val) {
-                            if (val) {
-                                this.setAttribute('data-i0', '');
-                            } else {
-                                this.removeAttribute('data-i0');
-                            }
+                            this.setAttribute('data-i0', val);
                         }
                         
                         get dataI1() {
-                            return this.hasAttribute('data-i1');
+                            if (!this.hasAttribute('data-i1')) return;
+                            return this.getAttribute('data-i1');
                         }
                         
                         set dataI1(val) {
-                            if (val) {
-                                this.setAttribute('data-i1', '');
-                            } else {
-                                this.removeAttribute('data-i1');
-                            }
+                            this.setAttribute('data-i1', val);
                         }
                         
                         get dataO() {
-                            return this.hasAttribute('data-o');
+                            if (!this.hasAttribute('data-o')) return;
+                            return this.getAttribute('data-o');
                         }
                         
                         set dataO(val) {
-                            if (val) {
-                                this.setAttribute('data-o', '');
-                            } else {
-                                this.removeAttribute('data-o');
-                            }
+                            this.setAttribute('data-o', val);
                         }
                         
                         connectedCallback() {
@@ -480,27 +471,21 @@ export class DevEzbus extends HTMLElement {
                         }
                         
                         get dataI() {
-                            return this.hasAttribute('data-i');
+                            if (!this.hasAttribute('data-i')) return;
+                            return this.getAttribute('data-i');
                         }
                         
                         set dataI(val) {
-                            if (val) {
-                                this.setAttribute('data-i', '');
-                            } else {
-                                this.removeAttribute('data-i');
-                            }
+                            this.setAttribute('data-i', val);
                         }
                         
                         get dataO() {
-                            return this.hasAttribute('data-o');
+                            if (!this.hasAttribute('data-o')) return;
+                            return this.getAttribute('data-o');
                         }
                         
                         set dataO(val) {
-                            if (val) {
-                                this.setAttribute('data-o', '');
-                            } else {
-                                this.removeAttribute('data-o');
-                            }
+                            this.setAttribute('data-o', val);
                         }
                         
                         connectedCallback() {
@@ -535,39 +520,30 @@ export class DevEzbus extends HTMLElement {
                         }
                         
                         get dataI0() {
-                            return this.hasAttribute('data-i0');
+                            if (!this.hasAttribute('data-i0')) return;
+                            return this.getAttribute('data-i0');
                         }
                         
                         set dataI0(val) {
-                            if (val) {
-                                this.setAttribute('data-i0', '');
-                            } else {
-                                this.removeAttribute('data-i0');
-                            }
+                            this.setAttribute('data-i0', val);
                         }
                         
                         get dataI1() {
-                            return this.hasAttribute('data-i1');
+                            if (!this.hasAttribute('data-i1')) return;
+                            return this.getAttribute('data-i1');
                         }
                         
                         set dataI1(val) {
-                            if (val) {
-                                this.setAttribute('data-i1', '');
-                            } else {
-                                this.removeAttribute('data-i1');
-                            }
+                            this.setAttribute('data-i1', val);
                         }
                         
                         get dataO() {
-                            return this.hasAttribute('data-o');
+                            if (!this.hasAttribute('data-o')) return;
+                            return this.getAttribute('data-o');
                         }
                         
                         set dataO(val) {
-                            if (val) {
-                                this.setAttribute('data-o', '');
-                            } else {
-                                this.removeAttribute('data-o');
-                            }
+                            this.setAttribute('data-o', val);
                         }
                         
                         connectedCallback() {
@@ -605,39 +581,30 @@ export class DevEzbus extends HTMLElement {
                         }
                         
                         get dataI0() {
-                            return this.hasAttribute('data-i0');
+                            if (!this.hasAttribute('data-i0')) return;
+                            return this.getAttribute('data-i0');
                         }
                         
                         set dataI0(val) {
-                            if (val) {
-                                this.setAttribute('data-i0', '');
-                            } else {
-                                this.removeAttribute('data-i0');
-                            }
+                            this.setAttribute('data-i0', val);
                         }
                         
                         get dataI1() {
-                            return this.hasAttribute('data-i1');
+                            if (!this.hasAttribute('data-i1')) return;
+                            return this.getAttribute('data-i1');
                         }
                         
                         set dataI1(val) {
-                            if (val) {
-                                this.setAttribute('data-i1', '');
-                            } else {
-                                this.removeAttribute('data-i1');
-                            }
+                            this.setAttribute('data-i1', val);
                         }
                         
                         get dataO() {
-                            return this.hasAttribute('data-o');
+                            if (!this.hasAttribute('data-o')) return;
+                            return this.getAttribute('data-o');
                         }
                         
                         set dataO(val) {
-                            if (val) {
-                                this.setAttribute('data-o', '');
-                            } else {
-                                this.removeAttribute('data-o');
-                            }
+                            this.setAttribute('data-o', val);
                         }
                         
                         connectedCallback() {
@@ -675,39 +642,30 @@ export class DevEzbus extends HTMLElement {
                         }
                         
                         get dataI0() {
-                            return this.hasAttribute('data-i0');
+                            if (!this.hasAttribute('data-i0')) return;
+                            return this.getAttribute('data-i0');
                         }
                         
                         set dataI0(val) {
-                            if (val) {
-                                this.setAttribute('data-i0', '');
-                            } else {
-                                this.removeAttribute('data-i0');
-                            }
+                            this.setAttribute('data-i0', val);
                         }
                         
                         get dataI1() {
-                            return this.hasAttribute('data-i1');
+                            if (!this.hasAttribute('data-i1')) return;
+                            return this.getAttribute('data-i1');
                         }
                         
                         set dataI1(val) {
-                            if (val) {
-                                this.setAttribute('data-i1', '');
-                            } else {
-                                this.removeAttribute('data-i1');
-                            }
+                            this.setAttribute('data-i1', val);
                         }
                         
                         get dataO() {
-                            return this.hasAttribute('data-o');
+                            if (!this.hasAttribute('data-o')) return;
+                            return this.getAttribute('data-o');
                         }
                         
                         set dataO(val) {
-                            if (val) {
-                                this.setAttribute('data-o', '');
-                            } else {
-                                this.removeAttribute('data-o');
-                            }
+                            this.setAttribute('data-o', val);
                         }
                         
                         connectedCallback() {
@@ -745,39 +703,30 @@ export class DevEzbus extends HTMLElement {
                         }
                         
                         get dataI0() {
-                            return this.hasAttribute('data-i0');
+                            if (!this.hasAttribute('data-i0')) return;
+                            return this.getAttribute('data-i0');
                         }
                         
                         set dataI0(val) {
-                            if (val) {
-                                this.setAttribute('data-i0', '');
-                            } else {
-                                this.removeAttribute('data-i0');
-                            }
+                            this.setAttribute('data-i0', val);
                         }
                         
                         get dataI1() {
-                            return this.hasAttribute('data-i1');
+                            if (!this.hasAttribute('data-i1')) return;
+                            return this.getAttribute('data-i1');
                         }
                         
                         set dataI1(val) {
-                            if (val) {
-                                this.setAttribute('data-i1', '');
-                            } else {
-                                this.removeAttribute('data-i1');
-                            }
+                            this.setAttribute('data-i1', val);
                         }
                         
                         get dataO() {
-                            return this.hasAttribute('data-o');
+                            if (!this.hasAttribute('data-o')) return;
+                            return this.getAttribute('data-o');
                         }
                         
                         set dataO(val) {
-                            if (val) {
-                                this.setAttribute('data-o', '');
-                            } else {
-                                this.removeAttribute('data-o');
-                            }
+                            this.setAttribute('data-o', val);
                         }
                         
                         connectedCallback() {
@@ -815,39 +764,30 @@ export class DevEzbus extends HTMLElement {
                         }
                         
                         get dataI0() {
-                            return this.hasAttribute('data-i0');
+                            if (!this.hasAttribute('data-i0')) return;
+                            return this.getAttribute('data-i0');
                         }
                         
                         set dataI0(val) {
-                            if (val) {
-                                this.setAttribute('data-i0', '');
-                            } else {
-                                this.removeAttribute('data-i0');
-                            }
+                            this.setAttribute('data-i0', val);
                         }
                         
                         get dataI1() {
-                            return this.hasAttribute('data-i1');
+                            if (!this.hasAttribute('data-i1')) return;
+                            return this.getAttribute('data-i1');
                         }
                         
                         set dataI1(val) {
-                            if (val) {
-                                this.setAttribute('data-i1', '');
-                            } else {
-                                this.removeAttribute('data-i1');
-                            }
+                            this.setAttribute('data-i1', val);
                         }
                         
                         get dataO() {
-                            return this.hasAttribute('data-o');
+                            if (!this.hasAttribute('data-o')) return;
+                            return this.getAttribute('data-o');
                         }
                         
                         set dataO(val) {
-                            if (val) {
-                                this.setAttribute('data-o', '');
-                            } else {
-                                this.removeAttribute('data-o');
-                            }
+                            this.setAttribute('data-o', val);
                         }
                         
                         connectedCallback() {
@@ -885,39 +825,30 @@ export class DevEzbus extends HTMLElement {
                         }
                         
                         get dataI0() {
-                            return this.hasAttribute('data-i0');
+                            if (!this.hasAttribute('data-i0')) return;
+                            return this.getAttribute('data-i0');
                         }
                         
                         set dataI0(val) {
-                            if (val) {
-                                this.setAttribute('data-i0', '');
-                            } else {
-                                this.removeAttribute('data-i0');
-                            }
+                            this.setAttribute('data-i0', val);
                         }
                         
                         get dataI1() {
-                            return this.hasAttribute('data-i1');
+                            if (!this.hasAttribute('data-i1')) return;
+                            return this.getAttribute('data-i1');
                         }
                         
                         set dataI1(val) {
-                            if (val) {
-                                this.setAttribute('data-i1', '');
-                            } else {
-                                this.removeAttribute('data-i1');
-                            }
+                            this.setAttribute('data-i1', val);
                         }
                         
                         get dataO() {
-                            return this.hasAttribute('data-o');
+                            if (!this.hasAttribute('data-o')) return;
+                            return this.getAttribute('data-o');
                         }
                         
                         set dataO(val) {
-                            if (val) {
-                                this.setAttribute('data-o', '');
-                            } else {
-                                this.removeAttribute('data-o');
-                            }
+                            this.setAttribute('data-o', val);
                         }
                         
                         connectedCallback() {
@@ -955,39 +886,30 @@ export class DevEzbus extends HTMLElement {
                         }
                         
                         get dataI0() {
-                            return this.hasAttribute('data-i0');
+                            if (!this.hasAttribute('data-i0')) return;
+                            return this.getAttribute('data-i0');
                         }
                         
                         set dataI0(val) {
-                            if (val) {
-                                this.setAttribute('data-i0', '');
-                            } else {
-                                this.removeAttribute('data-i0');
-                            }
+                            this.setAttribute('data-i0', val);
                         }
                         
                         get dataI1() {
-                            return this.hasAttribute('data-i1');
+                            if (!this.hasAttribute('data-i1')) return;
+                            return this.getAttribute('data-i1');
                         }
                         
                         set dataI1(val) {
-                            if (val) {
-                                this.setAttribute('data-i1', '');
-                            } else {
-                                this.removeAttribute('data-i1');
-                            }
+                            this.setAttribute('data-i1', val);
                         }
                         
                         get dataO() {
-                            return this.hasAttribute('data-o');
+                            if (!this.hasAttribute('data-o')) return;
+                            return this.getAttribute('data-o');
                         }
                         
                         set dataO(val) {
-                            if (val) {
-                                this.setAttribute('data-o', '');
-                            } else {
-                                this.removeAttribute('data-o');
-                            }
+                            this.setAttribute('data-o', val);
                         }
                         
                         connectedCallback() {
@@ -1025,39 +947,30 @@ export class DevEzbus extends HTMLElement {
                         }
                         
                         get dataI0() {
-                            return this.hasAttribute('data-i0');
+                            if (!this.hasAttribute('data-i0')) return;
+                            return this.getAttribute('data-i0');
                         }
                         
                         set dataI0(val) {
-                            if (val) {
-                                this.setAttribute('data-i0', '');
-                            } else {
-                                this.removeAttribute('data-i0');
-                            }
+                            this.setAttribute('data-i0', val);
                         }
                         
                         get dataI1() {
-                            return this.hasAttribute('data-i1');
+                            if (!this.hasAttribute('data-i1')) return;
+                            return this.getAttribute('data-i1');
                         }
                         
                         set dataI1(val) {
-                            if (val) {
-                                this.setAttribute('data-i1', '');
-                            } else {
-                                this.removeAttribute('data-i1');
-                            }
+                            this.setAttribute('data-i1', val);
                         }
                         
                         get dataO() {
-                            return this.hasAttribute('data-o');
+                            if (!this.hasAttribute('data-o')) return;
+                            return this.getAttribute('data-o');
                         }
                         
                         set dataO(val) {
-                            if (val) {
-                                this.setAttribute('data-o', '');
-                            } else {
-                                this.removeAttribute('data-o');
-                            }
+                            this.setAttribute('data-o', val);
                         }
                         
                         connectedCallback() {
@@ -1095,39 +1008,30 @@ export class DevEzbus extends HTMLElement {
                         }
                         
                         get dataI0() {
-                            return this.hasAttribute('data-i0');
+                            if (!this.hasAttribute('data-i0')) return;
+                            return this.getAttribute('data-i0');
                         }
                         
                         set dataI0(val) {
-                            if (val) {
-                                this.setAttribute('data-i0', '');
-                            } else {
-                                this.removeAttribute('data-i0');
-                            }
+                            this.setAttribute('data-i0', val);
                         }
                         
                         get dataI1() {
-                            return this.hasAttribute('data-i1');
+                            if (!this.hasAttribute('data-i1')) return;
+                            return this.getAttribute('data-i1');
                         }
                         
                         set dataI1(val) {
-                            if (val) {
-                                this.setAttribute('data-i1', '');
-                            } else {
-                                this.removeAttribute('data-i1');
-                            }
+                            this.setAttribute('data-i1', val);
                         }
                         
                         get dataO() {
-                            return this.hasAttribute('data-o');
+                            if (!this.hasAttribute('data-o')) return;
+                            return this.getAttribute('data-o');
                         }
                         
                         set dataO(val) {
-                            if (val) {
-                                this.setAttribute('data-o', '');
-                            } else {
-                                this.removeAttribute('data-o');
-                            }
+                            this.setAttribute('data-o', val);
                         }
                         
                         connectedCallback() {
