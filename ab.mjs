@@ -47,6 +47,10 @@ export class AnimeFrameworkBoxExtension extends HTMLElement {
             #width = null;
             #height = null;
             #ALLOWattributeChangedCallback = null;
+
+			get available() {
+				return (this.#ALLOWattributeChangedCallback !== null);
+			}
         
             connectedCallback() {
                 setTimeout(() => {
