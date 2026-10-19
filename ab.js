@@ -1,1 +1,1 @@
-import {loadaf, AnimeFrameworkBoxExtension, ab_webcode, b_shortcode} from "https://xunr3.github.io/ab.mjs";
+Object.assign(window, await import('https://xunr3.github.io/ab.mjs'));
