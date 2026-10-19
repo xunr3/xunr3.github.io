@@ -445,7 +445,7 @@ export class DevEzbus extends HTMLElement {
                             }
                         }
 
-                        #setupNand() {console.log(this.constructor.name);
+                        #setupNand() {
                             const classv = this.hasAttribute("class")?this.getAttribute("class"):'';
                             if (!(classv.includes("nand-gate"))) this.setAttribute("class", classv?`${classv} nand-gate`:"nand-gate");
                             
@@ -501,7 +501,7 @@ export class DevEzbus extends HTMLElement {
                             }
                         }
 
-                        #setupNot() {console.log(this.constructor.name);
+                        #setupNot() {
                             const classv = this.hasAttribute("class")?this.getAttribute("class"):'';
                             if (!(classv.includes("nand-gate"))) this.setAttribute("class", classv?`${classv} nand-gate`:"nand-gate");
                             
@@ -561,7 +561,7 @@ export class DevEzbus extends HTMLElement {
                             }
                         }
 
-                        #setupAnd() {console.log(this.constructor.name);
+                        #setupAnd() {
                             const classv = this.hasAttribute("class")?this.getAttribute("class"):'';
                             if (!(classv.includes("wps-w15"))) this.setAttribute("class", classv?`${classv} wps-w15`:"wps-w15");
                             
@@ -622,7 +622,7 @@ export class DevEzbus extends HTMLElement {
                             }
                         }
 
-                        #setupOr() {console.log(this.constructor.name);
+                        #setupOr() {
                             const classv = this.hasAttribute("class")?this.getAttribute("class"):'';
                             if (!(classv.includes("wps-w15"))) this.setAttribute("class", classv?`${classv} wps-w15`:"wps-w15");
                             
@@ -683,7 +683,7 @@ export class DevEzbus extends HTMLElement {
                             }
                         }
 
-                        #setupNor() {console.log(this.constructor.name);
+                        #setupNor() {
                             const classv = this.hasAttribute("class")?this.getAttribute("class"):'';
                             if (!(classv.includes("wps-w15"))) this.setAttribute("class", classv?`${classv} wps-w15`:"wps-w15");
                             
@@ -744,7 +744,7 @@ export class DevEzbus extends HTMLElement {
                             }
                         }
 
-                        #setupXor() {console.log(this.constructor.name);
+                        #setupXor() {
                             const classv = this.hasAttribute("class")?this.getAttribute("class"):'';
                             if (!(classv.includes("wps-w15"))) this.setAttribute("class", classv?`${classv} wps-w15`:"wps-w15");
                             
@@ -805,7 +805,7 @@ export class DevEzbus extends HTMLElement {
                             }
                         }
 
-                        #setupNxor() {console.log(this.constructor.name);
+                        #setupNxor() {
                             const classv = this.hasAttribute("class")?this.getAttribute("class"):'';
                             if (!(classv.includes("wps-w15"))) this.setAttribute("class", classv?`${classv} wps-w15`:"wps-w15");
                             
@@ -866,7 +866,7 @@ export class DevEzbus extends HTMLElement {
                             }
                         }
 
-                        #setupNormalForm1011() {console.log(this.constructor.name);
+                        #setupNormalForm1011() {
                             const classv = this.hasAttribute("class")?this.getAttribute("class"):'';
                             if (!(classv.includes("wps-w15"))) this.setAttribute("class", classv?`${classv} wps-w15`:"wps-w15");
                             
@@ -927,7 +927,7 @@ export class DevEzbus extends HTMLElement {
                             }
                         }
 
-                        #setupNormalForm1101() {console.log(this.constructor.name);
+                        #setupNormalForm1101() {
                             const classv = this.hasAttribute("class")?this.getAttribute("class"):'';
                             if (!(classv.includes("wps-w15"))) this.setAttribute("class", classv?`${classv} wps-w15`:"wps-w15");
                             
@@ -988,7 +988,7 @@ export class DevEzbus extends HTMLElement {
                             }
                         }
 
-                        #setupNormalForm0100() {console.log(this.constructor.name);
+                        #setupNormalForm0100() {
                             const classv = this.hasAttribute("class")?this.getAttribute("class"):'';
                             if (!(classv.includes("wps-w15"))) this.setAttribute("class", classv?`${classv} wps-w15`:"wps-w15");
                             
@@ -1049,7 +1049,7 @@ export class DevEzbus extends HTMLElement {
                             }
                         }
 
-                        #setupNormalForm0010() {console.log(this.constructor.name);
+                        #setupNormalForm0010() {
                             const classv = this.hasAttribute("class")?this.getAttribute("class"):'';
                             if (!(classv.includes("wps-w15"))) this.setAttribute("class", classv?`${classv} wps-w15`:"wps-w15");
                             
