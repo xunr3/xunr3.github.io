@@ -128,12 +128,12 @@ export class AnimeFrameworkBoxExtension extends HTMLElement {
                             /* falls through */
                         case 'height':
                             if (oldValue || newValue) {
-                                if (oldValue) {
+                                if (oldValue && newValue && (oldValue !== newValue)) {
+									this.#setSize(flag, newValue);
+								} else if (oldValue) {
                                     this.#delSize(flag);
                                 } else if (newValue) {
                                     this.#genSize(flag, newValue);
-                                } else if (oldValue !== newValue) {
-                                    this.#setSize(flag, newValue);
                                 }
                                 this.#appSize(this.animeBoxBordering);
                             }
@@ -163,32 +163,56 @@ export class AnimeFrameworkBoxExtension extends HTMLElement {
             }
         
             #animeBoxBordering(dose_it) {
-                if (this.#ALLOWattributeChangedCallback !== null) this.#ALLOWattributeChangedCallback = false;
-                if (dose_it) {
-                    const boxBorder = Object.assign(document.createElement('fieldset'), {className: this.#class, innerHTML: this.innerHTML});
-                    this.removeAttribute("class");
-                    
-                    if (this.#style) {
-                        Object.assign(boxBorder.style, {cssText: this.#style})
-                        this.removeAttribute("style");
-                    }
+                if (this.#ALLOWattributeChangedCallback === null) {
+                    if (dose_it) {
+                        const boxBorder = Object.assign(document.createElement('fieldset'), {className: this.#class, innerHTML: this.innerHTML});
+                        this.removeAttribute("class");
+                        
+                        if (this.#style) {
+                            Object.assign(boxBorder.style, {cssText: this.#style})
+                            this.removeAttribute("style");
+                        }
         
-                    this.innerHTML = "";
-                    this.appendChild(boxBorder);
-                } else {
-                    const boxBorder = this.querySelector("fieldset");
-                    if (this.#style) this.setAttribute("style", this.#style);
-                    this.setAttribute("class", this.#class);
-                    this.innerHTML = boxBorder.innerHTML;
+                        this.innerHTML = "";
+                        this.appendChild(boxBorder);
+                    } else {
+                        const boxBorder = this.querySelector("fieldset");
+                        if (this.#style) this.setAttribute("style", this.#style);
+                        this.setAttribute("class", this.#class);
+                        this.innerHTML = boxBorder.innerHTML;
+                    }
+				} else if (this.#ALLOWattributeChangedCallback) {
+                this.#ALLOWattributeChangedCallback = false;
+                    if (dose_it) {
+                        const boxBorder = Object.assign(document.createElement('fieldset'), {className: this.#class, innerHTML: this.innerHTML});
+                        this.removeAttribute("class");
+                        
+                        if (this.#style) {
+                            Object.assign(boxBorder.style, {cssText: this.#style})
+                            this.removeAttribute("style");
+                        }
+        
+                        this.innerHTML = "";
+                        this.appendChild(boxBorder);
+                    } else {
+                        const boxBorder = this.querySelector("fieldset");
+                        if (this.#style) this.setAttribute("style", this.#style);
+                        this.setAttribute("class", this.#class);
+                        this.innerHTML = boxBorder.innerHTML;
+                    }
+                this.#ALLOWattributeChangedCallback = true;
                 }
-                if (this.#ALLOWattributeChangedCallback !== null) this.#ALLOWattributeChangedCallback = true;
             }
         
             #changeStyle(mode, argument) {
                 if (mode === null) {
-                    if (this.#ALLOWattributeChangedCallback !== null) this.#ALLOWattributeChangedCallback = false;
-                    (argument?this.querySelector("fieldset"):this).setAttribute("class", this.#class);
-                    if (this.#ALLOWattributeChangedCallback !== null) this.#ALLOWattributeChangedCallback = true;
+                    if (this.#ALLOWattributeChangedCallback === null) {
+                        (argument?this.querySelector("fieldset"):this).setAttribute("class", this.#class);
+                    } else if (this.#ALLOWattributeChangedCallback) {
+                        this.#ALLOWattributeChangedCallback = false;
+                        (argument?this.querySelector("fieldset"):this).setAttribute("class", this.#class);
+                        this.#ALLOWattributeChangedCallback = true;
+                    }
                 } else if (mode) { //it's doColoring mode bool
                     if (argument) {
                         this.#class = this.#class.replace(`anime-box-${this.animeInputTargeting?"anime-":""}input-target`, `anime-box-coloringed-${this.animeInputTargeting?"anime-":""}input-target`);
@@ -237,14 +261,24 @@ export class AnimeFrameworkBoxExtension extends HTMLElement {
             }
         
             #appSize(isBoxBordered) {
-                if (this.#ALLOWattributeChangedCallback !== null) this.#ALLOWattributeChangedCallback = false;
-                const elem = isBoxBordered?this.querySelector("fieldset"):this;
-                if (this.#style) {
-                    elem.setAttribute("style", this.#style);
-                } else {
-                    if (elem.hasAttribute("style")) elem.removeAttribute("style");
-                }
-                if (this.#ALLOWattributeChangedCallback !== null) this.#ALLOWattributeChangedCallback = true;
+				if (this.#ALLOWattributeChangedCallback === null) {
+					const elem = isBoxBordered?this.querySelector("fieldset"):this;
+                    if (this.#style) {
+                        elem.setAttribute("style", this.#style);
+                    } else {
+                        if (elem.hasAttribute("style")) elem.removeAttribute("style");
+                    }
+				} else if (this.#ALLOWattributeChangedCallback ) {
+                    this.#ALLOWattributeChangedCallback = false;
+                    const elem = isBoxBordered?this.querySelector("fieldset"):this;
+                    if (this.#style) {
+                        elem.setAttribute("style", this.#style);
+                    } else {
+                        if (elem.hasAttribute("style")) elem.removeAttribute("style");
+                    }
+                    this.#ALLOWattributeChangedCallback = true;
+				}
+				
             }
         }
 
