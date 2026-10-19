@@ -1,1 +1,1 @@
-import {loadbugc, BusInit, bus_webcode, bus_shortcode} from "https://xunr3.github.io/bus.mjs";
+import('https://xunr3.github.io/bus.mjs').then(module => Object.assign(window, module));
