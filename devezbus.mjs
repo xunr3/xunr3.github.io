@@ -713,7 +713,7 @@ export class DevEzbus extends HTMLElement {
                             const i1 = this.dataI1?`<dev-ezbus-not data-i="${this.dataI1}" data-o="wps-w15-i14"></dev-ezbus-not>`:'<dev-ezbus-not data-o="wps-w15-i14"></dev-ezbus-not>';
                             const o = this.dataO?`<dev-ezbus-not data-i="wps-w15-o13" data-o="${this.dataO}"></dev-ezbus-not>`:'<dev-ezbus-not data-i="wps-w15-o13"></dev-ezbus-not>';
 
-                            this.innerHTML = `${i0}${i1}<dev-ezbus-nand data-i0="wps-w15-o15" data-i1="wps-w15-o14" data-o="wps-w15-o13"></dev-ezbus-nand>${o}`;
+                            this.innerHTML = `${i0}${i1}<dev-ezbus-nand data-i0="wps-w15-o15" data-i1="wps-w15-o14" data-o="wps-w15-i13"></dev-ezbus-nand>${o}`;
                         }
                     }
                     
@@ -892,11 +892,11 @@ export class DevEzbus extends HTMLElement {
                             const classv = this.hasAttribute("class")?this.getAttribute("class"):'';
                             if (!(classv.includes("wps-w15"))) this.setAttribute("class", classv?`${classv} wps-w15`:"wps-w15");
                             
-                            const i0 = this.dataI0?`<dev-ezbus-not data-i="${this.dataI0}" data-o="wps-w15-i15"></dev-ezbus-not>`:'<dev-ezbus-not data-o="wps-w15-i15"></dev-ezbus-not>';
-                            const i1 = this.dataI1?` data-i1="${this.dataI1}"`:'';
-                            const o = this.dataO?`<dev-ezbus-nand data-i0="wps-w15-o15"${i1} data-o="${this.dataO}"></dev-ezbus-nand>`:`<dev-ezbus-nand data-i0="wps-w15-o15"${i1}></dev-ezbus-nand>`;
+                            const i0 = this.dataI0?` data-i0="${this.dataI0}"`:'';
+                            const i1 = this.dataI1?`<dev-ezbus-not data-i="${this.dataI1}" data-o="wps-w15-i15"></dev-ezbus-not>`:'<dev-ezbus-not data-o="wps-w15-i15"></dev-ezbus-not>';
+                            const o = this.dataO?`<dev-ezbus-nand${i0} data-i1="wps-w15-o15" data-o="${this.dataO}"></dev-ezbus-nand>`:`<dev-ezbus-nand${i0} data-i1="wps-w15-o15"></dev-ezbus-nand>`;
 
-                            this.innerHTML = `${i0}${o}`;
+                            this.innerHTML = `${i1}${o}`;
                         }
                     }
                     
@@ -953,76 +953,15 @@ export class DevEzbus extends HTMLElement {
                             const classv = this.hasAttribute("class")?this.getAttribute("class"):'';
                             if (!(classv.includes("wps-w15"))) this.setAttribute("class", classv?`${classv} wps-w15`:"wps-w15");
                             
-                            const i0 = this.dataI0?` data-i0="${this.dataI0}"`:'';
-                            const i1 = this.dataI1?`<dev-ezbus-not data-i="${this.dataI1}" data-o="wps-w15-i15"></dev-ezbus-not>`:'<dev-ezbus-not data-o="wps-w15-i15"></dev-ezbus-not>';
-                            const o = this.dataO?`<dev-ezbus-nand${i0} data-i1="wps-w15-o15" data-o="${this.dataO}"></dev-ezbus-nand>`:`<dev-ezbus-nand${i0} data-i1="wps-w15-o15"></dev-ezbus-nand>`;
+                            const i0 = this.dataI0?`<dev-ezbus-not data-i="${this.dataI0}" data-o="wps-w15-i15"></dev-ezbus-not>`:'<dev-ezbus-not data-o="wps-w15-i15"></dev-ezbus-not>';
+                            const i1 = this.dataI1?` data-i1="${this.dataI1}"`:'';
+                            const o = this.dataO?`<dev-ezbus-nand data-i0="wps-w15-o15"${i1} data-o="${this.dataO}"></dev-ezbus-nand>`:`<dev-ezbus-nand data-i0="wps-w15-o15"${i1}></dev-ezbus-nand>`;
 
-                            this.innerHTML = `${i1}${o}`;
+                            this.innerHTML = `${i0}${o}`;
                         }
                     }
                     
                     customElements.define('dev-ezbus-normal-form-1101', EzbusNormalForm1101);
-
-                    class EzbusNormalForm0100 extends HTMLElement {
-                        #ALLOWattributeChangedCallback = null;
-                        
-                        static get observedAttributes() {
-                            return ['data-i0', 'data-i1', 'data-o'];
-                        }
-                        
-                        get dataI0() {
-                            if (!this.hasAttribute('data-i0')) return;
-                            return this.getAttribute('data-i0');
-                        }
-                        
-                        set dataI0(val) {
-                            this.setAttribute('data-i0', val);
-                        }
-                        
-                        get dataI1() {
-                            if (!this.hasAttribute('data-i1')) return;
-                            return this.getAttribute('data-i1');
-                        }
-                        
-                        set dataI1(val) {
-                            this.setAttribute('data-i1', val);
-                        }
-                        
-                        get dataO() {
-                            if (!this.hasAttribute('data-o')) return;
-                            return this.getAttribute('data-o');
-                        }
-                        
-                        set dataO(val) {
-                            this.setAttribute('data-o', val);
-                        }
-                        
-                        connectedCallback() {
-                            setTimeout(_ => this.#setupNormalForm0100(), 0);
-                            this.#ALLOWattributeChangedCallback = true;
-                        }
-
-                        attributeChangedCallback(name, oldValue, newValue) {
-                            if (this.#ALLOWattributeChangedCallback) {
-                                this.#ALLOWattributeChangedCallback = false;
-                                this.#setupNormalForm0100();
-                                this.#ALLOWattributeChangedCallback = true;
-                            }
-                        }
-
-                        #setupNormalForm0100() {
-                            const classv = this.hasAttribute("class")?this.getAttribute("class"):'';
-                            if (!(classv.includes("wps-w15"))) this.setAttribute("class", classv?`${classv} wps-w15`:"wps-w15");
-                            
-                            const i0 = this.dataI0?`<dev-ezbus-not data-i="${this.dataI0}" data-o="wps-w15-i15"></dev-ezbus-not>`:'<dev-ezbus-not data-o="wps-w15-i15"></dev-ezbus-not>';
-                            const i1 = this.dataI1?`<dev-ezbus-nand data-i0="wps-w15-o15" data-i1="${this.dataI1}" data-o="wps-w15-i14"></dev-ezbus-nand>`:`<dev-ezbus-nand data-i0="wps-w15-o15" data-o="wps-w15-i14"></dev-ezbus-nand>`;
-                            const o = this.dataO?`<dev-ezbus-not data-i="wps-w15-i14" data-o="${this.dataO}"></data-ezbus-not>`:`<dev-ezbus-not data-i="wps-w15-i14"></data-ezbus-not>`;
-
-                            this.innerHTML = `${i0}${i1}${o}`;
-                        }
-                    }
-                    
-                    customElements.define('dev-ezbus-normal-form-0100', EzbusNormalForm0100);
 
                     class EzbusNormalForm0010 extends HTMLElement {
                         #ALLOWattributeChangedCallback = null;
@@ -1075,15 +1014,76 @@ export class DevEzbus extends HTMLElement {
                             const classv = this.hasAttribute("class")?this.getAttribute("class"):'';
                             if (!(classv.includes("wps-w15"))) this.setAttribute("class", classv?`${classv} wps-w15`:"wps-w15");
                             
+                            const i0 = this.dataI0?`<dev-ezbus-not data-i="${this.dataI0}" data-o="wps-w15-i15"></dev-ezbus-not>`:'<dev-ezbus-not data-o="wps-w15-i15"></dev-ezbus-not>';
+                            const i1 = this.dataI1?`<dev-ezbus-nand data-i0="wps-w15-o15" data-i1="${this.dataI1}" data-o="wps-w15-i14"></dev-ezbus-nand> `:'<dev-ezbus-nand data-i0="wps-w15-o15" data-o="wps-w15-i14"></dev-ezbus-nand>';
+                            const o = this.dataO?`<dev-ezbus-not data-i="wps-w15-o14" data-o="${this.dataO}"></data-ezbus-not>`:'<dev-ezbus-not data-i="wps-w15-o14"></data-ezbus-not>';
+
+                            this.innerHTML = `${i0}${i1}${o}`;
+                        }
+                    }
+                    
+                    customElements.define('dev-ezbus-normal-form-0010', EzbusNormalForm0010);
+
+                    class EzbusNormalForm0100 extends HTMLElement {
+                        #ALLOWattributeChangedCallback = null;
+                        
+                        static get observedAttributes() {
+                            return ['data-i0', 'data-i1', 'data-o'];
+                        }
+                        
+                        get dataI0() {
+                            if (!this.hasAttribute('data-i0')) return;
+                            return this.getAttribute('data-i0');
+                        }
+                        
+                        set dataI0(val) {
+                            this.setAttribute('data-i0', val);
+                        }
+                        
+                        get dataI1() {
+                            if (!this.hasAttribute('data-i1')) return;
+                            return this.getAttribute('data-i1');
+                        }
+                        
+                        set dataI1(val) {
+                            this.setAttribute('data-i1', val);
+                        }
+                        
+                        get dataO() {
+                            if (!this.hasAttribute('data-o')) return;
+                            return this.getAttribute('data-o');
+                        }
+                        
+                        set dataO(val) {
+                            this.setAttribute('data-o', val);
+                        }
+                        
+                        connectedCallback() {
+                            setTimeout(_ => this.#setupNormalForm0100(), 0);
+                            this.#ALLOWattributeChangedCallback = true;
+                        }
+
+                        attributeChangedCallback(name, oldValue, newValue) {
+                            if (this.#ALLOWattributeChangedCallback) {
+                                this.#ALLOWattributeChangedCallback = false;
+                                this.#setupNormalForm0100();
+                                this.#ALLOWattributeChangedCallback = true;
+                            }
+                        }
+
+                        #setupNormalForm0100() {
+                            const classv = this.hasAttribute("class")?this.getAttribute("class"):'';
+                            if (!(classv.includes("wps-w15"))) this.setAttribute("class", classv?`${classv} wps-w15`:"wps-w15");
+                            
                             const i0 = this.dataI0?` data-i0="${this.dataI0}"`:'';
-                            const i1 = this.dataI1?`<dev-ezbus-not data-i="${this.dataI1}" data-o="wps-w15-i15"></dev-ezbus-not><dev-ezbus-nand${i0} data-i1="wps-w15-o15" data-o="wps-w15-i13"></dev-ezbus-nand>`:`<dev-ezbus-not data-o="wps-w15-i15"></dev-ezbus-not><dev-ezbus-nand${i0} data-i1="wps-w15-o15" data-o="wps-w15-i14"></dev-ezbus-nand>`;
+                            const i1 = this.dataI1?`<dev-ezbus-not data-i="${this.dataI1}" data-o="wps-w15-i15"></dev-ezbus-not><dev-ezbus-nand${i0} data-i1="wps-w15-o15" data-o="wps-w15-i14"></dev-ezbus-nand>`:`<dev-ezbus-not data-o="wps-w15-i15"></dev-ezbus-not><dev-ezbus-nand${i0} data-i1="wps-w15-o15" data-o="wps-w15-i14"></dev-ezbus-nand>`;
                             const o = this.dataO?`<dev-ezbus-not data-i="wps-w15-o14" data-o="${this.dataO}></dev-ezbus-not>`:'<dev-ezbus-not data-i="wps-w15-o14"></dev-ezbus-not>'
 
                             this.innerHTML = `${i1}${o}`;
                         }
                     }
                     
-                    customElements.define('dev-ezbus-normal-form-0010', EzbusNormalForm0010);
+                    customElements.define('dev-ezbus-normal-form-0100', EzbusNormalForm0100);
 			  
                     /*class Ezbus extends HTMLElement {
                     	//pass
