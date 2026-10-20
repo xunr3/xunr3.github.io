@@ -1077,9 +1077,8 @@ export class DevEzbus extends HTMLElement {
                             
                             const i0 = this.dataI0?` data-i0="${this.dataI0}"`:'';
                             const i1 = this.dataI1?`<dev-ezbus-not data-i="${this.dataI1}" data-o="wps-w15-i15"></dev-ezbus-not><dev-ezbus-nand${i0} data-i1="wps-w15-o15" data-o="wps-w15-i14"></dev-ezbus-nand>`:`<dev-ezbus-not data-o="wps-w15-i15"></dev-ezbus-not><dev-ezbus-nand${i0} data-i1="wps-w15-o15" data-o="wps-w15-i14"></dev-ezbus-nand>`;
-                            const o = this.dataO?`<dev-ezbus-not data-i="wps-w15-o14" data-o="${this.dataO}></dev-ezbus-not>`:'<dev-ezbus-not data-i="wps-w15-o14"></dev-ezbus-not>';
+                            const o = this.dataO?`<dev-ezbus-not data-i="wps-w15-o14" data-o="${this.dataO}"></dev-ezbus-not>`:'<dev-ezbus-not data-i="wps-w15-o14"></dev-ezbus-not>';
 
-                            console.log(`${i1}${o}`);
                             this.innerHTML = `${i1}${o}`;
                         }
                     }
