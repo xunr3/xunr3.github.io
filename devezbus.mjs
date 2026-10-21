@@ -40,7 +40,7 @@ export class DevEzbus extends HTMLElement {
                     this.innerHTML = `
 <bus-init></bus-init>
 <style>
-    @import url("https://xunr3.github.io/bugc_underclock_style.css");
+    @import url("https://xunr3.github.io/devezbus.css");
     @layer usingBugc{
   	  dev-ezbus {
 		    display: block !important;
@@ -431,23 +431,28 @@ export class DevEzbus extends HTMLElement {
                             let flag = false;
                             if (!this.hasAttribute('debug-target')) return;
                             try {
-                                let result = JSON.parse(this.getAttribute('debug-target'), (k, v) => {
+                                let result = JSON.parse(this.getAttribute('debug-target').replaceAll("&quot;", '"'), (k, v) => {
                                     if (k !== "" && typeof v !== 'string') {
                                         flag = true;
+                                        console.trace();
                                         throw new Error("debug-target of nand is wrong format. it must be string array of json (when not nand : multidimensional array) (tip : NON-STRING)");
                                     }
                                     return v;
                                 });
-                                if (!Array.isArray(result)) throw new Error('debug-target of nand is wrong format. it must be string array of json (when not nand : multidimensional array) (TIP : NON-ARRAY-JSON-OR-NON-JSON)');
+                                if (!Array.isArray(result)) {
+                                    flag = null;
+                                    console.trace();
+                                    throw new Error('debug-target of nand is wrong format. it must be string array of json (when not nand : multidimensional array) (TIP : NON-ARRAY-JSON)');
+                                }
                                 result = {
                                     i0: result.includes("i0"),
                                     i1: result.includes("i1"),
                                     o: result.includes("o")
                                 };
                                 return result;
-                            } catch {
-                                console.trace();
-                                console.warn(`debug-target of nand is wrong format. it must be string array of json (when not nand : multidimensional array) (tip : NON-${flag?'STRING':'ARRAY-JSON-OR-NON-JSON'})`);
+                            } catch (error) {
+                                console.log(error.stack); console.trace();
+                                console.warn(`debug-target of nand is wrong format. it must be string array of json (when not nand : multidimensional array) (tip : NON-${(flag===null)?'ARRAY-JSON':flag?'STRING':'JSON'})`);
                                 return;
                             }
                         }
@@ -505,9 +510,9 @@ export class DevEzbus extends HTMLElement {
                             let i1 = this.dataI1?` ${this.dataI1}`:'';
                             let o = this.dataO?` ${this.dataO}`:'';
                             
-                            i0 = `<dev-ezbus-box non-checkbox${state.i0?' debug-mode':''}><anime-input class="nand-gate-i0${i0}"></anime-input></dev-ezbus-box>`;
-                            i1 = `<dev-ezbus-box non-checkbox${state.i1?' debug-mode':''}><anime-input class="nand-gate-i1${i1}"></anime-input></dev-ezbus-box>`;
-                            o = `<dev-ezbus-box non-checkbox${state.o?' debug-mode':''}><anime-input class="nand-gate-o${o}"></anime-input></dev-ezbus-box>`;
+                            i0 = `<dev-ezbus-box class="devezbus-debugbox" non-checkbox${state.i0?' debug-mode':''}><p class="devezbus-debughint"> (nand) i0 : </p><anime-input class="nand-gate-i0${i0}"></anime-input></dev-ezbus-box>`;
+                            i1 = `<dev-ezbus-box class="devezbus-debugbox" non-checkbox${state.i1?' debug-mode':''}><anime-input class="nand-gate-i1${i1}"><p class="devezbus-debughint"> (nand) i1 : </p></anime-input></dev-ezbus-box>`;
+                            o = `<dev-ezbus-box class="devezbus-debugbox" non-checkbox${state.o?' debug-mode':''}><anime-input class="nand-gate-o${o}"><p class="devezbus-debughint"> (nand) o : </p></anime-input></dev-ezbus-box>`;
 
                             this.innerHTML = `${i0}${i1}${o}`;
                         }
@@ -526,22 +531,26 @@ export class DevEzbus extends HTMLElement {
                             let flag = false;
                             if (!this.hasAttribute('debug-target')) return;
                             try {
-                                return JSON.parse(this.getAttribute('debug-target'), (k, v) => {
+                                return JSON.parse(this.getAttribute('debug-target').replaceAll("&quot;", '"'), (k, v) => {
+                                    flag = false;
                                     if (k === "") {
                                         if (Array.isArray(v)) return v;
-                                        throw new Error("debug-target (but isn't nand, it's not ... only 0 index is used, after one is ignored) is wrong format. it must be multidimensional array of json (when nand : string array) (TIP : NON-ARRAY-JSON-OR-NON-JSON)");
+                                        flag = undefined;
+                                        console.trace();
+                                        throw new Error("debug-target (but isn't nand, it's not ... only 0 index is used, after one is ignored) is wrong format. it must be multidimensional array of json (when nand : string array) (TIP : NON-ARRAY-JSON)");
                                     }
                                     return v;
                                 }).map(child => {
-                                	if (!Array.isArray(v)) {
+                                	if (!Array.isArray(child)) {
                                         flag = true;
+                                        console.trace();
                                         throw new Error("debug-target (but isn't nand, it's not ... only 0 index is used, after one is ignored) is wrong format. it must be multidimensional array of json (when nand : string array) (TIP : NON-ARRAY)");
                                     }
-                                    return JSON.stringify(child);
+                                    return JSON.stringify(child).replaceAll('"', "&quot;");
                                 });
-                            } catch {
-                                console.trace();
-                                console.warn(`debug-target (but isn't nand, it's not ... only 0 index is used, after one is ignored) is wrong format. it must be multidimensional array of json (when nand : string array) (tip : NON-${flag?'ARRAY':'ARRAY-JSON-OR-NON-JSON'})`);
+                            } catch (error) {
+                                console.log(error.stack); console.trace();
+                                console.warn(`debug-target (but isn't nand, it's not ... only 0 index is used, after one is ignored) is wrong format. it must be multidimensional array of json (when nand : string array) (tip : NON-${(flag==undefined)?'ARRAY-JSON':flag?'ARRAY':'JSON'})`);
                                 return;
                             }
                         }
@@ -582,11 +591,11 @@ export class DevEzbus extends HTMLElement {
                         }
 
                         #setupNot() {
-							console.log(this.debugTarget);
                             const state = (this.debugTarget || ['[]'])[0] || '[]';
-							console.log(state);
-                            const debugtarget = (state==='[]')?'':` debug-target="${state}"`;
-							console.log(debugtarget);
+                            const isDebugMode = (state==='[]');
+                            const debugtarget = isDebugMode?'':` debug-target="${state}"`;
+                            const debugMarkup = isDebugMode?'':' devezbus-debugpanel-on';
+                            
 
                             const classv = this.hasAttribute("class")?this.getAttribute("class"):'';
                             if (!(classv.includes("nand-gate"))) this.setAttribute("class", classv?`${classv} nand-gate`:"nand-gate");
@@ -594,7 +603,7 @@ export class DevEzbus extends HTMLElement {
                             let i = this.dataI?` data-i0=${this.dataI} data-i1=${this.dataI}`:'';
                             let o = this.dataO?` data-o=${this.dataO}`:'';
 
-                            this.innerHTML = `<dev-ezbus-nand${i}${o}${debugtarget}></dev-ezbus-nand>`;
+                            this.innerHTML = `<div class="devezbus-debugbox" devezbus-debugpanel="mod15-pan15"${debugMarkup}><p  class="devezbus-debughint" devezbus-debugpanel="mod15-pan15"> not(x) = nand(x, x) : </p><dev-ezbus-nand${i}${o}${debugtarget}></dev-ezbus-nand></div>`;
                         }
                     }
                     
@@ -611,27 +620,32 @@ export class DevEzbus extends HTMLElement {
                             let flag = false;
                             if (!this.hasAttribute('debug-target')) return;
                             try {
-                                const result = JSON.parse(this.getAttribute('debug-target'), (k, v) => {
+                                const result = JSON.parse(this.getAttribute('debug-target').replaceAll("&quot;", '"'), (k, v) => {
+                                    flag = false;
                                     if (k === "") {
                                         if (Array.isArray(v)) return v;
-                                        throw new Error("debug-target (but isn't nand, it's and ... length must be 2) is wrong format. it must be multidimensional array of json (when nand : string array) (TIP : NON-ARRAY-JSON-OR-NON-JSON)");
+                                        flag = undefined;
+                                        console.trace();
+                                        throw new Error("debug-target (but isn't nand, it's and ... length must be 2) is wrong format. it must be multidimensional array of json (when nand : string array) (TIP : NON-ARRAY-JSON)");
                                     }
                                     return v;
                                 }).map(child => {
-                                    if (!Array.isArray(v)) {
+                                    if (!Array.isArray(child)) {
                                         flag = true;
+                                        console.trace();
                                         throw new Error("debug-target (but isn't nand, it's and ... length must be 2) is wrong format. it must be multidimensional array of json (when nand : string array) (TIP : NON-ARRAY)");
                                     }
-                                    return JSON.stringify(child)
+                                    return JSON.stringify(child).replaceAll('"', "&quot;");
                                 });
                                 if (result.length !== 2) {
                                     flag = null;
+                                    console.trace();
                                     throw new Error("debug-target (but isn't nand, it's and ... length must be 2) is wrong format. it must be multidimensional array of json (when nand : string array) (TIP : NON-FIT-LENGTH)");
 								}
 								return result;
-                            } catch {
-                                console.trace();
-                                console.warn(`debug-target (but isn't nand, it's and ... length must be 2) is wrong format. it must be multidimensional array of json (when nand : string array) (tip : NON-${(flag===null)?'FIT-LENGTH':flag?'STRING':'ARRAY-JSON-OR-NON-JSON'})`);
+                            } catch (error) {
+                                console.log(error.stack); console.trace();
+                                console.warn(`debug-target (but isn't nand, it's and ... length must be 2) is wrong format. it must be multidimensional array of json (when nand : string array) (tip : NON-${(flag===undefined)?'ARRAY-JSON':(flag===null)?'FIT-LENGTH':flag?'ARRAY':'JSON'})`);
                                 return;
                             }
                         }
@@ -682,7 +696,11 @@ export class DevEzbus extends HTMLElement {
 
                         #setupAnd() {
                             const state = this.debugTarget || ['[]', '[[]]'];
-                            const debugtarget = state.map(e => (e==='[]' || e==='[[]]')?'':` debug-target="${e}"`);
+                            const isDebugMode = state.map(e => (e==='[]' || e==='[[]]'));
+                            const debugtarget = state.map((e, i) => isDebugMode[i]?'':` debug-target="${e}"`);
+                            const debugMarkup = state.map((e, i) => isDebugMode[i]?'':' devezbus-debugpanel-on');
+
+                            console.log(debugtarget);
 
                             const classv = this.hasAttribute("class")?this.getAttribute("class"):'';
                             if (!(classv.includes("wps-w15"))) this.setAttribute("class", classv?`${classv} wps-w15`:"wps-w15");
@@ -691,7 +709,7 @@ export class DevEzbus extends HTMLElement {
                             let i1 = this.dataI1?` data-i1=${this.dataI1}`:'';
                             let o = this.dataO?` data-o=${this.dataO}`:'';
 
-                            this.innerHTML = `<dev-ezbus-nand${i0}${i1} data-o="wps-w15-i15"${debugtarget[0]}></dev-ezbus-nand><dev-ezbus-not data-i="wps-w15-o15"${o}${debugtarget[1]}></dev-ezbus-not>`;
+                            this.innerHTML = `<div class="devezbus-debugbox" devezbus-debugpanel="mod15-pan15"${debugMarkup[0]}><p class="devezbus-debughint" devezbus-debugpanel="mod15-pan15"> (and) wps-w15-i15 = nand(i0, i1)-o : </p><dev-ezbus-nand${i0}${i1} data-o="wps-w15-i15"${debugtarget[0]}></dev-ezbus-nand></div><div class="devezbus-debugbox" devezbus-debugpanel="mod15-pan14"${debugMarkup[1]}><p class="devezbus-debughint" devezbus-debugpanel="mod15-pan14"> (and) o = not(wps-w15-o15) : </p><dev-ezbus-not data-i="wps-w15-o15"${o}${debugtarget[1]}></dev-ezbus-not></div>`;
                         }
                     }
                     
@@ -708,27 +726,32 @@ export class DevEzbus extends HTMLElement {
                             let flag = false;
                             if (!this.hasAttribute('debug-target')) return;
                             try {
-                                const result = JSON.parse(this.getAttribute('debug-target'), (k, v) => {
+                                const result = JSON.parse(this.getAttribute('debug-target').replaceAll("&quot;", '"'), (k, v) => {
+                                    flag = false;
                                     if (k === "") {
                                         if (Array.isArray(v)) return v;
-                                        throw new Error("debug-target (but isn't nand, it's or ... length must be 3) is wrong format. it must be multidimensional array of json (when nand : string array) (TIP : NON-ARRAY-JSON-OR-NON-JSON)");
+                                        flag = undefined;
+                                        console.trace();
+                                        throw new Error("debug-target (but isn't nand, it's or ... length must be 3) is wrong format. it must be multidimensional array of json (when nand : string array) (TIP : NON-ARRAY-JSON)");
                                     }
                                     return v;
                                 }).map(child => {
-                                    if (!Array.isArray(v)) {
+                                    if (!Array.isArray(child)) {
                                         flag = true;
+                                        console.trace();
                                         throw new Error("debug-target (but isn't nand, it's or ... length must be 3) is wrong format. it must be multidimensional array of json (when nand : string array) (TIP : NON-ARRAY)");
                                     }
-                                    return JSON.stringify(child);
+                                    return JSON.stringify(child).replaceAll('"', "&quot;");
                                 });
-                                if (v.length !== 3) {
+                                if (result.length !== 3) {
                                     flag = null;
+                                    console.trace();
                                     throw new Error("debug-target (but isn't nand, it's or ... length must be 3) is wrong format. it must be multidimensional array of json (when nand : string array) (TIP : NON-FIT-LENGTH)");
                                 }
                                 return result;
-                            } catch {
-                                console.trace();
-                                console.warn(`debug-target (but isn't nand, it's or ... length must be 3) is wrong format. it must be multidimensional array of json (when nand : string array) (tip : NON-${(flag===null)?'FIT-LENGTH':flag?'STRING':'ARRAY-JSON-OR-NON-JSON'})`);
+                            } catch (error) {
+                                console.log(error.stack); console.trace();
+                                console.warn(`debug-target (but isn't nand, it's or ... length must be 3) is wrong format. it must be multidimensional array of json (when nand : string array) (tip : NON-${(flag===undefined)?'ARRAY-JSON':(flag===null)?'FIT-LENGTH':flag?'ARRAY':'JSON'})`);
                                 return;
                             }
                         }
@@ -779,14 +802,17 @@ export class DevEzbus extends HTMLElement {
 
                         #setupOr() {
                             const state = this.debugTarget || ['[[]]', '[[]]', '[]'];
-                            const debugtarget = state.map(e => (e==='[]' || e==='[[]]')?'':` debug-target="${e}"`);
+                            const isDebugMode = state.map(e => (e==='[]' || e==='[[]]'));
+                            const debugtarget = state.map((e, i) => isDebugMode[i]?'':` debug-target="${e}"`);
+                            const debugMarkup = state.map((e, i) => isDebugMode[i]?'':' devezbus-debugpanel-on');
+
                             
                             const classv = this.hasAttribute("class")?this.getAttribute("class"):'';
                             if (!(classv.includes("wps-w15"))) this.setAttribute("class", classv?`${classv} wps-w15`:"wps-w15");
                             
-                            const i0 = this.dataI0?`<dev-ezbus-not data-i="${this.dataI0}" data-o="wps-w15-i15"${debugtarget[0]}></dev-ezbus-not>`:`<dev-ezbus-not data-o="wps-w15-i15"${debugtarget[0]}></dev-ezbus-not>`;
-                            const i1 = this.dataI1?`<dev-ezbus-not data-i="${this.dataI1}" data-o="wps-w15-i14"${debugtarget[1]}></dev-ezbus-not>`:`<dev-ezbus-not data-o="wps-w15-i14"${debugtarget[1]}></dev-ezbus-not>`;
-                            const o = this.dataO?`<dev-ezbus-nand data-i0="wps-w15-o15" data-i1="wps-w15-o14" data-o="${this.dataO}"${debugtarget[2]}></dev-ezbus-nand>`:`<dev-ezbus-nand data-i0="wps-w15-o15" data-i1="wps-w15-o14"${debugtarget[2]}></dev-ezbus-nand>`;
+                            const i0 = this.dataI0?`<div class="devezbus-debugbox" devezbus-debugpanel="mod15-pan14"${debugMarkup[0]}><p class="devezbus-debughint" devezbus-debugpanel="mod15-pan14"> (or) wps-w15-i15 = not(i0) : </p><dev-ezbus-not data-i="${this.dataI0}" data-o="wps-w15-i15"${debugtarget[0]}></dev-ezbus-not></div>`:`<div class="devezbus-debugbox" devezbus-debugpanel="mod15-pan14"${debugMarkup[0]}><p class="devezbus-debughint" devezbus-debugpanel="mod15-pan14"> (or) wps-w15-i15 = not(i0) : </p><dev-ezbus-not data-o="wps-w15-i15"${debugtarget[0]}></dev-ezbus-not></div>`;
+                            const i1 = this.dataI1?`<div class="devezbus-debugbox" devezbus-debugpanel="mod15-pan14"${debugMarkup[1]}><p class="devezbus-debughint" devezbus-debugpanel="mod15-pan14"> (or) wps-w15-i14 = not(i0) : </p><dev-ezbus-not data-i="${this.dataI1}" data-o="wps-w15-i14"${debugtarget[1]}></dev-ezbus-not></div>`:`<div class="devezbus-debugbox" devezbus-debugpanel="mod15-pan14"${debugMarkup[1]}><p class="devezbus-debughint" devezbus-debugpanel="mod15-pan14"> (or) wps-w15-i14 = not(i0) : </p><dev-ezbus-not data-o="wps-w15-i14"${debugtarget[1]}></dev-ezbus-not></div>`;
+                            const o = this.dataO?`<div class="devezbus-debugbox" devezbus-debugpanel="mod15-pan15"${debugMarkup[2]}><p class="devezbus-debughint" devezbus-debugpanel="mod15-pan15"> (or) o = nand(wps-w15-o15, wps-w15-o14)-o : </p><dev-ezbus-nand data-i0="wps-w15-o15" data-i1="wps-w15-o14" data-o="${this.dataO}"${debugtarget[2]}></dev-ezbus-nand></div>`:`<div class="devezbus-debugbox" devezbus-debugpanel="mod15-pan15"${debugMarkup[2]}><p class="devezbus-debughint" devezbus-debugpanel="mod15-pan15"> (or) o = nand(wps-w15-o15, wps-w15-o14)-o : </p><dev-ezbus-nand data-i0="wps-w15-o15" data-i1="wps-w15-o14"${debugtarget[2]}></dev-ezbus-nand></div>`;
 
                             this.innerHTML = `${i0}${i1}${o}`;
                         }
@@ -805,27 +831,32 @@ export class DevEzbus extends HTMLElement {
                             let flag = false;
                             if (!this.hasAttribute('debug-target')) return;
                             try {
-                                const result = JSON.parse(this.getAttribute('debug-target'), (k, v) => {
+                                const result = JSON.parse(this.getAttribute('debug-target').replaceAll("&quot;", '"'), (k, v) => {
+                                    flag = false;
                                     if (k === "") {
                                         if (Array.isArray(v)) return v;
-                                        throw new Error("debug-target (but isn't nand, it's nor ... length must be 4) is wrong format. it must be multidimensional array of json (when nand : string array) (TIP : NON-ARRAY-JSON-OR-NON-JSON)");
+                                        flag = undefined;
+                                        console.trace();
+                                        throw new Error("debug-target (but isn't nand, it's nor ... length must be 4) is wrong format. it must be multidimensional array of json (when nand : string array) (TIP : NON-ARRAY-JSON)");
                                     }
                                     return v;
                                 }).map(child => {
-                                    if (!Array.isArray(v)) {
+                                    if (!Array.isArray(child)) {
                                         flag = true;
+                                        console.trace();
                                         throw new Error("debug-target (but isn't nand, it's nor ... length must be 4) is wrong format. it must be multidimensional array of json (when nand : string array) (TIP : NON-ARRAY)");
                                     }
-                                    return JSON.stringify(child);
+                                    return JSON.stringify(child).replaceAll('"', "&quot;");
                                 });
-                                if (v.length !== 3) {
+                                if (result.length !== 4) {
                                     flag = null;
+                                    console.trace();
 									throw new Error("debug-target (but isn't nand, it's nor ... length must be 4) is wrong format. it must be multidimensional array of json (when nand : string array) (TIP : NON-FIT-LENGTH)");
                                 }
                                 return result;
-                            } catch {
-                                console.trace();
-                                console.warn(`debug-target (but isn't nand, it's nor ... length must be 4) is wrong format. it must be multidimensional array of json (when nand : string array) (tip : NON-${(flag==null)?'FIT-LENGTH':flag?'STRING':'ARRAY-JSON-OR-NON-JSON'})`);
+                            } catch (error) {
+                                console.log(error.stack); console.trace();
+                                console.warn(`debug-target (but isn't nand, it's nor ... length must be 4) is wrong format. it must be multidimensional array of json (when nand : string array) (tip : NON-${(flag===undefined)?'ARRAY-JSON':(flag===null)?'FIT-LENGTH':flag?'ARRAY':'JSON'})`);
                                 return;
                             }
                         }
@@ -876,16 +907,18 @@ export class DevEzbus extends HTMLElement {
 
                         #setupNor() {
                             const state = this.debugTarget || ['[[]]', '[[]]', '[]', '[[]]'];
-                            const debugtarget = state.map(e => (e==='[]' || e==='[[]]')?'':` debug-target="${e}"`);
+                            const isDebugMode = state.map(e => (e==='[]' || e==='[[]]'));
+                            const debugtarget = state.map((e, i) => isDebugMode[i]?'':` debug-target="${e}"`);
+                            const debugMarkup = state.map((e, i) => isDebugMode[i]?'':' devezbus-debugpanel-on');
                             
                             const classv = this.hasAttribute("class")?this.getAttribute("class"):'';
                             if (!(classv.includes("wps-w15"))) this.setAttribute("class", classv?`${classv} wps-w15`:"wps-w15");
                             
-                            const i0 = this.dataI0?`<dev-ezbus-not data-i="${this.dataI0}" data-o="wps-w15-i15"${debugtarget[0]}></dev-ezbus-not>`:`<dev-ezbus-not data-o="wps-w15-i15"${debugtarget[0]}></dev-ezbus-not>`;
-                            const i1 = this.dataI1?`<dev-ezbus-not data-i="${this.dataI1}" data-o="wps-w15-i14"${debugtarget[1]}></dev-ezbus-not>`:`<dev-ezbus-not data-o="wps-w15-i14"${debugtarget[1]}></dev-ezbus-not>`;
-                            const o = this.dataO?`<dev-ezbus-not data-i="wps-w15-o13" data-o="${this.dataO}"${debugtarget[3]}></dev-ezbus-not>`:`<dev-ezbus-not data-i="wps-w15-o13"${debugtarget[3]}></dev-ezbus-not>`;
+                            const i0 = this.dataI0?`<div class="devezbus-debugbox" devezbus-debugpanel="mod15-pan14"${debugMarkup[0]}><p class="devezbus-debughint" devezbus-debugpanel="mod15-pan14"> (nor) wps-w15-i15 = not(i0) : </p><dev-ezbus-not data-i="${this.dataI0}" data-o="wps-w15-i15"${debugtarget[0]}></dev-ezbus-not></div>`:`<div class="devezbus-debugbox" devezbus-debugpanel="mod15-pan14"${debugMarkup[0]}><p class="devezbus-debughint" devezbus-debugpanel="mod15-pan14"> (nor) wps-w15-i15 = not(i0) : </p><dev-ezbus-not data-o="wps-w15-i15"${debugtarget[0]}></dev-ezbus-not></div>`;
+                            const i1 = this.dataI1?`<div class="devezbus-debugbox" devezbus-debugpanel="mod15-pan14"${debugMarkup[1]}><p class="devezbus-debughint" devezbus-debugpanel="mod15-pan14"> (nor) wps-w15-i14 = not(i1) : </p><dev-ezbus-not data-i="${this.dataI1}" data-o="wps-w15-i14"${debugtarget[1]}></dev-ezbus-not></div>`:`<div class="devezbus-debugbox" devezbus-debugpanel="mod15-pan14"${debugMarkup[1]}><p class="devezbus-debughint" devezbus-debugpanel="mod15-pan14"> (nor) wps-w15-i14 = not(i1) : </p><dev-ezbus-not data-o="wps-w15-i14"${debugtarget[1]}></dev-ezbus-not></div>`;
+                            const o = this.dataO?`<div class="devezbus-debugbox" devezbus-debugpanel="mod15-pan14"${debugMarkup[3]}><p class="devezbus-debugbox" devezbus-debugpanel="mod15-pan14"> (nor) o = not(wps-w15-o13) : </p><dev-ezbus-not data-i="wps-w15-o13" data-o="${this.dataO}"${debugtarget[3]}></dev-ezbus-not></div>`:`<div class="devezbus-debugbox" devezbus-debugpanel="mod15-pan14"${debugMarkup[3]}><p class="devezbus-debugbox" devezbus-debugpanel="mod15-pan14"> (nor) o = not(wps-w15-o13) : </p><dev-ezbus-not data-i="wps-w15-o13"${debugtarget[3]}></dev-ezbus-not></div>`;
 
-                            this.innerHTML = `${i0}${i1}<dev-ezbus-nand data-i0="wps-w15-o15" data-i1="wps-w15-o14" data-o="wps-w15-i13"${debugtarget[2]}></dev-ezbus-nand>${o}`;
+                            this.innerHTML = `${i0}${i1}<div class="devezbus-debugbox" devezbus-debugpanel="mod15-pan15"${debugMarkup[2]}><p class="devezbus-debugbox" devezbus-debugpanel="mod15-pan15"> (not) wps-w15-i13 = nand(wps-w15-o15, wps-w15-o14)-o : </p><dev-ezbus-nand data-i0="wps-w15-o15" data-i1="wps-w15-o14" data-o="wps-w15-i13"${debugtarget[2]}></dev-ezbus-nand></div>${o}`;
                         }
                     }
                     
@@ -902,27 +935,32 @@ export class DevEzbus extends HTMLElement {
                             let flag = false;
                             if (!this.hasAttribute('debug-target')) return;
                             try {
-                                const result = JSON.parse(this.getAttribute('debug-target'), (k, v) => {
+                                const result = JSON.parse(this.getAttribute('debug-target').replaceAll("&quot;", '"'), (k, v) => {
+                                    flag = false;
                                     if (k === "") {
                                         if (Array.isArray(v)) return v;
-                                        throw new Error("debug-target (but isn't nand, it's xor ... length must be 4) is wrong format. it must be multidimensional array of json (when nand : string array) (TIP : NON-ARRAY-JSON-OR-NON-JSON)");
+                                        flag = undefined;
+                                        console.trace();
+                                        throw new Error("debug-target (but isn't nand, it's xor ... length must be 4) is wrong format. it must be multidimensional array of json (when nand : string array) (TIP : NON-ARRAY-JSON)");
                                     }
                                     return v;
                                 }).map(child => {
-                                    if (!Array.isArray(v)) {
+                                    if (!Array.isArray(child)) {
                                         flag = true;
+                                        console.trace();
                                         throw new Error("debug-target (but isn't nand, it's xor ... length must be 4) is wrong format. it must be multidimensional array of json (when nand : string array) (TIP : NON-ARRAY)");
                                     }
-                                    return JSON.stringify(child);
+                                    return JSON.stringify(child).replaceAll('"', "&quot;");
                                 });
-                                if (v.length !== 4) {
+                                if (result.length !== 4) {
                                     flag = null;
+                                    console.trace();
                                     throw new Error("debug-target (but isn't nand, it's xor ... length must be 4) is wrong format. it must be multidimensional array of json (when nand : string array) (TIP : NON-FIT-LENGTH)");
 								}
                                 return result;
-                            } catch {
-                                console.trace();
-                                console.warn(`debug-target (but isn't nand, it's xor ... length must be 4) is wrong format. it must be multidimensional array of json (when nand : string array) (tip : NON-${(flag===null)?'FIT-LENGTH':flag?'STRING':'ARRAY-JSON-OR-NON-JSON'})`);
+                            } catch (error) {
+                                console.log(error.stack); console.trace();
+                                console.warn(`debug-target (but isn't nand, it's xor ... length must be 4) is wrong format. it must be multidimensional array of json (when nand : string array) (tip : NON-${(flag===undefined)?'ARRAY-JSON':(flag===null)?'FIT-LENGTH':flag?'ARRAY':'JSON'})`);
                                 return;
                             }
                         }
@@ -973,16 +1011,18 @@ export class DevEzbus extends HTMLElement {
 
                         #setupXor() {
                             const state = this.debugTarget || ['[]', '[]', '[]', '[]'];
-                            const debugtarget = state.map(e => (e==='[]' || e==='[[]]')?'':` debug-target="${e}"`);
+                            const isDebugMode = state.map(e => (e==='[]' || e==='[[]]'));
+                            const debugtarget = state.map((e, i) => isDebugMode[i]?'':` debug-target="${e}"`);
+                            const debugMarkup = state.map((e, i) => isDebugMode[i]?'':' devezbus-debugpanel-on');
                             
                             const classv = this.hasAttribute("class")?this.getAttribute("class"):'';
                             if (!(classv.includes("wps-w15"))) this.setAttribute("class", classv?`${classv} wps-w15`:"wps-w15");
                             
                             const i0 = this.dataI0?` data-i0="${this.dataI0}"`:'';
                             const i1 = this.dataI1?` data-i1="${this.dataI1}"`:'';
-                            const o = this.dataO?`<dev-ezbus-nand data-i0="wps-w15-o14" data-i1="wps-w15-o13" data-o="${this.dataO}"${debugtarget[3]}></dev-ezbus-nand>`:`<dev-ezbus-nand data-i0="wps-w15-o14" data-i1="wps-w15-o13"${debugtarget[3]}></dev-ezbus-nand>`;
+                            const o = this.dataO?`<div class="devezbus-debugbox" devezbus-debugpanel="mod15-pan15"${debugMarkup[3]}><p class="devezbus-debughint" devezbus-debugpanel="mod15-pan15"> (xor) o = nand(wps-w15-o13, wps-w15-o13)-o : </p><dev-ezbus-nand data-i0="wps-w15-o14" data-i1="wps-w15-o13" data-o="${this.dataO}"${debugtarget[3]}></dev-ezbus-nand></div>`:`<div class="devezbus-debugbox" devezbus-debugpanel="mod15-pan15"${debugMarkup[3]}><p class="devezbus-debughint" devezbus-debugpanel="mod15-pan15"> (xor) o = nand(wps-w15-o13, wps-w15-o13)-o : </p><dev-ezbus-nand data-i0="wps-w15-o14" data-i1="wps-w15-o13"${debugtarget[3]}></dev-ezbus-nand></div>`;
 
-                            this.innerHTML = `<dev-ezbus-nand${i0}${i1} data-o="wps-w15-i15"${debugtarget[0]}></dev-ezbus-nand><dev-ezbus-nand${i0} data-i1="wps-w15-o15" data-o="wps-w15-i14"${debugtarget[1]}></dev-ezbus-nand><dev-ezbus-nand data-i0="wps-w15-o15"${i1} data-o="wps-w15-i13"${debugtarget[2]}></dev-ezbus-nand>${o}`;
+                            this.innerHTML = `<div class="devezbus-debugbox" devezbus-debugpanel="mod15-pan15"${debugMarkup[0]}><p class="devezbus-debughint" devezbus-debugpanel="mod15-pan15"> (and) wps-w15-i15 = nand(i0, i1)-o : </p><dev-ezbus-nand${i0}${i1} data-o="wps-w15-i15"${debugtarget[0]}></dev-ezbus-nand></div><div class="devezbus-debugbox" devezbus-debugpanel="mod15-pan15"${debugMarkup[1]}><p class="devezbus-debughint" devezbus-debugpanel="mod15-pan15"> (xor) wps-w15-i14 = nand(i0, wps-w15-o15)-o : </p><dev-ezbus-nand${i0} data-i1="wps-w15-o15" data-o="wps-w15-i14"${debugtarget[1]}></dev-ezbus-nand></div><div class="devezbus-debugbox" devezbus-debugpanel="mod15-pan15"${debugMarkup[2]}><p class="devezbus-debughint" devezbus-debugpanel="mod15-pan15"> (xor) wps-w15-i13 = nand(wps-w15-o15, i1)-o : </p><dev-ezbus-nand data-i0="wps-w15-o15"${i1} data-o="wps-w15-i13"${debugtarget[2]}></dev-ezbus-nand></div>${o}`;
                         }
                     }
                     
@@ -999,27 +1039,32 @@ export class DevEzbus extends HTMLElement {
                             let flag = false;
                             if (!this.hasAttribute('debug-target')) return;
                             try {
-                                const result = JSON.parse(this.getAttribute('debug-target'), (k, v) => {
+                                const result = JSON.parse(this.getAttribute('debug-target').replaceAll("&quot;", '"'), (k, v) => {
+                                    flag = false;
                                     if (k === "") {
                                         if (Array.isArray(v)) return v;
-                                        throw new Error("debug-target (but isn't nand, it's nxor ... length must be 5) is wrong format. it must be multidimensional array of json (when nand : string array) (TIP : NON-ARRAY-JSON-OR-NON-JSON)");
+                                        flag = undefined;
+                                        console.trace();
+                                        throw new Error("debug-target (but isn't nand, it's nxor ... length must be 5) is wrong format. it must be multidimensional array of json (when nand : string array) (TIP : NON-ARRAY-JSON)");
                                     }
                                     return v;
                                 }).map(child => {
-                                    if (!Array.isArray(v)) {
+                                    if (!Array.isArray(child)) {
                                         flag = true;
+                                        console.trace();
                                         throw new Error("debug-target (but isn't nand, it's nxor ... length must be 5) is wrong format. it must be multidimensional array of json (when nand : string array) (TIP : NON-ARRAY)");
                                     }
-                                    return JSON.stringify(child);
+                                    return JSON.stringify(child).replaceAll('"', "&quot;");
                                 });
-                                if (v.length !== 5) {
+                                if (result.length !== 5) {
                                     flag = null;
+                                    console.trace();
                                     throw new Error("debug-target (but isn't nand, it's nxor ... length must be 5) is wrong format. it must be multidimensional array of json (when nand : string array) (TIP : NON-FIT-LENGTH)");
 								}
                                 return result;
-                            } catch {
-                                console.trace();
-                                console.warn(`debug-target (but isn't nand, it's nxor ... length must be 5) is wrong format. it must be multidimensional array of json (when nand : string array) (tip : NON-${(flag===null)?'FIT-LENGTH':flag?'STRING':'ARRAY-JSON-OR-NON-JSON'})`);
+                            } catch (error) {
+                                console.log(error.stack); console.trace();
+                                console.warn(`debug-target (but isn't nand, it's nxor ... length must be 5) is wrong format. it must be multidimensional array of json (when nand : string array) (tip : NON-${(flag===undefined)?'ARRAY-JSON':(flag===null)?'FIT-LENGTH':flag?'ARRAY':'JSON'})`);
                                 return;
                             }
                         }
@@ -1096,27 +1141,32 @@ export class DevEzbus extends HTMLElement {
                             let flag = false;
                             if (!this.hasAttribute('debug-target')) return;
                             try {
-                                const result = JSON.parse(this.getAttribute('debug-target'), (k, v) => {
+                                const result = JSON.parse(this.getAttribute('debug-target').replaceAll("&quot;", '"'), (k, v) => {
+                                    flag = false;
                                     if (k === "") {
                                         if (Array.isArray(v)) return v;
-                                        throw new Error("debug-target (but isn't nand, it's normal-form-1011 ... length must be 2) is wrong format. it must be multidimensional array of json (when nand : string array) (TIP : NON-ARRAY-JSON-OR-NON-JSON)");
+                                        flag = undefined;
+                                        console.trace();
+                                        throw new Error("debug-target (but isn't nand, it's normal-form-1011 ... length must be 2) is wrong format. it must be multidimensional array of json (when nand : string array) (TIP : NON-ARRAY-JSON)");
                                     }
                                     return v;
                                 }).map(child => {
-                                    if (!Array.isArray(v)) {
+                                    if (!Array.isArray(child)) {
                                         flag = true;
+                                        console.trace();
                                         throw new Error("debug-target (but isn't nand, it's normal-form-1011 ... length must be 2) is wrong format. it must be multidimensional array of json (when nand : string array) (TIP : NON-ARRAY)");
                                     }
-                                    return JSON.stringify(child);
+                                    return JSON.stringify(child).replaceAll('"', "&quot;");
                                 });
-                                if (v.length !== 2) {
+                                if (result.length !== 2) {
                                     flag = null;
+                                    console.trace();
                                     throw new Error("debug-target (but isn't nand, it's normal-form-1011 ... length must be 2) is wrong format. it must be multidimensional array of json (when nand : string array) (TIP : NON-FIT-LENGTH)");
 								}
                                 return result;
-                            } catch {
-                                console.trace();
-                                console.warn(`debug-target (but isn't nand, it's normal-form-1011 ... length must be 2) is wrong format. it must be multidimensional array of json (when nand : string array) (tip : NON-${(flag===null)?'FIT-LENGTH':flag?'STRING':'ARRAY-JSON-OR-NON-JSON'})`);
+                            } catch (error) {
+                                console.log(error.stack); console.trace();
+                                console.warn(`debug-target (but isn't nand, it's normal-form-1011 ... length must be 2) is wrong format. it must be multidimensional array of json (when nand : string array) (tip : NON-${(flag===undefined)?'ARRAY-JSON':(flag===null)?'FIT-LENGTH':flag?'ARRAY':'JSON'})`);
                                 return;
                             }
                         }
@@ -1193,27 +1243,32 @@ export class DevEzbus extends HTMLElement {
                             let flag = false;
                             if (!this.hasAttribute('debug-target')) return;
                             try {
-                                const result = JSON.parse(this.getAttribute('debug-target'), (k, v) => {
+                                const result = JSON.parse(this.getAttribute('debug-target').replaceAll("&quot;", '"'), (k, v) => {
+                                    flag = false;
                                     if (k === "") {
                                         if (Array.isArray(v)) return v;
-                                        throw new Error("debug-target (but isn't nand, it's normal-form-1101 ... length must be 2) is wrong format. it must be multidimensional array of json (when nand : string array) (TIP : NON-ARRAY-JSON-OR-NON-JSON)");
+                                        flag = undefined;
+                                        console.trace();
+                                        throw new Error("debug-target (but isn't nand, it's normal-form-1101 ... length must be 2) is wrong format. it must be multidimensional array of json (when nand : string array) (TIP : NON-ARRAY-JSON)");
                                     }
                                     return v;
                                 }).map(child => {
-                                    if (!Array.isArray(v)) {
+                                    if (!Array.isArray(child)) {
                                         flag = true;
+                                        console.trace();
                                         throw new Error("debug-target (but isn't nand, it's normal-form-1101 ... length must be 2) is wrong format. it must be multidimensional array of json (when nand : string array) (TIP : NON-ARRAY)");
                                     }
-                                    return JSON.stringify(child);
+                                    return JSON.stringify(child).replaceAll('"', "&quot;");
                                 });
-                                if (v.length !== 2) {
+                                if (result.length !== 2) {
                                     flag = null;
+                                    console.trace();
                                     throw new Error("debug-target (but isn't nand, it's normal-form-1101 ... length must be 2) is wrong format. it must be multidimensional array of json (when nand : string array) (TIP : NON-FIT-LENGTH)");
                                 }
                                 return result;
-                            } catch {
-                                console.trace();
-                                console.warn(`debug-target (but isn't nand, it's normal-form-1101 ... length must be 2) is wrong format. it must be multidimensional array of json (when nand : string array) (tip : NON-${(flag===null)?'FIT-LENGTH':flag?'STRING':'ARRAY-JSON-OR-NON-JSON'})`);
+                            } catch (error) {
+                                console.log(error.stack); console.trace();
+                                console.warn(`debug-target (but isn't nand, it's normal-form-1101 ... length must be 2) is wrong format. it must be multidimensional array of json (when nand : string array) (tip : NON-${(flag===undefined)?'ARRAY-JSON':(flag===null)?'FIT-LENGTH':flag?'ARRAY':'JSON'})`);
                                 return;
                             }
                         }
@@ -1290,27 +1345,32 @@ export class DevEzbus extends HTMLElement {
                             let flag = false;
                             if (!this.hasAttribute('debug-target')) return;
                             try {
-                                const result = JSON.parse(this.getAttribute('debug-target'), (k, v) => {
+                                const result = JSON.parse(this.getAttribute('debug-target').replaceAll("&quot;", '"'), (k, v) => {
+                                    flag = false;
                                     if (k === "") {
                                         if (Array.isArray(v)) return v;
-                                        throw new Error("debug-target (but isn't nand, it's normal-form-0010 ... length must be 3) is wrong format. it must be multidimensional array of json (when nand : string array) (TIP : NON-ARRAY-JSON-OR-NON-JSON)");
+                                        flag = undefined;
+                                        console.trace();
+                                        throw new Error("debug-target (but isn't nand, it's normal-form-0010 ... length must be 3) is wrong format. it must be multidimensional array of json (when nand : string array) (TIP : NON-ARRAY-JSON)");
                                     }
                                     return v;
                                 }).map(child => {
-                                    if (!Array.isArray(v)) {
+                                    if (!Array.isArray(child)) {
                                         flag = true;
+                                        console.trace();
                                         throw new Error("debug-target (but isn't nand, it's normal-form-0010 ... length must be 3) is wrong format. it must be multidimensional array of json (when nand : string array) (TIP : NON-ARRAY)");
                                     }
-                                    return JSON.stringify(child);
+                                    return JSON.stringify(child).replaceAll('"', "&quot;");
                                 });
-                                if (v.length !== 3) {
+                                if (result.length !== 3) {
                                     flag = null;
+                                    console.trace();
                                     throw new Error("debug-target (but isn't nand, it's normal-form-0010 ... length must be 3) is wrong format. it must be multidimensional array of json (when nand : string array) (TIP : NON-FIT-LENGTH)");
                                 }
                                 return result;
-                            } catch {
-                                console.trace();
-                                console.warn(`debug-target (but isn't nand, it's normal-form-0010 ... length must be 3) is wrong format. it must be multidimensional array of json (when nand : string array) (tip : NON-${(flag===null)?'FIT-LENGTH':flag?'STRING':'ARRAY-JSON-OR-NON-JSON'})`);
+                            } catch (error) {
+                                console.log(error.stack); console.trace();
+                                console.warn(`debug-target (but isn't nand, it's normal-form-0010 ... length must be 3) is wrong format. it must be multidimensional array of json (when nand : string array) (tip : NON-${(flag===undefined)?'ARRAY-JSON':(flag===null)?'FIT-LENGTH':flag?'ARRAY':'JSON'})`);
                                 return;
                             }
                         }
@@ -1387,27 +1447,32 @@ export class DevEzbus extends HTMLElement {
                             let flag = false;
                             if (!this.hasAttribute('debug-target')) return;
                             try {
-                                const result = JSON.parse(this.getAttribute('debug-target'), (k, v) => {
+                                const result = JSON.parse(this.getAttribute('debug-target').replaceAll("&quot;", '"'), (k, v) => {
+                                    flag = false;
                                     if (k === "") {
                                         if (Array.isArray(v)) return v;
-                                        throw new Error("debug-target (but isn't nand, it's normal-form-0100 ... length must be 3) is wrong format. it must be multidimensional array of json (when nand : string array) (TIP : NON-ARRAY-JSON-OR-NON-JSON)");
+                                        flag = undefined;
+                                        console.trace();
+                                        throw new Error("debug-target (but isn't nand, it's normal-form-0100 ... length must be 3) is wrong format. it must be multidimensional array of json (when nand : string array) (TIP : NON-ARRAY-JSON)");
                                     }
                                     return v;
                                 }).map(child => {
-                                    if (!Array.isArray(v)) {
+                                    if (!Array.isArray(child)) {
                                         flag = true;
+                                        console.trace();
                                         throw new Error("debug-target (but isn't nand, it's normal-form-0100 ... length must be 3) is wrong format. it must be multidimensional array of json (when nand : string array) (TIP : NON-ARRAY)");
                                     }
-                                    return JSON.stringify(child);
+                                    return JSON.stringify(child).replaceAll('"', "&quot;");
                                 });
-                                if (v.length !== 3) {
+                                if (result.length !== 3) {
                                     flag = null;
+                                    console.trace();
                                     throw new Error("debug-target (but isn't nand, it's normal-form-0100 ... length must be 3) is wrong format. it must be multidimensional array of json (when nand : string array) (TIP : NON-FIT-LENGTH)");
                                 }
                                 return result;
-                            } catch {
-                                console.trace();
-                                console.warn(`debug-target (but isn't nand, it's normal-form-0100 ... length must be 3) is wrong format. it must be multidimensional array of json (when nand : string array) (tip : NON-${(flag===null)?'FIT-LENGTH':flag?'STRING':'ARRAY-JSON-OR-NON-FIT-LENGTH-OR-NON-JSON'})`);
+                            } catch (error) {
+                                console.log(error.stack); console.trace();
+                                console.warn(`debug-target (but isn't nand, it's normal-form-0100 ... length must be 3) is wrong format. it must be multidimensional array of json (when nand : string array) (tip : NON-${(flag===undefined)?'ARRAY-JSON':(flag===null)?'FIT-LENGTH':flag?'ARRAY':'JSON'})`);
                                 return;
                             }
                         }
