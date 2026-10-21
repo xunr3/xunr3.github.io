@@ -430,6 +430,7 @@ export class DevEzbus extends HTMLElement {
                         get debugTarget() {
                             let flag = false;
                             if (!this.hasAttribute('debug-target')) return;
+							console.log(this.getAttribute('debug-target'));
                             try {
                                 let result = JSON.parse(this.getAttribute('debug-target'), (k, v) => {
                                     if (k !== "" && typeof v !== 'string') {
