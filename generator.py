@@ -23,15 +23,17 @@ x = f'''\
   }}*/
 
   .debug-boxed[debug-target] {{
+      --debug-boxed-display: inline-block;
       --debug-boxed-border: 1px solid #333333;
   }}
 
   :root {{
+      --debug-boxed-display: none;
       --debug-boxed-border: none;
   }}
 
   .debug-calm-box {{
-      display: inline-block;
+      display: var(--debug-boxed-display);
       border: var(--debug-boxed-border);
   }}
 
