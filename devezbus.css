@@ -12,18 +12,18 @@
   }*/
 
   .debug-boxed[debug-target] {
-      --debug-boxed-content-visibility: visible;
+      --debug-boxed-transform: scale(0);
       --debug-boxed-border: 1px solid #333333;
   }
 
   :root {
-      --debug-boxed-content-visibility: hidden;
+      --debug-boxed-transform: scale(0);
       --debug-boxed-border: none;
   }
 
   .debug-calm-box {
       display: inline-block;
-      content-visibility: var(--debug-boxed-content-visibility);
+      transform: var(--debug-boxed-transform);
       border: var(--debug-boxed-border);
   }
 
