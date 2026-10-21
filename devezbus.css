@@ -1,0 +1,2059 @@
+@import url("https://xunr3.github.io/bugc_underclock_style.css");
+
+@layer usingBugc{
+  .devezbus-debugbox:not([debug-mode]) .devezbus-debughint {
+      display: none;
+  }
+  
+  .devezbus-debugbox[debug-mode] .devezbus-debughint {
+      display: inline;
+  }
+
+    .devezbus-debugbox[devezbus-debugpanel="mod0-pan0"]:not([devezbus-debugpanel-on]) .devezbus-debughint[devezbus-debugpanel="mod0-pan0"] {
+        display: none;
+    }
+      
+    .devezbus-debugbox[devezbus-debugpanel="mod0-pan0"][devezbus-debugpanel-on] .devezbus-debughint[devezbus-debugpanel="mod0-pan0"] {
+        display: block;
+    }
+      
+    .devezbus-debugbox[devezbus-debugpanel="mod0-pan1"]:not([devezbus-debugpanel-on]) .devezbus-debughint[devezbus-debugpanel="mod0-pan1"] {
+        display: none;
+    }
+      
+    .devezbus-debugbox[devezbus-debugpanel="mod0-pan1"][devezbus-debugpanel-on] .devezbus-debughint[devezbus-debugpanel="mod0-pan1"] {
+        display: block;
+    }
+      
+    .devezbus-debugbox[devezbus-debugpanel="mod0-pan2"]:not([devezbus-debugpanel-on]) .devezbus-debughint[devezbus-debugpanel="mod0-pan2"] {
+        display: none;
+    }
+      
+    .devezbus-debugbox[devezbus-debugpanel="mod0-pan2"][devezbus-debugpanel-on] .devezbus-debughint[devezbus-debugpanel="mod0-pan2"] {
+        display: block;
+    }
+      
+    .devezbus-debugbox[devezbus-debugpanel="mod0-pan3"]:not([devezbus-debugpanel-on]) .devezbus-debughint[devezbus-debugpanel="mod0-pan3"] {
+        display: none;
+    }
+      
+    .devezbus-debugbox[devezbus-debugpanel="mod0-pan3"][devezbus-debugpanel-on] .devezbus-debughint[devezbus-debugpanel="mod0-pan3"] {
+        display: block;
+    }
+      
+    .devezbus-debugbox[devezbus-debugpanel="mod0-pan4"]:not([devezbus-debugpanel-on]) .devezbus-debughint[devezbus-debugpanel="mod0-pan4"] {
+        display: none;
+    }
+      
+    .devezbus-debugbox[devezbus-debugpanel="mod0-pan4"][devezbus-debugpanel-on] .devezbus-debughint[devezbus-debugpanel="mod0-pan4"] {
+        display: block;
+    }
+      
+    .devezbus-debugbox[devezbus-debugpanel="mod0-pan5"]:not([devezbus-debugpanel-on]) .devezbus-debughint[devezbus-debugpanel="mod0-pan5"] {
+        display: none;
+    }
+      
+    .devezbus-debugbox[devezbus-debugpanel="mod0-pan5"][devezbus-debugpanel-on] .devezbus-debughint[devezbus-debugpanel="mod0-pan5"] {
+        display: block;
+    }
+      
+    .devezbus-debugbox[devezbus-debugpanel="mod0-pan6"]:not([devezbus-debugpanel-on]) .devezbus-debughint[devezbus-debugpanel="mod0-pan6"] {
+        display: none;
+    }
+      
+    .devezbus-debugbox[devezbus-debugpanel="mod0-pan6"][devezbus-debugpanel-on] .devezbus-debughint[devezbus-debugpanel="mod0-pan6"] {
+        display: block;
+    }
+      
+    .devezbus-debugbox[devezbus-debugpanel="mod0-pan7"]:not([devezbus-debugpanel-on]) .devezbus-debughint[devezbus-debugpanel="mod0-pan7"] {
+        display: none;
+    }
+      
+    .devezbus-debugbox[devezbus-debugpanel="mod0-pan7"][devezbus-debugpanel-on] .devezbus-debughint[devezbus-debugpanel="mod0-pan7"] {
+        display: block;
+    }
+      
+    .devezbus-debugbox[devezbus-debugpanel="mod0-pan8"]:not([devezbus-debugpanel-on]) .devezbus-debughint[devezbus-debugpanel="mod0-pan8"] {
+        display: none;
+    }
+      
+    .devezbus-debugbox[devezbus-debugpanel="mod0-pan8"][devezbus-debugpanel-on] .devezbus-debughint[devezbus-debugpanel="mod0-pan8"] {
+        display: block;
+    }
+      
+    .devezbus-debugbox[devezbus-debugpanel="mod0-pan9"]:not([devezbus-debugpanel-on]) .devezbus-debughint[devezbus-debugpanel="mod0-pan9"] {
+        display: none;
+    }
+      
+    .devezbus-debugbox[devezbus-debugpanel="mod0-pan9"][devezbus-debugpanel-on] .devezbus-debughint[devezbus-debugpanel="mod0-pan9"] {
+        display: block;
+    }
+      
+    .devezbus-debugbox[devezbus-debugpanel="mod0-pan10"]:not([devezbus-debugpanel-on]) .devezbus-debughint[devezbus-debugpanel="mod0-pan10"] {
+        display: none;
+    }
+      
+    .devezbus-debugbox[devezbus-debugpanel="mod0-pan10"][devezbus-debugpanel-on] .devezbus-debughint[devezbus-debugpanel="mod0-pan10"] {
+        display: block;
+    }
+      
+    .devezbus-debugbox[devezbus-debugpanel="mod0-pan11"]:not([devezbus-debugpanel-on]) .devezbus-debughint[devezbus-debugpanel="mod0-pan11"] {
+        display: none;
+    }
+      
+    .devezbus-debugbox[devezbus-debugpanel="mod0-pan11"][devezbus-debugpanel-on] .devezbus-debughint[devezbus-debugpanel="mod0-pan11"] {
+        display: block;
+    }
+      
+    .devezbus-debugbox[devezbus-debugpanel="mod0-pan12"]:not([devezbus-debugpanel-on]) .devezbus-debughint[devezbus-debugpanel="mod0-pan12"] {
+        display: none;
+    }
+      
+    .devezbus-debugbox[devezbus-debugpanel="mod0-pan12"][devezbus-debugpanel-on] .devezbus-debughint[devezbus-debugpanel="mod0-pan12"] {
+        display: block;
+    }
+      
+    .devezbus-debugbox[devezbus-debugpanel="mod0-pan13"]:not([devezbus-debugpanel-on]) .devezbus-debughint[devezbus-debugpanel="mod0-pan13"] {
+        display: none;
+    }
+      
+    .devezbus-debugbox[devezbus-debugpanel="mod0-pan13"][devezbus-debugpanel-on] .devezbus-debughint[devezbus-debugpanel="mod0-pan13"] {
+        display: block;
+    }
+      
+    .devezbus-debugbox[devezbus-debugpanel="mod0-pan14"]:not([devezbus-debugpanel-on]) .devezbus-debughint[devezbus-debugpanel="mod0-pan14"] {
+        display: none;
+    }
+      
+    .devezbus-debugbox[devezbus-debugpanel="mod0-pan14"][devezbus-debugpanel-on] .devezbus-debughint[devezbus-debugpanel="mod0-pan14"] {
+        display: block;
+    }
+      
+    .devezbus-debugbox[devezbus-debugpanel="mod0-pan15"]:not([devezbus-debugpanel-on]) .devezbus-debughint[devezbus-debugpanel="mod0-pan15"] {
+        display: none;
+    }
+      
+    .devezbus-debugbox[devezbus-debugpanel="mod0-pan15"][devezbus-debugpanel-on] .devezbus-debughint[devezbus-debugpanel="mod0-pan15"] {
+        display: block;
+    }
+      
+    .devezbus-debugbox[devezbus-debugpanel="mod1-pan0"]:not([devezbus-debugpanel-on]) .devezbus-debughint[devezbus-debugpanel="mod1-pan0"] {
+        display: none;
+    }
+      
+    .devezbus-debugbox[devezbus-debugpanel="mod1-pan0"][devezbus-debugpanel-on] .devezbus-debughint[devezbus-debugpanel="mod1-pan0"] {
+        display: block;
+    }
+      
+    .devezbus-debugbox[devezbus-debugpanel="mod1-pan1"]:not([devezbus-debugpanel-on]) .devezbus-debughint[devezbus-debugpanel="mod1-pan1"] {
+        display: none;
+    }
+      
+    .devezbus-debugbox[devezbus-debugpanel="mod1-pan1"][devezbus-debugpanel-on] .devezbus-debughint[devezbus-debugpanel="mod1-pan1"] {
+        display: block;
+    }
+      
+    .devezbus-debugbox[devezbus-debugpanel="mod1-pan2"]:not([devezbus-debugpanel-on]) .devezbus-debughint[devezbus-debugpanel="mod1-pan2"] {
+        display: none;
+    }
+      
+    .devezbus-debugbox[devezbus-debugpanel="mod1-pan2"][devezbus-debugpanel-on] .devezbus-debughint[devezbus-debugpanel="mod1-pan2"] {
+        display: block;
+    }
+      
+    .devezbus-debugbox[devezbus-debugpanel="mod1-pan3"]:not([devezbus-debugpanel-on]) .devezbus-debughint[devezbus-debugpanel="mod1-pan3"] {
+        display: none;
+    }
+      
+    .devezbus-debugbox[devezbus-debugpanel="mod1-pan3"][devezbus-debugpanel-on] .devezbus-debughint[devezbus-debugpanel="mod1-pan3"] {
+        display: block;
+    }
+      
+    .devezbus-debugbox[devezbus-debugpanel="mod1-pan4"]:not([devezbus-debugpanel-on]) .devezbus-debughint[devezbus-debugpanel="mod1-pan4"] {
+        display: none;
+    }
+      
+    .devezbus-debugbox[devezbus-debugpanel="mod1-pan4"][devezbus-debugpanel-on] .devezbus-debughint[devezbus-debugpanel="mod1-pan4"] {
+        display: block;
+    }
+      
+    .devezbus-debugbox[devezbus-debugpanel="mod1-pan5"]:not([devezbus-debugpanel-on]) .devezbus-debughint[devezbus-debugpanel="mod1-pan5"] {
+        display: none;
+    }
+      
+    .devezbus-debugbox[devezbus-debugpanel="mod1-pan5"][devezbus-debugpanel-on] .devezbus-debughint[devezbus-debugpanel="mod1-pan5"] {
+        display: block;
+    }
+      
+    .devezbus-debugbox[devezbus-debugpanel="mod1-pan6"]:not([devezbus-debugpanel-on]) .devezbus-debughint[devezbus-debugpanel="mod1-pan6"] {
+        display: none;
+    }
+      
+    .devezbus-debugbox[devezbus-debugpanel="mod1-pan6"][devezbus-debugpanel-on] .devezbus-debughint[devezbus-debugpanel="mod1-pan6"] {
+        display: block;
+    }
+      
+    .devezbus-debugbox[devezbus-debugpanel="mod1-pan7"]:not([devezbus-debugpanel-on]) .devezbus-debughint[devezbus-debugpanel="mod1-pan7"] {
+        display: none;
+    }
+      
+    .devezbus-debugbox[devezbus-debugpanel="mod1-pan7"][devezbus-debugpanel-on] .devezbus-debughint[devezbus-debugpanel="mod1-pan7"] {
+        display: block;
+    }
+      
+    .devezbus-debugbox[devezbus-debugpanel="mod1-pan8"]:not([devezbus-debugpanel-on]) .devezbus-debughint[devezbus-debugpanel="mod1-pan8"] {
+        display: none;
+    }
+      
+    .devezbus-debugbox[devezbus-debugpanel="mod1-pan8"][devezbus-debugpanel-on] .devezbus-debughint[devezbus-debugpanel="mod1-pan8"] {
+        display: block;
+    }
+      
+    .devezbus-debugbox[devezbus-debugpanel="mod1-pan9"]:not([devezbus-debugpanel-on]) .devezbus-debughint[devezbus-debugpanel="mod1-pan9"] {
+        display: none;
+    }
+      
+    .devezbus-debugbox[devezbus-debugpanel="mod1-pan9"][devezbus-debugpanel-on] .devezbus-debughint[devezbus-debugpanel="mod1-pan9"] {
+        display: block;
+    }
+      
+    .devezbus-debugbox[devezbus-debugpanel="mod1-pan10"]:not([devezbus-debugpanel-on]) .devezbus-debughint[devezbus-debugpanel="mod1-pan10"] {
+        display: none;
+    }
+      
+    .devezbus-debugbox[devezbus-debugpanel="mod1-pan10"][devezbus-debugpanel-on] .devezbus-debughint[devezbus-debugpanel="mod1-pan10"] {
+        display: block;
+    }
+      
+    .devezbus-debugbox[devezbus-debugpanel="mod1-pan11"]:not([devezbus-debugpanel-on]) .devezbus-debughint[devezbus-debugpanel="mod1-pan11"] {
+        display: none;
+    }
+      
+    .devezbus-debugbox[devezbus-debugpanel="mod1-pan11"][devezbus-debugpanel-on] .devezbus-debughint[devezbus-debugpanel="mod1-pan11"] {
+        display: block;
+    }
+      
+    .devezbus-debugbox[devezbus-debugpanel="mod1-pan12"]:not([devezbus-debugpanel-on]) .devezbus-debughint[devezbus-debugpanel="mod1-pan12"] {
+        display: none;
+    }
+      
+    .devezbus-debugbox[devezbus-debugpanel="mod1-pan12"][devezbus-debugpanel-on] .devezbus-debughint[devezbus-debugpanel="mod1-pan12"] {
+        display: block;
+    }
+      
+    .devezbus-debugbox[devezbus-debugpanel="mod1-pan13"]:not([devezbus-debugpanel-on]) .devezbus-debughint[devezbus-debugpanel="mod1-pan13"] {
+        display: none;
+    }
+      
+    .devezbus-debugbox[devezbus-debugpanel="mod1-pan13"][devezbus-debugpanel-on] .devezbus-debughint[devezbus-debugpanel="mod1-pan13"] {
+        display: block;
+    }
+      
+    .devezbus-debugbox[devezbus-debugpanel="mod1-pan14"]:not([devezbus-debugpanel-on]) .devezbus-debughint[devezbus-debugpanel="mod1-pan14"] {
+        display: none;
+    }
+      
+    .devezbus-debugbox[devezbus-debugpanel="mod1-pan14"][devezbus-debugpanel-on] .devezbus-debughint[devezbus-debugpanel="mod1-pan14"] {
+        display: block;
+    }
+      
+    .devezbus-debugbox[devezbus-debugpanel="mod1-pan15"]:not([devezbus-debugpanel-on]) .devezbus-debughint[devezbus-debugpanel="mod1-pan15"] {
+        display: none;
+    }
+      
+    .devezbus-debugbox[devezbus-debugpanel="mod1-pan15"][devezbus-debugpanel-on] .devezbus-debughint[devezbus-debugpanel="mod1-pan15"] {
+        display: block;
+    }
+      
+    .devezbus-debugbox[devezbus-debugpanel="mod2-pan0"]:not([devezbus-debugpanel-on]) .devezbus-debughint[devezbus-debugpanel="mod2-pan0"] {
+        display: none;
+    }
+      
+    .devezbus-debugbox[devezbus-debugpanel="mod2-pan0"][devezbus-debugpanel-on] .devezbus-debughint[devezbus-debugpanel="mod2-pan0"] {
+        display: block;
+    }
+      
+    .devezbus-debugbox[devezbus-debugpanel="mod2-pan1"]:not([devezbus-debugpanel-on]) .devezbus-debughint[devezbus-debugpanel="mod2-pan1"] {
+        display: none;
+    }
+      
+    .devezbus-debugbox[devezbus-debugpanel="mod2-pan1"][devezbus-debugpanel-on] .devezbus-debughint[devezbus-debugpanel="mod2-pan1"] {
+        display: block;
+    }
+      
+    .devezbus-debugbox[devezbus-debugpanel="mod2-pan2"]:not([devezbus-debugpanel-on]) .devezbus-debughint[devezbus-debugpanel="mod2-pan2"] {
+        display: none;
+    }
+      
+    .devezbus-debugbox[devezbus-debugpanel="mod2-pan2"][devezbus-debugpanel-on] .devezbus-debughint[devezbus-debugpanel="mod2-pan2"] {
+        display: block;
+    }
+      
+    .devezbus-debugbox[devezbus-debugpanel="mod2-pan3"]:not([devezbus-debugpanel-on]) .devezbus-debughint[devezbus-debugpanel="mod2-pan3"] {
+        display: none;
+    }
+      
+    .devezbus-debugbox[devezbus-debugpanel="mod2-pan3"][devezbus-debugpanel-on] .devezbus-debughint[devezbus-debugpanel="mod2-pan3"] {
+        display: block;
+    }
+      
+    .devezbus-debugbox[devezbus-debugpanel="mod2-pan4"]:not([devezbus-debugpanel-on]) .devezbus-debughint[devezbus-debugpanel="mod2-pan4"] {
+        display: none;
+    }
+      
+    .devezbus-debugbox[devezbus-debugpanel="mod2-pan4"][devezbus-debugpanel-on] .devezbus-debughint[devezbus-debugpanel="mod2-pan4"] {
+        display: block;
+    }
+      
+    .devezbus-debugbox[devezbus-debugpanel="mod2-pan5"]:not([devezbus-debugpanel-on]) .devezbus-debughint[devezbus-debugpanel="mod2-pan5"] {
+        display: none;
+    }
+      
+    .devezbus-debugbox[devezbus-debugpanel="mod2-pan5"][devezbus-debugpanel-on] .devezbus-debughint[devezbus-debugpanel="mod2-pan5"] {
+        display: block;
+    }
+      
+    .devezbus-debugbox[devezbus-debugpanel="mod2-pan6"]:not([devezbus-debugpanel-on]) .devezbus-debughint[devezbus-debugpanel="mod2-pan6"] {
+        display: none;
+    }
+      
+    .devezbus-debugbox[devezbus-debugpanel="mod2-pan6"][devezbus-debugpanel-on] .devezbus-debughint[devezbus-debugpanel="mod2-pan6"] {
+        display: block;
+    }
+      
+    .devezbus-debugbox[devezbus-debugpanel="mod2-pan7"]:not([devezbus-debugpanel-on]) .devezbus-debughint[devezbus-debugpanel="mod2-pan7"] {
+        display: none;
+    }
+      
+    .devezbus-debugbox[devezbus-debugpanel="mod2-pan7"][devezbus-debugpanel-on] .devezbus-debughint[devezbus-debugpanel="mod2-pan7"] {
+        display: block;
+    }
+      
+    .devezbus-debugbox[devezbus-debugpanel="mod2-pan8"]:not([devezbus-debugpanel-on]) .devezbus-debughint[devezbus-debugpanel="mod2-pan8"] {
+        display: none;
+    }
+      
+    .devezbus-debugbox[devezbus-debugpanel="mod2-pan8"][devezbus-debugpanel-on] .devezbus-debughint[devezbus-debugpanel="mod2-pan8"] {
+        display: block;
+    }
+      
+    .devezbus-debugbox[devezbus-debugpanel="mod2-pan9"]:not([devezbus-debugpanel-on]) .devezbus-debughint[devezbus-debugpanel="mod2-pan9"] {
+        display: none;
+    }
+      
+    .devezbus-debugbox[devezbus-debugpanel="mod2-pan9"][devezbus-debugpanel-on] .devezbus-debughint[devezbus-debugpanel="mod2-pan9"] {
+        display: block;
+    }
+      
+    .devezbus-debugbox[devezbus-debugpanel="mod2-pan10"]:not([devezbus-debugpanel-on]) .devezbus-debughint[devezbus-debugpanel="mod2-pan10"] {
+        display: none;
+    }
+      
+    .devezbus-debugbox[devezbus-debugpanel="mod2-pan10"][devezbus-debugpanel-on] .devezbus-debughint[devezbus-debugpanel="mod2-pan10"] {
+        display: block;
+    }
+      
+    .devezbus-debugbox[devezbus-debugpanel="mod2-pan11"]:not([devezbus-debugpanel-on]) .devezbus-debughint[devezbus-debugpanel="mod2-pan11"] {
+        display: none;
+    }
+      
+    .devezbus-debugbox[devezbus-debugpanel="mod2-pan11"][devezbus-debugpanel-on] .devezbus-debughint[devezbus-debugpanel="mod2-pan11"] {
+        display: block;
+    }
+      
+    .devezbus-debugbox[devezbus-debugpanel="mod2-pan12"]:not([devezbus-debugpanel-on]) .devezbus-debughint[devezbus-debugpanel="mod2-pan12"] {
+        display: none;
+    }
+      
+    .devezbus-debugbox[devezbus-debugpanel="mod2-pan12"][devezbus-debugpanel-on] .devezbus-debughint[devezbus-debugpanel="mod2-pan12"] {
+        display: block;
+    }
+      
+    .devezbus-debugbox[devezbus-debugpanel="mod2-pan13"]:not([devezbus-debugpanel-on]) .devezbus-debughint[devezbus-debugpanel="mod2-pan13"] {
+        display: none;
+    }
+      
+    .devezbus-debugbox[devezbus-debugpanel="mod2-pan13"][devezbus-debugpanel-on] .devezbus-debughint[devezbus-debugpanel="mod2-pan13"] {
+        display: block;
+    }
+      
+    .devezbus-debugbox[devezbus-debugpanel="mod2-pan14"]:not([devezbus-debugpanel-on]) .devezbus-debughint[devezbus-debugpanel="mod2-pan14"] {
+        display: none;
+    }
+      
+    .devezbus-debugbox[devezbus-debugpanel="mod2-pan14"][devezbus-debugpanel-on] .devezbus-debughint[devezbus-debugpanel="mod2-pan14"] {
+        display: block;
+    }
+      
+    .devezbus-debugbox[devezbus-debugpanel="mod2-pan15"]:not([devezbus-debugpanel-on]) .devezbus-debughint[devezbus-debugpanel="mod2-pan15"] {
+        display: none;
+    }
+      
+    .devezbus-debugbox[devezbus-debugpanel="mod2-pan15"][devezbus-debugpanel-on] .devezbus-debughint[devezbus-debugpanel="mod2-pan15"] {
+        display: block;
+    }
+      
+    .devezbus-debugbox[devezbus-debugpanel="mod3-pan0"]:not([devezbus-debugpanel-on]) .devezbus-debughint[devezbus-debugpanel="mod3-pan0"] {
+        display: none;
+    }
+      
+    .devezbus-debugbox[devezbus-debugpanel="mod3-pan0"][devezbus-debugpanel-on] .devezbus-debughint[devezbus-debugpanel="mod3-pan0"] {
+        display: block;
+    }
+      
+    .devezbus-debugbox[devezbus-debugpanel="mod3-pan1"]:not([devezbus-debugpanel-on]) .devezbus-debughint[devezbus-debugpanel="mod3-pan1"] {
+        display: none;
+    }
+      
+    .devezbus-debugbox[devezbus-debugpanel="mod3-pan1"][devezbus-debugpanel-on] .devezbus-debughint[devezbus-debugpanel="mod3-pan1"] {
+        display: block;
+    }
+      
+    .devezbus-debugbox[devezbus-debugpanel="mod3-pan2"]:not([devezbus-debugpanel-on]) .devezbus-debughint[devezbus-debugpanel="mod3-pan2"] {
+        display: none;
+    }
+      
+    .devezbus-debugbox[devezbus-debugpanel="mod3-pan2"][devezbus-debugpanel-on] .devezbus-debughint[devezbus-debugpanel="mod3-pan2"] {
+        display: block;
+    }
+      
+    .devezbus-debugbox[devezbus-debugpanel="mod3-pan3"]:not([devezbus-debugpanel-on]) .devezbus-debughint[devezbus-debugpanel="mod3-pan3"] {
+        display: none;
+    }
+      
+    .devezbus-debugbox[devezbus-debugpanel="mod3-pan3"][devezbus-debugpanel-on] .devezbus-debughint[devezbus-debugpanel="mod3-pan3"] {
+        display: block;
+    }
+      
+    .devezbus-debugbox[devezbus-debugpanel="mod3-pan4"]:not([devezbus-debugpanel-on]) .devezbus-debughint[devezbus-debugpanel="mod3-pan4"] {
+        display: none;
+    }
+      
+    .devezbus-debugbox[devezbus-debugpanel="mod3-pan4"][devezbus-debugpanel-on] .devezbus-debughint[devezbus-debugpanel="mod3-pan4"] {
+        display: block;
+    }
+      
+    .devezbus-debugbox[devezbus-debugpanel="mod3-pan5"]:not([devezbus-debugpanel-on]) .devezbus-debughint[devezbus-debugpanel="mod3-pan5"] {
+        display: none;
+    }
+      
+    .devezbus-debugbox[devezbus-debugpanel="mod3-pan5"][devezbus-debugpanel-on] .devezbus-debughint[devezbus-debugpanel="mod3-pan5"] {
+        display: block;
+    }
+      
+    .devezbus-debugbox[devezbus-debugpanel="mod3-pan6"]:not([devezbus-debugpanel-on]) .devezbus-debughint[devezbus-debugpanel="mod3-pan6"] {
+        display: none;
+    }
+      
+    .devezbus-debugbox[devezbus-debugpanel="mod3-pan6"][devezbus-debugpanel-on] .devezbus-debughint[devezbus-debugpanel="mod3-pan6"] {
+        display: block;
+    }
+      
+    .devezbus-debugbox[devezbus-debugpanel="mod3-pan7"]:not([devezbus-debugpanel-on]) .devezbus-debughint[devezbus-debugpanel="mod3-pan7"] {
+        display: none;
+    }
+      
+    .devezbus-debugbox[devezbus-debugpanel="mod3-pan7"][devezbus-debugpanel-on] .devezbus-debughint[devezbus-debugpanel="mod3-pan7"] {
+        display: block;
+    }
+      
+    .devezbus-debugbox[devezbus-debugpanel="mod3-pan8"]:not([devezbus-debugpanel-on]) .devezbus-debughint[devezbus-debugpanel="mod3-pan8"] {
+        display: none;
+    }
+      
+    .devezbus-debugbox[devezbus-debugpanel="mod3-pan8"][devezbus-debugpanel-on] .devezbus-debughint[devezbus-debugpanel="mod3-pan8"] {
+        display: block;
+    }
+      
+    .devezbus-debugbox[devezbus-debugpanel="mod3-pan9"]:not([devezbus-debugpanel-on]) .devezbus-debughint[devezbus-debugpanel="mod3-pan9"] {
+        display: none;
+    }
+      
+    .devezbus-debugbox[devezbus-debugpanel="mod3-pan9"][devezbus-debugpanel-on] .devezbus-debughint[devezbus-debugpanel="mod3-pan9"] {
+        display: block;
+    }
+      
+    .devezbus-debugbox[devezbus-debugpanel="mod3-pan10"]:not([devezbus-debugpanel-on]) .devezbus-debughint[devezbus-debugpanel="mod3-pan10"] {
+        display: none;
+    }
+      
+    .devezbus-debugbox[devezbus-debugpanel="mod3-pan10"][devezbus-debugpanel-on] .devezbus-debughint[devezbus-debugpanel="mod3-pan10"] {
+        display: block;
+    }
+      
+    .devezbus-debugbox[devezbus-debugpanel="mod3-pan11"]:not([devezbus-debugpanel-on]) .devezbus-debughint[devezbus-debugpanel="mod3-pan11"] {
+        display: none;
+    }
+      
+    .devezbus-debugbox[devezbus-debugpanel="mod3-pan11"][devezbus-debugpanel-on] .devezbus-debughint[devezbus-debugpanel="mod3-pan11"] {
+        display: block;
+    }
+      
+    .devezbus-debugbox[devezbus-debugpanel="mod3-pan12"]:not([devezbus-debugpanel-on]) .devezbus-debughint[devezbus-debugpanel="mod3-pan12"] {
+        display: none;
+    }
+      
+    .devezbus-debugbox[devezbus-debugpanel="mod3-pan12"][devezbus-debugpanel-on] .devezbus-debughint[devezbus-debugpanel="mod3-pan12"] {
+        display: block;
+    }
+      
+    .devezbus-debugbox[devezbus-debugpanel="mod3-pan13"]:not([devezbus-debugpanel-on]) .devezbus-debughint[devezbus-debugpanel="mod3-pan13"] {
+        display: none;
+    }
+      
+    .devezbus-debugbox[devezbus-debugpanel="mod3-pan13"][devezbus-debugpanel-on] .devezbus-debughint[devezbus-debugpanel="mod3-pan13"] {
+        display: block;
+    }
+      
+    .devezbus-debugbox[devezbus-debugpanel="mod3-pan14"]:not([devezbus-debugpanel-on]) .devezbus-debughint[devezbus-debugpanel="mod3-pan14"] {
+        display: none;
+    }
+      
+    .devezbus-debugbox[devezbus-debugpanel="mod3-pan14"][devezbus-debugpanel-on] .devezbus-debughint[devezbus-debugpanel="mod3-pan14"] {
+        display: block;
+    }
+      
+    .devezbus-debugbox[devezbus-debugpanel="mod3-pan15"]:not([devezbus-debugpanel-on]) .devezbus-debughint[devezbus-debugpanel="mod3-pan15"] {
+        display: none;
+    }
+      
+    .devezbus-debugbox[devezbus-debugpanel="mod3-pan15"][devezbus-debugpanel-on] .devezbus-debughint[devezbus-debugpanel="mod3-pan15"] {
+        display: block;
+    }
+      
+    .devezbus-debugbox[devezbus-debugpanel="mod4-pan0"]:not([devezbus-debugpanel-on]) .devezbus-debughint[devezbus-debugpanel="mod4-pan0"] {
+        display: none;
+    }
+      
+    .devezbus-debugbox[devezbus-debugpanel="mod4-pan0"][devezbus-debugpanel-on] .devezbus-debughint[devezbus-debugpanel="mod4-pan0"] {
+        display: block;
+    }
+      
+    .devezbus-debugbox[devezbus-debugpanel="mod4-pan1"]:not([devezbus-debugpanel-on]) .devezbus-debughint[devezbus-debugpanel="mod4-pan1"] {
+        display: none;
+    }
+      
+    .devezbus-debugbox[devezbus-debugpanel="mod4-pan1"][devezbus-debugpanel-on] .devezbus-debughint[devezbus-debugpanel="mod4-pan1"] {
+        display: block;
+    }
+      
+    .devezbus-debugbox[devezbus-debugpanel="mod4-pan2"]:not([devezbus-debugpanel-on]) .devezbus-debughint[devezbus-debugpanel="mod4-pan2"] {
+        display: none;
+    }
+      
+    .devezbus-debugbox[devezbus-debugpanel="mod4-pan2"][devezbus-debugpanel-on] .devezbus-debughint[devezbus-debugpanel="mod4-pan2"] {
+        display: block;
+    }
+      
+    .devezbus-debugbox[devezbus-debugpanel="mod4-pan3"]:not([devezbus-debugpanel-on]) .devezbus-debughint[devezbus-debugpanel="mod4-pan3"] {
+        display: none;
+    }
+      
+    .devezbus-debugbox[devezbus-debugpanel="mod4-pan3"][devezbus-debugpanel-on] .devezbus-debughint[devezbus-debugpanel="mod4-pan3"] {
+        display: block;
+    }
+      
+    .devezbus-debugbox[devezbus-debugpanel="mod4-pan4"]:not([devezbus-debugpanel-on]) .devezbus-debughint[devezbus-debugpanel="mod4-pan4"] {
+        display: none;
+    }
+      
+    .devezbus-debugbox[devezbus-debugpanel="mod4-pan4"][devezbus-debugpanel-on] .devezbus-debughint[devezbus-debugpanel="mod4-pan4"] {
+        display: block;
+    }
+      
+    .devezbus-debugbox[devezbus-debugpanel="mod4-pan5"]:not([devezbus-debugpanel-on]) .devezbus-debughint[devezbus-debugpanel="mod4-pan5"] {
+        display: none;
+    }
+      
+    .devezbus-debugbox[devezbus-debugpanel="mod4-pan5"][devezbus-debugpanel-on] .devezbus-debughint[devezbus-debugpanel="mod4-pan5"] {
+        display: block;
+    }
+      
+    .devezbus-debugbox[devezbus-debugpanel="mod4-pan6"]:not([devezbus-debugpanel-on]) .devezbus-debughint[devezbus-debugpanel="mod4-pan6"] {
+        display: none;
+    }
+      
+    .devezbus-debugbox[devezbus-debugpanel="mod4-pan6"][devezbus-debugpanel-on] .devezbus-debughint[devezbus-debugpanel="mod4-pan6"] {
+        display: block;
+    }
+      
+    .devezbus-debugbox[devezbus-debugpanel="mod4-pan7"]:not([devezbus-debugpanel-on]) .devezbus-debughint[devezbus-debugpanel="mod4-pan7"] {
+        display: none;
+    }
+      
+    .devezbus-debugbox[devezbus-debugpanel="mod4-pan7"][devezbus-debugpanel-on] .devezbus-debughint[devezbus-debugpanel="mod4-pan7"] {
+        display: block;
+    }
+      
+    .devezbus-debugbox[devezbus-debugpanel="mod4-pan8"]:not([devezbus-debugpanel-on]) .devezbus-debughint[devezbus-debugpanel="mod4-pan8"] {
+        display: none;
+    }
+      
+    .devezbus-debugbox[devezbus-debugpanel="mod4-pan8"][devezbus-debugpanel-on] .devezbus-debughint[devezbus-debugpanel="mod4-pan8"] {
+        display: block;
+    }
+      
+    .devezbus-debugbox[devezbus-debugpanel="mod4-pan9"]:not([devezbus-debugpanel-on]) .devezbus-debughint[devezbus-debugpanel="mod4-pan9"] {
+        display: none;
+    }
+      
+    .devezbus-debugbox[devezbus-debugpanel="mod4-pan9"][devezbus-debugpanel-on] .devezbus-debughint[devezbus-debugpanel="mod4-pan9"] {
+        display: block;
+    }
+      
+    .devezbus-debugbox[devezbus-debugpanel="mod4-pan10"]:not([devezbus-debugpanel-on]) .devezbus-debughint[devezbus-debugpanel="mod4-pan10"] {
+        display: none;
+    }
+      
+    .devezbus-debugbox[devezbus-debugpanel="mod4-pan10"][devezbus-debugpanel-on] .devezbus-debughint[devezbus-debugpanel="mod4-pan10"] {
+        display: block;
+    }
+      
+    .devezbus-debugbox[devezbus-debugpanel="mod4-pan11"]:not([devezbus-debugpanel-on]) .devezbus-debughint[devezbus-debugpanel="mod4-pan11"] {
+        display: none;
+    }
+      
+    .devezbus-debugbox[devezbus-debugpanel="mod4-pan11"][devezbus-debugpanel-on] .devezbus-debughint[devezbus-debugpanel="mod4-pan11"] {
+        display: block;
+    }
+      
+    .devezbus-debugbox[devezbus-debugpanel="mod4-pan12"]:not([devezbus-debugpanel-on]) .devezbus-debughint[devezbus-debugpanel="mod4-pan12"] {
+        display: none;
+    }
+      
+    .devezbus-debugbox[devezbus-debugpanel="mod4-pan12"][devezbus-debugpanel-on] .devezbus-debughint[devezbus-debugpanel="mod4-pan12"] {
+        display: block;
+    }
+      
+    .devezbus-debugbox[devezbus-debugpanel="mod4-pan13"]:not([devezbus-debugpanel-on]) .devezbus-debughint[devezbus-debugpanel="mod4-pan13"] {
+        display: none;
+    }
+      
+    .devezbus-debugbox[devezbus-debugpanel="mod4-pan13"][devezbus-debugpanel-on] .devezbus-debughint[devezbus-debugpanel="mod4-pan13"] {
+        display: block;
+    }
+      
+    .devezbus-debugbox[devezbus-debugpanel="mod4-pan14"]:not([devezbus-debugpanel-on]) .devezbus-debughint[devezbus-debugpanel="mod4-pan14"] {
+        display: none;
+    }
+      
+    .devezbus-debugbox[devezbus-debugpanel="mod4-pan14"][devezbus-debugpanel-on] .devezbus-debughint[devezbus-debugpanel="mod4-pan14"] {
+        display: block;
+    }
+      
+    .devezbus-debugbox[devezbus-debugpanel="mod4-pan15"]:not([devezbus-debugpanel-on]) .devezbus-debughint[devezbus-debugpanel="mod4-pan15"] {
+        display: none;
+    }
+      
+    .devezbus-debugbox[devezbus-debugpanel="mod4-pan15"][devezbus-debugpanel-on] .devezbus-debughint[devezbus-debugpanel="mod4-pan15"] {
+        display: block;
+    }
+      
+    .devezbus-debugbox[devezbus-debugpanel="mod5-pan0"]:not([devezbus-debugpanel-on]) .devezbus-debughint[devezbus-debugpanel="mod5-pan0"] {
+        display: none;
+    }
+      
+    .devezbus-debugbox[devezbus-debugpanel="mod5-pan0"][devezbus-debugpanel-on] .devezbus-debughint[devezbus-debugpanel="mod5-pan0"] {
+        display: block;
+    }
+      
+    .devezbus-debugbox[devezbus-debugpanel="mod5-pan1"]:not([devezbus-debugpanel-on]) .devezbus-debughint[devezbus-debugpanel="mod5-pan1"] {
+        display: none;
+    }
+      
+    .devezbus-debugbox[devezbus-debugpanel="mod5-pan1"][devezbus-debugpanel-on] .devezbus-debughint[devezbus-debugpanel="mod5-pan1"] {
+        display: block;
+    }
+      
+    .devezbus-debugbox[devezbus-debugpanel="mod5-pan2"]:not([devezbus-debugpanel-on]) .devezbus-debughint[devezbus-debugpanel="mod5-pan2"] {
+        display: none;
+    }
+      
+    .devezbus-debugbox[devezbus-debugpanel="mod5-pan2"][devezbus-debugpanel-on] .devezbus-debughint[devezbus-debugpanel="mod5-pan2"] {
+        display: block;
+    }
+      
+    .devezbus-debugbox[devezbus-debugpanel="mod5-pan3"]:not([devezbus-debugpanel-on]) .devezbus-debughint[devezbus-debugpanel="mod5-pan3"] {
+        display: none;
+    }
+      
+    .devezbus-debugbox[devezbus-debugpanel="mod5-pan3"][devezbus-debugpanel-on] .devezbus-debughint[devezbus-debugpanel="mod5-pan3"] {
+        display: block;
+    }
+      
+    .devezbus-debugbox[devezbus-debugpanel="mod5-pan4"]:not([devezbus-debugpanel-on]) .devezbus-debughint[devezbus-debugpanel="mod5-pan4"] {
+        display: none;
+    }
+      
+    .devezbus-debugbox[devezbus-debugpanel="mod5-pan4"][devezbus-debugpanel-on] .devezbus-debughint[devezbus-debugpanel="mod5-pan4"] {
+        display: block;
+    }
+      
+    .devezbus-debugbox[devezbus-debugpanel="mod5-pan5"]:not([devezbus-debugpanel-on]) .devezbus-debughint[devezbus-debugpanel="mod5-pan5"] {
+        display: none;
+    }
+      
+    .devezbus-debugbox[devezbus-debugpanel="mod5-pan5"][devezbus-debugpanel-on] .devezbus-debughint[devezbus-debugpanel="mod5-pan5"] {
+        display: block;
+    }
+      
+    .devezbus-debugbox[devezbus-debugpanel="mod5-pan6"]:not([devezbus-debugpanel-on]) .devezbus-debughint[devezbus-debugpanel="mod5-pan6"] {
+        display: none;
+    }
+      
+    .devezbus-debugbox[devezbus-debugpanel="mod5-pan6"][devezbus-debugpanel-on] .devezbus-debughint[devezbus-debugpanel="mod5-pan6"] {
+        display: block;
+    }
+      
+    .devezbus-debugbox[devezbus-debugpanel="mod5-pan7"]:not([devezbus-debugpanel-on]) .devezbus-debughint[devezbus-debugpanel="mod5-pan7"] {
+        display: none;
+    }
+      
+    .devezbus-debugbox[devezbus-debugpanel="mod5-pan7"][devezbus-debugpanel-on] .devezbus-debughint[devezbus-debugpanel="mod5-pan7"] {
+        display: block;
+    }
+      
+    .devezbus-debugbox[devezbus-debugpanel="mod5-pan8"]:not([devezbus-debugpanel-on]) .devezbus-debughint[devezbus-debugpanel="mod5-pan8"] {
+        display: none;
+    }
+      
+    .devezbus-debugbox[devezbus-debugpanel="mod5-pan8"][devezbus-debugpanel-on] .devezbus-debughint[devezbus-debugpanel="mod5-pan8"] {
+        display: block;
+    }
+      
+    .devezbus-debugbox[devezbus-debugpanel="mod5-pan9"]:not([devezbus-debugpanel-on]) .devezbus-debughint[devezbus-debugpanel="mod5-pan9"] {
+        display: none;
+    }
+      
+    .devezbus-debugbox[devezbus-debugpanel="mod5-pan9"][devezbus-debugpanel-on] .devezbus-debughint[devezbus-debugpanel="mod5-pan9"] {
+        display: block;
+    }
+      
+    .devezbus-debugbox[devezbus-debugpanel="mod5-pan10"]:not([devezbus-debugpanel-on]) .devezbus-debughint[devezbus-debugpanel="mod5-pan10"] {
+        display: none;
+    }
+      
+    .devezbus-debugbox[devezbus-debugpanel="mod5-pan10"][devezbus-debugpanel-on] .devezbus-debughint[devezbus-debugpanel="mod5-pan10"] {
+        display: block;
+    }
+      
+    .devezbus-debugbox[devezbus-debugpanel="mod5-pan11"]:not([devezbus-debugpanel-on]) .devezbus-debughint[devezbus-debugpanel="mod5-pan11"] {
+        display: none;
+    }
+      
+    .devezbus-debugbox[devezbus-debugpanel="mod5-pan11"][devezbus-debugpanel-on] .devezbus-debughint[devezbus-debugpanel="mod5-pan11"] {
+        display: block;
+    }
+      
+    .devezbus-debugbox[devezbus-debugpanel="mod5-pan12"]:not([devezbus-debugpanel-on]) .devezbus-debughint[devezbus-debugpanel="mod5-pan12"] {
+        display: none;
+    }
+      
+    .devezbus-debugbox[devezbus-debugpanel="mod5-pan12"][devezbus-debugpanel-on] .devezbus-debughint[devezbus-debugpanel="mod5-pan12"] {
+        display: block;
+    }
+      
+    .devezbus-debugbox[devezbus-debugpanel="mod5-pan13"]:not([devezbus-debugpanel-on]) .devezbus-debughint[devezbus-debugpanel="mod5-pan13"] {
+        display: none;
+    }
+      
+    .devezbus-debugbox[devezbus-debugpanel="mod5-pan13"][devezbus-debugpanel-on] .devezbus-debughint[devezbus-debugpanel="mod5-pan13"] {
+        display: block;
+    }
+      
+    .devezbus-debugbox[devezbus-debugpanel="mod5-pan14"]:not([devezbus-debugpanel-on]) .devezbus-debughint[devezbus-debugpanel="mod5-pan14"] {
+        display: none;
+    }
+      
+    .devezbus-debugbox[devezbus-debugpanel="mod5-pan14"][devezbus-debugpanel-on] .devezbus-debughint[devezbus-debugpanel="mod5-pan14"] {
+        display: block;
+    }
+      
+    .devezbus-debugbox[devezbus-debugpanel="mod5-pan15"]:not([devezbus-debugpanel-on]) .devezbus-debughint[devezbus-debugpanel="mod5-pan15"] {
+        display: none;
+    }
+      
+    .devezbus-debugbox[devezbus-debugpanel="mod5-pan15"][devezbus-debugpanel-on] .devezbus-debughint[devezbus-debugpanel="mod5-pan15"] {
+        display: block;
+    }
+      
+    .devezbus-debugbox[devezbus-debugpanel="mod6-pan0"]:not([devezbus-debugpanel-on]) .devezbus-debughint[devezbus-debugpanel="mod6-pan0"] {
+        display: none;
+    }
+      
+    .devezbus-debugbox[devezbus-debugpanel="mod6-pan0"][devezbus-debugpanel-on] .devezbus-debughint[devezbus-debugpanel="mod6-pan0"] {
+        display: block;
+    }
+      
+    .devezbus-debugbox[devezbus-debugpanel="mod6-pan1"]:not([devezbus-debugpanel-on]) .devezbus-debughint[devezbus-debugpanel="mod6-pan1"] {
+        display: none;
+    }
+      
+    .devezbus-debugbox[devezbus-debugpanel="mod6-pan1"][devezbus-debugpanel-on] .devezbus-debughint[devezbus-debugpanel="mod6-pan1"] {
+        display: block;
+    }
+      
+    .devezbus-debugbox[devezbus-debugpanel="mod6-pan2"]:not([devezbus-debugpanel-on]) .devezbus-debughint[devezbus-debugpanel="mod6-pan2"] {
+        display: none;
+    }
+      
+    .devezbus-debugbox[devezbus-debugpanel="mod6-pan2"][devezbus-debugpanel-on] .devezbus-debughint[devezbus-debugpanel="mod6-pan2"] {
+        display: block;
+    }
+      
+    .devezbus-debugbox[devezbus-debugpanel="mod6-pan3"]:not([devezbus-debugpanel-on]) .devezbus-debughint[devezbus-debugpanel="mod6-pan3"] {
+        display: none;
+    }
+      
+    .devezbus-debugbox[devezbus-debugpanel="mod6-pan3"][devezbus-debugpanel-on] .devezbus-debughint[devezbus-debugpanel="mod6-pan3"] {
+        display: block;
+    }
+      
+    .devezbus-debugbox[devezbus-debugpanel="mod6-pan4"]:not([devezbus-debugpanel-on]) .devezbus-debughint[devezbus-debugpanel="mod6-pan4"] {
+        display: none;
+    }
+      
+    .devezbus-debugbox[devezbus-debugpanel="mod6-pan4"][devezbus-debugpanel-on] .devezbus-debughint[devezbus-debugpanel="mod6-pan4"] {
+        display: block;
+    }
+      
+    .devezbus-debugbox[devezbus-debugpanel="mod6-pan5"]:not([devezbus-debugpanel-on]) .devezbus-debughint[devezbus-debugpanel="mod6-pan5"] {
+        display: none;
+    }
+      
+    .devezbus-debugbox[devezbus-debugpanel="mod6-pan5"][devezbus-debugpanel-on] .devezbus-debughint[devezbus-debugpanel="mod6-pan5"] {
+        display: block;
+    }
+      
+    .devezbus-debugbox[devezbus-debugpanel="mod6-pan6"]:not([devezbus-debugpanel-on]) .devezbus-debughint[devezbus-debugpanel="mod6-pan6"] {
+        display: none;
+    }
+      
+    .devezbus-debugbox[devezbus-debugpanel="mod6-pan6"][devezbus-debugpanel-on] .devezbus-debughint[devezbus-debugpanel="mod6-pan6"] {
+        display: block;
+    }
+      
+    .devezbus-debugbox[devezbus-debugpanel="mod6-pan7"]:not([devezbus-debugpanel-on]) .devezbus-debughint[devezbus-debugpanel="mod6-pan7"] {
+        display: none;
+    }
+      
+    .devezbus-debugbox[devezbus-debugpanel="mod6-pan7"][devezbus-debugpanel-on] .devezbus-debughint[devezbus-debugpanel="mod6-pan7"] {
+        display: block;
+    }
+      
+    .devezbus-debugbox[devezbus-debugpanel="mod6-pan8"]:not([devezbus-debugpanel-on]) .devezbus-debughint[devezbus-debugpanel="mod6-pan8"] {
+        display: none;
+    }
+      
+    .devezbus-debugbox[devezbus-debugpanel="mod6-pan8"][devezbus-debugpanel-on] .devezbus-debughint[devezbus-debugpanel="mod6-pan8"] {
+        display: block;
+    }
+      
+    .devezbus-debugbox[devezbus-debugpanel="mod6-pan9"]:not([devezbus-debugpanel-on]) .devezbus-debughint[devezbus-debugpanel="mod6-pan9"] {
+        display: none;
+    }
+      
+    .devezbus-debugbox[devezbus-debugpanel="mod6-pan9"][devezbus-debugpanel-on] .devezbus-debughint[devezbus-debugpanel="mod6-pan9"] {
+        display: block;
+    }
+      
+    .devezbus-debugbox[devezbus-debugpanel="mod6-pan10"]:not([devezbus-debugpanel-on]) .devezbus-debughint[devezbus-debugpanel="mod6-pan10"] {
+        display: none;
+    }
+      
+    .devezbus-debugbox[devezbus-debugpanel="mod6-pan10"][devezbus-debugpanel-on] .devezbus-debughint[devezbus-debugpanel="mod6-pan10"] {
+        display: block;
+    }
+      
+    .devezbus-debugbox[devezbus-debugpanel="mod6-pan11"]:not([devezbus-debugpanel-on]) .devezbus-debughint[devezbus-debugpanel="mod6-pan11"] {
+        display: none;
+    }
+      
+    .devezbus-debugbox[devezbus-debugpanel="mod6-pan11"][devezbus-debugpanel-on] .devezbus-debughint[devezbus-debugpanel="mod6-pan11"] {
+        display: block;
+    }
+      
+    .devezbus-debugbox[devezbus-debugpanel="mod6-pan12"]:not([devezbus-debugpanel-on]) .devezbus-debughint[devezbus-debugpanel="mod6-pan12"] {
+        display: none;
+    }
+      
+    .devezbus-debugbox[devezbus-debugpanel="mod6-pan12"][devezbus-debugpanel-on] .devezbus-debughint[devezbus-debugpanel="mod6-pan12"] {
+        display: block;
+    }
+      
+    .devezbus-debugbox[devezbus-debugpanel="mod6-pan13"]:not([devezbus-debugpanel-on]) .devezbus-debughint[devezbus-debugpanel="mod6-pan13"] {
+        display: none;
+    }
+      
+    .devezbus-debugbox[devezbus-debugpanel="mod6-pan13"][devezbus-debugpanel-on] .devezbus-debughint[devezbus-debugpanel="mod6-pan13"] {
+        display: block;
+    }
+      
+    .devezbus-debugbox[devezbus-debugpanel="mod6-pan14"]:not([devezbus-debugpanel-on]) .devezbus-debughint[devezbus-debugpanel="mod6-pan14"] {
+        display: none;
+    }
+      
+    .devezbus-debugbox[devezbus-debugpanel="mod6-pan14"][devezbus-debugpanel-on] .devezbus-debughint[devezbus-debugpanel="mod6-pan14"] {
+        display: block;
+    }
+      
+    .devezbus-debugbox[devezbus-debugpanel="mod6-pan15"]:not([devezbus-debugpanel-on]) .devezbus-debughint[devezbus-debugpanel="mod6-pan15"] {
+        display: none;
+    }
+      
+    .devezbus-debugbox[devezbus-debugpanel="mod6-pan15"][devezbus-debugpanel-on] .devezbus-debughint[devezbus-debugpanel="mod6-pan15"] {
+        display: block;
+    }
+      
+    .devezbus-debugbox[devezbus-debugpanel="mod7-pan0"]:not([devezbus-debugpanel-on]) .devezbus-debughint[devezbus-debugpanel="mod7-pan0"] {
+        display: none;
+    }
+      
+    .devezbus-debugbox[devezbus-debugpanel="mod7-pan0"][devezbus-debugpanel-on] .devezbus-debughint[devezbus-debugpanel="mod7-pan0"] {
+        display: block;
+    }
+      
+    .devezbus-debugbox[devezbus-debugpanel="mod7-pan1"]:not([devezbus-debugpanel-on]) .devezbus-debughint[devezbus-debugpanel="mod7-pan1"] {
+        display: none;
+    }
+      
+    .devezbus-debugbox[devezbus-debugpanel="mod7-pan1"][devezbus-debugpanel-on] .devezbus-debughint[devezbus-debugpanel="mod7-pan1"] {
+        display: block;
+    }
+      
+    .devezbus-debugbox[devezbus-debugpanel="mod7-pan2"]:not([devezbus-debugpanel-on]) .devezbus-debughint[devezbus-debugpanel="mod7-pan2"] {
+        display: none;
+    }
+      
+    .devezbus-debugbox[devezbus-debugpanel="mod7-pan2"][devezbus-debugpanel-on] .devezbus-debughint[devezbus-debugpanel="mod7-pan2"] {
+        display: block;
+    }
+      
+    .devezbus-debugbox[devezbus-debugpanel="mod7-pan3"]:not([devezbus-debugpanel-on]) .devezbus-debughint[devezbus-debugpanel="mod7-pan3"] {
+        display: none;
+    }
+      
+    .devezbus-debugbox[devezbus-debugpanel="mod7-pan3"][devezbus-debugpanel-on] .devezbus-debughint[devezbus-debugpanel="mod7-pan3"] {
+        display: block;
+    }
+      
+    .devezbus-debugbox[devezbus-debugpanel="mod7-pan4"]:not([devezbus-debugpanel-on]) .devezbus-debughint[devezbus-debugpanel="mod7-pan4"] {
+        display: none;
+    }
+      
+    .devezbus-debugbox[devezbus-debugpanel="mod7-pan4"][devezbus-debugpanel-on] .devezbus-debughint[devezbus-debugpanel="mod7-pan4"] {
+        display: block;
+    }
+      
+    .devezbus-debugbox[devezbus-debugpanel="mod7-pan5"]:not([devezbus-debugpanel-on]) .devezbus-debughint[devezbus-debugpanel="mod7-pan5"] {
+        display: none;
+    }
+      
+    .devezbus-debugbox[devezbus-debugpanel="mod7-pan5"][devezbus-debugpanel-on] .devezbus-debughint[devezbus-debugpanel="mod7-pan5"] {
+        display: block;
+    }
+      
+    .devezbus-debugbox[devezbus-debugpanel="mod7-pan6"]:not([devezbus-debugpanel-on]) .devezbus-debughint[devezbus-debugpanel="mod7-pan6"] {
+        display: none;
+    }
+      
+    .devezbus-debugbox[devezbus-debugpanel="mod7-pan6"][devezbus-debugpanel-on] .devezbus-debughint[devezbus-debugpanel="mod7-pan6"] {
+        display: block;
+    }
+      
+    .devezbus-debugbox[devezbus-debugpanel="mod7-pan7"]:not([devezbus-debugpanel-on]) .devezbus-debughint[devezbus-debugpanel="mod7-pan7"] {
+        display: none;
+    }
+      
+    .devezbus-debugbox[devezbus-debugpanel="mod7-pan7"][devezbus-debugpanel-on] .devezbus-debughint[devezbus-debugpanel="mod7-pan7"] {
+        display: block;
+    }
+      
+    .devezbus-debugbox[devezbus-debugpanel="mod7-pan8"]:not([devezbus-debugpanel-on]) .devezbus-debughint[devezbus-debugpanel="mod7-pan8"] {
+        display: none;
+    }
+      
+    .devezbus-debugbox[devezbus-debugpanel="mod7-pan8"][devezbus-debugpanel-on] .devezbus-debughint[devezbus-debugpanel="mod7-pan8"] {
+        display: block;
+    }
+      
+    .devezbus-debugbox[devezbus-debugpanel="mod7-pan9"]:not([devezbus-debugpanel-on]) .devezbus-debughint[devezbus-debugpanel="mod7-pan9"] {
+        display: none;
+    }
+      
+    .devezbus-debugbox[devezbus-debugpanel="mod7-pan9"][devezbus-debugpanel-on] .devezbus-debughint[devezbus-debugpanel="mod7-pan9"] {
+        display: block;
+    }
+      
+    .devezbus-debugbox[devezbus-debugpanel="mod7-pan10"]:not([devezbus-debugpanel-on]) .devezbus-debughint[devezbus-debugpanel="mod7-pan10"] {
+        display: none;
+    }
+      
+    .devezbus-debugbox[devezbus-debugpanel="mod7-pan10"][devezbus-debugpanel-on] .devezbus-debughint[devezbus-debugpanel="mod7-pan10"] {
+        display: block;
+    }
+      
+    .devezbus-debugbox[devezbus-debugpanel="mod7-pan11"]:not([devezbus-debugpanel-on]) .devezbus-debughint[devezbus-debugpanel="mod7-pan11"] {
+        display: none;
+    }
+      
+    .devezbus-debugbox[devezbus-debugpanel="mod7-pan11"][devezbus-debugpanel-on] .devezbus-debughint[devezbus-debugpanel="mod7-pan11"] {
+        display: block;
+    }
+      
+    .devezbus-debugbox[devezbus-debugpanel="mod7-pan12"]:not([devezbus-debugpanel-on]) .devezbus-debughint[devezbus-debugpanel="mod7-pan12"] {
+        display: none;
+    }
+      
+    .devezbus-debugbox[devezbus-debugpanel="mod7-pan12"][devezbus-debugpanel-on] .devezbus-debughint[devezbus-debugpanel="mod7-pan12"] {
+        display: block;
+    }
+      
+    .devezbus-debugbox[devezbus-debugpanel="mod7-pan13"]:not([devezbus-debugpanel-on]) .devezbus-debughint[devezbus-debugpanel="mod7-pan13"] {
+        display: none;
+    }
+      
+    .devezbus-debugbox[devezbus-debugpanel="mod7-pan13"][devezbus-debugpanel-on] .devezbus-debughint[devezbus-debugpanel="mod7-pan13"] {
+        display: block;
+    }
+      
+    .devezbus-debugbox[devezbus-debugpanel="mod7-pan14"]:not([devezbus-debugpanel-on]) .devezbus-debughint[devezbus-debugpanel="mod7-pan14"] {
+        display: none;
+    }
+      
+    .devezbus-debugbox[devezbus-debugpanel="mod7-pan14"][devezbus-debugpanel-on] .devezbus-debughint[devezbus-debugpanel="mod7-pan14"] {
+        display: block;
+    }
+      
+    .devezbus-debugbox[devezbus-debugpanel="mod7-pan15"]:not([devezbus-debugpanel-on]) .devezbus-debughint[devezbus-debugpanel="mod7-pan15"] {
+        display: none;
+    }
+      
+    .devezbus-debugbox[devezbus-debugpanel="mod7-pan15"][devezbus-debugpanel-on] .devezbus-debughint[devezbus-debugpanel="mod7-pan15"] {
+        display: block;
+    }
+      
+    .devezbus-debugbox[devezbus-debugpanel="mod8-pan0"]:not([devezbus-debugpanel-on]) .devezbus-debughint[devezbus-debugpanel="mod8-pan0"] {
+        display: none;
+    }
+      
+    .devezbus-debugbox[devezbus-debugpanel="mod8-pan0"][devezbus-debugpanel-on] .devezbus-debughint[devezbus-debugpanel="mod8-pan0"] {
+        display: block;
+    }
+      
+    .devezbus-debugbox[devezbus-debugpanel="mod8-pan1"]:not([devezbus-debugpanel-on]) .devezbus-debughint[devezbus-debugpanel="mod8-pan1"] {
+        display: none;
+    }
+      
+    .devezbus-debugbox[devezbus-debugpanel="mod8-pan1"][devezbus-debugpanel-on] .devezbus-debughint[devezbus-debugpanel="mod8-pan1"] {
+        display: block;
+    }
+      
+    .devezbus-debugbox[devezbus-debugpanel="mod8-pan2"]:not([devezbus-debugpanel-on]) .devezbus-debughint[devezbus-debugpanel="mod8-pan2"] {
+        display: none;
+    }
+      
+    .devezbus-debugbox[devezbus-debugpanel="mod8-pan2"][devezbus-debugpanel-on] .devezbus-debughint[devezbus-debugpanel="mod8-pan2"] {
+        display: block;
+    }
+      
+    .devezbus-debugbox[devezbus-debugpanel="mod8-pan3"]:not([devezbus-debugpanel-on]) .devezbus-debughint[devezbus-debugpanel="mod8-pan3"] {
+        display: none;
+    }
+      
+    .devezbus-debugbox[devezbus-debugpanel="mod8-pan3"][devezbus-debugpanel-on] .devezbus-debughint[devezbus-debugpanel="mod8-pan3"] {
+        display: block;
+    }
+      
+    .devezbus-debugbox[devezbus-debugpanel="mod8-pan4"]:not([devezbus-debugpanel-on]) .devezbus-debughint[devezbus-debugpanel="mod8-pan4"] {
+        display: none;
+    }
+      
+    .devezbus-debugbox[devezbus-debugpanel="mod8-pan4"][devezbus-debugpanel-on] .devezbus-debughint[devezbus-debugpanel="mod8-pan4"] {
+        display: block;
+    }
+      
+    .devezbus-debugbox[devezbus-debugpanel="mod8-pan5"]:not([devezbus-debugpanel-on]) .devezbus-debughint[devezbus-debugpanel="mod8-pan5"] {
+        display: none;
+    }
+      
+    .devezbus-debugbox[devezbus-debugpanel="mod8-pan5"][devezbus-debugpanel-on] .devezbus-debughint[devezbus-debugpanel="mod8-pan5"] {
+        display: block;
+    }
+      
+    .devezbus-debugbox[devezbus-debugpanel="mod8-pan6"]:not([devezbus-debugpanel-on]) .devezbus-debughint[devezbus-debugpanel="mod8-pan6"] {
+        display: none;
+    }
+      
+    .devezbus-debugbox[devezbus-debugpanel="mod8-pan6"][devezbus-debugpanel-on] .devezbus-debughint[devezbus-debugpanel="mod8-pan6"] {
+        display: block;
+    }
+      
+    .devezbus-debugbox[devezbus-debugpanel="mod8-pan7"]:not([devezbus-debugpanel-on]) .devezbus-debughint[devezbus-debugpanel="mod8-pan7"] {
+        display: none;
+    }
+      
+    .devezbus-debugbox[devezbus-debugpanel="mod8-pan7"][devezbus-debugpanel-on] .devezbus-debughint[devezbus-debugpanel="mod8-pan7"] {
+        display: block;
+    }
+      
+    .devezbus-debugbox[devezbus-debugpanel="mod8-pan8"]:not([devezbus-debugpanel-on]) .devezbus-debughint[devezbus-debugpanel="mod8-pan8"] {
+        display: none;
+    }
+      
+    .devezbus-debugbox[devezbus-debugpanel="mod8-pan8"][devezbus-debugpanel-on] .devezbus-debughint[devezbus-debugpanel="mod8-pan8"] {
+        display: block;
+    }
+      
+    .devezbus-debugbox[devezbus-debugpanel="mod8-pan9"]:not([devezbus-debugpanel-on]) .devezbus-debughint[devezbus-debugpanel="mod8-pan9"] {
+        display: none;
+    }
+      
+    .devezbus-debugbox[devezbus-debugpanel="mod8-pan9"][devezbus-debugpanel-on] .devezbus-debughint[devezbus-debugpanel="mod8-pan9"] {
+        display: block;
+    }
+      
+    .devezbus-debugbox[devezbus-debugpanel="mod8-pan10"]:not([devezbus-debugpanel-on]) .devezbus-debughint[devezbus-debugpanel="mod8-pan10"] {
+        display: none;
+    }
+      
+    .devezbus-debugbox[devezbus-debugpanel="mod8-pan10"][devezbus-debugpanel-on] .devezbus-debughint[devezbus-debugpanel="mod8-pan10"] {
+        display: block;
+    }
+      
+    .devezbus-debugbox[devezbus-debugpanel="mod8-pan11"]:not([devezbus-debugpanel-on]) .devezbus-debughint[devezbus-debugpanel="mod8-pan11"] {
+        display: none;
+    }
+      
+    .devezbus-debugbox[devezbus-debugpanel="mod8-pan11"][devezbus-debugpanel-on] .devezbus-debughint[devezbus-debugpanel="mod8-pan11"] {
+        display: block;
+    }
+      
+    .devezbus-debugbox[devezbus-debugpanel="mod8-pan12"]:not([devezbus-debugpanel-on]) .devezbus-debughint[devezbus-debugpanel="mod8-pan12"] {
+        display: none;
+    }
+      
+    .devezbus-debugbox[devezbus-debugpanel="mod8-pan12"][devezbus-debugpanel-on] .devezbus-debughint[devezbus-debugpanel="mod8-pan12"] {
+        display: block;
+    }
+      
+    .devezbus-debugbox[devezbus-debugpanel="mod8-pan13"]:not([devezbus-debugpanel-on]) .devezbus-debughint[devezbus-debugpanel="mod8-pan13"] {
+        display: none;
+    }
+      
+    .devezbus-debugbox[devezbus-debugpanel="mod8-pan13"][devezbus-debugpanel-on] .devezbus-debughint[devezbus-debugpanel="mod8-pan13"] {
+        display: block;
+    }
+      
+    .devezbus-debugbox[devezbus-debugpanel="mod8-pan14"]:not([devezbus-debugpanel-on]) .devezbus-debughint[devezbus-debugpanel="mod8-pan14"] {
+        display: none;
+    }
+      
+    .devezbus-debugbox[devezbus-debugpanel="mod8-pan14"][devezbus-debugpanel-on] .devezbus-debughint[devezbus-debugpanel="mod8-pan14"] {
+        display: block;
+    }
+      
+    .devezbus-debugbox[devezbus-debugpanel="mod8-pan15"]:not([devezbus-debugpanel-on]) .devezbus-debughint[devezbus-debugpanel="mod8-pan15"] {
+        display: none;
+    }
+      
+    .devezbus-debugbox[devezbus-debugpanel="mod8-pan15"][devezbus-debugpanel-on] .devezbus-debughint[devezbus-debugpanel="mod8-pan15"] {
+        display: block;
+    }
+      
+    .devezbus-debugbox[devezbus-debugpanel="mod9-pan0"]:not([devezbus-debugpanel-on]) .devezbus-debughint[devezbus-debugpanel="mod9-pan0"] {
+        display: none;
+    }
+      
+    .devezbus-debugbox[devezbus-debugpanel="mod9-pan0"][devezbus-debugpanel-on] .devezbus-debughint[devezbus-debugpanel="mod9-pan0"] {
+        display: block;
+    }
+      
+    .devezbus-debugbox[devezbus-debugpanel="mod9-pan1"]:not([devezbus-debugpanel-on]) .devezbus-debughint[devezbus-debugpanel="mod9-pan1"] {
+        display: none;
+    }
+      
+    .devezbus-debugbox[devezbus-debugpanel="mod9-pan1"][devezbus-debugpanel-on] .devezbus-debughint[devezbus-debugpanel="mod9-pan1"] {
+        display: block;
+    }
+      
+    .devezbus-debugbox[devezbus-debugpanel="mod9-pan2"]:not([devezbus-debugpanel-on]) .devezbus-debughint[devezbus-debugpanel="mod9-pan2"] {
+        display: none;
+    }
+      
+    .devezbus-debugbox[devezbus-debugpanel="mod9-pan2"][devezbus-debugpanel-on] .devezbus-debughint[devezbus-debugpanel="mod9-pan2"] {
+        display: block;
+    }
+      
+    .devezbus-debugbox[devezbus-debugpanel="mod9-pan3"]:not([devezbus-debugpanel-on]) .devezbus-debughint[devezbus-debugpanel="mod9-pan3"] {
+        display: none;
+    }
+      
+    .devezbus-debugbox[devezbus-debugpanel="mod9-pan3"][devezbus-debugpanel-on] .devezbus-debughint[devezbus-debugpanel="mod9-pan3"] {
+        display: block;
+    }
+      
+    .devezbus-debugbox[devezbus-debugpanel="mod9-pan4"]:not([devezbus-debugpanel-on]) .devezbus-debughint[devezbus-debugpanel="mod9-pan4"] {
+        display: none;
+    }
+      
+    .devezbus-debugbox[devezbus-debugpanel="mod9-pan4"][devezbus-debugpanel-on] .devezbus-debughint[devezbus-debugpanel="mod9-pan4"] {
+        display: block;
+    }
+      
+    .devezbus-debugbox[devezbus-debugpanel="mod9-pan5"]:not([devezbus-debugpanel-on]) .devezbus-debughint[devezbus-debugpanel="mod9-pan5"] {
+        display: none;
+    }
+      
+    .devezbus-debugbox[devezbus-debugpanel="mod9-pan5"][devezbus-debugpanel-on] .devezbus-debughint[devezbus-debugpanel="mod9-pan5"] {
+        display: block;
+    }
+      
+    .devezbus-debugbox[devezbus-debugpanel="mod9-pan6"]:not([devezbus-debugpanel-on]) .devezbus-debughint[devezbus-debugpanel="mod9-pan6"] {
+        display: none;
+    }
+      
+    .devezbus-debugbox[devezbus-debugpanel="mod9-pan6"][devezbus-debugpanel-on] .devezbus-debughint[devezbus-debugpanel="mod9-pan6"] {
+        display: block;
+    }
+      
+    .devezbus-debugbox[devezbus-debugpanel="mod9-pan7"]:not([devezbus-debugpanel-on]) .devezbus-debughint[devezbus-debugpanel="mod9-pan7"] {
+        display: none;
+    }
+      
+    .devezbus-debugbox[devezbus-debugpanel="mod9-pan7"][devezbus-debugpanel-on] .devezbus-debughint[devezbus-debugpanel="mod9-pan7"] {
+        display: block;
+    }
+      
+    .devezbus-debugbox[devezbus-debugpanel="mod9-pan8"]:not([devezbus-debugpanel-on]) .devezbus-debughint[devezbus-debugpanel="mod9-pan8"] {
+        display: none;
+    }
+      
+    .devezbus-debugbox[devezbus-debugpanel="mod9-pan8"][devezbus-debugpanel-on] .devezbus-debughint[devezbus-debugpanel="mod9-pan8"] {
+        display: block;
+    }
+      
+    .devezbus-debugbox[devezbus-debugpanel="mod9-pan9"]:not([devezbus-debugpanel-on]) .devezbus-debughint[devezbus-debugpanel="mod9-pan9"] {
+        display: none;
+    }
+      
+    .devezbus-debugbox[devezbus-debugpanel="mod9-pan9"][devezbus-debugpanel-on] .devezbus-debughint[devezbus-debugpanel="mod9-pan9"] {
+        display: block;
+    }
+      
+    .devezbus-debugbox[devezbus-debugpanel="mod9-pan10"]:not([devezbus-debugpanel-on]) .devezbus-debughint[devezbus-debugpanel="mod9-pan10"] {
+        display: none;
+    }
+      
+    .devezbus-debugbox[devezbus-debugpanel="mod9-pan10"][devezbus-debugpanel-on] .devezbus-debughint[devezbus-debugpanel="mod9-pan10"] {
+        display: block;
+    }
+      
+    .devezbus-debugbox[devezbus-debugpanel="mod9-pan11"]:not([devezbus-debugpanel-on]) .devezbus-debughint[devezbus-debugpanel="mod9-pan11"] {
+        display: none;
+    }
+      
+    .devezbus-debugbox[devezbus-debugpanel="mod9-pan11"][devezbus-debugpanel-on] .devezbus-debughint[devezbus-debugpanel="mod9-pan11"] {
+        display: block;
+    }
+      
+    .devezbus-debugbox[devezbus-debugpanel="mod9-pan12"]:not([devezbus-debugpanel-on]) .devezbus-debughint[devezbus-debugpanel="mod9-pan12"] {
+        display: none;
+    }
+      
+    .devezbus-debugbox[devezbus-debugpanel="mod9-pan12"][devezbus-debugpanel-on] .devezbus-debughint[devezbus-debugpanel="mod9-pan12"] {
+        display: block;
+    }
+      
+    .devezbus-debugbox[devezbus-debugpanel="mod9-pan13"]:not([devezbus-debugpanel-on]) .devezbus-debughint[devezbus-debugpanel="mod9-pan13"] {
+        display: none;
+    }
+      
+    .devezbus-debugbox[devezbus-debugpanel="mod9-pan13"][devezbus-debugpanel-on] .devezbus-debughint[devezbus-debugpanel="mod9-pan13"] {
+        display: block;
+    }
+      
+    .devezbus-debugbox[devezbus-debugpanel="mod9-pan14"]:not([devezbus-debugpanel-on]) .devezbus-debughint[devezbus-debugpanel="mod9-pan14"] {
+        display: none;
+    }
+      
+    .devezbus-debugbox[devezbus-debugpanel="mod9-pan14"][devezbus-debugpanel-on] .devezbus-debughint[devezbus-debugpanel="mod9-pan14"] {
+        display: block;
+    }
+      
+    .devezbus-debugbox[devezbus-debugpanel="mod9-pan15"]:not([devezbus-debugpanel-on]) .devezbus-debughint[devezbus-debugpanel="mod9-pan15"] {
+        display: none;
+    }
+      
+    .devezbus-debugbox[devezbus-debugpanel="mod9-pan15"][devezbus-debugpanel-on] .devezbus-debughint[devezbus-debugpanel="mod9-pan15"] {
+        display: block;
+    }
+      
+    .devezbus-debugbox[devezbus-debugpanel="mod10-pan0"]:not([devezbus-debugpanel-on]) .devezbus-debughint[devezbus-debugpanel="mod10-pan0"] {
+        display: none;
+    }
+      
+    .devezbus-debugbox[devezbus-debugpanel="mod10-pan0"][devezbus-debugpanel-on] .devezbus-debughint[devezbus-debugpanel="mod10-pan0"] {
+        display: block;
+    }
+      
+    .devezbus-debugbox[devezbus-debugpanel="mod10-pan1"]:not([devezbus-debugpanel-on]) .devezbus-debughint[devezbus-debugpanel="mod10-pan1"] {
+        display: none;
+    }
+      
+    .devezbus-debugbox[devezbus-debugpanel="mod10-pan1"][devezbus-debugpanel-on] .devezbus-debughint[devezbus-debugpanel="mod10-pan1"] {
+        display: block;
+    }
+      
+    .devezbus-debugbox[devezbus-debugpanel="mod10-pan2"]:not([devezbus-debugpanel-on]) .devezbus-debughint[devezbus-debugpanel="mod10-pan2"] {
+        display: none;
+    }
+      
+    .devezbus-debugbox[devezbus-debugpanel="mod10-pan2"][devezbus-debugpanel-on] .devezbus-debughint[devezbus-debugpanel="mod10-pan2"] {
+        display: block;
+    }
+      
+    .devezbus-debugbox[devezbus-debugpanel="mod10-pan3"]:not([devezbus-debugpanel-on]) .devezbus-debughint[devezbus-debugpanel="mod10-pan3"] {
+        display: none;
+    }
+      
+    .devezbus-debugbox[devezbus-debugpanel="mod10-pan3"][devezbus-debugpanel-on] .devezbus-debughint[devezbus-debugpanel="mod10-pan3"] {
+        display: block;
+    }
+      
+    .devezbus-debugbox[devezbus-debugpanel="mod10-pan4"]:not([devezbus-debugpanel-on]) .devezbus-debughint[devezbus-debugpanel="mod10-pan4"] {
+        display: none;
+    }
+      
+    .devezbus-debugbox[devezbus-debugpanel="mod10-pan4"][devezbus-debugpanel-on] .devezbus-debughint[devezbus-debugpanel="mod10-pan4"] {
+        display: block;
+    }
+      
+    .devezbus-debugbox[devezbus-debugpanel="mod10-pan5"]:not([devezbus-debugpanel-on]) .devezbus-debughint[devezbus-debugpanel="mod10-pan5"] {
+        display: none;
+    }
+      
+    .devezbus-debugbox[devezbus-debugpanel="mod10-pan5"][devezbus-debugpanel-on] .devezbus-debughint[devezbus-debugpanel="mod10-pan5"] {
+        display: block;
+    }
+      
+    .devezbus-debugbox[devezbus-debugpanel="mod10-pan6"]:not([devezbus-debugpanel-on]) .devezbus-debughint[devezbus-debugpanel="mod10-pan6"] {
+        display: none;
+    }
+      
+    .devezbus-debugbox[devezbus-debugpanel="mod10-pan6"][devezbus-debugpanel-on] .devezbus-debughint[devezbus-debugpanel="mod10-pan6"] {
+        display: block;
+    }
+      
+    .devezbus-debugbox[devezbus-debugpanel="mod10-pan7"]:not([devezbus-debugpanel-on]) .devezbus-debughint[devezbus-debugpanel="mod10-pan7"] {
+        display: none;
+    }
+      
+    .devezbus-debugbox[devezbus-debugpanel="mod10-pan7"][devezbus-debugpanel-on] .devezbus-debughint[devezbus-debugpanel="mod10-pan7"] {
+        display: block;
+    }
+      
+    .devezbus-debugbox[devezbus-debugpanel="mod10-pan8"]:not([devezbus-debugpanel-on]) .devezbus-debughint[devezbus-debugpanel="mod10-pan8"] {
+        display: none;
+    }
+      
+    .devezbus-debugbox[devezbus-debugpanel="mod10-pan8"][devezbus-debugpanel-on] .devezbus-debughint[devezbus-debugpanel="mod10-pan8"] {
+        display: block;
+    }
+      
+    .devezbus-debugbox[devezbus-debugpanel="mod10-pan9"]:not([devezbus-debugpanel-on]) .devezbus-debughint[devezbus-debugpanel="mod10-pan9"] {
+        display: none;
+    }
+      
+    .devezbus-debugbox[devezbus-debugpanel="mod10-pan9"][devezbus-debugpanel-on] .devezbus-debughint[devezbus-debugpanel="mod10-pan9"] {
+        display: block;
+    }
+      
+    .devezbus-debugbox[devezbus-debugpanel="mod10-pan10"]:not([devezbus-debugpanel-on]) .devezbus-debughint[devezbus-debugpanel="mod10-pan10"] {
+        display: none;
+    }
+      
+    .devezbus-debugbox[devezbus-debugpanel="mod10-pan10"][devezbus-debugpanel-on] .devezbus-debughint[devezbus-debugpanel="mod10-pan10"] {
+        display: block;
+    }
+      
+    .devezbus-debugbox[devezbus-debugpanel="mod10-pan11"]:not([devezbus-debugpanel-on]) .devezbus-debughint[devezbus-debugpanel="mod10-pan11"] {
+        display: none;
+    }
+      
+    .devezbus-debugbox[devezbus-debugpanel="mod10-pan11"][devezbus-debugpanel-on] .devezbus-debughint[devezbus-debugpanel="mod10-pan11"] {
+        display: block;
+    }
+      
+    .devezbus-debugbox[devezbus-debugpanel="mod10-pan12"]:not([devezbus-debugpanel-on]) .devezbus-debughint[devezbus-debugpanel="mod10-pan12"] {
+        display: none;
+    }
+      
+    .devezbus-debugbox[devezbus-debugpanel="mod10-pan12"][devezbus-debugpanel-on] .devezbus-debughint[devezbus-debugpanel="mod10-pan12"] {
+        display: block;
+    }
+      
+    .devezbus-debugbox[devezbus-debugpanel="mod10-pan13"]:not([devezbus-debugpanel-on]) .devezbus-debughint[devezbus-debugpanel="mod10-pan13"] {
+        display: none;
+    }
+      
+    .devezbus-debugbox[devezbus-debugpanel="mod10-pan13"][devezbus-debugpanel-on] .devezbus-debughint[devezbus-debugpanel="mod10-pan13"] {
+        display: block;
+    }
+      
+    .devezbus-debugbox[devezbus-debugpanel="mod10-pan14"]:not([devezbus-debugpanel-on]) .devezbus-debughint[devezbus-debugpanel="mod10-pan14"] {
+        display: none;
+    }
+      
+    .devezbus-debugbox[devezbus-debugpanel="mod10-pan14"][devezbus-debugpanel-on] .devezbus-debughint[devezbus-debugpanel="mod10-pan14"] {
+        display: block;
+    }
+      
+    .devezbus-debugbox[devezbus-debugpanel="mod10-pan15"]:not([devezbus-debugpanel-on]) .devezbus-debughint[devezbus-debugpanel="mod10-pan15"] {
+        display: none;
+    }
+      
+    .devezbus-debugbox[devezbus-debugpanel="mod10-pan15"][devezbus-debugpanel-on] .devezbus-debughint[devezbus-debugpanel="mod10-pan15"] {
+        display: block;
+    }
+      
+    .devezbus-debugbox[devezbus-debugpanel="mod11-pan0"]:not([devezbus-debugpanel-on]) .devezbus-debughint[devezbus-debugpanel="mod11-pan0"] {
+        display: none;
+    }
+      
+    .devezbus-debugbox[devezbus-debugpanel="mod11-pan0"][devezbus-debugpanel-on] .devezbus-debughint[devezbus-debugpanel="mod11-pan0"] {
+        display: block;
+    }
+      
+    .devezbus-debugbox[devezbus-debugpanel="mod11-pan1"]:not([devezbus-debugpanel-on]) .devezbus-debughint[devezbus-debugpanel="mod11-pan1"] {
+        display: none;
+    }
+      
+    .devezbus-debugbox[devezbus-debugpanel="mod11-pan1"][devezbus-debugpanel-on] .devezbus-debughint[devezbus-debugpanel="mod11-pan1"] {
+        display: block;
+    }
+      
+    .devezbus-debugbox[devezbus-debugpanel="mod11-pan2"]:not([devezbus-debugpanel-on]) .devezbus-debughint[devezbus-debugpanel="mod11-pan2"] {
+        display: none;
+    }
+      
+    .devezbus-debugbox[devezbus-debugpanel="mod11-pan2"][devezbus-debugpanel-on] .devezbus-debughint[devezbus-debugpanel="mod11-pan2"] {
+        display: block;
+    }
+      
+    .devezbus-debugbox[devezbus-debugpanel="mod11-pan3"]:not([devezbus-debugpanel-on]) .devezbus-debughint[devezbus-debugpanel="mod11-pan3"] {
+        display: none;
+    }
+      
+    .devezbus-debugbox[devezbus-debugpanel="mod11-pan3"][devezbus-debugpanel-on] .devezbus-debughint[devezbus-debugpanel="mod11-pan3"] {
+        display: block;
+    }
+      
+    .devezbus-debugbox[devezbus-debugpanel="mod11-pan4"]:not([devezbus-debugpanel-on]) .devezbus-debughint[devezbus-debugpanel="mod11-pan4"] {
+        display: none;
+    }
+      
+    .devezbus-debugbox[devezbus-debugpanel="mod11-pan4"][devezbus-debugpanel-on] .devezbus-debughint[devezbus-debugpanel="mod11-pan4"] {
+        display: block;
+    }
+      
+    .devezbus-debugbox[devezbus-debugpanel="mod11-pan5"]:not([devezbus-debugpanel-on]) .devezbus-debughint[devezbus-debugpanel="mod11-pan5"] {
+        display: none;
+    }
+      
+    .devezbus-debugbox[devezbus-debugpanel="mod11-pan5"][devezbus-debugpanel-on] .devezbus-debughint[devezbus-debugpanel="mod11-pan5"] {
+        display: block;
+    }
+      
+    .devezbus-debugbox[devezbus-debugpanel="mod11-pan6"]:not([devezbus-debugpanel-on]) .devezbus-debughint[devezbus-debugpanel="mod11-pan6"] {
+        display: none;
+    }
+      
+    .devezbus-debugbox[devezbus-debugpanel="mod11-pan6"][devezbus-debugpanel-on] .devezbus-debughint[devezbus-debugpanel="mod11-pan6"] {
+        display: block;
+    }
+      
+    .devezbus-debugbox[devezbus-debugpanel="mod11-pan7"]:not([devezbus-debugpanel-on]) .devezbus-debughint[devezbus-debugpanel="mod11-pan7"] {
+        display: none;
+    }
+      
+    .devezbus-debugbox[devezbus-debugpanel="mod11-pan7"][devezbus-debugpanel-on] .devezbus-debughint[devezbus-debugpanel="mod11-pan7"] {
+        display: block;
+    }
+      
+    .devezbus-debugbox[devezbus-debugpanel="mod11-pan8"]:not([devezbus-debugpanel-on]) .devezbus-debughint[devezbus-debugpanel="mod11-pan8"] {
+        display: none;
+    }
+      
+    .devezbus-debugbox[devezbus-debugpanel="mod11-pan8"][devezbus-debugpanel-on] .devezbus-debughint[devezbus-debugpanel="mod11-pan8"] {
+        display: block;
+    }
+      
+    .devezbus-debugbox[devezbus-debugpanel="mod11-pan9"]:not([devezbus-debugpanel-on]) .devezbus-debughint[devezbus-debugpanel="mod11-pan9"] {
+        display: none;
+    }
+      
+    .devezbus-debugbox[devezbus-debugpanel="mod11-pan9"][devezbus-debugpanel-on] .devezbus-debughint[devezbus-debugpanel="mod11-pan9"] {
+        display: block;
+    }
+      
+    .devezbus-debugbox[devezbus-debugpanel="mod11-pan10"]:not([devezbus-debugpanel-on]) .devezbus-debughint[devezbus-debugpanel="mod11-pan10"] {
+        display: none;
+    }
+      
+    .devezbus-debugbox[devezbus-debugpanel="mod11-pan10"][devezbus-debugpanel-on] .devezbus-debughint[devezbus-debugpanel="mod11-pan10"] {
+        display: block;
+    }
+      
+    .devezbus-debugbox[devezbus-debugpanel="mod11-pan11"]:not([devezbus-debugpanel-on]) .devezbus-debughint[devezbus-debugpanel="mod11-pan11"] {
+        display: none;
+    }
+      
+    .devezbus-debugbox[devezbus-debugpanel="mod11-pan11"][devezbus-debugpanel-on] .devezbus-debughint[devezbus-debugpanel="mod11-pan11"] {
+        display: block;
+    }
+      
+    .devezbus-debugbox[devezbus-debugpanel="mod11-pan12"]:not([devezbus-debugpanel-on]) .devezbus-debughint[devezbus-debugpanel="mod11-pan12"] {
+        display: none;
+    }
+      
+    .devezbus-debugbox[devezbus-debugpanel="mod11-pan12"][devezbus-debugpanel-on] .devezbus-debughint[devezbus-debugpanel="mod11-pan12"] {
+        display: block;
+    }
+      
+    .devezbus-debugbox[devezbus-debugpanel="mod11-pan13"]:not([devezbus-debugpanel-on]) .devezbus-debughint[devezbus-debugpanel="mod11-pan13"] {
+        display: none;
+    }
+      
+    .devezbus-debugbox[devezbus-debugpanel="mod11-pan13"][devezbus-debugpanel-on] .devezbus-debughint[devezbus-debugpanel="mod11-pan13"] {
+        display: block;
+    }
+      
+    .devezbus-debugbox[devezbus-debugpanel="mod11-pan14"]:not([devezbus-debugpanel-on]) .devezbus-debughint[devezbus-debugpanel="mod11-pan14"] {
+        display: none;
+    }
+      
+    .devezbus-debugbox[devezbus-debugpanel="mod11-pan14"][devezbus-debugpanel-on] .devezbus-debughint[devezbus-debugpanel="mod11-pan14"] {
+        display: block;
+    }
+      
+    .devezbus-debugbox[devezbus-debugpanel="mod11-pan15"]:not([devezbus-debugpanel-on]) .devezbus-debughint[devezbus-debugpanel="mod11-pan15"] {
+        display: none;
+    }
+      
+    .devezbus-debugbox[devezbus-debugpanel="mod11-pan15"][devezbus-debugpanel-on] .devezbus-debughint[devezbus-debugpanel="mod11-pan15"] {
+        display: block;
+    }
+      
+    .devezbus-debugbox[devezbus-debugpanel="mod12-pan0"]:not([devezbus-debugpanel-on]) .devezbus-debughint[devezbus-debugpanel="mod12-pan0"] {
+        display: none;
+    }
+      
+    .devezbus-debugbox[devezbus-debugpanel="mod12-pan0"][devezbus-debugpanel-on] .devezbus-debughint[devezbus-debugpanel="mod12-pan0"] {
+        display: block;
+    }
+      
+    .devezbus-debugbox[devezbus-debugpanel="mod12-pan1"]:not([devezbus-debugpanel-on]) .devezbus-debughint[devezbus-debugpanel="mod12-pan1"] {
+        display: none;
+    }
+      
+    .devezbus-debugbox[devezbus-debugpanel="mod12-pan1"][devezbus-debugpanel-on] .devezbus-debughint[devezbus-debugpanel="mod12-pan1"] {
+        display: block;
+    }
+      
+    .devezbus-debugbox[devezbus-debugpanel="mod12-pan2"]:not([devezbus-debugpanel-on]) .devezbus-debughint[devezbus-debugpanel="mod12-pan2"] {
+        display: none;
+    }
+      
+    .devezbus-debugbox[devezbus-debugpanel="mod12-pan2"][devezbus-debugpanel-on] .devezbus-debughint[devezbus-debugpanel="mod12-pan2"] {
+        display: block;
+    }
+      
+    .devezbus-debugbox[devezbus-debugpanel="mod12-pan3"]:not([devezbus-debugpanel-on]) .devezbus-debughint[devezbus-debugpanel="mod12-pan3"] {
+        display: none;
+    }
+      
+    .devezbus-debugbox[devezbus-debugpanel="mod12-pan3"][devezbus-debugpanel-on] .devezbus-debughint[devezbus-debugpanel="mod12-pan3"] {
+        display: block;
+    }
+      
+    .devezbus-debugbox[devezbus-debugpanel="mod12-pan4"]:not([devezbus-debugpanel-on]) .devezbus-debughint[devezbus-debugpanel="mod12-pan4"] {
+        display: none;
+    }
+      
+    .devezbus-debugbox[devezbus-debugpanel="mod12-pan4"][devezbus-debugpanel-on] .devezbus-debughint[devezbus-debugpanel="mod12-pan4"] {
+        display: block;
+    }
+      
+    .devezbus-debugbox[devezbus-debugpanel="mod12-pan5"]:not([devezbus-debugpanel-on]) .devezbus-debughint[devezbus-debugpanel="mod12-pan5"] {
+        display: none;
+    }
+      
+    .devezbus-debugbox[devezbus-debugpanel="mod12-pan5"][devezbus-debugpanel-on] .devezbus-debughint[devezbus-debugpanel="mod12-pan5"] {
+        display: block;
+    }
+      
+    .devezbus-debugbox[devezbus-debugpanel="mod12-pan6"]:not([devezbus-debugpanel-on]) .devezbus-debughint[devezbus-debugpanel="mod12-pan6"] {
+        display: none;
+    }
+      
+    .devezbus-debugbox[devezbus-debugpanel="mod12-pan6"][devezbus-debugpanel-on] .devezbus-debughint[devezbus-debugpanel="mod12-pan6"] {
+        display: block;
+    }
+      
+    .devezbus-debugbox[devezbus-debugpanel="mod12-pan7"]:not([devezbus-debugpanel-on]) .devezbus-debughint[devezbus-debugpanel="mod12-pan7"] {
+        display: none;
+    }
+      
+    .devezbus-debugbox[devezbus-debugpanel="mod12-pan7"][devezbus-debugpanel-on] .devezbus-debughint[devezbus-debugpanel="mod12-pan7"] {
+        display: block;
+    }
+      
+    .devezbus-debugbox[devezbus-debugpanel="mod12-pan8"]:not([devezbus-debugpanel-on]) .devezbus-debughint[devezbus-debugpanel="mod12-pan8"] {
+        display: none;
+    }
+      
+    .devezbus-debugbox[devezbus-debugpanel="mod12-pan8"][devezbus-debugpanel-on] .devezbus-debughint[devezbus-debugpanel="mod12-pan8"] {
+        display: block;
+    }
+      
+    .devezbus-debugbox[devezbus-debugpanel="mod12-pan9"]:not([devezbus-debugpanel-on]) .devezbus-debughint[devezbus-debugpanel="mod12-pan9"] {
+        display: none;
+    }
+      
+    .devezbus-debugbox[devezbus-debugpanel="mod12-pan9"][devezbus-debugpanel-on] .devezbus-debughint[devezbus-debugpanel="mod12-pan9"] {
+        display: block;
+    }
+      
+    .devezbus-debugbox[devezbus-debugpanel="mod12-pan10"]:not([devezbus-debugpanel-on]) .devezbus-debughint[devezbus-debugpanel="mod12-pan10"] {
+        display: none;
+    }
+      
+    .devezbus-debugbox[devezbus-debugpanel="mod12-pan10"][devezbus-debugpanel-on] .devezbus-debughint[devezbus-debugpanel="mod12-pan10"] {
+        display: block;
+    }
+      
+    .devezbus-debugbox[devezbus-debugpanel="mod12-pan11"]:not([devezbus-debugpanel-on]) .devezbus-debughint[devezbus-debugpanel="mod12-pan11"] {
+        display: none;
+    }
+      
+    .devezbus-debugbox[devezbus-debugpanel="mod12-pan11"][devezbus-debugpanel-on] .devezbus-debughint[devezbus-debugpanel="mod12-pan11"] {
+        display: block;
+    }
+      
+    .devezbus-debugbox[devezbus-debugpanel="mod12-pan12"]:not([devezbus-debugpanel-on]) .devezbus-debughint[devezbus-debugpanel="mod12-pan12"] {
+        display: none;
+    }
+      
+    .devezbus-debugbox[devezbus-debugpanel="mod12-pan12"][devezbus-debugpanel-on] .devezbus-debughint[devezbus-debugpanel="mod12-pan12"] {
+        display: block;
+    }
+      
+    .devezbus-debugbox[devezbus-debugpanel="mod12-pan13"]:not([devezbus-debugpanel-on]) .devezbus-debughint[devezbus-debugpanel="mod12-pan13"] {
+        display: none;
+    }
+      
+    .devezbus-debugbox[devezbus-debugpanel="mod12-pan13"][devezbus-debugpanel-on] .devezbus-debughint[devezbus-debugpanel="mod12-pan13"] {
+        display: block;
+    }
+      
+    .devezbus-debugbox[devezbus-debugpanel="mod12-pan14"]:not([devezbus-debugpanel-on]) .devezbus-debughint[devezbus-debugpanel="mod12-pan14"] {
+        display: none;
+    }
+      
+    .devezbus-debugbox[devezbus-debugpanel="mod12-pan14"][devezbus-debugpanel-on] .devezbus-debughint[devezbus-debugpanel="mod12-pan14"] {
+        display: block;
+    }
+      
+    .devezbus-debugbox[devezbus-debugpanel="mod12-pan15"]:not([devezbus-debugpanel-on]) .devezbus-debughint[devezbus-debugpanel="mod12-pan15"] {
+        display: none;
+    }
+      
+    .devezbus-debugbox[devezbus-debugpanel="mod12-pan15"][devezbus-debugpanel-on] .devezbus-debughint[devezbus-debugpanel="mod12-pan15"] {
+        display: block;
+    }
+      
+    .devezbus-debugbox[devezbus-debugpanel="mod13-pan0"]:not([devezbus-debugpanel-on]) .devezbus-debughint[devezbus-debugpanel="mod13-pan0"] {
+        display: none;
+    }
+      
+    .devezbus-debugbox[devezbus-debugpanel="mod13-pan0"][devezbus-debugpanel-on] .devezbus-debughint[devezbus-debugpanel="mod13-pan0"] {
+        display: block;
+    }
+      
+    .devezbus-debugbox[devezbus-debugpanel="mod13-pan1"]:not([devezbus-debugpanel-on]) .devezbus-debughint[devezbus-debugpanel="mod13-pan1"] {
+        display: none;
+    }
+      
+    .devezbus-debugbox[devezbus-debugpanel="mod13-pan1"][devezbus-debugpanel-on] .devezbus-debughint[devezbus-debugpanel="mod13-pan1"] {
+        display: block;
+    }
+      
+    .devezbus-debugbox[devezbus-debugpanel="mod13-pan2"]:not([devezbus-debugpanel-on]) .devezbus-debughint[devezbus-debugpanel="mod13-pan2"] {
+        display: none;
+    }
+      
+    .devezbus-debugbox[devezbus-debugpanel="mod13-pan2"][devezbus-debugpanel-on] .devezbus-debughint[devezbus-debugpanel="mod13-pan2"] {
+        display: block;
+    }
+      
+    .devezbus-debugbox[devezbus-debugpanel="mod13-pan3"]:not([devezbus-debugpanel-on]) .devezbus-debughint[devezbus-debugpanel="mod13-pan3"] {
+        display: none;
+    }
+      
+    .devezbus-debugbox[devezbus-debugpanel="mod13-pan3"][devezbus-debugpanel-on] .devezbus-debughint[devezbus-debugpanel="mod13-pan3"] {
+        display: block;
+    }
+      
+    .devezbus-debugbox[devezbus-debugpanel="mod13-pan4"]:not([devezbus-debugpanel-on]) .devezbus-debughint[devezbus-debugpanel="mod13-pan4"] {
+        display: none;
+    }
+      
+    .devezbus-debugbox[devezbus-debugpanel="mod13-pan4"][devezbus-debugpanel-on] .devezbus-debughint[devezbus-debugpanel="mod13-pan4"] {
+        display: block;
+    }
+      
+    .devezbus-debugbox[devezbus-debugpanel="mod13-pan5"]:not([devezbus-debugpanel-on]) .devezbus-debughint[devezbus-debugpanel="mod13-pan5"] {
+        display: none;
+    }
+      
+    .devezbus-debugbox[devezbus-debugpanel="mod13-pan5"][devezbus-debugpanel-on] .devezbus-debughint[devezbus-debugpanel="mod13-pan5"] {
+        display: block;
+    }
+      
+    .devezbus-debugbox[devezbus-debugpanel="mod13-pan6"]:not([devezbus-debugpanel-on]) .devezbus-debughint[devezbus-debugpanel="mod13-pan6"] {
+        display: none;
+    }
+      
+    .devezbus-debugbox[devezbus-debugpanel="mod13-pan6"][devezbus-debugpanel-on] .devezbus-debughint[devezbus-debugpanel="mod13-pan6"] {
+        display: block;
+    }
+      
+    .devezbus-debugbox[devezbus-debugpanel="mod13-pan7"]:not([devezbus-debugpanel-on]) .devezbus-debughint[devezbus-debugpanel="mod13-pan7"] {
+        display: none;
+    }
+      
+    .devezbus-debugbox[devezbus-debugpanel="mod13-pan7"][devezbus-debugpanel-on] .devezbus-debughint[devezbus-debugpanel="mod13-pan7"] {
+        display: block;
+    }
+      
+    .devezbus-debugbox[devezbus-debugpanel="mod13-pan8"]:not([devezbus-debugpanel-on]) .devezbus-debughint[devezbus-debugpanel="mod13-pan8"] {
+        display: none;
+    }
+      
+    .devezbus-debugbox[devezbus-debugpanel="mod13-pan8"][devezbus-debugpanel-on] .devezbus-debughint[devezbus-debugpanel="mod13-pan8"] {
+        display: block;
+    }
+      
+    .devezbus-debugbox[devezbus-debugpanel="mod13-pan9"]:not([devezbus-debugpanel-on]) .devezbus-debughint[devezbus-debugpanel="mod13-pan9"] {
+        display: none;
+    }
+      
+    .devezbus-debugbox[devezbus-debugpanel="mod13-pan9"][devezbus-debugpanel-on] .devezbus-debughint[devezbus-debugpanel="mod13-pan9"] {
+        display: block;
+    }
+      
+    .devezbus-debugbox[devezbus-debugpanel="mod13-pan10"]:not([devezbus-debugpanel-on]) .devezbus-debughint[devezbus-debugpanel="mod13-pan10"] {
+        display: none;
+    }
+      
+    .devezbus-debugbox[devezbus-debugpanel="mod13-pan10"][devezbus-debugpanel-on] .devezbus-debughint[devezbus-debugpanel="mod13-pan10"] {
+        display: block;
+    }
+      
+    .devezbus-debugbox[devezbus-debugpanel="mod13-pan11"]:not([devezbus-debugpanel-on]) .devezbus-debughint[devezbus-debugpanel="mod13-pan11"] {
+        display: none;
+    }
+      
+    .devezbus-debugbox[devezbus-debugpanel="mod13-pan11"][devezbus-debugpanel-on] .devezbus-debughint[devezbus-debugpanel="mod13-pan11"] {
+        display: block;
+    }
+      
+    .devezbus-debugbox[devezbus-debugpanel="mod13-pan12"]:not([devezbus-debugpanel-on]) .devezbus-debughint[devezbus-debugpanel="mod13-pan12"] {
+        display: none;
+    }
+      
+    .devezbus-debugbox[devezbus-debugpanel="mod13-pan12"][devezbus-debugpanel-on] .devezbus-debughint[devezbus-debugpanel="mod13-pan12"] {
+        display: block;
+    }
+      
+    .devezbus-debugbox[devezbus-debugpanel="mod13-pan13"]:not([devezbus-debugpanel-on]) .devezbus-debughint[devezbus-debugpanel="mod13-pan13"] {
+        display: none;
+    }
+      
+    .devezbus-debugbox[devezbus-debugpanel="mod13-pan13"][devezbus-debugpanel-on] .devezbus-debughint[devezbus-debugpanel="mod13-pan13"] {
+        display: block;
+    }
+      
+    .devezbus-debugbox[devezbus-debugpanel="mod13-pan14"]:not([devezbus-debugpanel-on]) .devezbus-debughint[devezbus-debugpanel="mod13-pan14"] {
+        display: none;
+    }
+      
+    .devezbus-debugbox[devezbus-debugpanel="mod13-pan14"][devezbus-debugpanel-on] .devezbus-debughint[devezbus-debugpanel="mod13-pan14"] {
+        display: block;
+    }
+      
+    .devezbus-debugbox[devezbus-debugpanel="mod13-pan15"]:not([devezbus-debugpanel-on]) .devezbus-debughint[devezbus-debugpanel="mod13-pan15"] {
+        display: none;
+    }
+      
+    .devezbus-debugbox[devezbus-debugpanel="mod13-pan15"][devezbus-debugpanel-on] .devezbus-debughint[devezbus-debugpanel="mod13-pan15"] {
+        display: block;
+    }
+      
+    .devezbus-debugbox[devezbus-debugpanel="mod14-pan0"]:not([devezbus-debugpanel-on]) .devezbus-debughint[devezbus-debugpanel="mod14-pan0"] {
+        display: none;
+    }
+      
+    .devezbus-debugbox[devezbus-debugpanel="mod14-pan0"][devezbus-debugpanel-on] .devezbus-debughint[devezbus-debugpanel="mod14-pan0"] {
+        display: block;
+    }
+      
+    .devezbus-debugbox[devezbus-debugpanel="mod14-pan1"]:not([devezbus-debugpanel-on]) .devezbus-debughint[devezbus-debugpanel="mod14-pan1"] {
+        display: none;
+    }
+      
+    .devezbus-debugbox[devezbus-debugpanel="mod14-pan1"][devezbus-debugpanel-on] .devezbus-debughint[devezbus-debugpanel="mod14-pan1"] {
+        display: block;
+    }
+      
+    .devezbus-debugbox[devezbus-debugpanel="mod14-pan2"]:not([devezbus-debugpanel-on]) .devezbus-debughint[devezbus-debugpanel="mod14-pan2"] {
+        display: none;
+    }
+      
+    .devezbus-debugbox[devezbus-debugpanel="mod14-pan2"][devezbus-debugpanel-on] .devezbus-debughint[devezbus-debugpanel="mod14-pan2"] {
+        display: block;
+    }
+      
+    .devezbus-debugbox[devezbus-debugpanel="mod14-pan3"]:not([devezbus-debugpanel-on]) .devezbus-debughint[devezbus-debugpanel="mod14-pan3"] {
+        display: none;
+    }
+      
+    .devezbus-debugbox[devezbus-debugpanel="mod14-pan3"][devezbus-debugpanel-on] .devezbus-debughint[devezbus-debugpanel="mod14-pan3"] {
+        display: block;
+    }
+      
+    .devezbus-debugbox[devezbus-debugpanel="mod14-pan4"]:not([devezbus-debugpanel-on]) .devezbus-debughint[devezbus-debugpanel="mod14-pan4"] {
+        display: none;
+    }
+      
+    .devezbus-debugbox[devezbus-debugpanel="mod14-pan4"][devezbus-debugpanel-on] .devezbus-debughint[devezbus-debugpanel="mod14-pan4"] {
+        display: block;
+    }
+      
+    .devezbus-debugbox[devezbus-debugpanel="mod14-pan5"]:not([devezbus-debugpanel-on]) .devezbus-debughint[devezbus-debugpanel="mod14-pan5"] {
+        display: none;
+    }
+      
+    .devezbus-debugbox[devezbus-debugpanel="mod14-pan5"][devezbus-debugpanel-on] .devezbus-debughint[devezbus-debugpanel="mod14-pan5"] {
+        display: block;
+    }
+      
+    .devezbus-debugbox[devezbus-debugpanel="mod14-pan6"]:not([devezbus-debugpanel-on]) .devezbus-debughint[devezbus-debugpanel="mod14-pan6"] {
+        display: none;
+    }
+      
+    .devezbus-debugbox[devezbus-debugpanel="mod14-pan6"][devezbus-debugpanel-on] .devezbus-debughint[devezbus-debugpanel="mod14-pan6"] {
+        display: block;
+    }
+      
+    .devezbus-debugbox[devezbus-debugpanel="mod14-pan7"]:not([devezbus-debugpanel-on]) .devezbus-debughint[devezbus-debugpanel="mod14-pan7"] {
+        display: none;
+    }
+      
+    .devezbus-debugbox[devezbus-debugpanel="mod14-pan7"][devezbus-debugpanel-on] .devezbus-debughint[devezbus-debugpanel="mod14-pan7"] {
+        display: block;
+    }
+      
+    .devezbus-debugbox[devezbus-debugpanel="mod14-pan8"]:not([devezbus-debugpanel-on]) .devezbus-debughint[devezbus-debugpanel="mod14-pan8"] {
+        display: none;
+    }
+      
+    .devezbus-debugbox[devezbus-debugpanel="mod14-pan8"][devezbus-debugpanel-on] .devezbus-debughint[devezbus-debugpanel="mod14-pan8"] {
+        display: block;
+    }
+      
+    .devezbus-debugbox[devezbus-debugpanel="mod14-pan9"]:not([devezbus-debugpanel-on]) .devezbus-debughint[devezbus-debugpanel="mod14-pan9"] {
+        display: none;
+    }
+      
+    .devezbus-debugbox[devezbus-debugpanel="mod14-pan9"][devezbus-debugpanel-on] .devezbus-debughint[devezbus-debugpanel="mod14-pan9"] {
+        display: block;
+    }
+      
+    .devezbus-debugbox[devezbus-debugpanel="mod14-pan10"]:not([devezbus-debugpanel-on]) .devezbus-debughint[devezbus-debugpanel="mod14-pan10"] {
+        display: none;
+    }
+      
+    .devezbus-debugbox[devezbus-debugpanel="mod14-pan10"][devezbus-debugpanel-on] .devezbus-debughint[devezbus-debugpanel="mod14-pan10"] {
+        display: block;
+    }
+      
+    .devezbus-debugbox[devezbus-debugpanel="mod14-pan11"]:not([devezbus-debugpanel-on]) .devezbus-debughint[devezbus-debugpanel="mod14-pan11"] {
+        display: none;
+    }
+      
+    .devezbus-debugbox[devezbus-debugpanel="mod14-pan11"][devezbus-debugpanel-on] .devezbus-debughint[devezbus-debugpanel="mod14-pan11"] {
+        display: block;
+    }
+      
+    .devezbus-debugbox[devezbus-debugpanel="mod14-pan12"]:not([devezbus-debugpanel-on]) .devezbus-debughint[devezbus-debugpanel="mod14-pan12"] {
+        display: none;
+    }
+      
+    .devezbus-debugbox[devezbus-debugpanel="mod14-pan12"][devezbus-debugpanel-on] .devezbus-debughint[devezbus-debugpanel="mod14-pan12"] {
+        display: block;
+    }
+      
+    .devezbus-debugbox[devezbus-debugpanel="mod14-pan13"]:not([devezbus-debugpanel-on]) .devezbus-debughint[devezbus-debugpanel="mod14-pan13"] {
+        display: none;
+    }
+      
+    .devezbus-debugbox[devezbus-debugpanel="mod14-pan13"][devezbus-debugpanel-on] .devezbus-debughint[devezbus-debugpanel="mod14-pan13"] {
+        display: block;
+    }
+      
+    .devezbus-debugbox[devezbus-debugpanel="mod14-pan14"]:not([devezbus-debugpanel-on]) .devezbus-debughint[devezbus-debugpanel="mod14-pan14"] {
+        display: none;
+    }
+      
+    .devezbus-debugbox[devezbus-debugpanel="mod14-pan14"][devezbus-debugpanel-on] .devezbus-debughint[devezbus-debugpanel="mod14-pan14"] {
+        display: block;
+    }
+      
+    .devezbus-debugbox[devezbus-debugpanel="mod14-pan15"]:not([devezbus-debugpanel-on]) .devezbus-debughint[devezbus-debugpanel="mod14-pan15"] {
+        display: none;
+    }
+      
+    .devezbus-debugbox[devezbus-debugpanel="mod14-pan15"][devezbus-debugpanel-on] .devezbus-debughint[devezbus-debugpanel="mod14-pan15"] {
+        display: block;
+    }
+      
+    .devezbus-debugbox[devezbus-debugpanel="mod15-pan0"]:not([devezbus-debugpanel-on]) .devezbus-debughint[devezbus-debugpanel="mod15-pan0"] {
+        display: none;
+    }
+      
+    .devezbus-debugbox[devezbus-debugpanel="mod15-pan0"][devezbus-debugpanel-on] .devezbus-debughint[devezbus-debugpanel="mod15-pan0"] {
+        display: block;
+    }
+      
+    .devezbus-debugbox[devezbus-debugpanel="mod15-pan1"]:not([devezbus-debugpanel-on]) .devezbus-debughint[devezbus-debugpanel="mod15-pan1"] {
+        display: none;
+    }
+      
+    .devezbus-debugbox[devezbus-debugpanel="mod15-pan1"][devezbus-debugpanel-on] .devezbus-debughint[devezbus-debugpanel="mod15-pan1"] {
+        display: block;
+    }
+      
+    .devezbus-debugbox[devezbus-debugpanel="mod15-pan2"]:not([devezbus-debugpanel-on]) .devezbus-debughint[devezbus-debugpanel="mod15-pan2"] {
+        display: none;
+    }
+      
+    .devezbus-debugbox[devezbus-debugpanel="mod15-pan2"][devezbus-debugpanel-on] .devezbus-debughint[devezbus-debugpanel="mod15-pan2"] {
+        display: block;
+    }
+      
+    .devezbus-debugbox[devezbus-debugpanel="mod15-pan3"]:not([devezbus-debugpanel-on]) .devezbus-debughint[devezbus-debugpanel="mod15-pan3"] {
+        display: none;
+    }
+      
+    .devezbus-debugbox[devezbus-debugpanel="mod15-pan3"][devezbus-debugpanel-on] .devezbus-debughint[devezbus-debugpanel="mod15-pan3"] {
+        display: block;
+    }
+      
+    .devezbus-debugbox[devezbus-debugpanel="mod15-pan4"]:not([devezbus-debugpanel-on]) .devezbus-debughint[devezbus-debugpanel="mod15-pan4"] {
+        display: none;
+    }
+      
+    .devezbus-debugbox[devezbus-debugpanel="mod15-pan4"][devezbus-debugpanel-on] .devezbus-debughint[devezbus-debugpanel="mod15-pan4"] {
+        display: block;
+    }
+      
+    .devezbus-debugbox[devezbus-debugpanel="mod15-pan5"]:not([devezbus-debugpanel-on]) .devezbus-debughint[devezbus-debugpanel="mod15-pan5"] {
+        display: none;
+    }
+      
+    .devezbus-debugbox[devezbus-debugpanel="mod15-pan5"][devezbus-debugpanel-on] .devezbus-debughint[devezbus-debugpanel="mod15-pan5"] {
+        display: block;
+    }
+      
+    .devezbus-debugbox[devezbus-debugpanel="mod15-pan6"]:not([devezbus-debugpanel-on]) .devezbus-debughint[devezbus-debugpanel="mod15-pan6"] {
+        display: none;
+    }
+      
+    .devezbus-debugbox[devezbus-debugpanel="mod15-pan6"][devezbus-debugpanel-on] .devezbus-debughint[devezbus-debugpanel="mod15-pan6"] {
+        display: block;
+    }
+      
+    .devezbus-debugbox[devezbus-debugpanel="mod15-pan7"]:not([devezbus-debugpanel-on]) .devezbus-debughint[devezbus-debugpanel="mod15-pan7"] {
+        display: none;
+    }
+      
+    .devezbus-debugbox[devezbus-debugpanel="mod15-pan7"][devezbus-debugpanel-on] .devezbus-debughint[devezbus-debugpanel="mod15-pan7"] {
+        display: block;
+    }
+      
+    .devezbus-debugbox[devezbus-debugpanel="mod15-pan8"]:not([devezbus-debugpanel-on]) .devezbus-debughint[devezbus-debugpanel="mod15-pan8"] {
+        display: none;
+    }
+      
+    .devezbus-debugbox[devezbus-debugpanel="mod15-pan8"][devezbus-debugpanel-on] .devezbus-debughint[devezbus-debugpanel="mod15-pan8"] {
+        display: block;
+    }
+      
+    .devezbus-debugbox[devezbus-debugpanel="mod15-pan9"]:not([devezbus-debugpanel-on]) .devezbus-debughint[devezbus-debugpanel="mod15-pan9"] {
+        display: none;
+    }
+      
+    .devezbus-debugbox[devezbus-debugpanel="mod15-pan9"][devezbus-debugpanel-on] .devezbus-debughint[devezbus-debugpanel="mod15-pan9"] {
+        display: block;
+    }
+      
+    .devezbus-debugbox[devezbus-debugpanel="mod15-pan10"]:not([devezbus-debugpanel-on]) .devezbus-debughint[devezbus-debugpanel="mod15-pan10"] {
+        display: none;
+    }
+      
+    .devezbus-debugbox[devezbus-debugpanel="mod15-pan10"][devezbus-debugpanel-on] .devezbus-debughint[devezbus-debugpanel="mod15-pan10"] {
+        display: block;
+    }
+      
+    .devezbus-debugbox[devezbus-debugpanel="mod15-pan11"]:not([devezbus-debugpanel-on]) .devezbus-debughint[devezbus-debugpanel="mod15-pan11"] {
+        display: none;
+    }
+      
+    .devezbus-debugbox[devezbus-debugpanel="mod15-pan11"][devezbus-debugpanel-on] .devezbus-debughint[devezbus-debugpanel="mod15-pan11"] {
+        display: block;
+    }
+      
+    .devezbus-debugbox[devezbus-debugpanel="mod15-pan12"]:not([devezbus-debugpanel-on]) .devezbus-debughint[devezbus-debugpanel="mod15-pan12"] {
+        display: none;
+    }
+      
+    .devezbus-debugbox[devezbus-debugpanel="mod15-pan12"][devezbus-debugpanel-on] .devezbus-debughint[devezbus-debugpanel="mod15-pan12"] {
+        display: block;
+    }
+      
+    .devezbus-debugbox[devezbus-debugpanel="mod15-pan13"]:not([devezbus-debugpanel-on]) .devezbus-debughint[devezbus-debugpanel="mod15-pan13"] {
+        display: none;
+    }
+      
+    .devezbus-debugbox[devezbus-debugpanel="mod15-pan13"][devezbus-debugpanel-on] .devezbus-debughint[devezbus-debugpanel="mod15-pan13"] {
+        display: block;
+    }
+      
+    .devezbus-debugbox[devezbus-debugpanel="mod15-pan14"]:not([devezbus-debugpanel-on]) .devezbus-debughint[devezbus-debugpanel="mod15-pan14"] {
+        display: none;
+    }
+      
+    .devezbus-debugbox[devezbus-debugpanel="mod15-pan14"][devezbus-debugpanel-on] .devezbus-debughint[devezbus-debugpanel="mod15-pan14"] {
+        display: block;
+    }
+      
+    .devezbus-debugbox[devezbus-debugpanel="mod15-pan15"]:not([devezbus-debugpanel-on]) .devezbus-debughint[devezbus-debugpanel="mod15-pan15"] {
+        display: none;
+    }
+      
+    .devezbus-debugbox[devezbus-debugpanel="mod15-pan15"][devezbus-debugpanel-on] .devezbus-debughint[devezbus-debugpanel="mod15-pan15"] {
+        display: block;
+    }
+}
