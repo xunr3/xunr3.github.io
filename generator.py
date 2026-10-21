@@ -12,6 +12,29 @@ x = f'''\
 @import url("https://xunr3.github.io/bugc_underclock_style.css");
 
 @layer usingBugc{{
+  /*.devezbus-debugbox {{
+      display: flex;
+      flex-direction: column;
+  }}
+
+  .devezbus-debugbox[debug-mode] {{
+      display: flex;
+      flex-direction: row;
+  }}*/
+
+  .debug-boxed[debug-target] {{
+      --debug-boxed-border: 1px solid #333333;
+  }}
+
+  :root {{
+      --debug-boxed-border: none;
+  }}
+
+  .debug-calm-box {{
+      display: inline-block;
+      border: var(--debug-boxed-border);
+  }}
+
   .devezbus-debugbox:not([debug-mode]) .devezbus-debughint {{
       display: none;
   }}
