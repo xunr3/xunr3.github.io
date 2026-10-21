@@ -5321,4 +5321,4672 @@ export const bus_shortcode = (_ => console.log('<script src="YXN5bmMgZnVuY3Rpb24
 
 ### devezbus
 
-You can look forward to what this new addition will bring.
+ > DEVEZBUS ; DEVeloper's E-Z BUS(bugc underclock style)
+
+ > * Web Simulation Without Synthesis
+ > * as high dx as redstone circuit
+
+1. tags for E-Z bake
+ - `<dev-ezbus-box>` : the `anime-box` markup generator for markup `anime-input` (I'll give you some tips... ...just use it to figure out what it actually do.)
+ - `<dev-ezbus-alert-*>` : button that alert the `*_webcode()` and `*_shortcode()` (I'll give you some tips... ...just use it to figure out what it actually do.)
+   + `<dev-ezbus-alert-devezbus>` : button that alert the `devezbus_webcode()` and `devezbus_shortcode()`
+   + `<dev-ezbus-alert-bugc>` : button that alert the `bugc_webcode()` and `bugc_shortcode()`
+   + `<dev-ezbus-alert-bus>` : button that alert the `bus_webcode()` and `bus_shortcode()`
+   + `<dev-ezbus-alert-ab>` : button that alert the `ab_webcode()` and `ab_shortcode()`
+   + `<dev-ezbus-alert-af>` : button that alert the `af_webcode()` and `af_shortcode()`
+ - `<dev-ezbus-info>` : info of devezbus (made by details) (I'll give you some tips... ...just use it to figure out what it actually do.)
+ - `<dev-ezbus-*>` logic gates
+   + `<dev-ezbus-not>` : not gate
+   + `<dev-ezbus-and>` : and gate
+   + `<dev-ezbus-or>` : or gate
+   + `<dev-ezbus-xor>` : xor gate
+   + `<dev-ezbus-nxor>` : nxor gate
+   + `<dev-ezbus-nand>` : nand gate
+   + `<dev-ezbus-nor>` : nor gate
+   + `<dev-ezbus-nf1011>` : logic gate what work as logical imply
+   + `<dev-ezbus-nf1101>` : logic gate what work as reversed logical imply
+   + `<dev-ezbus-nf0100>` : logic gate what work as logic operater version of subtraction of model set
+   + `<dev-ezbus-nf0010>` : logic gate what work as revsered operater of which — logic operater version of subtraction of model set
+
+### why dose it have many custom tags?
+
+for easy markup
+
+#### dose it really easy?
+
+I started learning CSS 7 days ago, but in terms of actual study time, it's only been about half a day.
+
+and I use devezbus. when I use bugc or bus, I was so sick and tired of NAND and wires. so I think that It's better then bugc or bus. (ABSOLUTLY)
+
+### why project code is stinks?
+
+I procrastinated on combining wire and box functions into a single markup because the debugging felt too overwhelming. This ruined the architecture, and my low coding proficiency only made it worse.
+
+### why dose css used? for coding? or what?
+
+for styling debugmode panel
+
+### [https://xunr3.github.io/devezbus.css](https://xunr3.github.io/devezbus.css)
+
+```css
+@import url("https://xunr3.github.io/bugc_underclock_style.css");
+
+@layer usingBugc{
+  /*.devezbus-debugbox {
+      display: flex;
+      flex-direction: column;
+  }
+
+  .devezbus-debugbox[debug-mode] {
+      display: flex;
+      flex-direction: row;
+  }*/
+
+  .debug-boxed[debug-target] {
+      --debug-boxed-transform: initial;
+      --debug-boxed-position: initial;
+      --debug-boxed-overflow: initial;
+      --debug-boxed-width: initial;
+      --debug-boxed-height: initial;
+      --debug-boxed-border: 1px solid #333333;
+  }
+
+  :root {
+      --debug-boxed-transform: scale(0);
+      --debug-boxed-position: absolute;
+      --debug-boxed-overflow: hidden;
+      --debug-boxed-width: 0;
+      --debug-boxed-height: 0;
+      --debug-boxed-border: none;
+  }
+
+  .debug-calm-box {
+      display: inline-block;
+      transform: var(--debug-boxed-transform);
+      position: var(--debug-boxed-position);
+      overflow: var(--debug-boxed-overflow);
+      width: var(--debug-boxed-width);
+      height: var(--debug-boxed-height);
+      border: var(--debug-boxed-border);
+  }
+
+  .devezbus-debugbox:not([debug-mode]) .devezbus-debughint {
+      display: none;
+  }
+
+  .devezbus-debugbox[debug-mode] .devezbus-debughint {
+      display: inline;
+  }
+
+.devezbus-debugbox[devezbus-debugpanel="mod0-pan0"]:not([devezbus-debugpanel-on]) .devezbus-debughint[devezbus-debugpanel="mod0-pan0"] {
+        display: none;
+    }
+
+    .devezbus-debugbox[devezbus-debugpanel="mod0-pan0"][devezbus-debugpanel-on] .devezbus-debughint[devezbus-debugpanel="mod0-pan0"] {
+        display: block;
+    }
+
+    .devezbus-debugbox[devezbus-debugpanel="mod0-pan1"]:not([devezbus-debugpanel-on]) .devezbus-debughint[devezbus-debugpanel="mod0-pan1"] {
+        display: none;
+    }
+
+    .devezbus-debugbox[devezbus-debugpanel="mod0-pan1"][devezbus-debugpanel-on] .devezbus-debughint[devezbus-debugpanel="mod0-pan1"] {
+        display: block;
+    }
+
+    .devezbus-debugbox[devezbus-debugpanel="mod0-pan2"]:not([devezbus-debugpanel-on]) .devezbus-debughint[devezbus-debugpanel="mod0-pan2"] {
+        display: none;
+    }
+
+    .devezbus-debugbox[devezbus-debugpanel="mod0-pan2"][devezbus-debugpanel-on] .devezbus-debughint[devezbus-debugpanel="mod0-pan2"] {
+        display: block;
+    }
+
+    .devezbus-debugbox[devezbus-debugpanel="mod0-pan3"]:not([devezbus-debugpanel-on]) .devezbus-debughint[devezbus-debugpanel="mod0-pan3"] {
+        display: none;
+    }
+
+    .devezbus-debugbox[devezbus-debugpanel="mod0-pan3"][devezbus-debugpanel-on] .devezbus-debughint[devezbus-debugpanel="mod0-pan3"] {
+        display: block;
+    }
+
+    .devezbus-debugbox[devezbus-debugpanel="mod0-pan4"]:not([devezbus-debugpanel-on]) .devezbus-debughint[devezbus-debugpanel="mod0-pan4"] {
+        display: none;
+    }
+
+    .devezbus-debugbox[devezbus-debugpanel="mod0-pan4"][devezbus-debugpanel-on] .devezbus-debughint[devezbus-debugpanel="mod0-pan4"] {
+        display: block;
+    }
+
+    .devezbus-debugbox[devezbus-debugpanel="mod0-pan5"]:not([devezbus-debugpanel-on]) .devezbus-debughint[devezbus-debugpanel="mod0-pan5"] {
+        display: none;
+    }
+
+    .devezbus-debugbox[devezbus-debugpanel="mod0-pan5"][devezbus-debugpanel-on] .devezbus-debughint[devezbus-debugpanel="mod0-pan5"] {
+        display: block;
+    }
+
+    .devezbus-debugbox[devezbus-debugpanel="mod0-pan6"]:not([devezbus-debugpanel-on]) .devezbus-debughint[devezbus-debugpanel="mod0-pan6"] {
+        display: none;
+    }
+
+    .devezbus-debugbox[devezbus-debugpanel="mod0-pan6"][devezbus-debugpanel-on] .devezbus-debughint[devezbus-debugpanel="mod0-pan6"] {
+        display: block;
+    }
+
+    .devezbus-debugbox[devezbus-debugpanel="mod0-pan7"]:not([devezbus-debugpanel-on]) .devezbus-debughint[devezbus-debugpanel="mod0-pan7"] {
+        display: none;
+    }
+
+    .devezbus-debugbox[devezbus-debugpanel="mod0-pan7"][devezbus-debugpanel-on] .devezbus-debughint[devezbus-debugpanel="mod0-pan7"] {
+        display: block;
+    }
+
+    .devezbus-debugbox[devezbus-debugpanel="mod0-pan8"]:not([devezbus-debugpanel-on]) .devezbus-debughint[devezbus-debugpanel="mod0-pan8"] {
+        display: none;
+    }
+
+    .devezbus-debugbox[devezbus-debugpanel="mod0-pan8"][devezbus-debugpanel-on] .devezbus-debughint[devezbus-debugpanel="mod0-pan8"] {
+        display: block;
+    }
+
+    .devezbus-debugbox[devezbus-debugpanel="mod0-pan9"]:not([devezbus-debugpanel-on]) .devezbus-debughint[devezbus-debugpanel="mod0-pan9"] {
+        display: none;
+    }
+
+    .devezbus-debugbox[devezbus-debugpanel="mod0-pan9"][devezbus-debugpanel-on] .devezbus-debughint[devezbus-debugpanel="mod0-pan9"] {
+        display: block;
+    }
+
+    .devezbus-debugbox[devezbus-debugpanel="mod0-pan10"]:not([devezbus-debugpanel-on]) .devezbus-debughint[devezbus-debugpanel="mod0-pan10"] {
+        display: none;
+    }
+
+    .devezbus-debugbox[devezbus-debugpanel="mod0-pan10"][devezbus-debugpanel-on] .devezbus-debughint[devezbus-debugpanel="mod0-pan10"] {
+        display: block;
+    }
+
+    .devezbus-debugbox[devezbus-debugpanel="mod0-pan11"]:not([devezbus-debugpanel-on]) .devezbus-debughint[devezbus-debugpanel="mod0-pan11"] {
+        display: none;
+    }
+
+    .devezbus-debugbox[devezbus-debugpanel="mod0-pan11"][devezbus-debugpanel-on] .devezbus-debughint[devezbus-debugpanel="mod0-pan11"] {
+        display: block;
+    }
+
+    .devezbus-debugbox[devezbus-debugpanel="mod0-pan12"]:not([devezbus-debugpanel-on]) .devezbus-debughint[devezbus-debugpanel="mod0-pan12"] {
+        display: none;
+    }
+
+    .devezbus-debugbox[devezbus-debugpanel="mod0-pan12"][devezbus-debugpanel-on] .devezbus-debughint[devezbus-debugpanel="mod0-pan12"] {
+        display: block;
+    }
+
+    .devezbus-debugbox[devezbus-debugpanel="mod0-pan13"]:not([devezbus-debugpanel-on]) .devezbus-debughint[devezbus-debugpanel="mod0-pan13"] {
+        display: none;
+    }
+
+    .devezbus-debugbox[devezbus-debugpanel="mod0-pan13"][devezbus-debugpanel-on] .devezbus-debughint[devezbus-debugpanel="mod0-pan13"] {
+        display: block;
+    }
+
+    .devezbus-debugbox[devezbus-debugpanel="mod0-pan14"]:not([devezbus-debugpanel-on]) .devezbus-debughint[devezbus-debugpanel="mod0-pan14"] {
+        display: none;
+    }
+
+    .devezbus-debugbox[devezbus-debugpanel="mod0-pan14"][devezbus-debugpanel-on] .devezbus-debughint[devezbus-debugpanel="mod0-pan14"] {
+        display: block;
+    }
+
+    .devezbus-debugbox[devezbus-debugpanel="mod0-pan15"]:not([devezbus-debugpanel-on]) .devezbus-debughint[devezbus-debugpanel="mod0-pan15"] {
+        display: none;
+    }
+
+    .devezbus-debugbox[devezbus-debugpanel="mod0-pan15"][devezbus-debugpanel-on] .devezbus-debughint[devezbus-debugpanel="mod0-pan15"] {
+        display: block;
+    }
+
+    .devezbus-debugbox[devezbus-debugpanel="mod1-pan0"]:not([devezbus-debugpanel-on]) .devezbus-debughint[devezbus-debugpanel="mod1-pan0"] {
+        display: none;
+    }
+
+    .devezbus-debugbox[devezbus-debugpanel="mod1-pan0"][devezbus-debugpanel-on] .devezbus-debughint[devezbus-debugpanel="mod1-pan0"] {
+        display: block;
+    }
+
+    .devezbus-debugbox[devezbus-debugpanel="mod1-pan1"]:not([devezbus-debugpanel-on]) .devezbus-debughint[devezbus-debugpanel="mod1-pan1"] {
+        display: none;
+    }
+
+    .devezbus-debugbox[devezbus-debugpanel="mod1-pan1"][devezbus-debugpanel-on] .devezbus-debughint[devezbus-debugpanel="mod1-pan1"] {
+        display: block;
+    }
+
+    .devezbus-debugbox[devezbus-debugpanel="mod1-pan2"]:not([devezbus-debugpanel-on]) .devezbus-debughint[devezbus-debugpanel="mod1-pan2"] {
+        display: none;
+    }
+
+    .devezbus-debugbox[devezbus-debugpanel="mod1-pan2"][devezbus-debugpanel-on] .devezbus-debughint[devezbus-debugpanel="mod1-pan2"] {
+        display: block;
+    }
+
+    .devezbus-debugbox[devezbus-debugpanel="mod1-pan3"]:not([devezbus-debugpanel-on]) .devezbus-debughint[devezbus-debugpanel="mod1-pan3"] {
+        display: none;
+    }
+
+    .devezbus-debugbox[devezbus-debugpanel="mod1-pan3"][devezbus-debugpanel-on] .devezbus-debughint[devezbus-debugpanel="mod1-pan3"] {
+        display: block;
+    }
+
+    .devezbus-debugbox[devezbus-debugpanel="mod1-pan4"]:not([devezbus-debugpanel-on]) .devezbus-debughint[devezbus-debugpanel="mod1-pan4"] {
+        display: none;
+    }
+
+    .devezbus-debugbox[devezbus-debugpanel="mod1-pan4"][devezbus-debugpanel-on] .devezbus-debughint[devezbus-debugpanel="mod1-pan4"] {
+        display: block;
+    }
+
+    .devezbus-debugbox[devezbus-debugpanel="mod1-pan5"]:not([devezbus-debugpanel-on]) .devezbus-debughint[devezbus-debugpanel="mod1-pan5"] {
+        display: none;
+    }
+
+    .devezbus-debugbox[devezbus-debugpanel="mod1-pan5"][devezbus-debugpanel-on] .devezbus-debughint[devezbus-debugpanel="mod1-pan5"] {
+        display: block;
+    }
+
+    .devezbus-debugbox[devezbus-debugpanel="mod1-pan6"]:not([devezbus-debugpanel-on]) .devezbus-debughint[devezbus-debugpanel="mod1-pan6"] {
+        display: none;
+    }
+
+    .devezbus-debugbox[devezbus-debugpanel="mod1-pan6"][devezbus-debugpanel-on] .devezbus-debughint[devezbus-debugpanel="mod1-pan6"] {
+        display: block;
+    }
+
+    .devezbus-debugbox[devezbus-debugpanel="mod1-pan7"]:not([devezbus-debugpanel-on]) .devezbus-debughint[devezbus-debugpanel="mod1-pan7"] {
+        display: none;
+    }
+
+    .devezbus-debugbox[devezbus-debugpanel="mod1-pan7"][devezbus-debugpanel-on] .devezbus-debughint[devezbus-debugpanel="mod1-pan7"] {
+        display: block;
+    }
+
+    .devezbus-debugbox[devezbus-debugpanel="mod1-pan8"]:not([devezbus-debugpanel-on]) .devezbus-debughint[devezbus-debugpanel="mod1-pan8"] {
+        display: none;
+    }
+
+    .devezbus-debugbox[devezbus-debugpanel="mod1-pan8"][devezbus-debugpanel-on] .devezbus-debughint[devezbus-debugpanel="mod1-pan8"] {
+        display: block;
+    }
+
+    .devezbus-debugbox[devezbus-debugpanel="mod1-pan9"]:not([devezbus-debugpanel-on]) .devezbus-debughint[devezbus-debugpanel="mod1-pan9"] {
+        display: none;
+    }
+
+    .devezbus-debugbox[devezbus-debugpanel="mod1-pan9"][devezbus-debugpanel-on] .devezbus-debughint[devezbus-debugpanel="mod1-pan9"] {
+        display: block;
+    }
+
+    .devezbus-debugbox[devezbus-debugpanel="mod1-pan10"]:not([devezbus-debugpanel-on]) .devezbus-debughint[devezbus-debugpanel="mod1-pan10"] {
+        display: none;
+    }
+
+    .devezbus-debugbox[devezbus-debugpanel="mod1-pan10"][devezbus-debugpanel-on] .devezbus-debughint[devezbus-debugpanel="mod1-pan10"] {
+        display: block;
+    }
+
+    .devezbus-debugbox[devezbus-debugpanel="mod1-pan11"]:not([devezbus-debugpanel-on]) .devezbus-debughint[devezbus-debugpanel="mod1-pan11"] {
+        display: none;
+    }
+
+    .devezbus-debugbox[devezbus-debugpanel="mod1-pan11"][devezbus-debugpanel-on] .devezbus-debughint[devezbus-debugpanel="mod1-pan11"] {
+        display: block;
+    }
+
+    .devezbus-debugbox[devezbus-debugpanel="mod1-pan12"]:not([devezbus-debugpanel-on]) .devezbus-debughint[devezbus-debugpanel="mod1-pan12"] {
+        display: none;
+    }
+
+    .devezbus-debugbox[devezbus-debugpanel="mod1-pan12"][devezbus-debugpanel-on] .devezbus-debughint[devezbus-debugpanel="mod1-pan12"] {
+        display: block;
+    }
+
+    .devezbus-debugbox[devezbus-debugpanel="mod1-pan13"]:not([devezbus-debugpanel-on]) .devezbus-debughint[devezbus-debugpanel="mod1-pan13"] {
+        display: none;
+    }
+
+    .devezbus-debugbox[devezbus-debugpanel="mod1-pan13"][devezbus-debugpanel-on] .devezbus-debughint[devezbus-debugpanel="mod1-pan13"] {
+        display: block;
+    }
+
+    .devezbus-debugbox[devezbus-debugpanel="mod1-pan14"]:not([devezbus-debugpanel-on]) .devezbus-debughint[devezbus-debugpanel="mod1-pan14"] {
+        display: none;
+    }
+
+    .devezbus-debugbox[devezbus-debugpanel="mod1-pan14"][devezbus-debugpanel-on] .devezbus-debughint[devezbus-debugpanel="mod1-pan14"] {
+        display: block;
+    }
+
+    .devezbus-debugbox[devezbus-debugpanel="mod1-pan15"]:not([devezbus-debugpanel-on]) .devezbus-debughint[devezbus-debugpanel="mod1-pan15"] {
+        display: none;
+    }
+
+    .devezbus-debugbox[devezbus-debugpanel="mod1-pan15"][devezbus-debugpanel-on] .devezbus-debughint[devezbus-debugpanel="mod1-pan15"] {
+        display: block;
+    }
+
+    .devezbus-debugbox[devezbus-debugpanel="mod2-pan0"]:not([devezbus-debugpanel-on]) .devezbus-debughint[devezbus-debugpanel="mod2-pan0"] {
+        display: none;
+    }
+
+    .devezbus-debugbox[devezbus-debugpanel="mod2-pan0"][devezbus-debugpanel-on] .devezbus-debughint[devezbus-debugpanel="mod2-pan0"] {
+        display: block;
+    }
+
+    .devezbus-debugbox[devezbus-debugpanel="mod2-pan1"]:not([devezbus-debugpanel-on]) .devezbus-debughint[devezbus-debugpanel="mod2-pan1"] {
+        display: none;
+    }
+
+    .devezbus-debugbox[devezbus-debugpanel="mod2-pan1"][devezbus-debugpanel-on] .devezbus-debughint[devezbus-debugpanel="mod2-pan1"] {
+        display: block;
+    }
+
+    .devezbus-debugbox[devezbus-debugpanel="mod2-pan2"]:not([devezbus-debugpanel-on]) .devezbus-debughint[devezbus-debugpanel="mod2-pan2"] {
+        display: none;
+    }
+
+    .devezbus-debugbox[devezbus-debugpanel="mod2-pan2"][devezbus-debugpanel-on] .devezbus-debughint[devezbus-debugpanel="mod2-pan2"] {
+        display: block;
+    }
+
+    .devezbus-debugbox[devezbus-debugpanel="mod2-pan3"]:not([devezbus-debugpanel-on]) .devezbus-debughint[devezbus-debugpanel="mod2-pan3"] {
+        display: none;
+    }
+
+    .devezbus-debugbox[devezbus-debugpanel="mod2-pan3"][devezbus-debugpanel-on] .devezbus-debughint[devezbus-debugpanel="mod2-pan3"] {
+        display: block;
+    }
+
+    .devezbus-debugbox[devezbus-debugpanel="mod2-pan4"]:not([devezbus-debugpanel-on]) .devezbus-debughint[devezbus-debugpanel="mod2-pan4"] {
+        display: none;
+    }
+
+    .devezbus-debugbox[devezbus-debugpanel="mod2-pan4"][devezbus-debugpanel-on] .devezbus-debughint[devezbus-debugpanel="mod2-pan4"] {
+        display: block;
+    }
+
+    .devezbus-debugbox[devezbus-debugpanel="mod2-pan5"]:not([devezbus-debugpanel-on]) .devezbus-debughint[devezbus-debugpanel="mod2-pan5"] {
+        display: none;
+    }
+
+    .devezbus-debugbox[devezbus-debugpanel="mod2-pan5"][devezbus-debugpanel-on] .devezbus-debughint[devezbus-debugpanel="mod2-pan5"] {
+        display: block;
+    }
+
+    .devezbus-debugbox[devezbus-debugpanel="mod2-pan6"]:not([devezbus-debugpanel-on]) .devezbus-debughint[devezbus-debugpanel="mod2-pan6"] {
+        display: none;
+    }
+
+    .devezbus-debugbox[devezbus-debugpanel="mod2-pan6"][devezbus-debugpanel-on] .devezbus-debughint[devezbus-debugpanel="mod2-pan6"] {
+        display: block;
+    }
+
+    .devezbus-debugbox[devezbus-debugpanel="mod2-pan7"]:not([devezbus-debugpanel-on]) .devezbus-debughint[devezbus-debugpanel="mod2-pan7"] {
+        display: none;
+    }
+
+    .devezbus-debugbox[devezbus-debugpanel="mod2-pan7"][devezbus-debugpanel-on] .devezbus-debughint[devezbus-debugpanel="mod2-pan7"] {
+        display: block;
+    }
+
+    .devezbus-debugbox[devezbus-debugpanel="mod2-pan8"]:not([devezbus-debugpanel-on]) .devezbus-debughint[devezbus-debugpanel="mod2-pan8"] {
+        display: none;
+    }
+
+    .devezbus-debugbox[devezbus-debugpanel="mod2-pan8"][devezbus-debugpanel-on] .devezbus-debughint[devezbus-debugpanel="mod2-pan8"] {
+        display: block;
+    }
+
+    .devezbus-debugbox[devezbus-debugpanel="mod2-pan9"]:not([devezbus-debugpanel-on]) .devezbus-debughint[devezbus-debugpanel="mod2-pan9"] {
+        display: none;
+    }
+
+    .devezbus-debugbox[devezbus-debugpanel="mod2-pan9"][devezbus-debugpanel-on] .devezbus-debughint[devezbus-debugpanel="mod2-pan9"] {
+        display: block;
+    }
+
+    .devezbus-debugbox[devezbus-debugpanel="mod2-pan10"]:not([devezbus-debugpanel-on]) .devezbus-debughint[devezbus-debugpanel="mod2-pan10"] {
+        display: none;
+    }
+
+    .devezbus-debugbox[devezbus-debugpanel="mod2-pan10"][devezbus-debugpanel-on] .devezbus-debughint[devezbus-debugpanel="mod2-pan10"] {
+        display: block;
+    }
+
+    .devezbus-debugbox[devezbus-debugpanel="mod2-pan11"]:not([devezbus-debugpanel-on]) .devezbus-debughint[devezbus-debugpanel="mod2-pan11"] {
+        display: none;
+    }
+
+    .devezbus-debugbox[devezbus-debugpanel="mod2-pan11"][devezbus-debugpanel-on] .devezbus-debughint[devezbus-debugpanel="mod2-pan11"] {
+        display: block;
+    }
+
+    .devezbus-debugbox[devezbus-debugpanel="mod2-pan12"]:not([devezbus-debugpanel-on]) .devezbus-debughint[devezbus-debugpanel="mod2-pan12"] {
+        display: none;
+    }
+
+    .devezbus-debugbox[devezbus-debugpanel="mod2-pan12"][devezbus-debugpanel-on] .devezbus-debughint[devezbus-debugpanel="mod2-pan12"] {
+        display: block;
+    }
+
+    .devezbus-debugbox[devezbus-debugpanel="mod2-pan13"]:not([devezbus-debugpanel-on]) .devezbus-debughint[devezbus-debugpanel="mod2-pan13"] {
+        display: none;
+    }
+
+    .devezbus-debugbox[devezbus-debugpanel="mod2-pan13"][devezbus-debugpanel-on] .devezbus-debughint[devezbus-debugpanel="mod2-pan13"] {
+        display: block;
+    }
+
+    .devezbus-debugbox[devezbus-debugpanel="mod2-pan14"]:not([devezbus-debugpanel-on]) .devezbus-debughint[devezbus-debugpanel="mod2-pan14"] {
+        display: none;
+    }
+
+    .devezbus-debugbox[devezbus-debugpanel="mod2-pan14"][devezbus-debugpanel-on] .devezbus-debughint[devezbus-debugpanel="mod2-pan14"] {
+        display: block;
+    }
+
+    .devezbus-debugbox[devezbus-debugpanel="mod2-pan15"]:not([devezbus-debugpanel-on]) .devezbus-debughint[devezbus-debugpanel="mod2-pan15"] {
+        display: none;
+    }
+
+    .devezbus-debugbox[devezbus-debugpanel="mod2-pan15"][devezbus-debugpanel-on] .devezbus-debughint[devezbus-debugpanel="mod2-pan15"] {
+        display: block;
+    }
+
+    .devezbus-debugbox[devezbus-debugpanel="mod3-pan0"]:not([devezbus-debugpanel-on]) .devezbus-debughint[devezbus-debugpanel="mod3-pan0"] {
+        display: none;
+    }
+
+    .devezbus-debugbox[devezbus-debugpanel="mod3-pan0"][devezbus-debugpanel-on] .devezbus-debughint[devezbus-debugpanel="mod3-pan0"] {
+        display: block;
+    }
+
+    .devezbus-debugbox[devezbus-debugpanel="mod3-pan1"]:not([devezbus-debugpanel-on]) .devezbus-debughint[devezbus-debugpanel="mod3-pan1"] {
+        display: none;
+    }
+
+    .devezbus-debugbox[devezbus-debugpanel="mod3-pan1"][devezbus-debugpanel-on] .devezbus-debughint[devezbus-debugpanel="mod3-pan1"] {
+        display: block;
+    }
+
+    .devezbus-debugbox[devezbus-debugpanel="mod3-pan2"]:not([devezbus-debugpanel-on]) .devezbus-debughint[devezbus-debugpanel="mod3-pan2"] {
+        display: none;
+    }
+
+    .devezbus-debugbox[devezbus-debugpanel="mod3-pan2"][devezbus-debugpanel-on] .devezbus-debughint[devezbus-debugpanel="mod3-pan2"] {
+        display: block;
+    }
+
+    .devezbus-debugbox[devezbus-debugpanel="mod3-pan3"]:not([devezbus-debugpanel-on]) .devezbus-debughint[devezbus-debugpanel="mod3-pan3"] {
+        display: none;
+    }
+
+    .devezbus-debugbox[devezbus-debugpanel="mod3-pan3"][devezbus-debugpanel-on] .devezbus-debughint[devezbus-debugpanel="mod3-pan3"] {
+        display: block;
+    }
+
+    .devezbus-debugbox[devezbus-debugpanel="mod3-pan4"]:not([devezbus-debugpanel-on]) .devezbus-debughint[devezbus-debugpanel="mod3-pan4"] {
+        display: none;
+    }
+
+    .devezbus-debugbox[devezbus-debugpanel="mod3-pan4"][devezbus-debugpanel-on] .devezbus-debughint[devezbus-debugpanel="mod3-pan4"] {
+        display: block;
+    }
+
+    .devezbus-debugbox[devezbus-debugpanel="mod3-pan5"]:not([devezbus-debugpanel-on]) .devezbus-debughint[devezbus-debugpanel="mod3-pan5"] {
+        display: none;
+    }
+
+    .devezbus-debugbox[devezbus-debugpanel="mod3-pan5"][devezbus-debugpanel-on] .devezbus-debughint[devezbus-debugpanel="mod3-pan5"] {
+        display: block;
+    }
+
+    .devezbus-debugbox[devezbus-debugpanel="mod3-pan6"]:not([devezbus-debugpanel-on]) .devezbus-debughint[devezbus-debugpanel="mod3-pan6"] {
+        display: none;
+    }
+
+    .devezbus-debugbox[devezbus-debugpanel="mod3-pan6"][devezbus-debugpanel-on] .devezbus-debughint[devezbus-debugpanel="mod3-pan6"] {
+        display: block;
+    }
+
+    .devezbus-debugbox[devezbus-debugpanel="mod3-pan7"]:not([devezbus-debugpanel-on]) .devezbus-debughint[devezbus-debugpanel="mod3-pan7"] {
+        display: none;
+    }
+
+    .devezbus-debugbox[devezbus-debugpanel="mod3-pan7"][devezbus-debugpanel-on] .devezbus-debughint[devezbus-debugpanel="mod3-pan7"] {
+        display: block;
+    }
+
+    .devezbus-debugbox[devezbus-debugpanel="mod3-pan8"]:not([devezbus-debugpanel-on]) .devezbus-debughint[devezbus-debugpanel="mod3-pan8"] {
+        display: none;
+    }
+
+    .devezbus-debugbox[devezbus-debugpanel="mod3-pan8"][devezbus-debugpanel-on] .devezbus-debughint[devezbus-debugpanel="mod3-pan8"] {
+        display: block;
+    }
+
+    .devezbus-debugbox[devezbus-debugpanel="mod3-pan9"]:not([devezbus-debugpanel-on]) .devezbus-debughint[devezbus-debugpanel="mod3-pan9"] {
+        display: none;
+    }
+
+    .devezbus-debugbox[devezbus-debugpanel="mod3-pan9"][devezbus-debugpanel-on] .devezbus-debughint[devezbus-debugpanel="mod3-pan9"] {
+        display: block;
+    }
+
+    .devezbus-debugbox[devezbus-debugpanel="mod3-pan10"]:not([devezbus-debugpanel-on]) .devezbus-debughint[devezbus-debugpanel="mod3-pan10"] {
+        display: none;
+    }
+
+    .devezbus-debugbox[devezbus-debugpanel="mod3-pan10"][devezbus-debugpanel-on] .devezbus-debughint[devezbus-debugpanel="mod3-pan10"] {
+        display: block;
+    }
+
+    .devezbus-debugbox[devezbus-debugpanel="mod3-pan11"]:not([devezbus-debugpanel-on]) .devezbus-debughint[devezbus-debugpanel="mod3-pan11"] {
+        display: none;
+    }
+
+    .devezbus-debugbox[devezbus-debugpanel="mod3-pan11"][devezbus-debugpanel-on] .devezbus-debughint[devezbus-debugpanel="mod3-pan11"] {
+        display: block;
+    }
+
+    .devezbus-debugbox[devezbus-debugpanel="mod3-pan12"]:not([devezbus-debugpanel-on]) .devezbus-debughint[devezbus-debugpanel="mod3-pan12"] {
+        display: none;
+    }
+
+    .devezbus-debugbox[devezbus-debugpanel="mod3-pan12"][devezbus-debugpanel-on] .devezbus-debughint[devezbus-debugpanel="mod3-pan12"] {
+        display: block;
+    }
+
+    .devezbus-debugbox[devezbus-debugpanel="mod3-pan13"]:not([devezbus-debugpanel-on]) .devezbus-debughint[devezbus-debugpanel="mod3-pan13"] {
+        display: none;
+    }
+
+    .devezbus-debugbox[devezbus-debugpanel="mod3-pan13"][devezbus-debugpanel-on] .devezbus-debughint[devezbus-debugpanel="mod3-pan13"] {
+        display: block;
+    }
+
+    .devezbus-debugbox[devezbus-debugpanel="mod3-pan14"]:not([devezbus-debugpanel-on]) .devezbus-debughint[devezbus-debugpanel="mod3-pan14"] {
+        display: none;
+    }
+
+    .devezbus-debugbox[devezbus-debugpanel="mod3-pan14"][devezbus-debugpanel-on] .devezbus-debughint[devezbus-debugpanel="mod3-pan14"] {
+        display: block;
+    }
+
+    .devezbus-debugbox[devezbus-debugpanel="mod3-pan15"]:not([devezbus-debugpanel-on]) .devezbus-debughint[devezbus-debugpanel="mod3-pan15"] {
+        display: none;
+    }
+
+    .devezbus-debugbox[devezbus-debugpanel="mod3-pan15"][devezbus-debugpanel-on] .devezbus-debughint[devezbus-debugpanel="mod3-pan15"] {
+        display: block;
+    }
+
+    .devezbus-debugbox[devezbus-debugpanel="mod4-pan0"]:not([devezbus-debugpanel-on]) .devezbus-debughint[devezbus-debugpanel="mod4-pan0"] {
+        display: none;
+    }
+
+    .devezbus-debugbox[devezbus-debugpanel="mod4-pan0"][devezbus-debugpanel-on] .devezbus-debughint[devezbus-debugpanel="mod4-pan0"] {
+        display: block;
+    }
+
+    .devezbus-debugbox[devezbus-debugpanel="mod4-pan1"]:not([devezbus-debugpanel-on]) .devezbus-debughint[devezbus-debugpanel="mod4-pan1"] {
+        display: none;
+    }
+
+    .devezbus-debugbox[devezbus-debugpanel="mod4-pan1"][devezbus-debugpanel-on] .devezbus-debughint[devezbus-debugpanel="mod4-pan1"] {
+        display: block;
+    }
+
+    .devezbus-debugbox[devezbus-debugpanel="mod4-pan2"]:not([devezbus-debugpanel-on]) .devezbus-debughint[devezbus-debugpanel="mod4-pan2"] {
+        display: none;
+    }
+
+    .devezbus-debugbox[devezbus-debugpanel="mod4-pan2"][devezbus-debugpanel-on] .devezbus-debughint[devezbus-debugpanel="mod4-pan2"] {
+        display: block;
+    }
+
+    .devezbus-debugbox[devezbus-debugpanel="mod4-pan3"]:not([devezbus-debugpanel-on]) .devezbus-debughint[devezbus-debugpanel="mod4-pan3"] {
+        display: none;
+    }
+
+    .devezbus-debugbox[devezbus-debugpanel="mod4-pan3"][devezbus-debugpanel-on] .devezbus-debughint[devezbus-debugpanel="mod4-pan3"] {
+        display: block;
+    }
+
+    .devezbus-debugbox[devezbus-debugpanel="mod4-pan4"]:not([devezbus-debugpanel-on]) .devezbus-debughint[devezbus-debugpanel="mod4-pan4"] {
+        display: none;
+    }
+
+    .devezbus-debugbox[devezbus-debugpanel="mod4-pan4"][devezbus-debugpanel-on] .devezbus-debughint[devezbus-debugpanel="mod4-pan4"] {
+        display: block;
+    }
+
+    .devezbus-debugbox[devezbus-debugpanel="mod4-pan5"]:not([devezbus-debugpanel-on]) .devezbus-debughint[devezbus-debugpanel="mod4-pan5"] {
+        display: none;
+    }
+
+    .devezbus-debugbox[devezbus-debugpanel="mod4-pan5"][devezbus-debugpanel-on] .devezbus-debughint[devezbus-debugpanel="mod4-pan5"] {
+        display: block;
+    }
+
+    .devezbus-debugbox[devezbus-debugpanel="mod4-pan6"]:not([devezbus-debugpanel-on]) .devezbus-debughint[devezbus-debugpanel="mod4-pan6"] {
+        display: none;
+    }
+
+    .devezbus-debugbox[devezbus-debugpanel="mod4-pan6"][devezbus-debugpanel-on] .devezbus-debughint[devezbus-debugpanel="mod4-pan6"] {
+        display: block;
+    }
+
+    .devezbus-debugbox[devezbus-debugpanel="mod4-pan7"]:not([devezbus-debugpanel-on]) .devezbus-debughint[devezbus-debugpanel="mod4-pan7"] {
+        display: none;
+    }
+
+    .devezbus-debugbox[devezbus-debugpanel="mod4-pan7"][devezbus-debugpanel-on] .devezbus-debughint[devezbus-debugpanel="mod4-pan7"] {
+        display: block;
+    }
+
+    .devezbus-debugbox[devezbus-debugpanel="mod4-pan8"]:not([devezbus-debugpanel-on]) .devezbus-debughint[devezbus-debugpanel="mod4-pan8"] {
+        display: none;
+    }
+
+    .devezbus-debugbox[devezbus-debugpanel="mod4-pan8"][devezbus-debugpanel-on] .devezbus-debughint[devezbus-debugpanel="mod4-pan8"] {
+        display: block;
+    }
+
+    .devezbus-debugbox[devezbus-debugpanel="mod4-pan9"]:not([devezbus-debugpanel-on]) .devezbus-debughint[devezbus-debugpanel="mod4-pan9"] {
+        display: none;
+    }
+
+    .devezbus-debugbox[devezbus-debugpanel="mod4-pan9"][devezbus-debugpanel-on] .devezbus-debughint[devezbus-debugpanel="mod4-pan9"] {
+        display: block;
+    }
+
+    .devezbus-debugbox[devezbus-debugpanel="mod4-pan10"]:not([devezbus-debugpanel-on]) .devezbus-debughint[devezbus-debugpanel="mod4-pan10"] {
+        display: none;
+    }
+
+    .devezbus-debugbox[devezbus-debugpanel="mod4-pan10"][devezbus-debugpanel-on] .devezbus-debughint[devezbus-debugpanel="mod4-pan10"] {
+        display: block;
+    }
+
+    .devezbus-debugbox[devezbus-debugpanel="mod4-pan11"]:not([devezbus-debugpanel-on]) .devezbus-debughint[devezbus-debugpanel="mod4-pan11"] {
+        display: none;
+    }
+
+    .devezbus-debugbox[devezbus-debugpanel="mod4-pan11"][devezbus-debugpanel-on] .devezbus-debughint[devezbus-debugpanel="mod4-pan11"] {
+        display: block;
+    }
+
+    .devezbus-debugbox[devezbus-debugpanel="mod4-pan12"]:not([devezbus-debugpanel-on]) .devezbus-debughint[devezbus-debugpanel="mod4-pan12"] {
+        display: none;
+    }
+
+    .devezbus-debugbox[devezbus-debugpanel="mod4-pan12"][devezbus-debugpanel-on] .devezbus-debughint[devezbus-debugpanel="mod4-pan12"] {
+        display: block;
+    }
+
+    .devezbus-debugbox[devezbus-debugpanel="mod4-pan13"]:not([devezbus-debugpanel-on]) .devezbus-debughint[devezbus-debugpanel="mod4-pan13"] {
+        display: none;
+    }
+
+    .devezbus-debugbox[devezbus-debugpanel="mod4-pan13"][devezbus-debugpanel-on] .devezbus-debughint[devezbus-debugpanel="mod4-pan13"] {
+        display: block;
+    }
+
+    .devezbus-debugbox[devezbus-debugpanel="mod4-pan14"]:not([devezbus-debugpanel-on]) .devezbus-debughint[devezbus-debugpanel="mod4-pan14"] {
+        display: none;
+    }
+
+    .devezbus-debugbox[devezbus-debugpanel="mod4-pan14"][devezbus-debugpanel-on] .devezbus-debughint[devezbus-debugpanel="mod4-pan14"] {
+        display: block;
+    }
+
+    .devezbus-debugbox[devezbus-debugpanel="mod4-pan15"]:not([devezbus-debugpanel-on]) .devezbus-debughint[devezbus-debugpanel="mod4-pan15"] {
+        display: none;
+    }
+
+    .devezbus-debugbox[devezbus-debugpanel="mod4-pan15"][devezbus-debugpanel-on] .devezbus-debughint[devezbus-debugpanel="mod4-pan15"] {
+        display: block;
+    }
+
+    .devezbus-debugbox[devezbus-debugpanel="mod5-pan0"]:not([devezbus-debugpanel-on]) .devezbus-debughint[devezbus-debugpanel="mod5-pan0"] {
+        display: none;
+    }
+
+    .devezbus-debugbox[devezbus-debugpanel="mod5-pan0"][devezbus-debugpanel-on] .devezbus-debughint[devezbus-debugpanel="mod5-pan0"] {
+        display: block;
+    }
+
+    .devezbus-debugbox[devezbus-debugpanel="mod5-pan1"]:not([devezbus-debugpanel-on]) .devezbus-debughint[devezbus-debugpanel="mod5-pan1"] {
+        display: none;
+    }
+
+    .devezbus-debugbox[devezbus-debugpanel="mod5-pan1"][devezbus-debugpanel-on] .devezbus-debughint[devezbus-debugpanel="mod5-pan1"] {
+        display: block;
+    }
+
+    .devezbus-debugbox[devezbus-debugpanel="mod5-pan2"]:not([devezbus-debugpanel-on]) .devezbus-debughint[devezbus-debugpanel="mod5-pan2"] {
+        display: none;
+    }
+
+    .devezbus-debugbox[devezbus-debugpanel="mod5-pan2"][devezbus-debugpanel-on] .devezbus-debughint[devezbus-debugpanel="mod5-pan2"] {
+        display: block;
+    }
+
+    .devezbus-debugbox[devezbus-debugpanel="mod5-pan3"]:not([devezbus-debugpanel-on]) .devezbus-debughint[devezbus-debugpanel="mod5-pan3"] {
+        display: none;
+    }
+
+    .devezbus-debugbox[devezbus-debugpanel="mod5-pan3"][devezbus-debugpanel-on] .devezbus-debughint[devezbus-debugpanel="mod5-pan3"] {
+        display: block;
+    }
+
+    .devezbus-debugbox[devezbus-debugpanel="mod5-pan4"]:not([devezbus-debugpanel-on]) .devezbus-debughint[devezbus-debugpanel="mod5-pan4"] {
+        display: none;
+    }
+
+    .devezbus-debugbox[devezbus-debugpanel="mod5-pan4"][devezbus-debugpanel-on] .devezbus-debughint[devezbus-debugpanel="mod5-pan4"] {
+        display: block;
+    }
+
+    .devezbus-debugbox[devezbus-debugpanel="mod5-pan5"]:not([devezbus-debugpanel-on]) .devezbus-debughint[devezbus-debugpanel="mod5-pan5"] {
+        display: none;
+    }
+
+    .devezbus-debugbox[devezbus-debugpanel="mod5-pan5"][devezbus-debugpanel-on] .devezbus-debughint[devezbus-debugpanel="mod5-pan5"] {
+        display: block;
+    }
+
+    .devezbus-debugbox[devezbus-debugpanel="mod5-pan6"]:not([devezbus-debugpanel-on]) .devezbus-debughint[devezbus-debugpanel="mod5-pan6"] {
+        display: none;
+    }
+
+    .devezbus-debugbox[devezbus-debugpanel="mod5-pan6"][devezbus-debugpanel-on] .devezbus-debughint[devezbus-debugpanel="mod5-pan6"] {
+        display: block;
+    }
+
+    .devezbus-debugbox[devezbus-debugpanel="mod5-pan7"]:not([devezbus-debugpanel-on]) .devezbus-debughint[devezbus-debugpanel="mod5-pan7"] {
+        display: none;
+    }
+
+    .devezbus-debugbox[devezbus-debugpanel="mod5-pan7"][devezbus-debugpanel-on] .devezbus-debughint[devezbus-debugpanel="mod5-pan7"] {
+        display: block;
+    }
+
+    .devezbus-debugbox[devezbus-debugpanel="mod5-pan8"]:not([devezbus-debugpanel-on]) .devezbus-debughint[devezbus-debugpanel="mod5-pan8"] {
+        display: none;
+    }
+
+    .devezbus-debugbox[devezbus-debugpanel="mod5-pan8"][devezbus-debugpanel-on] .devezbus-debughint[devezbus-debugpanel="mod5-pan8"] {
+        display: block;
+    }
+
+    .devezbus-debugbox[devezbus-debugpanel="mod5-pan9"]:not([devezbus-debugpanel-on]) .devezbus-debughint[devezbus-debugpanel="mod5-pan9"] {
+        display: none;
+    }
+
+    .devezbus-debugbox[devezbus-debugpanel="mod5-pan9"][devezbus-debugpanel-on] .devezbus-debughint[devezbus-debugpanel="mod5-pan9"] {
+        display: block;
+    }
+
+    .devezbus-debugbox[devezbus-debugpanel="mod5-pan10"]:not([devezbus-debugpanel-on]) .devezbus-debughint[devezbus-debugpanel="mod5-pan10"] {
+        display: none;
+    }
+
+    .devezbus-debugbox[devezbus-debugpanel="mod5-pan10"][devezbus-debugpanel-on] .devezbus-debughint[devezbus-debugpanel="mod5-pan10"] {
+        display: block;
+    }
+
+    .devezbus-debugbox[devezbus-debugpanel="mod5-pan11"]:not([devezbus-debugpanel-on]) .devezbus-debughint[devezbus-debugpanel="mod5-pan11"] {
+        display: none;
+    }
+
+    .devezbus-debugbox[devezbus-debugpanel="mod5-pan11"][devezbus-debugpanel-on] .devezbus-debughint[devezbus-debugpanel="mod5-pan11"] {
+        display: block;
+    }
+
+    .devezbus-debugbox[devezbus-debugpanel="mod5-pan12"]:not([devezbus-debugpanel-on]) .devezbus-debughint[devezbus-debugpanel="mod5-pan12"] {
+        display: none;
+    }
+
+    .devezbus-debugbox[devezbus-debugpanel="mod5-pan12"][devezbus-debugpanel-on] .devezbus-debughint[devezbus-debugpanel="mod5-pan12"] {
+        display: block;
+    }
+
+    .devezbus-debugbox[devezbus-debugpanel="mod5-pan13"]:not([devezbus-debugpanel-on]) .devezbus-debughint[devezbus-debugpanel="mod5-pan13"] {
+        display: none;
+    }
+
+    .devezbus-debugbox[devezbus-debugpanel="mod5-pan13"][devezbus-debugpanel-on] .devezbus-debughint[devezbus-debugpanel="mod5-pan13"] {
+        display: block;
+    }
+
+    .devezbus-debugbox[devezbus-debugpanel="mod5-pan14"]:not([devezbus-debugpanel-on]) .devezbus-debughint[devezbus-debugpanel="mod5-pan14"] {
+        display: none;
+    }
+
+    .devezbus-debugbox[devezbus-debugpanel="mod5-pan14"][devezbus-debugpanel-on] .devezbus-debughint[devezbus-debugpanel="mod5-pan14"] {
+        display: block;
+    }
+
+    .devezbus-debugbox[devezbus-debugpanel="mod5-pan15"]:not([devezbus-debugpanel-on]) .devezbus-debughint[devezbus-debugpanel="mod5-pan15"] {
+        display: none;
+    }
+
+    .devezbus-debugbox[devezbus-debugpanel="mod5-pan15"][devezbus-debugpanel-on] .devezbus-debughint[devezbus-debugpanel="mod5-pan15"] {
+        display: block;
+    }
+
+    .devezbus-debugbox[devezbus-debugpanel="mod6-pan0"]:not([devezbus-debugpanel-on]) .devezbus-debughint[devezbus-debugpanel="mod6-pan0"] {
+        display: none;
+    }
+
+    .devezbus-debugbox[devezbus-debugpanel="mod6-pan0"][devezbus-debugpanel-on] .devezbus-debughint[devezbus-debugpanel="mod6-pan0"] {
+        display: block;
+    }
+
+    .devezbus-debugbox[devezbus-debugpanel="mod6-pan1"]:not([devezbus-debugpanel-on]) .devezbus-debughint[devezbus-debugpanel="mod6-pan1"] {
+        display: none;
+    }
+
+    .devezbus-debugbox[devezbus-debugpanel="mod6-pan1"][devezbus-debugpanel-on] .devezbus-debughint[devezbus-debugpanel="mod6-pan1"] {
+        display: block;
+    }
+
+    .devezbus-debugbox[devezbus-debugpanel="mod6-pan2"]:not([devezbus-debugpanel-on]) .devezbus-debughint[devezbus-debugpanel="mod6-pan2"] {
+        display: none;
+    }
+
+    .devezbus-debugbox[devezbus-debugpanel="mod6-pan2"][devezbus-debugpanel-on] .devezbus-debughint[devezbus-debugpanel="mod6-pan2"] {
+        display: block;
+    }
+
+    .devezbus-debugbox[devezbus-debugpanel="mod6-pan3"]:not([devezbus-debugpanel-on]) .devezbus-debughint[devezbus-debugpanel="mod6-pan3"] {
+        display: none;
+    }
+
+    .devezbus-debugbox[devezbus-debugpanel="mod6-pan3"][devezbus-debugpanel-on] .devezbus-debughint[devezbus-debugpanel="mod6-pan3"] {
+        display: block;
+    }
+
+    .devezbus-debugbox[devezbus-debugpanel="mod6-pan4"]:not([devezbus-debugpanel-on]) .devezbus-debughint[devezbus-debugpanel="mod6-pan4"] {
+        display: none;
+    }
+
+    .devezbus-debugbox[devezbus-debugpanel="mod6-pan4"][devezbus-debugpanel-on] .devezbus-debughint[devezbus-debugpanel="mod6-pan4"] {
+        display: block;
+    }
+
+    .devezbus-debugbox[devezbus-debugpanel="mod6-pan5"]:not([devezbus-debugpanel-on]) .devezbus-debughint[devezbus-debugpanel="mod6-pan5"] {
+        display: none;
+    }
+
+    .devezbus-debugbox[devezbus-debugpanel="mod6-pan5"][devezbus-debugpanel-on] .devezbus-debughint[devezbus-debugpanel="mod6-pan5"] {
+        display: block;
+    }
+
+    .devezbus-debugbox[devezbus-debugpanel="mod6-pan6"]:not([devezbus-debugpanel-on]) .devezbus-debughint[devezbus-debugpanel="mod6-pan6"] {
+        display: none;
+    }
+
+    .devezbus-debugbox[devezbus-debugpanel="mod6-pan6"][devezbus-debugpanel-on] .devezbus-debughint[devezbus-debugpanel="mod6-pan6"] {
+        display: block;
+    }
+
+    .devezbus-debugbox[devezbus-debugpanel="mod6-pan7"]:not([devezbus-debugpanel-on]) .devezbus-debughint[devezbus-debugpanel="mod6-pan7"] {
+        display: none;
+    }
+
+    .devezbus-debugbox[devezbus-debugpanel="mod6-pan7"][devezbus-debugpanel-on] .devezbus-debughint[devezbus-debugpanel="mod6-pan7"] {
+        display: block;
+    }
+
+    .devezbus-debugbox[devezbus-debugpanel="mod6-pan8"]:not([devezbus-debugpanel-on]) .devezbus-debughint[devezbus-debugpanel="mod6-pan8"] {
+        display: none;
+    }
+
+    .devezbus-debugbox[devezbus-debugpanel="mod6-pan8"][devezbus-debugpanel-on] .devezbus-debughint[devezbus-debugpanel="mod6-pan8"] {
+        display: block;
+    }
+
+    .devezbus-debugbox[devezbus-debugpanel="mod6-pan9"]:not([devezbus-debugpanel-on]) .devezbus-debughint[devezbus-debugpanel="mod6-pan9"] {
+        display: none;
+    }
+
+    .devezbus-debugbox[devezbus-debugpanel="mod6-pan9"][devezbus-debugpanel-on] .devezbus-debughint[devezbus-debugpanel="mod6-pan9"] {
+        display: block;
+    }
+
+    .devezbus-debugbox[devezbus-debugpanel="mod6-pan10"]:not([devezbus-debugpanel-on]) .devezbus-debughint[devezbus-debugpanel="mod6-pan10"] {
+        display: none;
+    }
+
+    .devezbus-debugbox[devezbus-debugpanel="mod6-pan10"][devezbus-debugpanel-on] .devezbus-debughint[devezbus-debugpanel="mod6-pan10"] {
+        display: block;
+    }
+
+    .devezbus-debugbox[devezbus-debugpanel="mod6-pan11"]:not([devezbus-debugpanel-on]) .devezbus-debughint[devezbus-debugpanel="mod6-pan11"] {
+        display: none;
+    }
+
+    .devezbus-debugbox[devezbus-debugpanel="mod6-pan11"][devezbus-debugpanel-on] .devezbus-debughint[devezbus-debugpanel="mod6-pan11"] {
+        display: block;
+    }
+
+    .devezbus-debugbox[devezbus-debugpanel="mod6-pan12"]:not([devezbus-debugpanel-on]) .devezbus-debughint[devezbus-debugpanel="mod6-pan12"] {
+        display: none;
+    }
+
+    .devezbus-debugbox[devezbus-debugpanel="mod6-pan12"][devezbus-debugpanel-on] .devezbus-debughint[devezbus-debugpanel="mod6-pan12"] {
+        display: block;
+    }
+
+    .devezbus-debugbox[devezbus-debugpanel="mod6-pan13"]:not([devezbus-debugpanel-on]) .devezbus-debughint[devezbus-debugpanel="mod6-pan13"] {
+        display: none;
+    }
+
+    .devezbus-debugbox[devezbus-debugpanel="mod6-pan13"][devezbus-debugpanel-on] .devezbus-debughint[devezbus-debugpanel="mod6-pan13"] {
+        display: block;
+    }
+
+    .devezbus-debugbox[devezbus-debugpanel="mod6-pan14"]:not([devezbus-debugpanel-on]) .devezbus-debughint[devezbus-debugpanel="mod6-pan14"] {
+        display: none;
+    }
+
+    .devezbus-debugbox[devezbus-debugpanel="mod6-pan14"][devezbus-debugpanel-on] .devezbus-debughint[devezbus-debugpanel="mod6-pan14"] {
+        display: block;
+    }
+
+    .devezbus-debugbox[devezbus-debugpanel="mod6-pan15"]:not([devezbus-debugpanel-on]) .devezbus-debughint[devezbus-debugpanel="mod6-pan15"] {
+        display: none;
+    }
+
+    .devezbus-debugbox[devezbus-debugpanel="mod6-pan15"][devezbus-debugpanel-on] .devezbus-debughint[devezbus-debugpanel="mod6-pan15"] {
+        display: block;
+    }
+
+    .devezbus-debugbox[devezbus-debugpanel="mod7-pan0"]:not([devezbus-debugpanel-on]) .devezbus-debughint[devezbus-debugpanel="mod7-pan0"] {
+        display: none;
+    }
+
+    .devezbus-debugbox[devezbus-debugpanel="mod7-pan0"][devezbus-debugpanel-on] .devezbus-debughint[devezbus-debugpanel="mod7-pan0"] {
+        display: block;
+    }
+
+    .devezbus-debugbox[devezbus-debugpanel="mod7-pan1"]:not([devezbus-debugpanel-on]) .devezbus-debughint[devezbus-debugpanel="mod7-pan1"] {
+        display: none;
+    }
+
+    .devezbus-debugbox[devezbus-debugpanel="mod7-pan1"][devezbus-debugpanel-on] .devezbus-debughint[devezbus-debugpanel="mod7-pan1"] {
+        display: block;
+    }
+
+    .devezbus-debugbox[devezbus-debugpanel="mod7-pan2"]:not([devezbus-debugpanel-on]) .devezbus-debughint[devezbus-debugpanel="mod7-pan2"] {
+        display: none;
+    }
+
+    .devezbus-debugbox[devezbus-debugpanel="mod7-pan2"][devezbus-debugpanel-on] .devezbus-debughint[devezbus-debugpanel="mod7-pan2"] {
+        display: block;
+    }
+
+    .devezbus-debugbox[devezbus-debugpanel="mod7-pan3"]:not([devezbus-debugpanel-on]) .devezbus-debughint[devezbus-debugpanel="mod7-pan3"] {
+        display: none;
+    }
+
+    .devezbus-debugbox[devezbus-debugpanel="mod7-pan3"][devezbus-debugpanel-on] .devezbus-debughint[devezbus-debugpanel="mod7-pan3"] {
+        display: block;
+    }
+
+    .devezbus-debugbox[devezbus-debugpanel="mod7-pan4"]:not([devezbus-debugpanel-on]) .devezbus-debughint[devezbus-debugpanel="mod7-pan4"] {
+        display: none;
+    }
+
+    .devezbus-debugbox[devezbus-debugpanel="mod7-pan4"][devezbus-debugpanel-on] .devezbus-debughint[devezbus-debugpanel="mod7-pan4"] {
+        display: block;
+    }
+
+    .devezbus-debugbox[devezbus-debugpanel="mod7-pan5"]:not([devezbus-debugpanel-on]) .devezbus-debughint[devezbus-debugpanel="mod7-pan5"] {
+        display: none;
+    }
+
+    .devezbus-debugbox[devezbus-debugpanel="mod7-pan5"][devezbus-debugpanel-on] .devezbus-debughint[devezbus-debugpanel="mod7-pan5"] {
+        display: block;
+    }
+
+    .devezbus-debugbox[devezbus-debugpanel="mod7-pan6"]:not([devezbus-debugpanel-on]) .devezbus-debughint[devezbus-debugpanel="mod7-pan6"] {
+        display: none;
+    }
+
+    .devezbus-debugbox[devezbus-debugpanel="mod7-pan6"][devezbus-debugpanel-on] .devezbus-debughint[devezbus-debugpanel="mod7-pan6"] {
+        display: block;
+    }
+
+    .devezbus-debugbox[devezbus-debugpanel="mod7-pan7"]:not([devezbus-debugpanel-on]) .devezbus-debughint[devezbus-debugpanel="mod7-pan7"] {
+        display: none;
+    }
+
+    .devezbus-debugbox[devezbus-debugpanel="mod7-pan7"][devezbus-debugpanel-on] .devezbus-debughint[devezbus-debugpanel="mod7-pan7"] {
+        display: block;
+    }
+
+    .devezbus-debugbox[devezbus-debugpanel="mod7-pan8"]:not([devezbus-debugpanel-on]) .devezbus-debughint[devezbus-debugpanel="mod7-pan8"] {
+        display: none;
+    }
+
+    .devezbus-debugbox[devezbus-debugpanel="mod7-pan8"][devezbus-debugpanel-on] .devezbus-debughint[devezbus-debugpanel="mod7-pan8"] {
+        display: block;
+    }
+
+    .devezbus-debugbox[devezbus-debugpanel="mod7-pan9"]:not([devezbus-debugpanel-on]) .devezbus-debughint[devezbus-debugpanel="mod7-pan9"] {
+        display: none;
+    }
+
+    .devezbus-debugbox[devezbus-debugpanel="mod7-pan9"][devezbus-debugpanel-on] .devezbus-debughint[devezbus-debugpanel="mod7-pan9"] {
+        display: block;
+    }
+
+    .devezbus-debugbox[devezbus-debugpanel="mod7-pan10"]:not([devezbus-debugpanel-on]) .devezbus-debughint[devezbus-debugpanel="mod7-pan10"] {
+        display: none;
+    }
+
+    .devezbus-debugbox[devezbus-debugpanel="mod7-pan10"][devezbus-debugpanel-on] .devezbus-debughint[devezbus-debugpanel="mod7-pan10"] {
+        display: block;
+    }
+
+    .devezbus-debugbox[devezbus-debugpanel="mod7-pan11"]:not([devezbus-debugpanel-on]) .devezbus-debughint[devezbus-debugpanel="mod7-pan11"] {
+        display: none;
+    }
+
+    .devezbus-debugbox[devezbus-debugpanel="mod7-pan11"][devezbus-debugpanel-on] .devezbus-debughint[devezbus-debugpanel="mod7-pan11"] {
+        display: block;
+    }
+
+    .devezbus-debugbox[devezbus-debugpanel="mod7-pan12"]:not([devezbus-debugpanel-on]) .devezbus-debughint[devezbus-debugpanel="mod7-pan12"] {
+        display: none;
+    }
+
+    .devezbus-debugbox[devezbus-debugpanel="mod7-pan12"][devezbus-debugpanel-on] .devezbus-debughint[devezbus-debugpanel="mod7-pan12"] {
+        display: block;
+    }
+
+    .devezbus-debugbox[devezbus-debugpanel="mod7-pan13"]:not([devezbus-debugpanel-on]) .devezbus-debughint[devezbus-debugpanel="mod7-pan13"] {
+        display: none;
+    }
+
+    .devezbus-debugbox[devezbus-debugpanel="mod7-pan13"][devezbus-debugpanel-on] .devezbus-debughint[devezbus-debugpanel="mod7-pan13"] {
+        display: block;
+    }
+
+    .devezbus-debugbox[devezbus-debugpanel="mod7-pan14"]:not([devezbus-debugpanel-on]) .devezbus-debughint[devezbus-debugpanel="mod7-pan14"] {
+        display: none;
+    }
+
+    .devezbus-debugbox[devezbus-debugpanel="mod7-pan14"][devezbus-debugpanel-on] .devezbus-debughint[devezbus-debugpanel="mod7-pan14"] {
+        display: block;
+    }
+
+    .devezbus-debugbox[devezbus-debugpanel="mod7-pan15"]:not([devezbus-debugpanel-on]) .devezbus-debughint[devezbus-debugpanel="mod7-pan15"] {
+        display: none;
+    }
+
+    .devezbus-debugbox[devezbus-debugpanel="mod7-pan15"][devezbus-debugpanel-on] .devezbus-debughint[devezbus-debugpanel="mod7-pan15"] {
+        display: block;
+    }
+
+    .devezbus-debugbox[devezbus-debugpanel="mod8-pan0"]:not([devezbus-debugpanel-on]) .devezbus-debughint[devezbus-debugpanel="mod8-pan0"] {
+        display: none;
+    }
+
+    .devezbus-debugbox[devezbus-debugpanel="mod8-pan0"][devezbus-debugpanel-on] .devezbus-debughint[devezbus-debugpanel="mod8-pan0"] {
+        display: block;
+    }
+
+    .devezbus-debugbox[devezbus-debugpanel="mod8-pan1"]:not([devezbus-debugpanel-on]) .devezbus-debughint[devezbus-debugpanel="mod8-pan1"] {
+        display: none;
+    }
+
+    .devezbus-debugbox[devezbus-debugpanel="mod8-pan1"][devezbus-debugpanel-on] .devezbus-debughint[devezbus-debugpanel="mod8-pan1"] {
+        display: block;
+    }
+
+    .devezbus-debugbox[devezbus-debugpanel="mod8-pan2"]:not([devezbus-debugpanel-on]) .devezbus-debughint[devezbus-debugpanel="mod8-pan2"] {
+        display: none;
+    }
+
+    .devezbus-debugbox[devezbus-debugpanel="mod8-pan2"][devezbus-debugpanel-on] .devezbus-debughint[devezbus-debugpanel="mod8-pan2"] {
+        display: block;
+    }
+
+    .devezbus-debugbox[devezbus-debugpanel="mod8-pan3"]:not([devezbus-debugpanel-on]) .devezbus-debughint[devezbus-debugpanel="mod8-pan3"] {
+        display: none;
+    }
+
+    .devezbus-debugbox[devezbus-debugpanel="mod8-pan3"][devezbus-debugpanel-on] .devezbus-debughint[devezbus-debugpanel="mod8-pan3"] {
+        display: block;
+    }
+
+    .devezbus-debugbox[devezbus-debugpanel="mod8-pan4"]:not([devezbus-debugpanel-on]) .devezbus-debughint[devezbus-debugpanel="mod8-pan4"] {
+        display: none;
+    }
+
+    .devezbus-debugbox[devezbus-debugpanel="mod8-pan4"][devezbus-debugpanel-on] .devezbus-debughint[devezbus-debugpanel="mod8-pan4"] {
+        display: block;
+    }
+
+    .devezbus-debugbox[devezbus-debugpanel="mod8-pan5"]:not([devezbus-debugpanel-on]) .devezbus-debughint[devezbus-debugpanel="mod8-pan5"] {
+        display: none;
+    }
+
+    .devezbus-debugbox[devezbus-debugpanel="mod8-pan5"][devezbus-debugpanel-on] .devezbus-debughint[devezbus-debugpanel="mod8-pan5"] {
+        display: block;
+    }
+
+    .devezbus-debugbox[devezbus-debugpanel="mod8-pan6"]:not([devezbus-debugpanel-on]) .devezbus-debughint[devezbus-debugpanel="mod8-pan6"] {
+        display: none;
+    }
+
+    .devezbus-debugbox[devezbus-debugpanel="mod8-pan6"][devezbus-debugpanel-on] .devezbus-debughint[devezbus-debugpanel="mod8-pan6"] {
+        display: block;
+    }
+
+    .devezbus-debugbox[devezbus-debugpanel="mod8-pan7"]:not([devezbus-debugpanel-on]) .devezbus-debughint[devezbus-debugpanel="mod8-pan7"] {
+        display: none;
+    }
+
+    .devezbus-debugbox[devezbus-debugpanel="mod8-pan7"][devezbus-debugpanel-on] .devezbus-debughint[devezbus-debugpanel="mod8-pan7"] {
+        display: block;
+    }
+
+    .devezbus-debugbox[devezbus-debugpanel="mod8-pan8"]:not([devezbus-debugpanel-on]) .devezbus-debughint[devezbus-debugpanel="mod8-pan8"] {
+        display: none;
+    }
+
+    .devezbus-debugbox[devezbus-debugpanel="mod8-pan8"][devezbus-debugpanel-on] .devezbus-debughint[devezbus-debugpanel="mod8-pan8"] {
+        display: block;
+    }
+
+    .devezbus-debugbox[devezbus-debugpanel="mod8-pan9"]:not([devezbus-debugpanel-on]) .devezbus-debughint[devezbus-debugpanel="mod8-pan9"] {
+        display: none;
+    }
+
+    .devezbus-debugbox[devezbus-debugpanel="mod8-pan9"][devezbus-debugpanel-on] .devezbus-debughint[devezbus-debugpanel="mod8-pan9"] {
+        display: block;
+    }
+
+    .devezbus-debugbox[devezbus-debugpanel="mod8-pan10"]:not([devezbus-debugpanel-on]) .devezbus-debughint[devezbus-debugpanel="mod8-pan10"] {
+        display: none;
+    }
+
+    .devezbus-debugbox[devezbus-debugpanel="mod8-pan10"][devezbus-debugpanel-on] .devezbus-debughint[devezbus-debugpanel="mod8-pan10"] {
+        display: block;
+    }
+
+    .devezbus-debugbox[devezbus-debugpanel="mod8-pan11"]:not([devezbus-debugpanel-on]) .devezbus-debughint[devezbus-debugpanel="mod8-pan11"] {
+        display: none;
+    }
+
+    .devezbus-debugbox[devezbus-debugpanel="mod8-pan11"][devezbus-debugpanel-on] .devezbus-debughint[devezbus-debugpanel="mod8-pan11"] {
+        display: block;
+    }
+
+    .devezbus-debugbox[devezbus-debugpanel="mod8-pan12"]:not([devezbus-debugpanel-on]) .devezbus-debughint[devezbus-debugpanel="mod8-pan12"] {
+        display: none;
+    }
+
+    .devezbus-debugbox[devezbus-debugpanel="mod8-pan12"][devezbus-debugpanel-on] .devezbus-debughint[devezbus-debugpanel="mod8-pan12"] {
+        display: block;
+    }
+
+    .devezbus-debugbox[devezbus-debugpanel="mod8-pan13"]:not([devezbus-debugpanel-on]) .devezbus-debughint[devezbus-debugpanel="mod8-pan13"] {
+        display: none;
+    }
+
+    .devezbus-debugbox[devezbus-debugpanel="mod8-pan13"][devezbus-debugpanel-on] .devezbus-debughint[devezbus-debugpanel="mod8-pan13"] {
+        display: block;
+    }
+
+    .devezbus-debugbox[devezbus-debugpanel="mod8-pan14"]:not([devezbus-debugpanel-on]) .devezbus-debughint[devezbus-debugpanel="mod8-pan14"] {
+        display: none;
+    }
+
+    .devezbus-debugbox[devezbus-debugpanel="mod8-pan14"][devezbus-debugpanel-on] .devezbus-debughint[devezbus-debugpanel="mod8-pan14"] {
+        display: block;
+    }
+
+    .devezbus-debugbox[devezbus-debugpanel="mod8-pan15"]:not([devezbus-debugpanel-on]) .devezbus-debughint[devezbus-debugpanel="mod8-pan15"] {
+        display: none;
+    }
+
+    .devezbus-debugbox[devezbus-debugpanel="mod8-pan15"][devezbus-debugpanel-on] .devezbus-debughint[devezbus-debugpanel="mod8-pan15"] {
+        display: block;
+    }
+
+    .devezbus-debugbox[devezbus-debugpanel="mod9-pan0"]:not([devezbus-debugpanel-on]) .devezbus-debughint[devezbus-debugpanel="mod9-pan0"] {
+        display: none;
+    }
+
+    .devezbus-debugbox[devezbus-debugpanel="mod9-pan0"][devezbus-debugpanel-on] .devezbus-debughint[devezbus-debugpanel="mod9-pan0"] {
+        display: block;
+    }
+
+    .devezbus-debugbox[devezbus-debugpanel="mod9-pan1"]:not([devezbus-debugpanel-on]) .devezbus-debughint[devezbus-debugpanel="mod9-pan1"] {
+        display: none;
+    }
+
+    .devezbus-debugbox[devezbus-debugpanel="mod9-pan1"][devezbus-debugpanel-on] .devezbus-debughint[devezbus-debugpanel="mod9-pan1"] {
+        display: block;
+    }
+
+    .devezbus-debugbox[devezbus-debugpanel="mod9-pan2"]:not([devezbus-debugpanel-on]) .devezbus-debughint[devezbus-debugpanel="mod9-pan2"] {
+        display: none;
+    }
+
+    .devezbus-debugbox[devezbus-debugpanel="mod9-pan2"][devezbus-debugpanel-on] .devezbus-debughint[devezbus-debugpanel="mod9-pan2"] {
+        display: block;
+    }
+
+    .devezbus-debugbox[devezbus-debugpanel="mod9-pan3"]:not([devezbus-debugpanel-on]) .devezbus-debughint[devezbus-debugpanel="mod9-pan3"] {
+        display: none;
+    }
+
+    .devezbus-debugbox[devezbus-debugpanel="mod9-pan3"][devezbus-debugpanel-on] .devezbus-debughint[devezbus-debugpanel="mod9-pan3"] {
+        display: block;
+    }
+
+    .devezbus-debugbox[devezbus-debugpanel="mod9-pan4"]:not([devezbus-debugpanel-on]) .devezbus-debughint[devezbus-debugpanel="mod9-pan4"] {
+        display: none;
+    }
+
+    .devezbus-debugbox[devezbus-debugpanel="mod9-pan4"][devezbus-debugpanel-on] .devezbus-debughint[devezbus-debugpanel="mod9-pan4"] {
+        display: block;
+    }
+
+    .devezbus-debugbox[devezbus-debugpanel="mod9-pan5"]:not([devezbus-debugpanel-on]) .devezbus-debughint[devezbus-debugpanel="mod9-pan5"] {
+        display: none;
+    }
+
+    .devezbus-debugbox[devezbus-debugpanel="mod9-pan5"][devezbus-debugpanel-on] .devezbus-debughint[devezbus-debugpanel="mod9-pan5"] {
+        display: block;
+    }
+
+    .devezbus-debugbox[devezbus-debugpanel="mod9-pan6"]:not([devezbus-debugpanel-on]) .devezbus-debughint[devezbus-debugpanel="mod9-pan6"] {
+        display: none;
+    }
+
+    .devezbus-debugbox[devezbus-debugpanel="mod9-pan6"][devezbus-debugpanel-on] .devezbus-debughint[devezbus-debugpanel="mod9-pan6"] {
+        display: block;
+    }
+
+    .devezbus-debugbox[devezbus-debugpanel="mod9-pan7"]:not([devezbus-debugpanel-on]) .devezbus-debughint[devezbus-debugpanel="mod9-pan7"] {
+        display: none;
+    }
+
+    .devezbus-debugbox[devezbus-debugpanel="mod9-pan7"][devezbus-debugpanel-on] .devezbus-debughint[devezbus-debugpanel="mod9-pan7"] {
+        display: block;
+    }
+
+    .devezbus-debugbox[devezbus-debugpanel="mod9-pan8"]:not([devezbus-debugpanel-on]) .devezbus-debughint[devezbus-debugpanel="mod9-pan8"] {
+        display: none;
+    }
+
+    .devezbus-debugbox[devezbus-debugpanel="mod9-pan8"][devezbus-debugpanel-on] .devezbus-debughint[devezbus-debugpanel="mod9-pan8"] {
+        display: block;
+    }
+
+    .devezbus-debugbox[devezbus-debugpanel="mod9-pan9"]:not([devezbus-debugpanel-on]) .devezbus-debughint[devezbus-debugpanel="mod9-pan9"] {
+        display: none;
+    }
+
+    .devezbus-debugbox[devezbus-debugpanel="mod9-pan9"][devezbus-debugpanel-on] .devezbus-debughint[devezbus-debugpanel="mod9-pan9"] {
+        display: block;
+    }
+
+    .devezbus-debugbox[devezbus-debugpanel="mod9-pan10"]:not([devezbus-debugpanel-on]) .devezbus-debughint[devezbus-debugpanel="mod9-pan10"] {
+        display: none;
+    }
+
+    .devezbus-debugbox[devezbus-debugpanel="mod9-pan10"][devezbus-debugpanel-on] .devezbus-debughint[devezbus-debugpanel="mod9-pan10"] {
+        display: block;
+    }
+
+    .devezbus-debugbox[devezbus-debugpanel="mod9-pan11"]:not([devezbus-debugpanel-on]) .devezbus-debughint[devezbus-debugpanel="mod9-pan11"] {
+        display: none;
+    }
+
+    .devezbus-debugbox[devezbus-debugpanel="mod9-pan11"][devezbus-debugpanel-on] .devezbus-debughint[devezbus-debugpanel="mod9-pan11"] {
+        display: block;
+    }
+
+    .devezbus-debugbox[devezbus-debugpanel="mod9-pan12"]:not([devezbus-debugpanel-on]) .devezbus-debughint[devezbus-debugpanel="mod9-pan12"] {
+        display: none;
+    }
+
+    .devezbus-debugbox[devezbus-debugpanel="mod9-pan12"][devezbus-debugpanel-on] .devezbus-debughint[devezbus-debugpanel="mod9-pan12"] {
+        display: block;
+    }
+
+    .devezbus-debugbox[devezbus-debugpanel="mod9-pan13"]:not([devezbus-debugpanel-on]) .devezbus-debughint[devezbus-debugpanel="mod9-pan13"] {
+        display: none;
+    }
+
+    .devezbus-debugbox[devezbus-debugpanel="mod9-pan13"][devezbus-debugpanel-on] .devezbus-debughint[devezbus-debugpanel="mod9-pan13"] {
+        display: block;
+    }
+
+    .devezbus-debugbox[devezbus-debugpanel="mod9-pan14"]:not([devezbus-debugpanel-on]) .devezbus-debughint[devezbus-debugpanel="mod9-pan14"] {
+        display: none;
+    }
+
+    .devezbus-debugbox[devezbus-debugpanel="mod9-pan14"][devezbus-debugpanel-on] .devezbus-debughint[devezbus-debugpanel="mod9-pan14"] {
+        display: block;
+    }
+
+    .devezbus-debugbox[devezbus-debugpanel="mod9-pan15"]:not([devezbus-debugpanel-on]) .devezbus-debughint[devezbus-debugpanel="mod9-pan15"] {
+        display: none;
+    }
+
+    .devezbus-debugbox[devezbus-debugpanel="mod9-pan15"][devezbus-debugpanel-on] .devezbus-debughint[devezbus-debugpanel="mod9-pan15"] {
+        display: block;
+    }
+
+    .devezbus-debugbox[devezbus-debugpanel="mod10-pan0"]:not([devezbus-debugpanel-on]) .devezbus-debughint[devezbus-debugpanel="mod10-pan0"] {
+        display: none;
+    }
+
+    .devezbus-debugbox[devezbus-debugpanel="mod10-pan0"][devezbus-debugpanel-on] .devezbus-debughint[devezbus-debugpanel="mod10-pan0"] {
+        display: block;
+    }
+
+    .devezbus-debugbox[devezbus-debugpanel="mod10-pan1"]:not([devezbus-debugpanel-on]) .devezbus-debughint[devezbus-debugpanel="mod10-pan1"] {
+        display: none;
+    }
+
+    .devezbus-debugbox[devezbus-debugpanel="mod10-pan1"][devezbus-debugpanel-on] .devezbus-debughint[devezbus-debugpanel="mod10-pan1"] {
+        display: block;
+    }
+
+    .devezbus-debugbox[devezbus-debugpanel="mod10-pan2"]:not([devezbus-debugpanel-on]) .devezbus-debughint[devezbus-debugpanel="mod10-pan2"] {
+        display: none;
+    }
+
+    .devezbus-debugbox[devezbus-debugpanel="mod10-pan2"][devezbus-debugpanel-on] .devezbus-debughint[devezbus-debugpanel="mod10-pan2"] {
+        display: block;
+    }
+
+    .devezbus-debugbox[devezbus-debugpanel="mod10-pan3"]:not([devezbus-debugpanel-on]) .devezbus-debughint[devezbus-debugpanel="mod10-pan3"] {
+        display: none;
+    }
+
+    .devezbus-debugbox[devezbus-debugpanel="mod10-pan3"][devezbus-debugpanel-on] .devezbus-debughint[devezbus-debugpanel="mod10-pan3"] {
+        display: block;
+    }
+
+    .devezbus-debugbox[devezbus-debugpanel="mod10-pan4"]:not([devezbus-debugpanel-on]) .devezbus-debughint[devezbus-debugpanel="mod10-pan4"] {
+        display: none;
+    }
+
+    .devezbus-debugbox[devezbus-debugpanel="mod10-pan4"][devezbus-debugpanel-on] .devezbus-debughint[devezbus-debugpanel="mod10-pan4"] {
+        display: block;
+    }
+
+    .devezbus-debugbox[devezbus-debugpanel="mod10-pan5"]:not([devezbus-debugpanel-on]) .devezbus-debughint[devezbus-debugpanel="mod10-pan5"] {
+        display: none;
+    }
+
+    .devezbus-debugbox[devezbus-debugpanel="mod10-pan5"][devezbus-debugpanel-on] .devezbus-debughint[devezbus-debugpanel="mod10-pan5"] {
+        display: block;
+    }
+
+    .devezbus-debugbox[devezbus-debugpanel="mod10-pan6"]:not([devezbus-debugpanel-on]) .devezbus-debughint[devezbus-debugpanel="mod10-pan6"] {
+        display: none;
+    }
+
+    .devezbus-debugbox[devezbus-debugpanel="mod10-pan6"][devezbus-debugpanel-on] .devezbus-debughint[devezbus-debugpanel="mod10-pan6"] {
+        display: block;
+    }
+
+    .devezbus-debugbox[devezbus-debugpanel="mod10-pan7"]:not([devezbus-debugpanel-on]) .devezbus-debughint[devezbus-debugpanel="mod10-pan7"] {
+        display: none;
+    }
+
+    .devezbus-debugbox[devezbus-debugpanel="mod10-pan7"][devezbus-debugpanel-on] .devezbus-debughint[devezbus-debugpanel="mod10-pan7"] {
+        display: block;
+    }
+
+    .devezbus-debugbox[devezbus-debugpanel="mod10-pan8"]:not([devezbus-debugpanel-on]) .devezbus-debughint[devezbus-debugpanel="mod10-pan8"] {
+        display: none;
+    }
+
+    .devezbus-debugbox[devezbus-debugpanel="mod10-pan8"][devezbus-debugpanel-on] .devezbus-debughint[devezbus-debugpanel="mod10-pan8"] {
+        display: block;
+    }
+
+    .devezbus-debugbox[devezbus-debugpanel="mod10-pan9"]:not([devezbus-debugpanel-on]) .devezbus-debughint[devezbus-debugpanel="mod10-pan9"] {
+        display: none;
+    }
+
+    .devezbus-debugbox[devezbus-debugpanel="mod10-pan9"][devezbus-debugpanel-on] .devezbus-debughint[devezbus-debugpanel="mod10-pan9"] {
+        display: block;
+    }
+
+    .devezbus-debugbox[devezbus-debugpanel="mod10-pan10"]:not([devezbus-debugpanel-on]) .devezbus-debughint[devezbus-debugpanel="mod10-pan10"] {
+        display: none;
+    }
+
+    .devezbus-debugbox[devezbus-debugpanel="mod10-pan10"][devezbus-debugpanel-on] .devezbus-debughint[devezbus-debugpanel="mod10-pan10"] {
+        display: block;
+    }
+
+    .devezbus-debugbox[devezbus-debugpanel="mod10-pan11"]:not([devezbus-debugpanel-on]) .devezbus-debughint[devezbus-debugpanel="mod10-pan11"] {
+        display: none;
+    }
+
+    .devezbus-debugbox[devezbus-debugpanel="mod10-pan11"][devezbus-debugpanel-on] .devezbus-debughint[devezbus-debugpanel="mod10-pan11"] {
+        display: block;
+    }
+
+    .devezbus-debugbox[devezbus-debugpanel="mod10-pan12"]:not([devezbus-debugpanel-on]) .devezbus-debughint[devezbus-debugpanel="mod10-pan12"] {
+        display: none;
+    }
+
+    .devezbus-debugbox[devezbus-debugpanel="mod10-pan12"][devezbus-debugpanel-on] .devezbus-debughint[devezbus-debugpanel="mod10-pan12"] {
+        display: block;
+    }
+
+    .devezbus-debugbox[devezbus-debugpanel="mod10-pan13"]:not([devezbus-debugpanel-on]) .devezbus-debughint[devezbus-debugpanel="mod10-pan13"] {
+        display: none;
+    }
+
+    .devezbus-debugbox[devezbus-debugpanel="mod10-pan13"][devezbus-debugpanel-on] .devezbus-debughint[devezbus-debugpanel="mod10-pan13"] {
+        display: block;
+    }
+
+    .devezbus-debugbox[devezbus-debugpanel="mod10-pan14"]:not([devezbus-debugpanel-on]) .devezbus-debughint[devezbus-debugpanel="mod10-pan14"] {
+        display: none;
+    }
+
+    .devezbus-debugbox[devezbus-debugpanel="mod10-pan14"][devezbus-debugpanel-on] .devezbus-debughint[devezbus-debugpanel="mod10-pan14"] {
+        display: block;
+    }
+
+    .devezbus-debugbox[devezbus-debugpanel="mod10-pan15"]:not([devezbus-debugpanel-on]) .devezbus-debughint[devezbus-debugpanel="mod10-pan15"] {
+        display: none;
+    }
+
+    .devezbus-debugbox[devezbus-debugpanel="mod10-pan15"][devezbus-debugpanel-on] .devezbus-debughint[devezbus-debugpanel="mod10-pan15"] {
+        display: block;
+    }
+
+    .devezbus-debugbox[devezbus-debugpanel="mod11-pan0"]:not([devezbus-debugpanel-on]) .devezbus-debughint[devezbus-debugpanel="mod11-pan0"] {
+        display: none;
+    }
+
+    .devezbus-debugbox[devezbus-debugpanel="mod11-pan0"][devezbus-debugpanel-on] .devezbus-debughint[devezbus-debugpanel="mod11-pan0"] {
+        display: block;
+    }
+
+    .devezbus-debugbox[devezbus-debugpanel="mod11-pan1"]:not([devezbus-debugpanel-on]) .devezbus-debughint[devezbus-debugpanel="mod11-pan1"] {
+        display: none;
+    }
+
+    .devezbus-debugbox[devezbus-debugpanel="mod11-pan1"][devezbus-debugpanel-on] .devezbus-debughint[devezbus-debugpanel="mod11-pan1"] {
+        display: block;
+    }
+
+    .devezbus-debugbox[devezbus-debugpanel="mod11-pan2"]:not([devezbus-debugpanel-on]) .devezbus-debughint[devezbus-debugpanel="mod11-pan2"] {
+        display: none;
+    }
+
+    .devezbus-debugbox[devezbus-debugpanel="mod11-pan2"][devezbus-debugpanel-on] .devezbus-debughint[devezbus-debugpanel="mod11-pan2"] {
+        display: block;
+    }
+
+    .devezbus-debugbox[devezbus-debugpanel="mod11-pan3"]:not([devezbus-debugpanel-on]) .devezbus-debughint[devezbus-debugpanel="mod11-pan3"] {
+        display: none;
+    }
+
+    .devezbus-debugbox[devezbus-debugpanel="mod11-pan3"][devezbus-debugpanel-on] .devezbus-debughint[devezbus-debugpanel="mod11-pan3"] {
+        display: block;
+    }
+
+    .devezbus-debugbox[devezbus-debugpanel="mod11-pan4"]:not([devezbus-debugpanel-on]) .devezbus-debughint[devezbus-debugpanel="mod11-pan4"] {
+        display: none;
+    }
+
+    .devezbus-debugbox[devezbus-debugpanel="mod11-pan4"][devezbus-debugpanel-on] .devezbus-debughint[devezbus-debugpanel="mod11-pan4"] {
+        display: block;
+    }
+
+    .devezbus-debugbox[devezbus-debugpanel="mod11-pan5"]:not([devezbus-debugpanel-on]) .devezbus-debughint[devezbus-debugpanel="mod11-pan5"] {
+        display: none;
+    }
+
+    .devezbus-debugbox[devezbus-debugpanel="mod11-pan5"][devezbus-debugpanel-on] .devezbus-debughint[devezbus-debugpanel="mod11-pan5"] {
+        display: block;
+    }
+
+    .devezbus-debugbox[devezbus-debugpanel="mod11-pan6"]:not([devezbus-debugpanel-on]) .devezbus-debughint[devezbus-debugpanel="mod11-pan6"] {
+        display: none;
+    }
+
+    .devezbus-debugbox[devezbus-debugpanel="mod11-pan6"][devezbus-debugpanel-on] .devezbus-debughint[devezbus-debugpanel="mod11-pan6"] {
+        display: block;
+    }
+
+    .devezbus-debugbox[devezbus-debugpanel="mod11-pan7"]:not([devezbus-debugpanel-on]) .devezbus-debughint[devezbus-debugpanel="mod11-pan7"] {
+        display: none;
+    }
+
+    .devezbus-debugbox[devezbus-debugpanel="mod11-pan7"][devezbus-debugpanel-on] .devezbus-debughint[devezbus-debugpanel="mod11-pan7"] {
+        display: block;
+    }
+
+    .devezbus-debugbox[devezbus-debugpanel="mod11-pan8"]:not([devezbus-debugpanel-on]) .devezbus-debughint[devezbus-debugpanel="mod11-pan8"] {
+        display: none;
+    }
+
+    .devezbus-debugbox[devezbus-debugpanel="mod11-pan8"][devezbus-debugpanel-on] .devezbus-debughint[devezbus-debugpanel="mod11-pan8"] {
+        display: block;
+    }
+
+    .devezbus-debugbox[devezbus-debugpanel="mod11-pan9"]:not([devezbus-debugpanel-on]) .devezbus-debughint[devezbus-debugpanel="mod11-pan9"] {
+        display: none;
+    }
+
+    .devezbus-debugbox[devezbus-debugpanel="mod11-pan9"][devezbus-debugpanel-on] .devezbus-debughint[devezbus-debugpanel="mod11-pan9"] {
+        display: block;
+    }
+
+    .devezbus-debugbox[devezbus-debugpanel="mod11-pan10"]:not([devezbus-debugpanel-on]) .devezbus-debughint[devezbus-debugpanel="mod11-pan10"] {
+        display: none;
+    }
+
+    .devezbus-debugbox[devezbus-debugpanel="mod11-pan10"][devezbus-debugpanel-on] .devezbus-debughint[devezbus-debugpanel="mod11-pan10"] {
+        display: block;
+    }
+
+    .devezbus-debugbox[devezbus-debugpanel="mod11-pan11"]:not([devezbus-debugpanel-on]) .devezbus-debughint[devezbus-debugpanel="mod11-pan11"] {
+        display: none;
+    }
+
+    .devezbus-debugbox[devezbus-debugpanel="mod11-pan11"][devezbus-debugpanel-on] .devezbus-debughint[devezbus-debugpanel="mod11-pan11"] {
+        display: block;
+    }
+
+    .devezbus-debugbox[devezbus-debugpanel="mod11-pan12"]:not([devezbus-debugpanel-on]) .devezbus-debughint[devezbus-debugpanel="mod11-pan12"] {
+        display: none;
+    }
+
+    .devezbus-debugbox[devezbus-debugpanel="mod11-pan12"][devezbus-debugpanel-on] .devezbus-debughint[devezbus-debugpanel="mod11-pan12"] {
+        display: block;
+    }
+
+    .devezbus-debugbox[devezbus-debugpanel="mod11-pan13"]:not([devezbus-debugpanel-on]) .devezbus-debughint[devezbus-debugpanel="mod11-pan13"] {
+        display: none;
+    }
+
+    .devezbus-debugbox[devezbus-debugpanel="mod11-pan13"][devezbus-debugpanel-on] .devezbus-debughint[devezbus-debugpanel="mod11-pan13"] {
+        display: block;
+    }
+
+    .devezbus-debugbox[devezbus-debugpanel="mod11-pan14"]:not([devezbus-debugpanel-on]) .devezbus-debughint[devezbus-debugpanel="mod11-pan14"] {
+        display: none;
+    }
+
+    .devezbus-debugbox[devezbus-debugpanel="mod11-pan14"][devezbus-debugpanel-on] .devezbus-debughint[devezbus-debugpanel="mod11-pan14"] {
+        display: block;
+    }
+
+    .devezbus-debugbox[devezbus-debugpanel="mod11-pan15"]:not([devezbus-debugpanel-on]) .devezbus-debughint[devezbus-debugpanel="mod11-pan15"] {
+        display: none;
+    }
+
+    .devezbus-debugbox[devezbus-debugpanel="mod11-pan15"][devezbus-debugpanel-on] .devezbus-debughint[devezbus-debugpanel="mod11-pan15"] {
+        display: block;
+    }
+
+    .devezbus-debugbox[devezbus-debugpanel="mod12-pan0"]:not([devezbus-debugpanel-on]) .devezbus-debughint[devezbus-debugpanel="mod12-pan0"] {
+        display: none;
+    }
+
+    .devezbus-debugbox[devezbus-debugpanel="mod12-pan0"][devezbus-debugpanel-on] .devezbus-debughint[devezbus-debugpanel="mod12-pan0"] {
+        display: block;
+    }
+
+    .devezbus-debugbox[devezbus-debugpanel="mod12-pan1"]:not([devezbus-debugpanel-on]) .devezbus-debughint[devezbus-debugpanel="mod12-pan1"] {
+        display: none;
+    }
+
+    .devezbus-debugbox[devezbus-debugpanel="mod12-pan1"][devezbus-debugpanel-on] .devezbus-debughint[devezbus-debugpanel="mod12-pan1"] {
+        display: block;
+    }
+
+    .devezbus-debugbox[devezbus-debugpanel="mod12-pan2"]:not([devezbus-debugpanel-on]) .devezbus-debughint[devezbus-debugpanel="mod12-pan2"] {
+        display: none;
+    }
+
+    .devezbus-debugbox[devezbus-debugpanel="mod12-pan2"][devezbus-debugpanel-on] .devezbus-debughint[devezbus-debugpanel="mod12-pan2"] {
+        display: block;
+    }
+
+    .devezbus-debugbox[devezbus-debugpanel="mod12-pan3"]:not([devezbus-debugpanel-on]) .devezbus-debughint[devezbus-debugpanel="mod12-pan3"] {
+        display: none;
+    }
+
+    .devezbus-debugbox[devezbus-debugpanel="mod12-pan3"][devezbus-debugpanel-on] .devezbus-debughint[devezbus-debugpanel="mod12-pan3"] {
+        display: block;
+    }
+
+    .devezbus-debugbox[devezbus-debugpanel="mod12-pan4"]:not([devezbus-debugpanel-on]) .devezbus-debughint[devezbus-debugpanel="mod12-pan4"] {
+        display: none;
+    }
+
+    .devezbus-debugbox[devezbus-debugpanel="mod12-pan4"][devezbus-debugpanel-on] .devezbus-debughint[devezbus-debugpanel="mod12-pan4"] {
+        display: block;
+    }
+
+    .devezbus-debugbox[devezbus-debugpanel="mod12-pan5"]:not([devezbus-debugpanel-on]) .devezbus-debughint[devezbus-debugpanel="mod12-pan5"] {
+        display: none;
+    }
+
+    .devezbus-debugbox[devezbus-debugpanel="mod12-pan5"][devezbus-debugpanel-on] .devezbus-debughint[devezbus-debugpanel="mod12-pan5"] {
+        display: block;
+    }
+
+    .devezbus-debugbox[devezbus-debugpanel="mod12-pan6"]:not([devezbus-debugpanel-on]) .devezbus-debughint[devezbus-debugpanel="mod12-pan6"] {
+        display: none;
+    }
+
+    .devezbus-debugbox[devezbus-debugpanel="mod12-pan6"][devezbus-debugpanel-on] .devezbus-debughint[devezbus-debugpanel="mod12-pan6"] {
+        display: block;
+    }
+
+    .devezbus-debugbox[devezbus-debugpanel="mod12-pan7"]:not([devezbus-debugpanel-on]) .devezbus-debughint[devezbus-debugpanel="mod12-pan7"] {
+        display: none;
+    }
+
+    .devezbus-debugbox[devezbus-debugpanel="mod12-pan7"][devezbus-debugpanel-on] .devezbus-debughint[devezbus-debugpanel="mod12-pan7"] {
+        display: block;
+    }
+
+    .devezbus-debugbox[devezbus-debugpanel="mod12-pan8"]:not([devezbus-debugpanel-on]) .devezbus-debughint[devezbus-debugpanel="mod12-pan8"] {
+        display: none;
+    }
+
+    .devezbus-debugbox[devezbus-debugpanel="mod12-pan8"][devezbus-debugpanel-on] .devezbus-debughint[devezbus-debugpanel="mod12-pan8"] {
+        display: block;
+    }
+
+    .devezbus-debugbox[devezbus-debugpanel="mod12-pan9"]:not([devezbus-debugpanel-on]) .devezbus-debughint[devezbus-debugpanel="mod12-pan9"] {
+        display: none;
+    }
+
+    .devezbus-debugbox[devezbus-debugpanel="mod12-pan9"][devezbus-debugpanel-on] .devezbus-debughint[devezbus-debugpanel="mod12-pan9"] {
+        display: block;
+    }
+
+    .devezbus-debugbox[devezbus-debugpanel="mod12-pan10"]:not([devezbus-debugpanel-on]) .devezbus-debughint[devezbus-debugpanel="mod12-pan10"] {
+        display: none;
+    }
+
+    .devezbus-debugbox[devezbus-debugpanel="mod12-pan10"][devezbus-debugpanel-on] .devezbus-debughint[devezbus-debugpanel="mod12-pan10"] {
+        display: block;
+    }
+
+    .devezbus-debugbox[devezbus-debugpanel="mod12-pan11"]:not([devezbus-debugpanel-on]) .devezbus-debughint[devezbus-debugpanel="mod12-pan11"] {
+        display: none;
+    }
+
+    .devezbus-debugbox[devezbus-debugpanel="mod12-pan11"][devezbus-debugpanel-on] .devezbus-debughint[devezbus-debugpanel="mod12-pan11"] {
+        display: block;
+    }
+
+    .devezbus-debugbox[devezbus-debugpanel="mod12-pan12"]:not([devezbus-debugpanel-on]) .devezbus-debughint[devezbus-debugpanel="mod12-pan12"] {
+        display: none;
+    }
+
+    .devezbus-debugbox[devezbus-debugpanel="mod12-pan12"][devezbus-debugpanel-on] .devezbus-debughint[devezbus-debugpanel="mod12-pan12"] {
+        display: block;
+    }
+
+    .devezbus-debugbox[devezbus-debugpanel="mod12-pan13"]:not([devezbus-debugpanel-on]) .devezbus-debughint[devezbus-debugpanel="mod12-pan13"] {
+        display: none;
+    }
+
+    .devezbus-debugbox[devezbus-debugpanel="mod12-pan13"][devezbus-debugpanel-on] .devezbus-debughint[devezbus-debugpanel="mod12-pan13"] {
+        display: block;
+    }
+
+    .devezbus-debugbox[devezbus-debugpanel="mod12-pan14"]:not([devezbus-debugpanel-on]) .devezbus-debughint[devezbus-debugpanel="mod12-pan14"] {
+        display: none;
+    }
+
+    .devezbus-debugbox[devezbus-debugpanel="mod12-pan14"][devezbus-debugpanel-on] .devezbus-debughint[devezbus-debugpanel="mod12-pan14"] {
+        display: block;
+    }
+
+    .devezbus-debugbox[devezbus-debugpanel="mod12-pan15"]:not([devezbus-debugpanel-on]) .devezbus-debughint[devezbus-debugpanel="mod12-pan15"] {
+        display: none;
+    }
+
+    .devezbus-debugbox[devezbus-debugpanel="mod12-pan15"][devezbus-debugpanel-on] .devezbus-debughint[devezbus-debugpanel="mod12-pan15"] {
+        display: block;
+    }
+
+    .devezbus-debugbox[devezbus-debugpanel="mod13-pan0"]:not([devezbus-debugpanel-on]) .devezbus-debughint[devezbus-debugpanel="mod13-pan0"] {
+        display: none;
+    }
+
+    .devezbus-debugbox[devezbus-debugpanel="mod13-pan0"][devezbus-debugpanel-on] .devezbus-debughint[devezbus-debugpanel="mod13-pan0"] {
+        display: block;
+    }
+
+    .devezbus-debugbox[devezbus-debugpanel="mod13-pan1"]:not([devezbus-debugpanel-on]) .devezbus-debughint[devezbus-debugpanel="mod13-pan1"] {
+        display: none;
+    }
+
+    .devezbus-debugbox[devezbus-debugpanel="mod13-pan1"][devezbus-debugpanel-on] .devezbus-debughint[devezbus-debugpanel="mod13-pan1"] {
+        display: block;
+    }
+
+    .devezbus-debugbox[devezbus-debugpanel="mod13-pan2"]:not([devezbus-debugpanel-on]) .devezbus-debughint[devezbus-debugpanel="mod13-pan2"] {
+        display: none;
+    }
+
+    .devezbus-debugbox[devezbus-debugpanel="mod13-pan2"][devezbus-debugpanel-on] .devezbus-debughint[devezbus-debugpanel="mod13-pan2"] {
+        display: block;
+    }
+
+    .devezbus-debugbox[devezbus-debugpanel="mod13-pan3"]:not([devezbus-debugpanel-on]) .devezbus-debughint[devezbus-debugpanel="mod13-pan3"] {
+        display: none;
+    }
+
+    .devezbus-debugbox[devezbus-debugpanel="mod13-pan3"][devezbus-debugpanel-on] .devezbus-debughint[devezbus-debugpanel="mod13-pan3"] {
+        display: block;
+    }
+
+    .devezbus-debugbox[devezbus-debugpanel="mod13-pan4"]:not([devezbus-debugpanel-on]) .devezbus-debughint[devezbus-debugpanel="mod13-pan4"] {
+        display: none;
+    }
+
+    .devezbus-debugbox[devezbus-debugpanel="mod13-pan4"][devezbus-debugpanel-on] .devezbus-debughint[devezbus-debugpanel="mod13-pan4"] {
+        display: block;
+    }
+
+    .devezbus-debugbox[devezbus-debugpanel="mod13-pan5"]:not([devezbus-debugpanel-on]) .devezbus-debughint[devezbus-debugpanel="mod13-pan5"] {
+        display: none;
+    }
+
+    .devezbus-debugbox[devezbus-debugpanel="mod13-pan5"][devezbus-debugpanel-on] .devezbus-debughint[devezbus-debugpanel="mod13-pan5"] {
+        display: block;
+    }
+
+    .devezbus-debugbox[devezbus-debugpanel="mod13-pan6"]:not([devezbus-debugpanel-on]) .devezbus-debughint[devezbus-debugpanel="mod13-pan6"] {
+        display: none;
+    }
+
+    .devezbus-debugbox[devezbus-debugpanel="mod13-pan6"][devezbus-debugpanel-on] .devezbus-debughint[devezbus-debugpanel="mod13-pan6"] {
+        display: block;
+    }
+
+    .devezbus-debugbox[devezbus-debugpanel="mod13-pan7"]:not([devezbus-debugpanel-on]) .devezbus-debughint[devezbus-debugpanel="mod13-pan7"] {
+        display: none;
+    }
+
+    .devezbus-debugbox[devezbus-debugpanel="mod13-pan7"][devezbus-debugpanel-on] .devezbus-debughint[devezbus-debugpanel="mod13-pan7"] {
+        display: block;
+    }
+
+    .devezbus-debugbox[devezbus-debugpanel="mod13-pan8"]:not([devezbus-debugpanel-on]) .devezbus-debughint[devezbus-debugpanel="mod13-pan8"] {
+        display: none;
+    }
+
+    .devezbus-debugbox[devezbus-debugpanel="mod13-pan8"][devezbus-debugpanel-on] .devezbus-debughint[devezbus-debugpanel="mod13-pan8"] {
+        display: block;
+    }
+
+    .devezbus-debugbox[devezbus-debugpanel="mod13-pan9"]:not([devezbus-debugpanel-on]) .devezbus-debughint[devezbus-debugpanel="mod13-pan9"] {
+        display: none;
+    }
+
+    .devezbus-debugbox[devezbus-debugpanel="mod13-pan9"][devezbus-debugpanel-on] .devezbus-debughint[devezbus-debugpanel="mod13-pan9"] {
+        display: block;
+    }
+
+    .devezbus-debugbox[devezbus-debugpanel="mod13-pan10"]:not([devezbus-debugpanel-on]) .devezbus-debughint[devezbus-debugpanel="mod13-pan10"] {
+        display: none;
+    }
+
+    .devezbus-debugbox[devezbus-debugpanel="mod13-pan10"][devezbus-debugpanel-on] .devezbus-debughint[devezbus-debugpanel="mod13-pan10"] {
+        display: block;
+    }
+
+    .devezbus-debugbox[devezbus-debugpanel="mod13-pan11"]:not([devezbus-debugpanel-on]) .devezbus-debughint[devezbus-debugpanel="mod13-pan11"] {
+        display: none;
+    }
+
+    .devezbus-debugbox[devezbus-debugpanel="mod13-pan11"][devezbus-debugpanel-on] .devezbus-debughint[devezbus-debugpanel="mod13-pan11"] {
+        display: block;
+    }
+
+    .devezbus-debugbox[devezbus-debugpanel="mod13-pan12"]:not([devezbus-debugpanel-on]) .devezbus-debughint[devezbus-debugpanel="mod13-pan12"] {
+        display: none;
+    }
+
+    .devezbus-debugbox[devezbus-debugpanel="mod13-pan12"][devezbus-debugpanel-on] .devezbus-debughint[devezbus-debugpanel="mod13-pan12"] {
+        display: block;
+    }
+
+    .devezbus-debugbox[devezbus-debugpanel="mod13-pan13"]:not([devezbus-debugpanel-on]) .devezbus-debughint[devezbus-debugpanel="mod13-pan13"] {
+        display: none;
+    }
+
+    .devezbus-debugbox[devezbus-debugpanel="mod13-pan13"][devezbus-debugpanel-on] .devezbus-debughint[devezbus-debugpanel="mod13-pan13"] {
+        display: block;
+    }
+
+    .devezbus-debugbox[devezbus-debugpanel="mod13-pan14"]:not([devezbus-debugpanel-on]) .devezbus-debughint[devezbus-debugpanel="mod13-pan14"] {
+        display: none;
+    }
+
+    .devezbus-debugbox[devezbus-debugpanel="mod13-pan14"][devezbus-debugpanel-on] .devezbus-debughint[devezbus-debugpanel="mod13-pan14"] {
+        display: block;
+    }
+
+    .devezbus-debugbox[devezbus-debugpanel="mod13-pan15"]:not([devezbus-debugpanel-on]) .devezbus-debughint[devezbus-debugpanel="mod13-pan15"] {
+        display: none;
+    }
+
+    .devezbus-debugbox[devezbus-debugpanel="mod13-pan15"][devezbus-debugpanel-on] .devezbus-debughint[devezbus-debugpanel="mod13-pan15"] {
+        display: block;
+    }
+
+    .devezbus-debugbox[devezbus-debugpanel="mod14-pan0"]:not([devezbus-debugpanel-on]) .devezbus-debughint[devezbus-debugpanel="mod14-pan0"] {
+        display: none;
+    }
+
+    .devezbus-debugbox[devezbus-debugpanel="mod14-pan0"][devezbus-debugpanel-on] .devezbus-debughint[devezbus-debugpanel="mod14-pan0"] {
+        display: block;
+    }
+
+    .devezbus-debugbox[devezbus-debugpanel="mod14-pan1"]:not([devezbus-debugpanel-on]) .devezbus-debughint[devezbus-debugpanel="mod14-pan1"] {
+        display: none;
+    }
+
+    .devezbus-debugbox[devezbus-debugpanel="mod14-pan1"][devezbus-debugpanel-on] .devezbus-debughint[devezbus-debugpanel="mod14-pan1"] {
+        display: block;
+    }
+
+    .devezbus-debugbox[devezbus-debugpanel="mod14-pan2"]:not([devezbus-debugpanel-on]) .devezbus-debughint[devezbus-debugpanel="mod14-pan2"] {
+        display: none;
+    }
+
+    .devezbus-debugbox[devezbus-debugpanel="mod14-pan2"][devezbus-debugpanel-on] .devezbus-debughint[devezbus-debugpanel="mod14-pan2"] {
+        display: block;
+    }
+
+    .devezbus-debugbox[devezbus-debugpanel="mod14-pan3"]:not([devezbus-debugpanel-on]) .devezbus-debughint[devezbus-debugpanel="mod14-pan3"] {
+        display: none;
+    }
+
+    .devezbus-debugbox[devezbus-debugpanel="mod14-pan3"][devezbus-debugpanel-on] .devezbus-debughint[devezbus-debugpanel="mod14-pan3"] {
+        display: block;
+    }
+
+    .devezbus-debugbox[devezbus-debugpanel="mod14-pan4"]:not([devezbus-debugpanel-on]) .devezbus-debughint[devezbus-debugpanel="mod14-pan4"] {
+        display: none;
+    }
+
+    .devezbus-debugbox[devezbus-debugpanel="mod14-pan4"][devezbus-debugpanel-on] .devezbus-debughint[devezbus-debugpanel="mod14-pan4"] {
+        display: block;
+    }
+
+    .devezbus-debugbox[devezbus-debugpanel="mod14-pan5"]:not([devezbus-debugpanel-on]) .devezbus-debughint[devezbus-debugpanel="mod14-pan5"] {
+        display: none;
+    }
+
+    .devezbus-debugbox[devezbus-debugpanel="mod14-pan5"][devezbus-debugpanel-on] .devezbus-debughint[devezbus-debugpanel="mod14-pan5"] {
+        display: block;
+    }
+
+    .devezbus-debugbox[devezbus-debugpanel="mod14-pan6"]:not([devezbus-debugpanel-on]) .devezbus-debughint[devezbus-debugpanel="mod14-pan6"] {
+        display: none;
+    }
+
+    .devezbus-debugbox[devezbus-debugpanel="mod14-pan6"][devezbus-debugpanel-on] .devezbus-debughint[devezbus-debugpanel="mod14-pan6"] {
+        display: block;
+    }
+
+    .devezbus-debugbox[devezbus-debugpanel="mod14-pan7"]:not([devezbus-debugpanel-on]) .devezbus-debughint[devezbus-debugpanel="mod14-pan7"] {
+        display: none;
+    }
+
+    .devezbus-debugbox[devezbus-debugpanel="mod14-pan7"][devezbus-debugpanel-on] .devezbus-debughint[devezbus-debugpanel="mod14-pan7"] {
+        display: block;
+    }
+
+    .devezbus-debugbox[devezbus-debugpanel="mod14-pan8"]:not([devezbus-debugpanel-on]) .devezbus-debughint[devezbus-debugpanel="mod14-pan8"] {
+        display: none;
+    }
+
+    .devezbus-debugbox[devezbus-debugpanel="mod14-pan8"][devezbus-debugpanel-on] .devezbus-debughint[devezbus-debugpanel="mod14-pan8"] {
+        display: block;
+    }
+
+    .devezbus-debugbox[devezbus-debugpanel="mod14-pan9"]:not([devezbus-debugpanel-on]) .devezbus-debughint[devezbus-debugpanel="mod14-pan9"] {
+        display: none;
+    }
+
+    .devezbus-debugbox[devezbus-debugpanel="mod14-pan9"][devezbus-debugpanel-on] .devezbus-debughint[devezbus-debugpanel="mod14-pan9"] {
+        display: block;
+    }
+
+    .devezbus-debugbox[devezbus-debugpanel="mod14-pan10"]:not([devezbus-debugpanel-on]) .devezbus-debughint[devezbus-debugpanel="mod14-pan10"] {
+        display: none;
+    }
+
+    .devezbus-debugbox[devezbus-debugpanel="mod14-pan10"][devezbus-debugpanel-on] .devezbus-debughint[devezbus-debugpanel="mod14-pan10"] {
+        display: block;
+    }
+
+    .devezbus-debugbox[devezbus-debugpanel="mod14-pan11"]:not([devezbus-debugpanel-on]) .devezbus-debughint[devezbus-debugpanel="mod14-pan11"] {
+        display: none;
+    }
+
+    .devezbus-debugbox[devezbus-debugpanel="mod14-pan11"][devezbus-debugpanel-on] .devezbus-debughint[devezbus-debugpanel="mod14-pan11"] {
+        display: block;
+    }
+
+    .devezbus-debugbox[devezbus-debugpanel="mod14-pan12"]:not([devezbus-debugpanel-on]) .devezbus-debughint[devezbus-debugpanel="mod14-pan12"] {
+        display: none;
+    }
+
+    .devezbus-debugbox[devezbus-debugpanel="mod14-pan12"][devezbus-debugpanel-on] .devezbus-debughint[devezbus-debugpanel="mod14-pan12"] {
+        display: block;
+    }
+
+    .devezbus-debugbox[devezbus-debugpanel="mod14-pan13"]:not([devezbus-debugpanel-on]) .devezbus-debughint[devezbus-debugpanel="mod14-pan13"] {
+        display: none;
+    }
+
+    .devezbus-debugbox[devezbus-debugpanel="mod14-pan13"][devezbus-debugpanel-on] .devezbus-debughint[devezbus-debugpanel="mod14-pan13"] {
+        display: block;
+    }
+
+    .devezbus-debugbox[devezbus-debugpanel="mod14-pan14"]:not([devezbus-debugpanel-on]) .devezbus-debughint[devezbus-debugpanel="mod14-pan14"] {
+        display: none;
+    }
+
+    .devezbus-debugbox[devezbus-debugpanel="mod14-pan14"][devezbus-debugpanel-on] .devezbus-debughint[devezbus-debugpanel="mod14-pan14"] {
+        display: block;
+    }
+
+    .devezbus-debugbox[devezbus-debugpanel="mod14-pan15"]:not([devezbus-debugpanel-on]) .devezbus-debughint[devezbus-debugpanel="mod14-pan15"] {
+        display: none;
+    }
+
+    .devezbus-debugbox[devezbus-debugpanel="mod14-pan15"][devezbus-debugpanel-on] .devezbus-debughint[devezbus-debugpanel="mod14-pan15"] {
+        display: block;
+    }
+
+    .devezbus-debugbox[devezbus-debugpanel="mod15-pan0"]:not([devezbus-debugpanel-on]) .devezbus-debughint[devezbus-debugpanel="mod15-pan0"] {
+        display: none;
+    }
+
+    .devezbus-debugbox[devezbus-debugpanel="mod15-pan0"][devezbus-debugpanel-on] .devezbus-debughint[devezbus-debugpanel="mod15-pan0"] {
+        display: block;
+    }
+
+    .devezbus-debugbox[devezbus-debugpanel="mod15-pan1"]:not([devezbus-debugpanel-on]) .devezbus-debughint[devezbus-debugpanel="mod15-pan1"] {
+        display: none;
+    }
+
+    .devezbus-debugbox[devezbus-debugpanel="mod15-pan1"][devezbus-debugpanel-on] .devezbus-debughint[devezbus-debugpanel="mod15-pan1"] {
+        display: block;
+    }
+
+    .devezbus-debugbox[devezbus-debugpanel="mod15-pan2"]:not([devezbus-debugpanel-on]) .devezbus-debughint[devezbus-debugpanel="mod15-pan2"] {
+        display: none;
+    }
+
+    .devezbus-debugbox[devezbus-debugpanel="mod15-pan2"][devezbus-debugpanel-on] .devezbus-debughint[devezbus-debugpanel="mod15-pan2"] {
+        display: block;
+    }
+
+    .devezbus-debugbox[devezbus-debugpanel="mod15-pan3"]:not([devezbus-debugpanel-on]) .devezbus-debughint[devezbus-debugpanel="mod15-pan3"] {
+        display: none;
+    }
+
+    .devezbus-debugbox[devezbus-debugpanel="mod15-pan3"][devezbus-debugpanel-on] .devezbus-debughint[devezbus-debugpanel="mod15-pan3"] {
+        display: block;
+    }
+
+    .devezbus-debugbox[devezbus-debugpanel="mod15-pan4"]:not([devezbus-debugpanel-on]) .devezbus-debughint[devezbus-debugpanel="mod15-pan4"] {
+        display: none;
+    }
+
+    .devezbus-debugbox[devezbus-debugpanel="mod15-pan4"][devezbus-debugpanel-on] .devezbus-debughint[devezbus-debugpanel="mod15-pan4"] {
+        display: block;
+    }
+
+    .devezbus-debugbox[devezbus-debugpanel="mod15-pan5"]:not([devezbus-debugpanel-on]) .devezbus-debughint[devezbus-debugpanel="mod15-pan5"] {
+        display: none;
+    }
+
+    .devezbus-debugbox[devezbus-debugpanel="mod15-pan5"][devezbus-debugpanel-on] .devezbus-debughint[devezbus-debugpanel="mod15-pan5"] {
+        display: block;
+    }
+
+    .devezbus-debugbox[devezbus-debugpanel="mod15-pan6"]:not([devezbus-debugpanel-on]) .devezbus-debughint[devezbus-debugpanel="mod15-pan6"] {
+        display: none;
+    }
+
+    .devezbus-debugbox[devezbus-debugpanel="mod15-pan6"][devezbus-debugpanel-on] .devezbus-debughint[devezbus-debugpanel="mod15-pan6"] {
+        display: block;
+    }
+
+    .devezbus-debugbox[devezbus-debugpanel="mod15-pan7"]:not([devezbus-debugpanel-on]) .devezbus-debughint[devezbus-debugpanel="mod15-pan7"] {
+        display: none;
+    }
+
+    .devezbus-debugbox[devezbus-debugpanel="mod15-pan7"][devezbus-debugpanel-on] .devezbus-debughint[devezbus-debugpanel="mod15-pan7"] {
+        display: block;
+    }
+
+    .devezbus-debugbox[devezbus-debugpanel="mod15-pan8"]:not([devezbus-debugpanel-on]) .devezbus-debughint[devezbus-debugpanel="mod15-pan8"] {
+        display: none;
+    }
+
+    .devezbus-debugbox[devezbus-debugpanel="mod15-pan8"][devezbus-debugpanel-on] .devezbus-debughint[devezbus-debugpanel="mod15-pan8"] {
+        display: block;
+    }
+
+    .devezbus-debugbox[devezbus-debugpanel="mod15-pan9"]:not([devezbus-debugpanel-on]) .devezbus-debughint[devezbus-debugpanel="mod15-pan9"] {
+        display: none;
+    }
+
+    .devezbus-debugbox[devezbus-debugpanel="mod15-pan9"][devezbus-debugpanel-on] .devezbus-debughint[devezbus-debugpanel="mod15-pan9"] {
+        display: block;
+    }
+
+    .devezbus-debugbox[devezbus-debugpanel="mod15-pan10"]:not([devezbus-debugpanel-on]) .devezbus-debughint[devezbus-debugpanel="mod15-pan10"] {
+        display: none;
+    }
+
+    .devezbus-debugbox[devezbus-debugpanel="mod15-pan10"][devezbus-debugpanel-on] .devezbus-debughint[devezbus-debugpanel="mod15-pan10"] {
+        display: block;
+    }
+
+    .devezbus-debugbox[devezbus-debugpanel="mod15-pan11"]:not([devezbus-debugpanel-on]) .devezbus-debughint[devezbus-debugpanel="mod15-pan11"] {
+        display: none;
+    }
+
+    .devezbus-debugbox[devezbus-debugpanel="mod15-pan11"][devezbus-debugpanel-on] .devezbus-debughint[devezbus-debugpanel="mod15-pan11"] {
+        display: block;
+    }
+
+    .devezbus-debugbox[devezbus-debugpanel="mod15-pan12"]:not([devezbus-debugpanel-on]) .devezbus-debughint[devezbus-debugpanel="mod15-pan12"] {
+        display: none;
+    }
+
+    .devezbus-debugbox[devezbus-debugpanel="mod15-pan12"][devezbus-debugpanel-on] .devezbus-debughint[devezbus-debugpanel="mod15-pan12"] {
+        display: block;
+    }
+
+    .devezbus-debugbox[devezbus-debugpanel="mod15-pan13"]:not([devezbus-debugpanel-on]) .devezbus-debughint[devezbus-debugpanel="mod15-pan13"] {
+        display: none;
+    }
+
+    .devezbus-debugbox[devezbus-debugpanel="mod15-pan13"][devezbus-debugpanel-on] .devezbus-debughint[devezbus-debugpanel="mod15-pan13"] {
+        display: block;
+    }
+
+    .devezbus-debugbox[devezbus-debugpanel="mod15-pan14"]:not([devezbus-debugpanel-on]) .devezbus-debughint[devezbus-debugpanel="mod15-pan14"] {
+        display: none;
+    }
+
+    .devezbus-debugbox[devezbus-debugpanel="mod15-pan14"][devezbus-debugpanel-on] .devezbus-debughint[devezbus-debugpanel="mod15-pan14"] {
+        display: block;
+    }
+
+    .devezbus-debugbox[devezbus-debugpanel="mod15-pan15"]:not([devezbus-debugpanel-on]) .devezbus-debughint[devezbus-debugpanel="mod15-pan15"] {
+        display: none;
+    }
+
+    .devezbus-debugbox[devezbus-debugpanel="mod15-pan15"][devezbus-debugpanel-on] .devezbus-debughint[devezbus-debugpanel="mod15-pan15"] {
+        display: block;
+    }
+}
+```
+
+### [https://xunr3.github.io/devezbus.js](https://xunr3.github.io/devezbus.js)
+
+```javascript
+import('https://xunr3.github.io/devezbus.mjs').then(module => Object.assign(window, module));
+```
+
+### [https://xunr3.github.io/devezbus.mjs](https://xunr3.github.io/devezbus.mjs)
+
+```javascript
+export async function loadbus() {
+    try {
+        Object.assign(window, await import('https://xunr3.github.io/bus.mjs'));
+    } catch (error) {
+        console.error('faild to load bus.js', error);
+    }
+}
+
+export const originalLog = console.log.bind(console);
+export const originalAlert = window.alert.bind(window);
+
+export const swap = () => {
+    window.console.log = originalAlert;
+    window.alert = originalLog;
+};
+
+export const rollback = () => {
+    window.console.log = originalLog;
+    window.alert = originalAlert;
+};
+
+export const log2alert = (f => {swap(); f(); alert();});
+
+export class DevEzbus extends HTMLElement {
+          static #isFrameworkLoaded = false;
+          #break_orderd = true;
+
+          constructor() {
+                    super();
+                    if (DevEzbus.#isFrameworkLoaded) {
+                              throw new Error("[DevEzbus Error] <dev-ezbus> component can loaded only once.");
+                    }
+                    DevEzbus.#isFrameworkLoaded = true;
+                    this.#break_orderd = false;
+          }
+
+          connectedCallback() {
+                    if (this.#break_orderd) return;
+                    loadbus();
+                    this.innerHTML = `
+<bus-init></bus-init>
+<style>
+    @import url("https://xunr3.github.io/devezbus.css");
+    @layer usingBugc{
+            dev-ezbus {
+                    display: block !important;
+                    width: 0 !important;
+                    height: 0 !important;
+                    overflow: hidden !important;
+                    visibility: hidden !important;
+                    pointer-events: none !important;
+                    user-select: none !important;
+            }
+    }
+</style>
+                    `;
+
+                    class EzbusBox extends HTMLElement {
+                        #box = null;
+                        #ALLOWattributeChangedCallback = null;
+
+                        connectedCallback() {
+                            setTimeout(() => {
+                                    this.#box = Object.assign(document.createElement('anime-box'), {innerHTML: this.innerHTML});
+                                    this.innerHTML = "";
+                                    this.appendChild(this.#box);
+                                    this.#box = this.querySelector('anime-box');
+                                    (async () => {
+                                          while (!this.#box.available) await new Promise(resolve => requestAnimationFrame(resolve));
+                                        this.#compileAttribute();
+                                        this.#ALLOWattributeChangedCallback = true;
+                                    })();
+                            }, 0);
+                        }
+
+                        static get observedAttributes() {
+                            return ['width', 'height', 'non-checkbox', 'detecter-on', 'debug-mode'];
+                        }
+
+                        get nonCheckbox() {
+                            return this.hasAttribute('non-checkbox');
+                        }
+
+                        set nonCheckbox(val)  {
+                            if (val) {
+                                this.setAttribute('non-checkbox', '');
+                            } else {
+                                this.removeAttribute('non-checkbox');
+                            }
+                        }
+
+                        get detecterOn() {
+                            return this.hasAttribute('detecter-on');
+                        }
+
+                        set detecterOn(val)  {
+                            if (val) {
+                                this.setAttribute('detecter-on', '');
+                            } else {
+                                this.removeAttribute('detecter-on');
+                            }
+                        }
+
+                        get debugMode() {
+                            return this.hasAttribute('debug-mode');
+                        }
+
+                        set debugMode(val)  {
+                            if (val) {
+                                this.setAttribute('debug-mode', '');
+                            } else {
+                                this.removeAttribute('debug-mode');
+                            }
+                        }
+
+                        get width() {
+                            if (!this.hasAttribute('width')) return;
+                            return this.getAttribute('width');
+                        }
+
+                        set width(value) {
+                            this.setAttribute('width', value);
+                        }
+
+                        get height() {
+                            if (!this.hasAttribute('height')) return;
+                            return this.getAttribute('height');
+                        }
+
+                        set height(value) {
+                            this.setAttribute('height', value);
+                        }
+
+                        #compileAttribute() {
+                            if (this.#ALLOWattributeChangedCallback === null) {
+                                if (this.width) {
+                                    this.#setupWidth();
+                                } else {
+                                    this.#removeWidth();
+                                }
+                                if (this.height) {
+                                    this.#setupHeight();
+                                } else {
+                                    this.#removeHeight();
+                                }
+                                this.#setupNonCheckbox();
+                                if (this.debugMode) {
+                                     this.#setupDetecterOn(true);
+                                } else {
+                                    this.#setupDetecterOn(this.detecterOn);
+                                }
+                                                        } else if (this.#ALLOWattributeChangedCallback) {
+                                this.#ALLOWattributeChangedCallback = false;
+                                if (this.width) {
+                                    this.#setupWidth();
+                                } else {
+                                    this.#removeWidth();
+                                }
+                                if (this.height) {
+                                    this.#setupHeight();
+                                } else {
+                                    this.#removeHeight();
+                                }
+                                this.#setupNonCheckbox();
+                                if (this.debugMode) {
+                                     this.#setupDetecterOn(true);
+                                } else {
+                                    this.#setupDetecterOn(this.detecterOn);
+                                }
+                                this.#ALLOWattributeChangedCallback = true;
+                            }
+                        }
+
+                        attributeChangedCallback(name, oldValue, newValue) {
+                            if (this.#ALLOWattributeChangedCallback !== null) this.#compileAttribute();
+                        }
+
+                        #setupWidth() {
+                            this.#box.width = this.width;
+                        }
+
+                        #removeWidth() {
+                                if (this.#box.hasAttribute("width")) this.#box.removeAttribute("width");
+                        }
+
+                        #setupHeight() {
+                            this.#box.height = this.height;
+                        }
+
+                        #removeHeight() {
+                                if (this.#box.hasAttribute("height")) this.#box.removeAttribute("height");
+                        }
+
+                        #setupNonCheckbox() {
+                            this.#box.animeInputTargeting = this.nonCheckbox;
+                        }
+
+                        #setupDetecterOn(isDetecterOn) {
+                            this.#box.animeBoxBordering = isDetecterOn;
+                            this.#box.animeColoring = isDetecterOn;
+                        }
+                    }
+
+                    customElements.define('dev-ezbus-box', EzbusBox);
+
+                    const alerters = [["devezbus", "devezbus_webcode", "devezbus_shortcode"], ["bugc", "bugc_webcode", "bugc_shortcode"], ["bus", "bus_webcode", "bus_shortcode"], ["ab", "ab_webcode", "ab_shortcode"], ["af", "af_webcode", "af_shortcode"]];
+
+                    for (const name of alerters) {
+                        customElements.define(`dev-ezbus-alert-${name[0]}`, class extends HTMLElement {
+                            #name1 = name[1];
+                            #name2 = name[2];
+
+                            connectedCallback() {
+                                this.innerHTML = `<button onclick="log2alert(${this.#name1})"> click to alert about ${this.#name1} </button><button onclick="log2alert(${this.#name2})"> click to alert about ${this.#name2} </button>`;
+                            }
+                        });
+                    }
+
+                    class EzbusInfo extends HTMLElement {
+                        connectedCallback() {
+                            this.innerHTML = `
+<details>
+    <summary> ℹ️ how 2 load it? </summary>
+    <ol>
+        <li>
+            <details open>
+                <summary> bus </summary>
+                <ul>
+                    <li>
+                        <details open>
+                            <summary> tag </summary>
+                            <ul>
+                                <li> <div class="bus-src"></div> </li>
+                                <li> <div class="bus-short-src"></div> </li>
+                            </ul>
+                        </details>
+                    </li>
+                    <li>
+                        <details open>
+                            <summary> src </summary>
+                            <ul>
+                                <li> <div class="bus-import-src"></div> </li>
+                                <li> <div class="bus-short-import-src"></div> </li>
+                            </ul>
+                        </details>
+                    </li>
+                </ul>
+            </details>
+        </li>
+
+        <li>
+            <details open>
+                <summary> bugc </summary>
+                <ul>
+                    <li>
+                        <details open>
+                            <summary> tags </summary>
+                            <ul>
+                                <li> <div class="bugc-src"></div> </li>
+                                <li> <div class="bugc-short-src"></div> </li>
+                            </ul>
+                        </details>
+                    </li>
+                    <li>
+                            <details open>
+                            <summary> src </summary>
+                            <ul>
+                                <li> <div class="bugc-import-src"></div> </li>
+                                <li> <div class="bugc-short-import-src"></div> </li>
+                            </ul>
+                        </details>
+                    </li>
+                </ul>
+            </details>
+        </li>
+
+        <li>
+            <details open>
+                <summary> busccore </summary>
+                <ul>
+                    <li>
+                        <details open>
+                            <summary> tag </summary>
+                            <ul>
+                                <li> <div class="bugccore-src"></div> </li>
+                                <li> <div class="bus-short-src"></div> </li>
+                            </ul>
+                        </details>
+                    </li>
+                    <li>
+                        <details open>
+                            <summary> src </summary>
+                            <ul>
+                                <li> <div class="bugccore-import-src"></div> </li>
+                                <li> <div class="bugccore-short-import-src"></div> </li>
+                            </ul>
+                        </details>
+                    </li>
+                </ul>
+            </details>
+        </li>
+
+        <li>
+            <details open>
+                <summary> nand </summary>
+                <ul>
+                    <li>
+                        <details open>
+                            <summary> tag </summary>
+                            <ul>
+                                <li> <div class="nand-src"></div> </li>
+                                <li> <div class="nand-short-src"></div> </li>
+                            </ul>
+                        </details>
+                    </li>
+                    <li>
+                        <details open>
+                            <summary> src </summary>
+                            <ul>
+                                <li> <div class="nand-import-src"></div> </li>
+                                <li> <div class="nand-short-import-src"></div> </li>
+                            </ul>
+                        </details>
+                    </li>
+                </ul>
+            </details>
+        </li>
+
+        <li>
+            <details open>
+                <summary> wps </summary>
+                <ul>
+                    <li>
+                        <details open>
+                            <summary> tag </summary>
+                            <ul>
+                                <li> <div class="wps-src"></div> </li>
+                                <li> <div class="wps-short-src"></div> </li>
+                            </ul>
+                        </details>
+                    </li>
+                    <li>
+                        <details open>
+                            <summary> src </summary>
+                            <ul>
+                                <li> <div class="wps-import-src"></div> </li>
+                                <li> <div class="wps-short-import-src"></div> </li>
+                            </ul>
+                        </details>
+                    </li>
+                </ul>
+            </details>
+        </li>
+
+        <li>
+            <details open>
+                <summary> css-of-ab </summary>
+                <ul>
+                    <li>
+                        <details open>
+                            <summary> tag </summary>
+                            <ul>
+                                <li> <div class="css-of-ab-src"></div> </li>
+                                <li> <div class="css-of-ab-short-src"></div> </li>
+                            </ul>
+                        </details>
+                    </li>
+                    <li>
+                        <details open>
+                            <summary> src </summary>
+                            <ul>
+                                <li> <div class="css-of-ab-import-src"></div> </li>
+                                <li> <div class="css-of-ab-short-import-src"></div> </li>
+                            </ul>
+                        </details>
+                    </li>
+                </ul>
+            </details>
+        </li>
+        
+        <li>
+            <details>
+                <summary> ℹ️ the devezbus enviroment </summary>
+                <dev-ezbus-alert-devezbus></dev-ezbus-alert-devezbus>
+            </details>
+        </li>
+        
+        <li>
+            <details>
+                <summary> ℹ️ &lt;bugc-init&gt; defining extension </summary>
+                <dev-ezbus-alert-bugc></dev-ezbus-alert-bugc>
+            </details>
+        </li>
+        
+        <li>
+            <details>
+                <summary> ℹ️ &lt;bus-init&gt; defining extension </summary>
+                <dev-ezbus-alert-bus></dev-ezbus-alert-bus>
+            </details>
+        </li>
+        
+        <li>
+            <details>
+                <summary> ℹ️ anime fw box extension </summary>
+                <dev-ezbus-alert-ab></dev-ezbus-alert-ab>
+            </details>
+        </li>
+        
+        <li>
+            <details>
+                <summary> ℹ️ anime fw </summary>
+                <dev-ezbus-alert-af></dev-ezbus-alert-af>
+            </details>
+        </li>
+    </ol>
+</details>
+                            `;
+                        }
+                    }
+
+                    customElements.define('dev-ezbus-info', EzbusInfo);
+
+                    class EzbusNand extends HTMLElement {
+                        #ALLOWattributeChangedCallback = null;
+
+                        static get observedAttributes() {
+                            return ['data-i0', 'data-i1', 'data-o', 'debug-target', 'full-debug-mode'];
+                        }
+
+                        get fullDebugMode () {
+                            return this.hasAttribute('full-debug-mode');
+                        }
+
+                        set fullDebugMode (value) {
+                            if (value) this.setAttribute('full-debug-mode', '');
+                            else if (this.hasAttribute('full-debug-mode')) this.removeAttribute('full-debug-mode');
+                        }
+
+                        get debugTarget() {
+                            let flag = false;
+                            if (!this.hasAttribute('debug-target')) return;
+                            try {
+                                let result = JSON.parse(this.getAttribute('debug-target').replaceAll("&quot;", '"'), (k, v) => {
+                                    if (k !== "" && typeof v !== 'string') {
+                                        flag = true;
+                                        console.trace();
+                                        throw new Error("debug-target of nand is wrong format. it must be string array of json (when not nand : multidimensional array) (tip : NON-STRING)");
+                                    }
+                                    return v;
+                                });
+                                if (!Array.isArray(result)) {
+                                    flag = null;
+                                    console.trace();
+                                    throw new Error('debug-target of nand is wrong format. it must be string array of json (when not nand : multidimensional array) (TIP : NON-ARRAY-JSON)');
+                                }
+                                result = {
+                                    i0: result.includes("i0"),
+                                    i1: result.includes("i1"),
+                                    o: result.includes("o")
+                                };
+                                return result;
+                            } catch (error) {
+                                console.log(error.stack); console.trace();
+                                console.warn(`debug-target of nand is wrong format. it must be string array of json (when not nand : multidimensional array) (tip : NON-${(flag===null)?'ARRAY-JSON':flag?'STRING':'JSON'})`);
+                                return;
+                            }
+                        }
+
+                        set debugTarget(val) {
+                            this.setAttribute('debug-target', val);
+                        }
+
+                        get dataI0() {
+                            if (!this.hasAttribute('data-i0')) return;
+                            return this.getAttribute('data-i0');
+                        }
+
+                        set dataI0(val) {
+                            this.setAttribute('data-i0', val);
+                        }
+
+                        get dataI1() {
+                            if (!this.hasAttribute('data-i1')) return;
+                            return this.getAttribute('data-i1');
+                        }
+
+                        set dataI1(val) {
+                            this.setAttribute('data-i1', val);
+                        }
+
+                        get dataO() {
+                            if (!this.hasAttribute('data-o')) return;
+                            return this.getAttribute('data-o');
+                        }
+
+                        set dataO(val) {
+                            this.setAttribute('data-o', val);
+                        }
+
+                        connectedCallback() {
+                            setTimeout(_ => this.#setupNand(), 0);
+                            this.#ALLOWattributeChangedCallback = true;
+                        }
+
+                        attributeChangedCallback(name, oldValue, newValue) {
+                            if (this.#ALLOWattributeChangedCallback) {
+                                this.#ALLOWattributeChangedCallback = false;
+                                this.#setupNand();
+                                this.#ALLOWattributeChangedCallback = true;
+                            }
+                        }
+
+                        #setupNand() {
+                            if (this.fullDebugMode) this.debugTarget = "[&quot;i0&quot;, &quot;i1&quot;, &quot;o&quot;]";
+
+                            const state = this.debugTarget || {i0: false, i1: false, o: false};
+                            let classv = this.hasAttribute("class")?this.getAttribute("class"):'';
+                            if (!(classv.includes("nand-gate"))) this.setAttribute("class", classv?`${classv} nand-gate`:"nand-gate");
+                            classv = this.hasAttribute("class")?this.getAttribute("class"):'';
+                            if (!(classv.includes("debug-boxed"))) this.setAttribute("class", classv?`${classv} debug-boxed`:"debug-boxed");
+
+                            let i0 = this.dataI0?` ${this.dataI0}`:'';
+                            let i1 = this.dataI1?` ${this.dataI1}`:'';
+                            let o = this.dataO?` ${this.dataO}`:'';
+
+                            i0 = `<dev-ezbus-box class="devezbus-debugbox" non-checkbox${state.i0?' debug-mode':''}><p class="devezbus-debughint"> (nand) i0 : </p><anime-input class="nand-gate-i0${i0}"></anime-input></dev-ezbus-box>`;
+                            i1 = `<dev-ezbus-box class="devezbus-debugbox" non-checkbox${state.i1?' debug-mode':''}><p class="devezbus-debughint"> (nand) i1 : </p><anime-input class="nand-gate-i1${i1}"></anime-input></dev-ezbus-box>`;
+                            o = `<dev-ezbus-box class="devezbus-debugbox" non-checkbox${state.o?' debug-mode':''}><p class="devezbus-debughint"> (nand) o : </p><anime-input class="nand-gate-o${o}"></anime-input></dev-ezbus-box>`;
+                            this.innerHTML = `<div class="debug-calm-box">${i0}${i1}${o}</div>`;
+                        }
+                    }
+
+                    customElements.define('dev-ezbus-nand', EzbusNand);
+
+                    class EzbusNot extends HTMLElement {
+                        #ALLOWattributeChangedCallback = null;
+
+                        static get observedAttributes() {
+                            return ['data-i', 'data-o', 'debug-target', 'full-debug-mode'];
+                        }
+
+                        get fullDebugMode () {
+                            return this.hasAttribute('full-debug-mode');
+                        }
+
+                        set fullDebugMode (value) {
+                            if (value) this.setAttribute('full-debug-mode', '');
+                            else if (this.hasAttribute('full-debug-mode')) this.removeAttribute('full-debug-mode');
+                        }
+
+                        get debugTarget() {
+                            let flag = false;
+                            if (!this.hasAttribute('debug-target')) return;
+                            try {
+                                return JSON.parse(this.getAttribute('debug-target').replaceAll("&quot;", '"'), (k, v) => {
+                                    flag = false;
+                                    if (k === "") {
+                                        if (Array.isArray(v)) return v;
+                                        flag = undefined;
+                                        console.trace();
+                                        throw new Error("debug-target (but isn't nand, it's not ... only 0 index is used, after one is ignored) is wrong format. it must be multidimensional array of json (when nand : string array) (TIP : NON-ARRAY-JSON)");
+                                    }
+                                    return v;
+                                }).map(child => {
+                                        if (!Array.isArray(child)) {
+                                        flag = true;
+                                        console.trace();
+                                        throw new Error("debug-target (but isn't nand, it's not ... only 0 index is used, after one is ignored) is wrong format. it must be multidimensional array of json (when nand : string array) (TIP : NON-ARRAY)");
+                                    }
+                                    return JSON.stringify(child).replaceAll('"', "&quot;");
+                                });
+                            } catch (error) {
+                                console.log(error.stack); console.trace();
+                                console.warn(`debug-target (but isn't nand, it's not ... only 0 index is used, after one is ignored) is wrong format. it must be multidimensional array of json (when nand : string array) (tip : NON-${(flag==undefined)?'ARRAY-JSON':flag?'ARRAY':'JSON'})`);
+                                return;
+                            }
+                        }
+
+                        set debugTarget(val) {
+                            this.setAttribute('debug-target', val);
+                        }
+
+                        get dataI() {
+                            if (!this.hasAttribute('data-i')) return;
+                            return this.getAttribute('data-i');
+                        }
+
+                        set dataI(val) {
+                            this.setAttribute('data-i', val);
+                        }
+
+                        get dataO() {
+                            if (!this.hasAttribute('data-o')) return;
+                            return this.getAttribute('data-o');
+                        }
+
+                        set dataO(val) {
+                            this.setAttribute('data-o', val);
+                        }
+
+                        connectedCallback() {
+                            setTimeout(_ => this.#setupNot(), 0);
+                            this.#ALLOWattributeChangedCallback = true;
+                        }
+
+                        attributeChangedCallback(name, oldValue, newValue) {
+                            if (this.#ALLOWattributeChangedCallback) {
+                                this.#ALLOWattributeChangedCallback = false;
+                                this.#setupNot();
+                                this.#ALLOWattributeChangedCallback = true;
+                            }
+                        }
+
+                        #setupNot() {
+                            if (this.fullDebugMode) this.debugTarget = "[[&quot;i0&quot;, &quot;i1&quot;, &quot;o&quot;]]";
+
+                            const state = (this.debugTarget || ['[]'])[0] || '[]';
+                            const isDebugMode = (state==='[]');
+                            const debugtarget = isDebugMode?'':` debug-target="${state}"`;
+                            const debugMarkup = isDebugMode?'':' devezbus-debugpanel-on';
+
+                            let classv = this.hasAttribute("class")?this.getAttribute("class"):'';
+                            if (!(classv.includes("debug-boxed"))) this.setAttribute("class", classv?`${classv} debug-boxed`:"debug-boxed");
+
+                            let i = this.dataI?` data-i0="${this.dataI}" data-i1="${this.dataI}"`:'';
+                            let o = this.dataO?` data-o="${this.dataO}"`:'';
+
+                            this.innerHTML = `<div class="debug-calm-box"><div class="devezbus-debugbox" devezbus-debugpanel="mod15-pan15"${debugMarkup}><p  class="devezbus-debughint" devezbus-debugpanel="mod15-pan15"> not(x) = nand(x, x) : </p><dev-ezbus-nand${i}${o}${debugtarget}></dev-ezbus-nand></div></div>`;
+                        }
+                    }
+
+                    customElements.define('dev-ezbus-not', EzbusNot);
+
+                    class EzbusAnd extends HTMLElement {
+                        #ALLOWattributeChangedCallback = null;
+
+                        static get observedAttributes() {
+                            return ['data-i0', 'data-i1', 'data-o', 'debug-target', 'full-debug-mode'];
+                        }
+
+                        get fullDebugMode () {
+                            return this.hasAttribute('full-debug-mode');
+                        }
+
+                        set fullDebugMode (value) {
+                            if (value) this.setAttribute('full-debug-mode', '');
+                            else if (this.hasAttribute('full-debug-mode')) this.removeAttribute('full-debug-mode');
+                        }
+
+                        get debugTarget() {
+                            let flag = false;
+                            if (!this.hasAttribute('debug-target')) return;
+                            try {
+                                const result = JSON.parse(this.getAttribute('debug-target').replaceAll("&quot;", '"'), (k, v) => {
+                                    flag = false;
+                                    if (k === "") {
+                                        if (Array.isArray(v)) return v;
+                                        flag = undefined;
+                                        console.trace();
+                                        throw new Error("debug-target (but isn't nand, it's and ... length must be 2) is wrong format. it must be multidimensional array of json (when nand : string array) (TIP : NON-ARRAY-JSON)");
+                                    }
+                                    return v;
+                                }).map(child => {
+                                    if (!Array.isArray(child)) {
+                                        flag = true;
+                                        console.trace();
+                                        throw new Error("debug-target (but isn't nand, it's and ... length must be 2) is wrong format. it must be multidimensional array of json (when nand : string array) (TIP : NON-ARRAY)");
+                                    }
+                                    return JSON.stringify(child).replaceAll('"', "&quot;");
+                                });
+                                if (result.length !== 2) {
+                                    flag = null;
+                                    console.trace();
+                                    throw new Error("debug-target (but isn't nand, it's and ... length must be 2) is wrong format. it must be multidimensional array of json (when nand : string array) (TIP : NON-FIT-LENGTH)");
+                                                                }
+                                                                return result;
+                            } catch (error) {
+                                console.log(error.stack); console.trace();
+                                console.warn(`debug-target (but isn't nand, it's and ... length must be 2) is wrong format. it must be multidimensional array of json (when nand : string array) (tip : NON-${(flag===undefined)?'ARRAY-JSON':(flag===null)?'FIT-LENGTH':flag?'ARRAY':'JSON'})`);
+                                return;
+                            }
+                        }
+
+                        set debugTarget(val) {
+                            this.setAttribute('debug-target', val);
+                        }
+
+                        get dataI0() {
+                            if (!this.hasAttribute('data-i0')) return;
+                            return this.getAttribute('data-i0');
+                        }
+
+                        set dataI0(val) {
+                            this.setAttribute('data-i0', val);
+                        }
+
+                        get dataI1() {
+                            if (!this.hasAttribute('data-i1')) return;
+                            return this.getAttribute('data-i1');
+                        }
+
+                        set dataI1(val) {
+                            this.setAttribute('data-i1', val);
+                        }
+
+                        get dataO() {
+                            if (!this.hasAttribute('data-o')) return;
+                            return this.getAttribute('data-o');
+                        }
+
+                        set dataO(val) {
+                            this.setAttribute('data-o', val);
+                        }
+
+                        connectedCallback() {
+                            setTimeout(_ => this.#setupAnd(), 0);
+                            this.#ALLOWattributeChangedCallback = true;
+                        }
+
+                        attributeChangedCallback(name, oldValue, newValue) {
+                            if (this.#ALLOWattributeChangedCallback) {
+                                this.#ALLOWattributeChangedCallback = false;
+                                this.#setupAnd();
+                                this.#ALLOWattributeChangedCallback = true;
+                            }
+                        }
+
+                        #setupAnd() {
+                            if (this.fullDebugMode) this.debugTarget = "[[&quot;i0&quot;, &quot;i1&quot;, &quot;o&quot;], [[&quot;i0&quot;, &quot;i1&quot;, &quot;o&quot;]]]";
+
+                            const state = this.debugTarget || ['[]', '[[]]'];
+                            const isDebugMode = state.map(e => (e==='[]' || e==='[[]]'));
+                            const debugtarget = state.map((e, i) => isDebugMode[i]?'':` debug-target="${e}"`);
+                            const debugMarkup = state.map((e, i) => isDebugMode[i]?'':' devezbus-debugpanel-on');
+
+                            let classv = this.hasAttribute("class")?this.getAttribute("class"):'';
+                            if (!(classv.includes("wps-w15"))) this.setAttribute("class", classv?`${classv} wps-w15`:"wps-w15");
+                            classv = this.hasAttribute("class")?this.getAttribute("class"):'';
+                            if (!(classv.includes("debug-boxed"))) this.setAttribute("class", classv?`${classv} debug-boxed`:"debug-boxed");
+
+                            let i0 = this.dataI0?` data-i0="${this.dataI0}"`:'';
+                            let i1 = this.dataI1?` data-i1="${this.dataI1}"`:'';
+                            let o = this.dataO?` data-o="${this.dataO}"`:'';
+
+                            this.innerHTML = `<div class="debug-calm-box"><div class="devezbus-debugbox" devezbus-debugpanel="mod15-pan15"${debugMarkup[0]}><p class="devezbus-debughint" devezbus-debugpanel="mod15-pan15"> (and) wps-w15-i15 = nand(i0, i1)-o : </p><dev-ezbus-nand${i0}${i1} data-o="wps-w15-i15"${debugtarget[0]}></dev-ezbus-nand></div><div class="devezbus-debugbox" devezbus-debugpanel="mod15-pan14"${debugMarkup[1]}><p class="devezbus-debughint" devezbus-debugpanel="mod15-pan14"> (and) o = not(wps-w15-o15) : </p><dev-ezbus-not data-i="wps-w15-o15"${o}${debugtarget[1]}></dev-ezbus-not></div></div>`;
+                        }
+                    }
+
+                    customElements.define('dev-ezbus-and', EzbusAnd);
+
+                    class EzbusOr extends HTMLElement {
+                        #ALLOWattributeChangedCallback = null;
+
+                        static get observedAttributes() {
+                            return ['data-i0', 'data-i1', 'data-o', 'debug-target', 'full-debug-mode'];
+                        }
+
+                        get fullDebugMode () {
+                            return this.hasAttribute('full-debug-mode');
+                        }
+
+                        set fullDebugMode (value) {
+                            if (value) this.setAttribute('full-debug-mode', '');
+                            else if (this.hasAttribute('full-debug-mode')) this.removeAttribute('full-debug-mode');
+                        }
+
+                        get debugTarget() {
+                            let flag = false;
+                            if (!this.hasAttribute('debug-target')) return;
+                            try {
+                                const result = JSON.parse(this.getAttribute('debug-target').replaceAll("&quot;", '"'), (k, v) => {
+                                    flag = false;
+                                    if (k === "") {
+                                        if (Array.isArray(v)) return v;
+                                        flag = undefined;
+                                        console.trace();
+                                        throw new Error("debug-target (but isn't nand, it's or ... length must be 3) is wrong format. it must be multidimensional array of json (when nand : string array) (TIP : NON-ARRAY-JSON)");
+                                    }
+                                    return v;
+                                }).map(child => {
+                                    if (!Array.isArray(child)) {
+                                        flag = true;
+                                        console.trace();
+                                        throw new Error("debug-target (but isn't nand, it's or ... length must be 3) is wrong format. it must be multidimensional array of json (when nand : string array) (TIP : NON-ARRAY)");
+                                    }
+                                    return JSON.stringify(child).replaceAll('"', "&quot;");
+                                });
+                                if (result.length !== 3) {
+                                    flag = null;
+                                    console.trace();
+                                    throw new Error("debug-target (but isn't nand, it's or ... length must be 3) is wrong format. it must be multidimensional array of json (when nand : string array) (TIP : NON-FIT-LENGTH)");
+                                }
+                                return result;
+                            } catch (error) {
+                                console.log(error.stack); console.trace();
+                                console.warn(`debug-target (but isn't nand, it's or ... length must be 3) is wrong format. it must be multidimensional array of json (when nand : string array) (tip : NON-${(flag===undefined)?'ARRAY-JSON':(flag===null)?'FIT-LENGTH':flag?'ARRAY':'JSON'})`);
+                                return;
+                            }
+                        }
+
+                        set debugTarget(val) {
+                            this.setAttribute('debug-target', val);
+                        }
+
+                        get dataI0() {
+                            if (!this.hasAttribute('data-i0')) return;
+                            return this.getAttribute('data-i0');
+                        }
+
+                        set dataI0(val) {
+                            this.setAttribute('data-i0', val);
+                        }
+
+                        get dataI1() {
+                            if (!this.hasAttribute('data-i1')) return;
+                            return this.getAttribute('data-i1');
+                        }
+
+                        set dataI1(val) {
+                            this.setAttribute('data-i1', val);
+                        }
+
+                        get dataO() {
+                            if (!this.hasAttribute('data-o')) return;
+                            return this.getAttribute('data-o');
+                        }
+
+                        set dataO(val) {
+                            this.setAttribute('data-o', val);
+                        }
+
+                        connectedCallback() {
+                            setTimeout(_ => this.#setupOr(), 0);
+                            this.#ALLOWattributeChangedCallback = true;
+                        }
+
+                        attributeChangedCallback(name, oldValue, newValue) {
+                            if (this.#ALLOWattributeChangedCallback) {
+                                this.#ALLOWattributeChangedCallback = false;
+                                this.#setupOr();
+                                this.#ALLOWattributeChangedCallback = true;
+                            }
+                        }
+
+                        #setupOr() {
+                            if (this.fullDebugMode) this.debugTarget = "[[[&quot;i0&quot;, &quot;i1&quot;, &quot;o&quot;]], [[&quot;i0&quot;, &quot;i1&quot;, &quot;o&quot;]], [&quot;i0&quot;, &quot;i1&quot;, &quot;o&quot;]]";
+
+                            const state = this.debugTarget || ['[[]]', '[[]]', '[]'];
+                            const isDebugMode = state.map(e => (e==='[]' || e==='[[]]'));
+                            const debugtarget = state.map((e, i) => isDebugMode[i]?'':` debug-target="${e}"`);
+                            const debugMarkup = state.map((e, i) => isDebugMode[i]?'':' devezbus-debugpanel-on');
+
+
+                            let classv = this.hasAttribute("class")?this.getAttribute("class"):'';
+                            if (!(classv.includes("wps-w15"))) this.setAttribute("class", classv?`${classv} wps-w15`:"wps-w15");
+                            classv = this.hasAttribute("class")?this.getAttribute("class"):'';
+                            if (!(classv.includes("debug-boxed"))) this.setAttribute("class", classv?`${classv} debug-boxed`:"debug-boxed");
+
+                            const i0 = this.dataI0?`<div class="devezbus-debugbox" devezbus-debugpanel="mod15-pan14"${debugMarkup[0]}><p class="devezbus-debughint" devezbus-debugpanel="mod15-pan14"> (or) wps-w15-i15 = not(i0) : </p><dev-ezbus-not data-i="${this.dataI0}" data-o="wps-w15-i15"${debugtarget[0]}></dev-ezbus-not></div>`:`<div class="devezbus-debugbox" devezbus-debugpanel="mod15-pan14"${debugMarkup[0]}><p class="devezbus-debughint" devezbus-debugpanel="mod15-pan14"> (or) wps-w15-i15 = not(i0) : </p><dev-ezbus-not data-o="wps-w15-i15"${debugtarget[0]}></dev-ezbus-not></div>`;
+                            const i1 = this.dataI1?`<div class="devezbus-debugbox" devezbus-debugpanel="mod15-pan14"${debugMarkup[1]}><p class="devezbus-debughint" devezbus-debugpanel="mod15-pan14"> (or) wps-w15-i14 = not(i0) : </p><dev-ezbus-not data-i="${this.dataI1}" data-o="wps-w15-i14"${debugtarget[1]}></dev-ezbus-not></div>`:`<div class="devezbus-debugbox" devezbus-debugpanel="mod15-pan14"${debugMarkup[1]}><p class="devezbus-debughint" devezbus-debugpanel="mod15-pan14"> (or) wps-w15-i14 = not(i0) : </p><dev-ezbus-not data-o="wps-w15-i14"${debugtarget[1]}></dev-ezbus-not></div>`;
+                            const o = this.dataO?`<div class="devezbus-debugbox" devezbus-debugpanel="mod15-pan15"${debugMarkup[2]}><p class="devezbus-debughint" devezbus-debugpanel="mod15-pan15"> (or) o = nand(wps-w15-o15, wps-w15-o14)-o : </p><dev-ezbus-nand data-i0="wps-w15-o15" data-i1="wps-w15-o14" data-o="${this.dataO}"${debugtarget[2]}></dev-ezbus-nand></div>`:`<div class="devezbus-debugbox" devezbus-debugpanel="mod15-pan15"${debugMarkup[2]}><p class="devezbus-debughint" devezbus-debugpanel="mod15-pan15"> (or) o = nand(wps-w15-o15, wps-w15-o14)-o : </p><dev-ezbus-nand data-i0="wps-w15-o15" data-i1="wps-w15-o14"${debugtarget[2]}></dev-ezbus-nand></div>`;
+
+                            this.innerHTML = `<div class="debug-calm-box">${i0}${i1}${o}</div>`;
+                        }
+                    }
+
+                    customElements.define('dev-ezbus-or', EzbusOr);
+
+                    class EzbusNor extends HTMLElement {
+                        #ALLOWattributeChangedCallback = null;
+
+                        static get observedAttributes() {
+                            return ['data-i0', 'data-i1', 'data-o', 'debug-target', 'full-debug-mode'];
+                        }
+
+                        get fullDebugMode () {
+                            return this.hasAttribute('full-debug-mode');
+                        }
+
+                        set fullDebugMode (value) {
+                            if (value) this.setAttribute('full-debug-mode', '');
+                            else if (this.hasAttribute('full-debug-mode')) this.removeAttribute('full-debug-mode');
+                        }
+
+                        get debugTarget() {
+                            let flag = false;
+                            if (!this.hasAttribute('debug-target')) return;
+                            try {
+                                const result = JSON.parse(this.getAttribute('debug-target').replaceAll("&quot;", '"'), (k, v) => {
+                                    flag = false;
+                                    if (k === "") {
+                                        if (Array.isArray(v)) return v;
+                                        flag = undefined;
+                                        console.trace();
+                                        throw new Error("debug-target (but isn't nand, it's nor ... length must be 4) is wrong format. it must be multidimensional array of json (when nand : string array) (TIP : NON-ARRAY-JSON)");
+                                    }
+                                    return v;
+                                }).map(child => {
+                                    if (!Array.isArray(child)) {
+                                        flag = true;
+                                        console.trace();
+                                        throw new Error("debug-target (but isn't nand, it's nor ... length must be 4) is wrong format. it must be multidimensional array of json (when nand : string array) (TIP : NON-ARRAY)");
+                                    }
+                                    return JSON.stringify(child).replaceAll('"', "&quot;");
+                                });
+                                if (result.length !== 4) {
+                                    flag = null;
+                                    console.trace();
+                                                                        throw new Error("debug-target (but isn't nand, it's nor ... length must be 4) is wrong format. it must be multidimensional array of json (when nand : string array) (TIP : NON-FIT-LENGTH)");
+                                }
+                                return result;
+                            } catch (error) {
+                                console.log(error.stack); console.trace();
+                                console.warn(`debug-target (but isn't nand, it's nor ... length must be 4) is wrong format. it must be multidimensional array of json (when nand : string array) (tip : NON-${(flag===undefined)?'ARRAY-JSON':(flag===null)?'FIT-LENGTH':flag?'ARRAY':'JSON'})`);
+                                return;
+                            }
+                        }
+
+                        set debugTarget(val) {
+                            this.setAttribute('debug-target', val);
+                        }
+
+                        get dataI0() {
+                            if (!this.hasAttribute('data-i0')) return;
+                            return this.getAttribute('data-i0');
+                        }
+
+                        set dataI0(val) {
+                            this.setAttribute('data-i0', val);
+                        }
+
+                        get dataI1() {
+                            if (!this.hasAttribute('data-i1')) return;
+                            return this.getAttribute('data-i1');
+                        }
+
+                        set dataI1(val) {
+                            this.setAttribute('data-i1', val);
+                        }
+
+                        get dataO() {
+                            if (!this.hasAttribute('data-o')) return;
+                            return this.getAttribute('data-o');
+                        }
+
+                        set dataO(val) {
+                            this.setAttribute('data-o', val);
+                        }
+
+                        connectedCallback() {
+                            setTimeout(_ => this.#setupNor(), 0);
+                            this.#ALLOWattributeChangedCallback = true;
+                        }
+
+                        attributeChangedCallback(name, oldValue, newValue) {
+                            if (this.#ALLOWattributeChangedCallback) {
+                                this.#ALLOWattributeChangedCallback = false;
+                                this.#setupNor();
+                                this.#ALLOWattributeChangedCallback = true;
+                            }
+                        }
+
+                        #setupNor() {
+                            if (this.fullDebugMode) this.debugTarget = "[[[&quot;i0&quot;, &quot;i1&quot;, &quot;o&quot;]], [[&quot;i0&quot;, &quot;i1&quot;, &quot;o&quot;]], [&quot;i0&quot;, &quot;i1&quot;, &quot;o&quot;], [[&quot;i0&quot;, &quot;i1&quot;, &quot;o&quot;]]]";
+
+                            const state = this.debugTarget || ['[[]]', '[[]]', '[]', '[[]]'];
+                            const isDebugMode = state.map(e => (e==='[]' || e==='[[]]'));
+                            const debugtarget = state.map((e, i) => isDebugMode[i]?'':` debug-target="${e}"`);
+                            const debugMarkup = state.map((e, i) => isDebugMode[i]?'':' devezbus-debugpanel-on');
+
+                            let classv = this.hasAttribute("class")?this.getAttribute("class"):'';
+                            if (!(classv.includes("wps-w15"))) this.setAttribute("class", classv?`${classv} wps-w15`:"wps-w15");
+                            classv = this.hasAttribute("class")?this.getAttribute("class"):'';
+                            if (!(classv.includes("debug-boxed"))) this.setAttribute("class", classv?`${classv} debug-boxed`:"debug-boxed");
+
+                            const i0 = this.dataI0?`<div class="devezbus-debugbox" devezbus-debugpanel="mod15-pan14"${debugMarkup[0]}><p class="devezbus-debughint" devezbus-debugpanel="mod15-pan14"> (nor) wps-w15-i15 = not(i0) : </p><dev-ezbus-not data-i="${this.dataI0}" data-o="wps-w15-i15"${debugtarget[0]}></dev-ezbus-not></div>`:`<div class="devezbus-debugbox" devezbus-debugpanel="mod15-pan14"${debugMarkup[0]}><p class="devezbus-debughint" devezbus-debugpanel="mod15-pan14"> (nor) wps-w15-i15 = not(i0) : </p><dev-ezbus-not data-o="wps-w15-i15"${debugtarget[0]}></dev-ezbus-not></div>`;
+                            const i1 = this.dataI1?`<div class="devezbus-debugbox" devezbus-debugpanel="mod15-pan14"${debugMarkup[1]}><p class="devezbus-debughint" devezbus-debugpanel="mod15-pan14"> (nor) wps-w15-i14 = not(i1) : </p><dev-ezbus-not data-i="${this.dataI1}" data-o="wps-w15-i14"${debugtarget[1]}></dev-ezbus-not></div>`:`<div class="devezbus-debugbox" devezbus-debugpanel="mod15-pan14"${debugMarkup[1]}><p class="devezbus-debughint" devezbus-debugpanel="mod15-pan14"> (nor) wps-w15-i14 = not(i1) : </p><dev-ezbus-not data-o="wps-w15-i14"${debugtarget[1]}></dev-ezbus-not></div>`;
+                            const o = this.dataO?`<div class="devezbus-debugbox" devezbus-debugpanel="mod15-pan14"${debugMarkup[3]}><p class="devezbus-debughint" devezbus-debugpanel="mod15-pan14"> (nor) o = not(wps-w15-o13) : </p><dev-ezbus-not data-i="wps-w15-o13" data-o="${this.dataO}"${debugtarget[3]}></dev-ezbus-not></div>`:`<div class="devezbus-debugbox" devezbus-debugpanel="mod15-pan14"${debugMarkup[3]}><p class="devezbus-debughint" devezbus-debugpanel="mod15-pan14"> (nor) o = not(wps-w15-o13) : </p><dev-ezbus-not data-i="wps-w15-o13"${debugtarget[3]}></dev-ezbus-not></div>`;
+
+                            this.innerHTML = `<div class="debug-calm-box">${i0}${i1}<div class="devezbus-debugbox" devezbus-debugpanel="mod15-pan15"${debugMarkup[2]}><p class="devezbus-debughint" devezbus-debugpanel="mod15-pan15"> (not) wps-w15-i13 = nand(wps-w15-o15, wps-w15-o14)-o : </p><dev-ezbus-nand data-i0="wps-w15-o15" data-i1="wps-w15-o14" data-o="wps-w15-i13"${debugtarget[2]}></dev-ezbus-nand></div>${o}</div>`;
+                        }
+                    }
+
+                    customElements.define('dev-ezbus-nor', EzbusNor);
+
+                    class EzbusXor extends HTMLElement {
+                        #ALLOWattributeChangedCallback = null;
+
+                        static get observedAttributes() {
+                            return ['data-i0', 'data-i1', 'data-o', 'debug-target', 'full-debug-mode'];
+                        }
+
+                        get fullDebugMode () {
+                            return this.hasAttribute('full-debug-mode');
+                        }
+
+                        set fullDebugMode (value) {
+                            if (value) this.setAttribute('full-debug-mode', '');
+                            else if (this.hasAttribute('full-debug-mode')) this.removeAttribute('full-debug-mode');
+                        }
+
+                        get debugTarget() {
+                            let flag = false;
+                            if (!this.hasAttribute('debug-target')) return;
+                            try {
+                                const result = JSON.parse(this.getAttribute('debug-target').replaceAll("&quot;", '"'), (k, v) => {
+                                    flag = false;
+                                    if (k === "") {
+                                        if (Array.isArray(v)) return v;
+                                        flag = undefined;
+                                        console.trace();
+                                        throw new Error("debug-target (but isn't nand, it's xor ... length must be 4) is wrong format. it must be multidimensional array of json (when nand : string array) (TIP : NON-ARRAY-JSON)");
+                                    }
+                                    return v;
+                                }).map(child => {
+                                    if (!Array.isArray(child)) {
+                                        flag = true;
+                                        console.trace();
+                                        throw new Error("debug-target (but isn't nand, it's xor ... length must be 4) is wrong format. it must be multidimensional array of json (when nand : string array) (TIP : NON-ARRAY)");
+                                    }
+                                    return JSON.stringify(child).replaceAll('"', "&quot;");
+                                });
+                                if (result.length !== 4) {
+                                    flag = null;
+                                    console.trace();
+                                    throw new Error("debug-target (but isn't nand, it's xor ... length must be 4) is wrong format. it must be multidimensional array of json (when nand : string array) (TIP : NON-FIT-LENGTH)");
+                                                                }
+                                return result;
+                            } catch (error) {
+                                console.log(error.stack); console.trace();
+                                console.warn(`debug-target (but isn't nand, it's xor ... length must be 4) is wrong format. it must be multidimensional array of json (when nand : string array) (tip : NON-${(flag===undefined)?'ARRAY-JSON':(flag===null)?'FIT-LENGTH':flag?'ARRAY':'JSON'})`);
+                                return;
+                            }
+                        }
+
+                        set debugTarget(val) {
+                            this.setAttribute('debug-target', val);
+                        }
+
+                        get dataI0() {
+                            if (!this.hasAttribute('data-i0')) return;
+                            return this.getAttribute('data-i0');
+                        }
+
+                        set dataI0(val) {
+                            this.setAttribute('data-i0', val);
+                        }
+
+                        get dataI1() {
+                            if (!this.hasAttribute('data-i1')) return;
+                            return this.getAttribute('data-i1');
+                        }
+
+                        set dataI1(val) {
+                            this.setAttribute('data-i1', val);
+                        }
+
+                        get dataO() {
+                            if (!this.hasAttribute('data-o')) return;
+                            return this.getAttribute('data-o');
+                        }
+
+                        set dataO(val) {
+                            this.setAttribute('data-o', val);
+                        }
+
+                        connectedCallback() {
+                            setTimeout(_ => this.#setupXor(), 0);
+                            this.#ALLOWattributeChangedCallback = true;
+                        }
+
+                        attributeChangedCallback(name, oldValue, newValue) {
+                            if (this.#ALLOWattributeChangedCallback) {
+                                this.#ALLOWattributeChangedCallback = false;
+                                this.#setupXor();
+                                this.#ALLOWattributeChangedCallback = true;
+                            }
+                        }
+
+                        #setupXor() {
+                            if (this.fullDebugMode) this.debugTarget = "[[&quot;i0&quot;, &quot;i1&quot;, &quot;o&quot;], [&quot;i0&quot;, &quot;i1&quot;, &quot;o&quot;], [&quot;i0&quot;, &quot;i1&quot;, &quot;o&quot;], [&quot;i0&quot;, &quot;i1&quot;, &quot;o&quot;]]";
+
+                            const state = this.debugTarget || ['[]', '[]', '[]', '[]'];
+                            const isDebugMode = state.map(e => (e==='[]' || e==='[[]]'));
+                            const debugtarget = state.map((e, i) => isDebugMode[i]?'':` debug-target="${e}"`);
+                            const debugMarkup = state.map((e, i) => isDebugMode[i]?'':' devezbus-debugpanel-on');
+
+                            let classv = this.hasAttribute("class")?this.getAttribute("class"):'';
+                            if (!(classv.includes("wps-w15"))) this.setAttribute("class", classv?`${classv} wps-w15`:"wps-w15");
+                            classv = this.hasAttribute("class")?this.getAttribute("class"):'';
+                            if (!(classv.includes("debug-boxed"))) this.setAttribute("class", classv?`${classv} debug-boxed`:"debug-boxed");
+
+                            const i0 = this.dataI0?` data-i0="${this.dataI0}"`:'';
+                            const i1 = this.dataI1?` data-i1="${this.dataI1}"`:'';
+                            const o = this.dataO?`<div class="devezbus-debugbox" devezbus-debugpanel="mod15-pan15"${debugMarkup[3]}><p class="devezbus-debughint" devezbus-debugpanel="mod15-pan15"> (xor) o = nand(wps-w15-o14, wps-w15-o13)-o : </p><dev-ezbus-nand data-i0="wps-w15-o14" data-i1="wps-w15-o13" data-o="${this.dataO}"${debugtarget[3]}></dev-ezbus-nand></div>`:`<div class="devezbus-debugbox" devezbus-debugpanel="mod15-pan15"${debugMarkup[3]}><p class="devezbus-debughint" devezbus-debugpanel="mod15-pan15"> (xor) o = nand(wps-w15-o14, wps-w15-o13)-o : </p><dev-ezbus-nand data-i0="wps-w15-o14" data-i1="wps-w15-o13"${debugtarget[3]}></dev-ezbus-nand></div>`;
+
+                            this.innerHTML = `<div class="debug-calm-box"><div class="devezbus-debugbox" devezbus-debugpanel="mod15-pan15"${debugMarkup[0]}><p class="devezbus-debughint" devezbus-debugpanel="mod15-pan15"> (xor) wps-w15-i15 = nand(i0, i1)-o : </p><dev-ezbus-nand${i0}${i1} data-o="wps-w15-i15"${debugtarget[0]}></dev-ezbus-nand></div><div class="devezbus-debugbox" devezbus-debugpanel="mod15-pan15"${debugMarkup[1]}><p class="devezbus-debughint" devezbus-debugpanel="mod15-pan15"> (xor) wps-w15-i14 = nand(i0, wps-w15-o15)-o : </p><dev-ezbus-nand${i0} data-i1="wps-w15-o15" data-o="wps-w15-i14"${debugtarget[1]}></dev-ezbus-nand></div><div class="devezbus-debugbox" devezbus-debugpanel="mod15-pan15"${debugMarkup[2]}><p class="devezbus-debughint" devezbus-debugpanel="mod15-pan15"> (xor) wps-w15-i13 = nand(wps-w15-o15, i1)-o : </p><dev-ezbus-nand data-i0="wps-w15-o15"${i1} data-o="wps-w15-i13"${debugtarget[2]}></dev-ezbus-nand></div>${o}</div>`;
+                        }
+                    }
+
+                    customElements.define('dev-ezbus-xor', EzbusXor);
+
+                    class EzbusNxor extends HTMLElement {
+                        #ALLOWattributeChangedCallback = null;
+
+                        static get observedAttributes() {
+                            return ['data-i0', 'data-i1', 'data-o', 'debug-target', 'full-debug-mode'];
+                        }
+
+                        get fullDebugMode () {
+                            return this.hasAttribute('full-debug-mode');
+                        }
+
+                        set fullDebugMode (value) {
+                            if (value) this.setAttribute('full-debug-mode', '');
+                            else if (this.hasAttribute('full-debug-mode')) this.removeAttribute('full-debug-mode');
+                        }
+
+                        get debugTarget() {
+                            let flag = false;
+                            if (!this.hasAttribute('debug-target')) return;
+                            try {
+                                const result = JSON.parse(this.getAttribute('debug-target').replaceAll("&quot;", '"'), (k, v) => {
+                                    flag = false;
+                                    if (k === "") {
+                                        if (Array.isArray(v)) return v;
+                                        flag = undefined;
+                                        console.trace();
+                                        throw new Error("debug-target (but isn't nand, it's nxor ... length must be 5) is wrong format. it must be multidimensional array of json (when nand : string array) (TIP : NON-ARRAY-JSON)");
+                                    }
+                                    return v;
+                                }).map(child => {
+                                    if (!Array.isArray(child)) {
+                                        flag = true;
+                                        console.trace();
+                                        throw new Error("debug-target (but isn't nand, it's nxor ... length must be 5) is wrong format. it must be multidimensional array of json (when nand : string array) (TIP : NON-ARRAY)");
+                                    }
+                                    return JSON.stringify(child).replaceAll('"', "&quot;");
+                                });
+                                if (result.length !== 5) {
+                                    flag = null;
+                                    console.trace();
+                                    throw new Error("debug-target (but isn't nand, it's nxor ... length must be 5) is wrong format. it must be multidimensional array of json (when nand : string array) (TIP : NON-FIT-LENGTH)");
+                                                                }
+                                return result;
+                            } catch (error) {
+                                console.log(error.stack); console.trace();
+                                console.warn(`debug-target (but isn't nand, it's nxor ... length must be 5) is wrong format. it must be multidimensional array of json (when nand : string array) (tip : NON-${(flag===undefined)?'ARRAY-JSON':(flag===null)?'FIT-LENGTH':flag?'ARRAY':'JSON'})`);
+                                return;
+                            }
+                        }
+
+                        set debugTarget(val) {
+                            this.setAttribute('debug-target', val);
+                        }
+
+                        get dataI0() {
+                            if (!this.hasAttribute('data-i0')) return;
+                            return this.getAttribute('data-i0');
+                        }
+
+                        set dataI0(val) {
+                            this.setAttribute('data-i0', val);
+                        }
+
+                        get dataI1() {
+                            if (!this.hasAttribute('data-i1')) return;
+                            return this.getAttribute('data-i1');
+                        }
+
+                        set dataI1(val) {
+                            this.setAttribute('data-i1', val);
+                        }
+
+                        get dataO() {
+                            if (!this.hasAttribute('data-o')) return;
+                            return this.getAttribute('data-o');
+                        }
+
+                        set dataO(val) {
+                            this.setAttribute('data-o', val);
+                        }
+
+                        connectedCallback() {
+                            setTimeout(_ => this.#setupNxor(), 0);
+                            this.#ALLOWattributeChangedCallback = true;
+                        }
+
+                        attributeChangedCallback(name, oldValue, newValue) {
+                            if (this.#ALLOWattributeChangedCallback) {
+                                this.#ALLOWattributeChangedCallback = false;
+                                this.#setupNxor();
+                                this.#ALLOWattributeChangedCallback = true;
+                            }
+                        }
+
+                        #setupNxor() {
+                            if (this.fullDebugMode) this.debugTarget = "[[&quot;i0&quot;, &quot;i1&quot;, &quot;o&quot;], [&quot;i0&quot;, &quot;i1&quot;, &quot;o&quot;], [&quot;i0&quot;, &quot;i1&quot;, &quot;o&quot;], [&quot;i0&quot;, &quot;i1&quot;, &quot;o&quot;], [[&quot;i0&quot;, &quot;i1&quot;, &quot;o&quot;]]]";
+
+                            const state = this.debugTarget || ['[]', '[]', '[]', '[]', '[[]]'];
+                            const isDebugMode = state.map(e => (e==='[]' || e==='[[]]'));
+                            const debugtarget = state.map((e, i) => isDebugMode[i]?'':` debug-target="${e}"`);
+                            const debugMarkup = state.map((e, i) => isDebugMode[i]?'':' devezbus-debugpanel-on');
+
+                            let classv = this.hasAttribute("class")?this.getAttribute("class"):'';
+                            if (!(classv.includes("wps-w15"))) this.setAttribute("class", classv?`${classv} wps-w15`:"wps-w15");
+                            classv = this.hasAttribute("class")?this.getAttribute("class"):'';
+                            if (!(classv.includes("debug-boxed"))) this.setAttribute("class", classv?`${classv} debug-boxed`:"debug-boxed");
+
+                            const i0 = this.dataI0?` data-i0="${this.dataI0}"`:'';
+                            const i1 = this.dataI1?` data-i1="${this.dataI1}"`:'';
+                            const o = this.dataO?`<div class="devezbus-debugbox" devezbus-debugpanel="mod15-pan14"${debugMarkup[4]}><p class="devezbus-debughint" devezbus-debugpanel="mod15-pan14"> (nxor) o = not(wps-w15-o12) : </p><dev-ezbus-not data-i="wps-w15-o12" data-o="${this.dataO}"${debugtarget[4]}></dev-ezbus-not></div>`:`<div class="devezbus-debugbox" devezbus-debugpanel="mod15-pan14"${debugMarkup[4]}><p class="devezbus-debughint" devezbus-debugpanel="mod15-pan14"> (nxor) o = not(wps-w15-o12) : </p><dev-ezbus-not data-i="wps-w15-o12"${debugtarget[4]}></dev-ezbus-not></div>`;
+
+                            this.innerHTML = `<div class="debug-calm-box"><div class="devezbus-debugbox" devezbus-debugpanel="mod15-pan15"${debugMarkup[0]}><p class="devezbus-debughint" devezbus-debugpanel="mod15-pan15"> (nxor) wps-w15-i15 = nand(i0, i1)-o : </p><dev-ezbus-nand${i0}${i1} data-o="wps-w15-i15"${debugtarget[0]}></dev-ezbus-nand></div><div class="devezbus-debugbox" devezbus-debugpanel="mod15-pan15"${debugMarkup[1]}><p class="devezbus-debughint" devezbus-debugpanel="mod15-pan15"> (nxor) wps-w15-i14 = nand(i0, wps-w15-o15)-o : </p><dev-ezbus-nand${i0} data-i1="wps-w15-o15" data-o="wps-w15-i14"${debugtarget[1]}></dev-ezbus-nand></div><div class="devezbus-debugbox" devezbus-debugpanel="mod15-pan15"${debugMarkup[2]}><p class="devezbus-debughint" devezbus-debugpanel="mod15-pan15"> (nxor) wps-w15-i13 = nand(wps-w15-o15, i1)-o : </p><dev-ezbus-nand data-i0="wps-w15-o15"${i1} data-o="wps-w15-i13"${debugtarget[2]}></dev-ezbus-nand></div><div class="devezbus-debugbox" devezbus-debugpanel="mod15-pan15"${debugMarkup[3]}><p class="devezbus-debughint" devezbus-debugpanel="mod15-pan15"> (nxor) wps-w15-i12 = nand(wps-w15-o13, wps-w15-o13)-o : </p><dev-ezbus-nand data-i0="wps-w15-o14" data-i1="wps-w15-o13" data-o="wps-w15-i12"${debugtarget[3]}></dev-ezbus-nand>${o}</div></div>`;
+                        }
+                    }
+
+                    customElements.define('dev-ezbus-nxor', EzbusNxor);
+
+                    class EzbusNormalForm1011 extends HTMLElement {
+                        #ALLOWattributeChangedCallback = null;
+
+                        static get observedAttributes() {
+                            return ['data-i0', 'data-i1', 'data-o', 'debug-target', 'full-debug-mode'];
+                        }
+
+                        get fullDebugMode () {
+                            return this.hasAttribute('full-debug-mode');
+                        }
+
+                        set fullDebugMode (value) {
+                            if (value) this.setAttribute('full-debug-mode', '');
+                            else if (this.hasAttribute('full-debug-mode')) this.removeAttribute('full-debug-mode');
+                        }
+
+                        get debugTarget() {
+                            let flag = false;
+                            if (!this.hasAttribute('debug-target')) return;
+                            try {
+                                const result = JSON.parse(this.getAttribute('debug-target').replaceAll("&quot;", '"'), (k, v) => {
+                                    flag = false;
+                                    if (k === "") {
+                                        if (Array.isArray(v)) return v;
+                                        flag = undefined;
+                                        console.trace();
+                                        throw new Error("debug-target (but isn't nand, it's normal-form-1011 ... length must be 2) is wrong format. it must be multidimensional array of json (when nand : string array) (TIP : NON-ARRAY-JSON)");
+                                    }
+                                    return v;
+                                }).map(child => {
+                                    if (!Array.isArray(child)) {
+                                        flag = true;
+                                        console.trace();
+                                        throw new Error("debug-target (but isn't nand, it's normal-form-1011 ... length must be 2) is wrong format. it must be multidimensional array of json (when nand : string array) (TIP : NON-ARRAY)");
+                                    }
+                                    return JSON.stringify(child).replaceAll('"', "&quot;");
+                                });
+                                if (result.length !== 2) {
+                                    flag = null;
+                                    console.trace();
+                                    throw new Error("debug-target (but isn't nand, it's normal-form-1011 ... length must be 2) is wrong format. it must be multidimensional array of json (when nand : string array) (TIP : NON-FIT-LENGTH)");
+                                                                }
+                                return result;
+                            } catch (error) {
+                                console.log(error.stack); console.trace();
+                                console.warn(`debug-target (but isn't nand, it's normal-form-1011 ... length must be 2) is wrong format. it must be multidimensional array of json (when nand : string array) (tip : NON-${(flag===undefined)?'ARRAY-JSON':(flag===null)?'FIT-LENGTH':flag?'ARRAY':'JSON'})`);
+                                return;
+                            }
+                        }
+
+                        set debugTarget(val) {
+                            this.setAttribute('debug-target', val);
+                        }
+
+                        get dataI0() {
+                            if (!this.hasAttribute('data-i0')) return;
+                            return this.getAttribute('data-i0');
+                        }
+
+                        set dataI0(val) {
+                            this.setAttribute('data-i0', val);
+                        }
+
+                        get dataI1() {
+                            if (!this.hasAttribute('data-i1')) return;
+                            return this.getAttribute('data-i1');
+                        }
+
+                        set dataI1(val) {
+                            this.setAttribute('data-i1', val);
+                        }
+
+                        get dataO() {
+                            if (!this.hasAttribute('data-o')) return;
+                            return this.getAttribute('data-o');
+                        }
+
+                        set dataO(val) {
+                            this.setAttribute('data-o', val);
+                        }
+
+                        connectedCallback() {
+                            setTimeout(_ => this.#setupNormalForm1011(), 0);
+                            this.#ALLOWattributeChangedCallback = true;
+                        }
+
+                        attributeChangedCallback(name, oldValue, newValue) {
+                            if (this.#ALLOWattributeChangedCallback) {
+                                this.#ALLOWattributeChangedCallback = false;
+                                this.#setupNormalForm1011();
+                                this.#ALLOWattributeChangedCallback = true;
+                            }
+                        }
+
+                        #setupNormalForm1011() {
+                            if (this.fullDebugMode) this.debugTarget = "[[[&quot;i0&quot;, &quot;i1&quot;, &quot;o&quot;]], [&quot;i0&quot;, &quot;i1&quot;, &quot;o&quot;]]";
+
+                            const state = this.debugTarget || ['[[]]', '[]'];
+                            const isDebugMode = state.map(e => (e==='[]' || e==='[[]]'));
+                            const debugtarget = state.map((e, i) => isDebugMode[i]?'':` debug-target="${e}"`);
+                            const debugMarkup = state.map((e, i) => isDebugMode[i]?'':' devezbus-debugpanel-on');
+
+                            let classv = this.hasAttribute("class")?this.getAttribute("class"):'';
+                            if (!(classv.includes("wps-w15"))) this.setAttribute("class", classv?`${classv} wps-w15`:"wps-w15");
+                            classv = this.hasAttribute("class")?this.getAttribute("class"):'';
+                            if (!(classv.includes("debug-boxed"))) this.setAttribute("class", classv?`${classv} debug-boxed`:"debug-boxed");
+
+                            const i0 = this.dataI0?` data-i0="${this.dataI0}"`:'';
+                            const i1 = this.dataI1?`<div class="devezbus-debugbox" devezbus-debugpanel="mod15-pan14"${debugMarkup[0]}><p class="devezbus-debughint" devezbus-debugpanel="mod15-pan14"> (nf1011) wps-w15-i15 = not(i1) : </p><dev-ezbus-not data-i="${this.dataI1}" data-o="wps-w15-i15"${debugtarget[0]}></dev-ezbus-not></div>`:`<div class="devezbus-debugbox" devezbus-debugpanel="mod15-pan14"${debugMarkup[0]}><p class="devezbus-debughint" devezbus-debugpanel="mod15-pan14"> (nf1011) wps-w15-i15 = not(i1) : </p><dev-ezbus-not data-o="wps-w15-i15"${debugtarget[0]}></dev-ezbus-not></div>`;
+                            const o = this.dataO?`<div class="devezbus-debugbox" devezbus-debugpanel="mod15-pan15"${debugMarkup[1]}><p class="devezbus-debughint" devezbus-debugpanel="mod15-pan15"> (nf1011) o = nand(i0, wps-w15-o15)-o : </p><dev-ezbus-nand${i0} data-i1="wps-w15-o15" data-o="${this.dataO}"${debugtarget[1]}></dev-ezbus-nand></div>`:`<div class="devezbus-debugbox" devezbus-debugpanel="mod15-pan15"${debugMarkup[1]}><p class="devezbus-debughint" devezbus-debugpanel="mod15-pan15"> (nf1011) o = nand(i0, wps-w15-o15)-o : </p><dev-ezbus-nand${i0} data-i1="wps-w15-o15"${debugtarget[1]}></dev-ezbus-nand></div>`;
+
+                            this.innerHTML = `<div class="debug-calm-box">${i1}${o}</div>`;
+                        }
+                    }
+
+                    customElements.define('dev-ezbus-normal-form-1011', EzbusNormalForm1011);
+
+                    class EzbusNormalForm1101 extends HTMLElement {
+                        #ALLOWattributeChangedCallback = null;
+
+                        static get observedAttributes() {
+                            return ['data-i0', 'data-i1', 'data-o', 'debug-target', 'full-debug-mode'];
+                        }
+
+                        get fullDebugMode () {
+                            return this.hasAttribute('full-debug-mode');
+                        }
+
+                        set fullDebugMode (value) {
+                            if (value) this.setAttribute('full-debug-mode', '');
+                            else if (this.hasAttribute('full-debug-mode')) this.removeAttribute('full-debug-mode');
+                        }
+
+                        get debugTarget() {
+                            let flag = false;
+                            if (!this.hasAttribute('debug-target')) return;
+                            try {
+                                const result = JSON.parse(this.getAttribute('debug-target').replaceAll("&quot;", '"'), (k, v) => {
+                                    flag = false;
+                                    if (k === "") {
+                                        if (Array.isArray(v)) return v;
+                                        flag = undefined;
+                                        console.trace();
+                                        throw new Error("debug-target (but isn't nand, it's normal-form-1101 ... length must be 2) is wrong format. it must be multidimensional array of json (when nand : string array) (TIP : NON-ARRAY-JSON)");
+                                    }
+                                    return v;
+                                }).map(child => {
+                                    if (!Array.isArray(child)) {
+                                        flag = true;
+                                        console.trace();
+                                        throw new Error("debug-target (but isn't nand, it's normal-form-1101 ... length must be 2) is wrong format. it must be multidimensional array of json (when nand : string array) (TIP : NON-ARRAY)");
+                                    }
+                                    return JSON.stringify(child).replaceAll('"', "&quot;");
+                                });
+                                if (result.length !== 2) {
+                                    flag = null;
+                                    console.trace();
+                                    throw new Error("debug-target (but isn't nand, it's normal-form-1101 ... length must be 2) is wrong format. it must be multidimensional array of json (when nand : string array) (TIP : NON-FIT-LENGTH)");
+                                }
+                                return result;
+                            } catch (error) {
+                                console.log(error.stack); console.trace();
+                                console.warn(`debug-target (but isn't nand, it's normal-form-1101 ... length must be 2) is wrong format. it must be multidimensional array of json (when nand : string array) (tip : NON-${(flag===undefined)?'ARRAY-JSON':(flag===null)?'FIT-LENGTH':flag?'ARRAY':'JSON'})`);
+                                return;
+                            }
+                        }
+
+                        set debugTarget(val) {
+                            this.setAttribute('debug-target', val);
+                        }
+
+                        get dataI0() {
+                            if (!this.hasAttribute('data-i0')) return;
+                            return this.getAttribute('data-i0');
+                        }
+
+                        set dataI0(val) {
+                            this.setAttribute('data-i0', val);
+                        }
+
+                        get dataI1() {
+                            if (!this.hasAttribute('data-i1')) return;
+                            return this.getAttribute('data-i1');
+                        }
+
+                        set dataI1(val) {
+                            this.setAttribute('data-i1', val);
+                        }
+
+                        get dataO() {
+                            if (!this.hasAttribute('data-o')) return;
+                            return this.getAttribute('data-o');
+                        }
+
+                        set dataO(val) {
+                            this.setAttribute('data-o', val);
+                        }
+
+                        connectedCallback() {
+                            setTimeout(_ => this.#setupNormalForm1101(), 0);
+                            this.#ALLOWattributeChangedCallback = true;
+                        }
+
+                        attributeChangedCallback(name, oldValue, newValue) {
+                            if (this.#ALLOWattributeChangedCallback) {
+                                this.#ALLOWattributeChangedCallback = false;
+                                this.#setupNormalForm1101();
+                                this.#ALLOWattributeChangedCallback = true;
+                            }
+                        }
+
+                        #setupNormalForm1101() {
+                            if (this.fullDebugMode) this.debugTarget = "[[[&quot;i0&quot;, &quot;i1&quot;, &quot;o&quot;]], [&quot;i0&quot;, &quot;i1&quot;, &quot;o&quot;]]";
+
+                            const state = this.debugTarget || ['[[]]', '[]'];
+                            const isDebugMode = state.map(e => (e==='[]' || e==='[[]]'));
+                            const debugtarget = state.map((e, i) => isDebugMode[i]?'':` debug-target="${e}"`);
+                            const debugMarkup = state.map((e, i) => isDebugMode[i]?'':' devezbus-debugpanel-on');
+
+                            let classv = this.hasAttribute("class")?this.getAttribute("class"):'';
+                            if (!(classv.includes("wps-w15"))) this.setAttribute("class", classv?`${classv} wps-w15`:"wps-w15");
+                            classv = this.hasAttribute("class")?this.getAttribute("class"):'';
+                            if (!(classv.includes("debug-boxed"))) this.setAttribute("class", classv?`${classv} debug-boxed`:"debug-boxed");
+
+                            const i0 = this.dataI0?`<div class="devezbus-debugbox" devezbus-debugpanel="mod15-pan14"${debugMarkup[0]}><p class="devezbus-debughint" devezbus-debugpanel="mod15-pan14"> (nf1101) wps-w15-i15 = not(i0) : </p><dev-ezbus-not data-i="${this.dataI0}" data-o="wps-w15-i15"${debugtarget[0]}></dev-ezbus-not></div>`:`<div class="devezbus-debugbox" devezbus-debugpanel="mod15-pan14"${debugMarkup[0]}><p class="devezbus-debughint" devezbus-debugpanel="mod15-pan14"> (nf1101) wps-w15-i15 = not(i0) : </p><dev-ezbus-not data-o="wps-w15-i15"${debugtarget[0]}></dev-ezbus-not></div>`;
+                            const i1 = this.dataI1?` data-i1="${this.dataI1}"`:'';
+                            const o = this.dataO?`<div class="devezbus-debugbox" devezbus-debugpanel="mod15-pan15"${debugMarkup[1]}><p class="devezbus-debughint" devezbus-debugpanel="mod15-pan15"> (nf1101) o = nand(wps-w15-o15, i1)-o : </p><dev-ezbus-nand data-i0="wps-w15-o15"${i1} data-o="${this.dataO}"${debugtarget[1]}></dev-ezbus-nand></div>`:`<div class="devezbus-debugbox" devezbus-debugpanel="mod15-pan15"${debugMarkup[1]}><p class="devezbus-debughint" devezbus-debugpanel="mod15-pan15"> (nf1101) o = nand(wps-w15-o15, i1)-o : </p><dev-ezbus-nand data-i0="wps-w15-o15"${i1}${debugtarget[1]}></dev-ezbus-nand></div>`;
+
+                            this.innerHTML = `<div class="debug-calm-box">${i0}${o}</div>`;
+                        }
+                    }
+
+                    customElements.define('dev-ezbus-normal-form-1101', EzbusNormalForm1101);
+
+                    class EzbusNormalForm0010 extends HTMLElement {
+                        #ALLOWattributeChangedCallback = null;
+
+                        static get observedAttributes() {
+                            return ['data-i0', 'data-i1', 'data-o', 'debug-target', 'full-debug-mode'];
+                        }
+
+                        get fullDebugMode () {
+                            return this.hasAttribute('full-debug-mode');
+                        }
+
+                        set fullDebugMode (value) {
+                            if (value) this.setAttribute('full-debug-mode', '');
+                            else if (this.hasAttribute('full-debug-mode')) this.removeAttribute('full-debug-mode');
+                        }
+
+                        get debugTarget() {
+                            let flag = false;
+                            if (!this.hasAttribute('debug-target')) return;
+                            try {
+                                const result = JSON.parse(this.getAttribute('debug-target').replaceAll("&quot;", '"'), (k, v) => {
+                                    flag = false;
+                                    if (k === "") {
+                                        if (Array.isArray(v)) return v;
+                                        flag = undefined;
+                                        console.trace();
+                                        throw new Error("debug-target (but isn't nand, it's normal-form-0010 ... length must be 3) is wrong format. it must be multidimensional array of json (when nand : string array) (TIP : NON-ARRAY-JSON)");
+                                    }
+                                    return v;
+                                }).map(child => {
+                                    if (!Array.isArray(child)) {
+                                        flag = true;
+                                        console.trace();
+                                        throw new Error("debug-target (but isn't nand, it's normal-form-0010 ... length must be 3) is wrong format. it must be multidimensional array of json (when nand : string array) (TIP : NON-ARRAY)");
+                                    }
+                                    return JSON.stringify(child).replaceAll('"', "&quot;");
+                                });
+                                if (result.length !== 3) {
+                                    flag = null;
+                                    console.trace();
+                                    throw new Error("debug-target (but isn't nand, it's normal-form-0010 ... length must be 3) is wrong format. it must be multidimensional array of json (when nand : string array) (TIP : NON-FIT-LENGTH)");
+                                }
+                                return result;
+                            } catch (error) {
+                                console.log(error.stack); console.trace();
+                                console.warn(`debug-target (but isn't nand, it's normal-form-0010 ... length must be 3) is wrong format. it must be multidimensional array of json (when nand : string array) (tip : NON-${(flag===undefined)?'ARRAY-JSON':(flag===null)?'FIT-LENGTH':flag?'ARRAY':'JSON'})`);
+                                return;
+                            }
+                        }
+
+                        set debugTarget(val) {
+                            this.setAttribute('debug-target', val);
+                        }
+
+                        get dataI0() {
+                            if (!this.hasAttribute('data-i0')) return;
+                            return this.getAttribute('data-i0');
+                        }
+
+                        set dataI0(val) {
+                            this.setAttribute('data-i0', val);
+                        }
+
+                        get dataI1() {
+                            if (!this.hasAttribute('data-i1')) return;
+                            return this.getAttribute('data-i1');
+                        }
+
+                        set dataI1(val) {
+                            this.setAttribute('data-i1', val);
+                        }
+
+                        get dataO() {
+                            if (!this.hasAttribute('data-o')) return;
+                            return this.getAttribute('data-o');
+                        }
+
+                        set dataO(val) {
+                            this.setAttribute('data-o', val);
+                        }
+
+                        connectedCallback() {
+                            setTimeout(_ => this.#setupNormalForm0010(), 0);
+                            this.#ALLOWattributeChangedCallback = true;
+                        }
+
+                        attributeChangedCallback(name, oldValue, newValue) {
+                            if (this.#ALLOWattributeChangedCallback) {
+                                this.#ALLOWattributeChangedCallback = false;
+                                this.#setupNormalForm0010();
+                                this.#ALLOWattributeChangedCallback = true;
+                            }
+                        }
+
+                        #setupNormalForm0010() {
+                            if (this.fullDebugMode) this.debugTarget = "[[[&quot;i0&quot;, &quot;i1&quot;, &quot;o&quot;]], [&quot;i0&quot;, &quot;i1&quot;, &quot;o&quot;], [[&quot;i0&quot;, &quot;i1&quot;, &quot;o&quot;]]]";
+
+                            const state = this.debugTarget || ['[[]]', '[]', '[[]]'];
+                            const isDebugMode = state.map(e => (e==='[]' || e==='[[]]'));
+                            const debugtarget = state.map((e, i) => isDebugMode[i]?'':` debug-target="${e}"`);
+                            const debugMarkup = state.map((e, i) => isDebugMode[i]?'':' devezbus-debugpanel-on');
+
+                            let classv = this.hasAttribute("class")?this.getAttribute("class"):'';
+                            if (!(classv.includes("wps-w15"))) this.setAttribute("class", classv?`${classv} wps-w15`:"wps-w15");
+                            classv = this.hasAttribute("class")?this.getAttribute("class"):'';
+                            if (!(classv.includes("debug-boxed"))) this.setAttribute("class", classv?`${classv} debug-boxed`:"debug-boxed");
+
+                            const i0 = this.dataI0?`<div class="devezbus-debugbox" devezbus-debugpanel="mod15-pan14"${debugMarkup[0]}><p class="devezbus-debughint" devezbus-debugpanel="mod15-pan14"> (nf0010) wps-w15-i15 = not(i1) : </p><dev-ezbus-not data-i="${this.dataI0}" data-o="wps-w15-i15"${debugtarget[0]}></dev-ezbus-not></div>`:`<div class="devezbus-debugbox" devezbus-debugpanel="mod15-pan14"${debugMarkup[0]}><p class="devezbus-debughint" devezbus-debugpanel="mod15-pan14"> (nf0010) wps-w15-i15 = not(i1) : </p><dev-ezbus-not data-o="wps-w15-i15"${debugtarget[0]}></dev-ezbus-not></div>`;
+                            const i1 = this.dataI1?`<div class="devezbus-debugbox" devezbus-debugpanel="mod15-pan15"${debugMarkup[1]}><p class="devezbus-debughint" devezbus-debugpanel="mod15-pan15"> (nf0010) wps-w15-i14 = nand(i0, wps-w15-o15)-o : </p><dev-ezbus-nand data-i0="wps-w15-o15" data-i1="${this.dataI1}" data-o="wps-w15-i14"${debugtarget[1]}></dev-ezbus-nand></div>`:`<div class="devezbus-debugbox" devezbus-debugpanel="mod15-pan15"${debugMarkup[1]}><p class="devezbus-debughint" devezbus-debugpanel="mod15-pan15"> (nf0010) wps-w15-i14 = nand(i0, wps-w15-o15)-o : </p><dev-ezbus-nand data-i0="wps-w15-o15" data-o="wps-w15-i14"${debugtarget[1]}></dev-ezbus-nand></div>`;
+                            const o = this.dataO?`<div class="devezbus-debugbox" devezbus-debugpanel="mod15-pan14"${debugMarkup[2]}><p class="devezbus-debughint" devezbus-debugpanel="mod15-pan14"> (nf0010) o = not(wps-w15-o14)-o : </p><dev-ezbus-not data-i="wps-w15-o14" data-o="${this.dataO}"${debugtarget[2]}></data-ezbus-not></div>`:`<div class="devezbus-debugbox" devezbus-debugpanel="mod15-pan14"${debugMarkup[2]}><p class="devezbus-debughint" devezbus-debugpanel="mod15-pan14"> (nf0010) o = not(wps-w15-o14)-o : </p><dev-ezbus-not data-i="wps-w15-o14"${debugtarget[2]}></dev-ezbus-not></div>`;
+
+                            this.innerHTML = `<div class="debug-calm-box">${i0}${i1}${o}</div>`;
+                        }
+                    }
+
+                    customElements.define('dev-ezbus-normal-form-0010', EzbusNormalForm0010);
+
+                    class EzbusNormalForm0100 extends HTMLElement {
+                        #ALLOWattributeChangedCallback = null;
+
+                        static get observedAttributes() {
+                            return ['data-i0', 'data-i1', 'data-o', 'debug-target', 'full-debug-mode'];
+                        }
+
+                        get fullDebugMode () {
+                            return this.hasAttribute('full-debug-mode');
+                        }
+
+                        set fullDebugMode (value) {
+                            if (value) this.setAttribute('full-debug-mode', '');
+                            else if (this.hasAttribute('full-debug-mode')) this.removeAttribute('full-debug-mode');
+                        }
+
+                        get debugTarget() {
+                            let flag = false;
+                            if (!this.hasAttribute('debug-target')) return;
+                            try {
+                                const result = JSON.parse(this.getAttribute('debug-target').replaceAll("&quot;", '"'), (k, v) => {
+                                    flag = false;
+                                    if (k === "") {
+                                        if (Array.isArray(v)) return v;
+                                        flag = undefined;
+                                        console.trace();
+                                        throw new Error("debug-target (but isn't nand, it's normal-form-0100 ... length must be 3) is wrong format. it must be multidimensional array of json (when nand : string array) (TIP : NON-ARRAY-JSON)");
+                                    }
+                                    return v;
+                                }).map(child => {
+                                    if (!Array.isArray(child)) {
+                                        flag = true;
+                                        console.trace();
+                                        throw new Error("debug-target (but isn't nand, it's normal-form-0100 ... length must be 3) is wrong format. it must be multidimensional array of json (when nand : string array) (TIP : NON-ARRAY)");
+                                    }
+                                    return JSON.stringify(child).replaceAll('"', "&quot;");
+                                });
+                                if (result.length !== 3) {
+                                    flag = null;
+                                    console.trace();
+                                    throw new Error("debug-target (but isn't nand, it's normal-form-0100 ... length must be 3) is wrong format. it must be multidimensional array of json (when nand : string array) (TIP : NON-FIT-LENGTH)");
+                                }
+                                return result;
+                            } catch (error) {
+                                console.log(error.stack); console.trace();
+                                console.warn(`debug-target (but isn't nand, it's normal-form-0100 ... length must be 3) is wrong format. it must be multidimensional array of json (when nand : string array) (tip : NON-${(flag===undefined)?'ARRAY-JSON':(flag===null)?'FIT-LENGTH':flag?'ARRAY':'JSON'})`);
+                                return;
+                            }
+                        }
+
+                        set debugTarget(val) {
+                            this.setAttribute('debug-target', val);
+                        }
+
+                        get dataI0() {
+                            if (!this.hasAttribute('data-i0')) return;
+                            return this.getAttribute('data-i0');
+                        }
+
+                        set dataI0(val) {
+                            this.setAttribute('data-i0', val);
+                        }
+
+                        get dataI1() {
+                            if (!this.hasAttribute('data-i1')) return;
+                            return this.getAttribute('data-i1');
+                        }
+
+                        set dataI1(val) {
+                            this.setAttribute('data-i1', val);
+                        }
+
+                        get dataO() {
+                            if (!this.hasAttribute('data-o')) return;
+                            return this.getAttribute('data-o');
+                        }
+
+                        set dataO(val) {
+                            this.setAttribute('data-o', val);
+                        }
+
+                        connectedCallback() {
+                            setTimeout(_ => this.#setupNormalForm0100(), 0);
+                            this.#ALLOWattributeChangedCallback = true;
+                        }
+
+                        attributeChangedCallback(name, oldValue, newValue) {
+                            if (this.#ALLOWattributeChangedCallback) {
+                                this.#ALLOWattributeChangedCallback = false;
+                                this.#setupNormalForm0100();
+                                this.#ALLOWattributeChangedCallback = true;
+                            }
+                        }
+
+                        #setupNormalForm0100() {
+                            if (this.fullDebugMode) this.debugTarget = "[[[&quot;i0&quot;, &quot;i1&quot;, &quot;o&quot;]], [&quot;i0&quot;, &quot;i1&quot;, &quot;o&quot;], [[&quot;i0&quot;, &quot;i1&quot;, &quot;o&quot;]]]";
+
+                            const state = this.debugTarget || ['[[]]', '[]', '[[]]'];
+                            const isDebugMode = state.map(e => (e==='[]' || e==='[[]]'));
+                            const debugtarget = state.map((e, i) => isDebugMode[i]?'':` debug-target="${e}"`);
+                            const debugMarkup = state.map((e, i) => isDebugMode[i]?'':' devezbus-debugpanel-on');
+
+                            let classv = this.hasAttribute("class")?this.getAttribute("class"):'';
+                            if (!(classv.includes("wps-w15"))) this.setAttribute("class", classv?`${classv} wps-w15`:"wps-w15");
+                            classv = this.hasAttribute("class")?this.getAttribute("class"):'';
+                            if (!(classv.includes("debug-boxed"))) this.setAttribute("class", classv?`${classv} debug-boxed`:"debug-boxed");
+
+                            const i0 = this.dataI0?` data-i0="${this.dataI0}"`:'';
+                            const i1 = this.dataI1?`<div class="devezbus-debugbox" devezbus-debugpanel="mod15-pan14"${debugMarkup[0]}><p class="devezbus-debughint" devezbus-debugpanel="mod15-pan14"> (nf0100) wps-w15-i15 = not(i0) : </p><dev-ezbus-not data-i="${this.dataI1}" data-o="wps-w15-i15"${debugtarget[0]}></dev-ezbus-not></div><div class="devezbus-debugbox" devezbus-debugpanel="mod15-pan15"${debugMarkup[1]}><p class="devezbus-debughint" devezbus-debugpanel="mod15-pan15"> (nf0100) wps-w15-i14 = nand(wps-w15-o15, i1)-o : </p><dev-ezbus-nand${i0} data-i1="wps-w15-o15" data-o="wps-w15-i14"${debugtarget[1]}></dev-ezbus-nand></div>`:`<div class="devezbus-debugbox" devezbus-debugpanel="mod15-pan14"${debugMarkup[0]}><p class="devezbus-debughint" devezbus-debugpanel="mod15-pan14"> (nf0100) wps-w15-i15 = not(i0) : </p><dev-ezbus-not data-o="wps-w15-i15"${debugtarget[0]}></dev-ezbus-not></div><div class="devezbus-debugbox" devezbus-debugpanel="mod15-pan15"${debugMarkup[1]}><p class="devezbus-debughint" devezbus-debugpanel="mod15-pan15"> (nf0100) wps-w15-i14 = nand(wps-w15-o15, i1)-o : </p><dev-ezbus-nand${i0} data-i1="wps-w15-o15" data-o="wps-w15-i14"${debugtarget[1]}></dev-ezbus-nand></div>`;
+                            const o = this.dataO?`<div class="devezbus-debugbox" devezbus-debugpanel="mod15-pan14"${debugMarkup[2]}><p class="devezbus-debughint" devezbus-debugpanel="mod15-pan14"> (nf0100) o = not(wps-w15-o14)-o : </p><dev-ezbus-not data-i="wps-w15-o14" data-o="${this.dataO}"${debugtarget[2]}></dev-ezbus-not></div>`:`<div class="devezbus-debugbox" devezbus-debugpanel="mod15-pan14"${debugMarkup[2]}><p class="devezbus-debughint" devezbus-debugpanel="mod15-pan14"> (nf0100) o = not(wps-w15-o14)-o : </p><dev-ezbus-not data-i="wps-w15-o14"${debugtarget[2]}></dev-ezbus-not></div>`;
+
+                            this.innerHTML = `<div class="debug-calm-box">${i1}${o}</div>`;
+                        }
+                    }
+
+                    customElements.define('dev-ezbus-normal-form-0100', EzbusNormalForm0100);
+
+                    /*class Ezbus extends HTMLElement {
+                            //pass
+                    }
+                    
+                    customElements.define('dev-ezbus', Ezbus);*/
+          }
+}
+
+customElements.define('dev-ezbus', DevEzbus);
+
+export const devezbus_webcode = (_ => console.log('<script src="https://xunr3.github.io/devezbus.js" fetchpriority="high"></script>'));
+export const devezbus_shortcode = (_ => console.log('IT CANNOT HAVE AN SHORTCODE SORRY. MAYBE IT CAN BE UPDATED SOON.....'));
+```
+
+### demos
+
+1. demo1
+2. demo2
+3. demo3
+4. demo4
+
+#### [1. demo1](https://FarAway6834.github.io/logic_gates_debug_test.html)
+
+```html
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title> a logic gates debug test </title>
+        <script src="https://xunr3.github.io/devezbus.js" fetchpriority="high"></script>
+    </head>
+    <body>
+        <h1> a logic gates debug test </h1>
+        <dev-ezbus></dev-ezbus>
+
+        <div class="wps-p0 bus">
+            <h2> not gate </h2>
+
+            <div> <!--begin-->
+                <dev-ezbus-box class="in-out" detecter-on>
+                    <input type="checkbox" class="in-out-i">
+                    <anime-input class="in-out-o wps-p0-i0"></anime-input>
+                </dev-ezbus-box>
+
+                <dev-ezbus-box non-checkbox detecter-on>
+                    <anime-input class="wps-p0-o1"></anime-input>
+                </dev-ezbus-box>
+            </div> <!--end-->
+
+            <dev-ezbus-not data-i="wps-p0-o0" data-o="wps-p0-i1" full-debug-mode></dev-ezbus-not>
+
+        </div>
+
+        <div class="wps-p0 bus">
+            <h2> nor gate </h2>
+
+            <div> <!--begin-->
+                <dev-ezbus-box class="in-out" detecter-on>
+                    <input type="checkbox" class="in-out-i">
+                    <anime-input class="in-out-o wps-p0-i0"></anime-input>
+                </dev-ezbus-box>
+
+                <dev-ezbus-box class="in-out" detecter-on>
+                    <input type="checkbox" class="in-out-i">
+                    <anime-input class="in-out-o wps-p0-i1"></anime-input>
+                </dev-ezbus-box>
+
+                <dev-ezbus-box non-checkbox detecter-on>
+                    <anime-input class="wps-p0-o2"></anime-input>
+                </dev-ezbus-box>
+            </div> <!--end-->
+
+            <dev-ezbus-nor data-i0="wps-p0-o0"  data-i1="wps-p0-o1" data-o="wps-p0-i2" full-debug-mode></dev-ezbus-nor>
+
+        </div>
+
+        <div class="wps-p0 bus">
+            <h2> normal form 0010 gate </h2>
+
+            <div> <!--begin-->
+                <dev-ezbus-box class="in-out" detecter-on>
+                    <input type="checkbox" class="in-out-i">
+                    <anime-input class="in-out-o wps-p0-i0"></anime-input>
+                </dev-ezbus-box>
+
+                <dev-ezbus-box class="in-out" detecter-on>
+                    <input type="checkbox" class="in-out-i">
+                    <anime-input class="in-out-o wps-p0-i1"></anime-input>
+                </dev-ezbus-box>
+
+                <dev-ezbus-box non-checkbox detecter-on>
+                    <anime-input class="wps-p0-o2"></anime-input>
+                </dev-ezbus-box>
+            </div> <!--end-->
+
+            <dev-ezbus-normal-form-0010 data-i0="wps-p0-o0"  data-i1="wps-p0-o1" data-o="wps-p0-i2" full-debug-mode></dev-ezbus-normal-form-0010>
+
+        </div>
+
+        <div class="wps-p0 bus">
+            <h2> normal form 0100 gate </h2>
+
+            <div> <!--begin-->
+                <dev-ezbus-box class="in-out" detecter-on>
+                    <input type="checkbox" class="in-out-i">
+                    <anime-input class="in-out-o wps-p0-i0"></anime-input>
+                </dev-ezbus-box>
+
+                <dev-ezbus-box class="in-out" detecter-on>
+                    <input type="checkbox" class="in-out-i">
+                    <anime-input class="in-out-o wps-p0-i1"></anime-input>
+                </dev-ezbus-box>
+
+                <dev-ezbus-box non-checkbox detecter-on>
+                    <anime-input class="wps-p0-o2"></anime-input>
+                </dev-ezbus-box>
+            </div> <!--end-->
+
+            <dev-ezbus-normal-form-0100 data-i0="wps-p0-o0"  data-i1="wps-p0-o1" data-o="wps-p0-i2" full-debug-mode></dev-ezbus-normal-form-0100>
+
+        </div>
+
+        <div class="wps-p0 bus">
+            <h2> xor gate </h2>
+
+            <div> <!--begin-->
+                <dev-ezbus-box class="in-out" detecter-on>
+                    <input type="checkbox" class="in-out-i">
+                    <anime-input class="in-out-o wps-p0-i0"></anime-input>
+                </dev-ezbus-box>
+
+                <dev-ezbus-box class="in-out" detecter-on>
+                    <input type="checkbox" class="in-out-i">
+                    <anime-input class="in-out-o wps-p0-i1"></anime-input>
+                </dev-ezbus-box>
+
+                <dev-ezbus-box non-checkbox detecter-on>
+                    <anime-input class="wps-p0-o2"></anime-input>
+                </dev-ezbus-box>
+            </div> <!--end-->
+
+            <dev-ezbus-xor data-i0="wps-p0-o0"  data-i1="wps-p0-o1" data-o="wps-p0-i2" full-debug-mode></dev-ezbus-xor>
+
+        </div>
+
+        <div class="wps-p0 bus">
+            <h2> nand gate </h2>
+
+            <div> <!--begin-->
+                <dev-ezbus-box class="in-out" detecter-on>
+                    <input type="checkbox" class="in-out-i">
+                    <anime-input class="in-out-o wps-p0-i0"></anime-input>
+                </dev-ezbus-box>
+
+                <dev-ezbus-box class="in-out" detecter-on>
+                    <input type="checkbox" class="in-out-i">
+                    <anime-input class="in-out-o wps-p0-i1"></anime-input>
+                </dev-ezbus-box>
+
+                <dev-ezbus-box non-checkbox detecter-on>
+                    <anime-input class="wps-p0-o2"></anime-input>
+                </dev-ezbus-box>
+            </div> <!--end-->
+
+            <dev-ezbus-nand data-i0="wps-p0-o0"  data-i1="wps-p0-o1" data-o="wps-p0-i2" full-debug-mode></dev-ezbus-nand>
+
+        </div>
+
+        <div class="wps-p0 bus">
+            <h2> and gate </h2>
+
+            <div> <!--begin-->
+                <dev-ezbus-box class="in-out" detecter-on>
+                    <input type="checkbox" class="in-out-i">
+                    <anime-input class="in-out-o wps-p0-i0"></anime-input>
+                </dev-ezbus-box>
+
+                <dev-ezbus-box class="in-out" detecter-on>
+                    <input type="checkbox" class="in-out-i">
+                    <anime-input class="in-out-o wps-p0-i1"></anime-input>
+                </dev-ezbus-box>
+
+                <dev-ezbus-box non-checkbox detecter-on>
+                    <anime-input class="wps-p0-o2"></anime-input>
+                </dev-ezbus-box>
+            </div> <!--end-->
+
+            <dev-ezbus-and data-i0="wps-p0-o0"  data-i1="wps-p0-o1" data-o="wps-p0-i2" full-debug-mode></dev-ezbus-and>
+
+        </div>
+
+        <div class="wps-p0 bus">
+            <h2> nxor gate </h2>
+
+            <div> <!--begin-->
+                <dev-ezbus-box class="in-out" detecter-on>
+                    <input type="checkbox" class="in-out-i">
+                    <anime-input class="in-out-o wps-p0-i0"></anime-input>
+                </dev-ezbus-box>
+
+                <dev-ezbus-box class="in-out" detecter-on>
+                    <input type="checkbox" class="in-out-i">
+                    <anime-input class="in-out-o wps-p0-i1"></anime-input>
+                </dev-ezbus-box>
+
+                <dev-ezbus-box non-checkbox detecter-on>
+                    <anime-input class="wps-p0-o2"></anime-input>
+                </dev-ezbus-box>
+            </div> <!--end-->
+
+            <dev-ezbus-nxor data-i0="wps-p0-o0"  data-i1="wps-p0-o1" data-o="wps-p0-i2" full-debug-mode></dev-ezbus-nxor>
+
+        </div>
+
+        <div class="wps-p0 bus">
+            <h2> normal form 1011 gate </h2>
+
+            <div> <!--begin-->
+                <dev-ezbus-box class="in-out" detecter-on>
+                    <input type="checkbox" class="in-out-i">
+                    <anime-input class="in-out-o wps-p0-i0"></anime-input>
+                </dev-ezbus-box>
+
+                <dev-ezbus-box class="in-out" detecter-on>
+                    <input type="checkbox" class="in-out-i">
+                    <anime-input class="in-out-o wps-p0-i1"></anime-input>
+                </dev-ezbus-box>
+
+                <dev-ezbus-box non-checkbox detecter-on>
+                    <anime-input class="wps-p0-o2"></anime-input>
+                </dev-ezbus-box>
+            </div> <!--end-->
+
+            <dev-ezbus-normal-form-1011 data-i0="wps-p0-o0"  data-i1="wps-p0-o1" data-o="wps-p0-i2" full-debug-mode></dev-ezbus-normal-form-1011>
+
+        </div>
+
+        <div class="wps-p0 bus">
+            <h2> normal form 1101 gate </h2>
+
+            <div> <!--begin-->
+                <dev-ezbus-box class="in-out" detecter-on>
+                    <input type="checkbox" class="in-out-i">
+                    <anime-input class="in-out-o wps-p0-i0"></anime-input>
+                </dev-ezbus-box>
+
+                <dev-ezbus-box class="in-out" detecter-on>
+                    <input type="checkbox" class="in-out-i">
+                    <anime-input class="in-out-o wps-p0-i1"></anime-input>
+                </dev-ezbus-box>
+
+                <dev-ezbus-box non-checkbox detecter-on>
+                    <anime-input class="wps-p0-o2"></anime-input>
+                </dev-ezbus-box>
+            </div> <!--end-->
+
+            <dev-ezbus-normal-form-1101 data-i0="wps-p0-o0"  data-i1="wps-p0-o1" data-o="wps-p0-i2" full-debug-mode></dev-ezbus-normal-form-1101>
+
+        </div>
+
+        <div class="wps-p0 bus">
+            <h2> or gate </h2>
+
+            <div> <!--begin-->
+                <dev-ezbus-box class="in-out" detecter-on>
+                    <input type="checkbox" class="in-out-i">
+                    <anime-input class="in-out-o wps-p0-i0"></anime-input>
+                </dev-ezbus-box>
+
+                <dev-ezbus-box class="in-out" detecter-on>
+                    <input type="checkbox" class="in-out-i">
+                    <anime-input class="in-out-o wps-p0-i1"></anime-input>
+                </dev-ezbus-box>
+
+                <dev-ezbus-box non-checkbox detecter-on>
+                    <anime-input class="wps-p0-o2"></anime-input>
+                </dev-ezbus-box>
+            </div> <!--end-->
+
+            <dev-ezbus-or data-i0="wps-p0-o0"  data-i1="wps-p0-o1" data-o="wps-p0-i2" full-debug-mode></dev-ezbus-or>
+
+        </div>
+
+        <dev-ezbus-info></dev-ezbus-info>
+    </body>
+</html> 
+```
+
+#### [2. demo2](https://FarAway6834.github.io/logic_gates.html)
+
+```html
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title> logic gates </title>
+        <script src="https://xunr3.github.io/devezbus.js" fetchpriority="high"></script>
+    </head>
+    <body>
+        <h1> logic gates </h1>
+        <dev-ezbus></dev-ezbus>
+
+        <div class="wps-p0 bus">
+            <h2> not gate </h2>
+
+            <div> <!--begin-->
+                <dev-ezbus-box class="in-out" detecter-on>
+                    <input type="checkbox" class="in-out-i">
+                    <anime-input class="in-out-o wps-p0-i0"></anime-input>
+                </dev-ezbus-box>
+
+                <dev-ezbus-box non-checkbox detecter-on>
+                    <anime-input class="wps-p0-o1"></anime-input>
+                </dev-ezbus-box>
+            </div> <!--end-->
+
+            <dev-ezbus-not data-i="wps-p0-o0" data-o="wps-p0-i1"></dev-ezbus-not>
+
+        </div>
+
+        <div class="wps-p0 bus">
+            <h2> nor gate </h2>
+
+            <div> <!--begin-->
+                <dev-ezbus-box class="in-out" detecter-on>
+                    <input type="checkbox" class="in-out-i">
+                    <anime-input class="in-out-o wps-p0-i0"></anime-input>
+                </dev-ezbus-box>
+
+                <dev-ezbus-box class="in-out" detecter-on>
+                    <input type="checkbox" class="in-out-i">
+                    <anime-input class="in-out-o wps-p0-i1"></anime-input>
+                </dev-ezbus-box>
+
+                <dev-ezbus-box non-checkbox detecter-on>
+                    <anime-input class="wps-p0-o2"></anime-input>
+                </dev-ezbus-box>
+            </div> <!--end-->
+
+            <dev-ezbus-nor data-i0="wps-p0-o0"  data-i1="wps-p0-o1" data-o="wps-p0-i2"></dev-ezbus-nor>
+
+        </div>
+
+        <div class="wps-p0 bus">
+            <h2> normal form 0010 gate </h2>
+
+            <div> <!--begin-->
+                <dev-ezbus-box class="in-out" detecter-on>
+                    <input type="checkbox" class="in-out-i">
+                    <anime-input class="in-out-o wps-p0-i0"></anime-input>
+                </dev-ezbus-box>
+
+                <dev-ezbus-box class="in-out" detecter-on>
+                    <input type="checkbox" class="in-out-i">
+                    <anime-input class="in-out-o wps-p0-i1"></anime-input>
+                </dev-ezbus-box>
+
+                <dev-ezbus-box non-checkbox detecter-on>
+                    <anime-input class="wps-p0-o2"></anime-input>
+                </dev-ezbus-box>
+            </div> <!--end-->
+
+            <dev-ezbus-normal-form-0010 data-i0="wps-p0-o0"  data-i1="wps-p0-o1" data-o="wps-p0-i2"></dev-ezbus-normal-form-0010>
+
+        </div>
+
+        <div class="wps-p0 bus">
+            <h2> normal form 0100 gate </h2>
+
+            <div> <!--begin-->
+                <dev-ezbus-box class="in-out" detecter-on>
+                    <input type="checkbox" class="in-out-i">
+                    <anime-input class="in-out-o wps-p0-i0"></anime-input>
+                </dev-ezbus-box>
+
+                <dev-ezbus-box class="in-out" detecter-on>
+                    <input type="checkbox" class="in-out-i">
+                    <anime-input class="in-out-o wps-p0-i1"></anime-input>
+                </dev-ezbus-box>
+
+                <dev-ezbus-box non-checkbox detecter-on>
+                    <anime-input class="wps-p0-o2"></anime-input>
+                </dev-ezbus-box>
+            </div> <!--end-->
+
+            <dev-ezbus-normal-form-0100 data-i0="wps-p0-o0"  data-i1="wps-p0-o1" data-o="wps-p0-i2"></dev-ezbus-normal-form-0100>
+
+        </div>
+
+        <div class="wps-p0 bus">
+            <h2> xor gate </h2>
+
+            <div> <!--begin-->
+                <dev-ezbus-box class="in-out" detecter-on>
+                    <input type="checkbox" class="in-out-i">
+                    <anime-input class="in-out-o wps-p0-i0"></anime-input>
+                </dev-ezbus-box>
+
+                <dev-ezbus-box class="in-out" detecter-on>
+                    <input type="checkbox" class="in-out-i">
+                    <anime-input class="in-out-o wps-p0-i1"></anime-input>
+                </dev-ezbus-box>
+
+                <dev-ezbus-box non-checkbox detecter-on>
+                    <anime-input class="wps-p0-o2"></anime-input>
+                </dev-ezbus-box>
+            </div> <!--end-->
+
+            <dev-ezbus-xor data-i0="wps-p0-o0"  data-i1="wps-p0-o1" data-o="wps-p0-i2"></dev-ezbus-xor>
+
+        </div>
+
+        <div class="wps-p0 bus">
+            <h2> nand gate </h2>
+
+            <div> <!--begin-->
+                <dev-ezbus-box class="in-out" detecter-on>
+                    <input type="checkbox" class="in-out-i">
+                    <anime-input class="in-out-o wps-p0-i0"></anime-input>
+                </dev-ezbus-box>
+
+                <dev-ezbus-box class="in-out" detecter-on>
+                    <input type="checkbox" class="in-out-i">
+                    <anime-input class="in-out-o wps-p0-i1"></anime-input>
+                </dev-ezbus-box>
+
+                <dev-ezbus-box non-checkbox detecter-on>
+                    <anime-input class="wps-p0-o2"></anime-input>
+                </dev-ezbus-box>
+            </div> <!--end-->
+
+            <dev-ezbus-nand data-i0="wps-p0-o0"  data-i1="wps-p0-o1" data-o="wps-p0-i2"></dev-ezbus-nand>
+
+        </div>
+
+        <div class="wps-p0 bus">
+            <h2> and gate </h2>
+
+            <div> <!--begin-->
+                <dev-ezbus-box class="in-out" detecter-on>
+                    <input type="checkbox" class="in-out-i">
+                    <anime-input class="in-out-o wps-p0-i0"></anime-input>
+                </dev-ezbus-box>
+
+                <dev-ezbus-box class="in-out" detecter-on>
+                    <input type="checkbox" class="in-out-i">
+                    <anime-input class="in-out-o wps-p0-i1"></anime-input>
+                </dev-ezbus-box>
+
+                <dev-ezbus-box non-checkbox detecter-on>
+                    <anime-input class="wps-p0-o2"></anime-input>
+                </dev-ezbus-box>
+            </div> <!--end-->
+
+            <dev-ezbus-and data-i0="wps-p0-o0"  data-i1="wps-p0-o1" data-o="wps-p0-i2"></dev-ezbus-and>
+
+        </div>
+
+        <div class="wps-p0 bus">
+            <h2> nxor gate </h2>
+
+            <div> <!--begin-->
+                <dev-ezbus-box class="in-out" detecter-on>
+                    <input type="checkbox" class="in-out-i">
+                    <anime-input class="in-out-o wps-p0-i0"></anime-input>
+                </dev-ezbus-box>
+
+                <dev-ezbus-box class="in-out" detecter-on>
+                    <input type="checkbox" class="in-out-i">
+                    <anime-input class="in-out-o wps-p0-i1"></anime-input>
+                </dev-ezbus-box>
+
+                <dev-ezbus-box non-checkbox detecter-on>
+                    <anime-input class="wps-p0-o2"></anime-input>
+                </dev-ezbus-box>
+            </div> <!--end-->
+
+            <dev-ezbus-nxor data-i0="wps-p0-o0"  data-i1="wps-p0-o1" data-o="wps-p0-i2"></dev-ezbus-nxor>
+
+        </div>
+
+        <div class="wps-p0 bus">
+            <h2> normal form 1011 gate </h2>
+
+            <div> <!--begin-->
+                <dev-ezbus-box class="in-out" detecter-on>
+                    <input type="checkbox" class="in-out-i">
+                    <anime-input class="in-out-o wps-p0-i0"></anime-input>
+                </dev-ezbus-box>
+
+                <dev-ezbus-box class="in-out" detecter-on>
+                    <input type="checkbox" class="in-out-i">
+                    <anime-input class="in-out-o wps-p0-i1"></anime-input>
+                </dev-ezbus-box>
+
+                <dev-ezbus-box non-checkbox detecter-on>
+                    <anime-input class="wps-p0-o2"></anime-input>
+                </dev-ezbus-box>
+            </div> <!--end-->
+
+            <dev-ezbus-normal-form-1011 data-i0="wps-p0-o0"  data-i1="wps-p0-o1" data-o="wps-p0-i2"></dev-ezbus-normal-form-1011>
+
+        </div>
+
+        <div class="wps-p0 bus">
+            <h2> normal form 1101 gate </h2>
+
+            <div> <!--begin-->
+                <dev-ezbus-box class="in-out" detecter-on>
+                    <input type="checkbox" class="in-out-i">
+                    <anime-input class="in-out-o wps-p0-i0"></anime-input>
+                </dev-ezbus-box>
+
+                <dev-ezbus-box class="in-out" detecter-on>
+                    <input type="checkbox" class="in-out-i">
+                    <anime-input class="in-out-o wps-p0-i1"></anime-input>
+                </dev-ezbus-box>
+
+                <dev-ezbus-box non-checkbox detecter-on>
+                    <anime-input class="wps-p0-o2"></anime-input>
+                </dev-ezbus-box>
+            </div> <!--end-->
+
+            <dev-ezbus-normal-form-1101 data-i0="wps-p0-o0"  data-i1="wps-p0-o1" data-o="wps-p0-i2"></dev-ezbus-normal-form-1101>
+
+        </div>
+
+        <div class="wps-p0 bus">
+            <h2> or gate </h2>
+
+            <div> <!--begin-->
+                <dev-ezbus-box class="in-out" detecter-on>
+                    <input type="checkbox" class="in-out-i">
+                    <anime-input class="in-out-o wps-p0-i0"></anime-input>
+                </dev-ezbus-box>
+
+                <dev-ezbus-box class="in-out" detecter-on>
+                    <input type="checkbox" class="in-out-i">
+                    <anime-input class="in-out-o wps-p0-i1"></anime-input>
+                </dev-ezbus-box>
+
+                <dev-ezbus-box non-checkbox detecter-on>
+                    <anime-input class="wps-p0-o2"></anime-input>
+                </dev-ezbus-box>
+            </div> <!--end-->
+
+            <dev-ezbus-or data-i0="wps-p0-o0"  data-i1="wps-p0-o1" data-o="wps-p0-i2"></dev-ezbus-or>
+
+        </div>
+
+        <dev-ezbus-info></dev-ezbus-info>
+    </body>
+</html>
+```
+
+#### [3. demo3](https://FarAway6834.github.io/debugSRLatch.html)
+
+```html
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title> debug S-R Latch </title>
+        <script src="https://xunr3.github.io/devezbus.js" fetchpriority="high"></script>
+    </head>
+    <body>
+        <h1> debug S-R Latch </h1>
+        <dev-ezbus></dev-ezbus>
+
+        <div class="wps-p0 bus">
+            <h2> NOR S-R Latch </h2>
+
+            <div>
+                <dev-ezbus-box class="in-out" detecter-on>
+                    <input type="checkbox" class="in-out-i">
+                    <anime-input class="in-out-o wps-p0-i0"></anime-input>
+                </dev-ezbus-box>
+
+                <dev-ezbus-box class="in-out" detecter-on>
+                    <input type="checkbox" class="in-out-i">
+                    <anime-input class="in-out-o wps-p0-i1"></anime-input>
+                </dev-ezbus-box>
+
+                <dev-ezbus-box non-checkbox detecter-on>
+                    <anime-input class="wps-p0-o2"></anime-input>
+                </dev-ezbus-box>
+            </div>
+
+            <div class="wps-w0">
+                <dev-ezbus-nor data-i0="wps-p0-o0" data-i1="wps-w0-o1" data-o="wps-w0-i0" full-debug-mode></dev-ezbus-nor>
+                <dev-ezbus-nor data-i0="wps-w0-o0" data-i1="wps-p0-o1" data-o="wps-w0-i1 wps-p0-i2" full-debug-mode></dev-ezbus-nor>
+            </div>
+
+        </div>
+
+        <dev-ezbus-info></dev-ezbus-info>
+    </body>
+</html>
+```
+
+#### [4. demo4](https://FarAway6834.github.io/aByteOfNorSRLatch.html)
+
+```html
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title> a byte of NOR S-R Latch </title>
+        <script src="https://xunr3.github.io/devezbus.js" fetchpriority="high"></script>
+    </head>
+    <body>
+        <h1> a byte of NOR S-R Latch </h1>
+        <dev-ezbus></dev-ezbus>
+
+        <div class="wps-p0 bus">
+            <h2> NOR S-R Latch </h2>
+
+            <div>
+                <dev-ezbus-box class="in-out" detecter-on>
+                    <input type="checkbox" class="in-out-i">
+                    <anime-input class="in-out-o wps-p0-i0"></anime-input>
+                </dev-ezbus-box>
+
+                <dev-ezbus-box class="in-out" detecter-on>
+                    <input type="checkbox" class="in-out-i">
+                    <anime-input class="in-out-o wps-p0-i1"></anime-input>
+                </dev-ezbus-box>
+
+                <dev-ezbus-box non-checkbox detecter-on>
+                    <anime-input class="wps-p0-o2"></anime-input>
+                </dev-ezbus-box>
+            </div>
+
+            <div class="wps-w0">
+                <dev-ezbus-nor data-i0="wps-p0-o0" data-i1="wps-w0-o1" data-o="wps-w0-i0"></dev-ezbus-nor>
+                <dev-ezbus-nor data-i0="wps-w0-o0" data-i1="wps-p0-o1" data-o="wps-w0-i1 wps-p0-i2"></dev-ezbus-nor>
+            </div>
+
+        </div>
+
+        <div class="wps-p0 bus">
+            <h2> NOR S-R Latch </h2>
+
+            <div>
+                <dev-ezbus-box class="in-out" detecter-on>
+                    <input type="checkbox" class="in-out-i">
+                    <anime-input class="in-out-o wps-p0-i0"></anime-input>
+                </dev-ezbus-box>
+
+                <dev-ezbus-box class="in-out" detecter-on>
+                    <input type="checkbox" class="in-out-i">
+                    <anime-input class="in-out-o wps-p0-i1"></anime-input>
+                </dev-ezbus-box>
+
+                <dev-ezbus-box non-checkbox detecter-on>
+                    <anime-input class="wps-p0-o2"></anime-input>
+                </dev-ezbus-box>
+            </div>
+
+            <div class="wps-w0">
+                <dev-ezbus-nor data-i0="wps-p0-o0" data-i1="wps-w0-o1" data-o="wps-w0-i0"></dev-ezbus-nor>
+                <dev-ezbus-nor data-i0="wps-w0-o0" data-i1="wps-p0-o1" data-o="wps-w0-i1 wps-p0-i2"></dev-ezbus-nor>
+            </div>
+
+        </div>
+
+        <div class="wps-p0 bus">
+            <h2> NOR S-R Latch </h2>
+
+            <div>
+                <dev-ezbus-box class="in-out" detecter-on>
+                    <input type="checkbox" class="in-out-i">
+                    <anime-input class="in-out-o wps-p0-i0"></anime-input>
+                </dev-ezbus-box>
+
+                <dev-ezbus-box class="in-out" detecter-on>
+                    <input type="checkbox" class="in-out-i">
+                    <anime-input class="in-out-o wps-p0-i1"></anime-input>
+                </dev-ezbus-box>
+
+                <dev-ezbus-box non-checkbox detecter-on>
+                    <anime-input class="wps-p0-o2"></anime-input>
+                </dev-ezbus-box>
+            </div>
+
+            <div class="wps-w0">
+                <dev-ezbus-nor data-i0="wps-p0-o0" data-i1="wps-w0-o1" data-o="wps-w0-i0"></dev-ezbus-nor>
+                <dev-ezbus-nor data-i0="wps-w0-o0" data-i1="wps-p0-o1" data-o="wps-w0-i1 wps-p0-i2"></dev-ezbus-nor>
+            </div>
+
+        </div>
+
+        <div class="wps-p0 bus">
+            <h2> NOR S-R Latch </h2>
+
+            <div>
+                <dev-ezbus-box class="in-out" detecter-on>
+                    <input type="checkbox" class="in-out-i">
+                    <anime-input class="in-out-o wps-p0-i0"></anime-input>
+                </dev-ezbus-box>
+
+                <dev-ezbus-box class="in-out" detecter-on>
+                    <input type="checkbox" class="in-out-i">
+                    <anime-input class="in-out-o wps-p0-i1"></anime-input>
+                </dev-ezbus-box>
+
+                <dev-ezbus-box non-checkbox detecter-on>
+                    <anime-input class="wps-p0-o2"></anime-input>
+                </dev-ezbus-box>
+            </div>
+
+            <div class="wps-w0">
+                <dev-ezbus-nor data-i0="wps-p0-o0" data-i1="wps-w0-o1" data-o="wps-w0-i0"></dev-ezbus-nor>
+                <dev-ezbus-nor data-i0="wps-w0-o0" data-i1="wps-p0-o1" data-o="wps-w0-i1 wps-p0-i2"></dev-ezbus-nor>
+            </div>
+
+        </div>
+
+        <div class="wps-p0 bus">
+            <h2> NOR S-R Latch </h2>
+
+            <div>
+                <dev-ezbus-box class="in-out" detecter-on>
+                    <input type="checkbox" class="in-out-i">
+                    <anime-input class="in-out-o wps-p0-i0"></anime-input>
+                </dev-ezbus-box>
+
+                <dev-ezbus-box class="in-out" detecter-on>
+                    <input type="checkbox" class="in-out-i">
+                    <anime-input class="in-out-o wps-p0-i1"></anime-input>
+                </dev-ezbus-box>
+
+                <dev-ezbus-box non-checkbox detecter-on>
+                    <anime-input class="wps-p0-o2"></anime-input>
+                </dev-ezbus-box>
+            </div>
+
+            <div class="wps-w0">
+                <dev-ezbus-nor data-i0="wps-p0-o0" data-i1="wps-w0-o1" data-o="wps-w0-i0"></dev-ezbus-nor>
+                <dev-ezbus-nor data-i0="wps-w0-o0" data-i1="wps-p0-o1" data-o="wps-w0-i1 wps-p0-i2"></dev-ezbus-nor>
+            </div>
+
+        </div>
+
+        <div class="wps-p0 bus">
+            <h2> NOR S-R Latch </h2>
+
+            <div>
+                <dev-ezbus-box class="in-out" detecter-on>
+                    <input type="checkbox" class="in-out-i">
+                    <anime-input class="in-out-o wps-p0-i0"></anime-input>
+                </dev-ezbus-box>
+
+                <dev-ezbus-box class="in-out" detecter-on>
+                    <input type="checkbox" class="in-out-i">
+                    <anime-input class="in-out-o wps-p0-i1"></anime-input>
+                </dev-ezbus-box>
+
+                <dev-ezbus-box non-checkbox detecter-on>
+                    <anime-input class="wps-p0-o2"></anime-input>
+                </dev-ezbus-box>
+            </div>
+
+            <div class="wps-w0">
+                <dev-ezbus-nor data-i0="wps-p0-o0" data-i1="wps-w0-o1" data-o="wps-w0-i0"></dev-ezbus-nor>
+                <dev-ezbus-nor data-i0="wps-w0-o0" data-i1="wps-p0-o1" data-o="wps-w0-i1 wps-p0-i2"></dev-ezbus-nor>
+            </div>
+
+        </div>
+
+        <div class="wps-p0 bus">
+            <h2> NOR S-R Latch </h2>
+
+            <div>
+                <dev-ezbus-box class="in-out" detecter-on>
+                    <input type="checkbox" class="in-out-i">
+                    <anime-input class="in-out-o wps-p0-i0"></anime-input>
+                </dev-ezbus-box>
+
+                <dev-ezbus-box class="in-out" detecter-on>
+                    <input type="checkbox" class="in-out-i">
+                    <anime-input class="in-out-o wps-p0-i1"></anime-input>
+                </dev-ezbus-box>
+
+                <dev-ezbus-box non-checkbox detecter-on>
+                    <anime-input class="wps-p0-o2"></anime-input>
+                </dev-ezbus-box>
+            </div>
+
+            <div class="wps-w0">
+                <dev-ezbus-nor data-i0="wps-p0-o0" data-i1="wps-w0-o1" data-o="wps-w0-i0"></dev-ezbus-nor>
+                <dev-ezbus-nor data-i0="wps-w0-o0" data-i1="wps-p0-o1" data-o="wps-w0-i1 wps-p0-i2"></dev-ezbus-nor>
+            </div>
+
+        </div>
+
+        <div class="wps-p0 bus">
+            <h2> NOR S-R Latch </h2>
+
+            <div>
+                <dev-ezbus-box class="in-out" detecter-on>
+                    <input type="checkbox" class="in-out-i">
+                    <anime-input class="in-out-o wps-p0-i0"></anime-input>
+                </dev-ezbus-box>
+
+                <dev-ezbus-box class="in-out" detecter-on>
+                    <input type="checkbox" class="in-out-i">
+                    <anime-input class="in-out-o wps-p0-i1"></anime-input>
+                </dev-ezbus-box>
+
+                <dev-ezbus-box non-checkbox detecter-on>
+                    <anime-input class="wps-p0-o2"></anime-input>
+                </dev-ezbus-box>
+            </div>
+
+            <div class="wps-w0">
+                <dev-ezbus-nor data-i0="wps-p0-o0" data-i1="wps-w0-o1" data-o="wps-w0-i0"></dev-ezbus-nor>
+                <dev-ezbus-nor data-i0="wps-w0-o0" data-i1="wps-p0-o1" data-o="wps-w0-i1 wps-p0-i2"></dev-ezbus-nor>
+            </div>
+
+        </div>
+
+        <dev-ezbus-info></dev-ezbus-info>
+    </body>
+</html>
+```
