@@ -527,8 +527,9 @@ export class DevEzbus extends HTMLElement {
                             try {
                                 return JSON.parse(this.getAttribute('debug-target'), (k, v) => {
                                     if (k === "") {
+										console.log(v);
                                         if (Array.isArray(v)) return v.map(child => {
-                                            if (!!Array.isArray(v)) {
+                                            if (!Array.isArray(v)) {
                                                 flag = true;
                                                 throw new Error("debug-target (but isn't nand, it's not ... only 0 index is used, after one is ignored) is wrong format. it must be multidimensional array of json (when nand : string array) (TIP : NON-ARRAY)");
                                             }
@@ -612,7 +613,7 @@ export class DevEzbus extends HTMLElement {
                                     if (k === "") {
                                         if (Array.isArray(v)) {
                                             if (v.length === 2) return v.map(child => {
-                                                if (!!Array.isArray(v)) {
+                                                if (!Array.isArray(v)) {
                                                     flag = true;
                                                     throw new Error("debug-target (but isn't nand, it's and ... length must be 2) is wrong format. it must be multidimensional array of json (when nand : string array) (TIP : NON-ARRAY)");
                                                 }
@@ -704,7 +705,7 @@ export class DevEzbus extends HTMLElement {
                                     if (k === "") {
                                         if (Array.isArray(v)) {
                                             if (v.length === 3) return v.map(child => {
-                                                if (!!Array.isArray(v)) {
+                                                if (!Array.isArray(v)) {
                                                     flag = true;
                                                     throw new Error("debug-target (but isn't nand, it's or ... length must be 3) is wrong format. it must be multidimensional array of json (when nand : string array) (TIP : NON-ARRAY)");
                                                 }
@@ -796,7 +797,7 @@ export class DevEzbus extends HTMLElement {
                                     if (k === "") {
                                         if (Array.isArray(v)) {
                                             if (v.length === 3) return v.map(child => {
-                                                if (!!Array.isArray(v)) {
+                                                if (!Array.isArray(v)) {
                                                     flag = true;
                                                     throw new Error("debug-target (but isn't nand, it's nor ... length must be 4) is wrong format. it must be multidimensional array of json (when nand : string array) (TIP : NON-ARRAY)");
                                                 }
@@ -888,7 +889,7 @@ export class DevEzbus extends HTMLElement {
                                     if (k === "") {
                                         if (Array.isArray(v)) {
                                             if (v.length === 4) return v.map(child => {
-                                                if (!!Array.isArray(v)) {
+                                                if (!Array.isArray(v)) {
                                                     flag = true;
                                                     throw new Error("debug-target (but isn't nand, it's xor ... length must be 4) is wrong format. it must be multidimensional array of json (when nand : string array) (TIP : NON-ARRAY)");
                                                 }
@@ -980,7 +981,7 @@ export class DevEzbus extends HTMLElement {
                                     if (k === "") {
                                         if (Array.isArray(v)) {
                                             if (v.length === 5) return v.map(child => {
-                                                if (!!Array.isArray(v)) {
+                                                if (!Array.isArray(v)) {
                                                     flag = true;
                                                     throw new Error("debug-target (but isn't nand, it's nxor ... length must be 5) is wrong format. it must be multidimensional array of json (when nand : string array) (TIP : NON-ARRAY)");
                                                 }
@@ -1072,7 +1073,7 @@ export class DevEzbus extends HTMLElement {
                                     if (k === "") {
                                         if (Array.isArray(v)) {
                                             if (v.length === 2) return v.map(child => {
-                                                if (!!Array.isArray(v)) {
+                                                if (!Array.isArray(v)) {
                                                     flag = true;
                                                     throw new Error("debug-target (but isn't nand, it's normal-form-1011 ... length must be 2) is wrong format. it must be multidimensional array of json (when nand : string array) (TIP : NON-ARRAY)");
                                                 }
@@ -1165,7 +1166,7 @@ export class DevEzbus extends HTMLElement {
                                     if (k === "") {
                                         if (Array.isArray(v)) {
                                             if (v.length === 2) return v.map(child => {
-                                                if (!!Array.isArray(v)) {
+                                                if (!Array.isArray(v)) {
                                                     flag = true;
                                                     throw new Error("debug-target (but isn't nand, it's normal-form-1101 ... length must be 2) is wrong format. it must be multidimensional array of json (when nand : string array) (TIP : NON-ARRAY)");
                                                 }
@@ -1257,7 +1258,7 @@ export class DevEzbus extends HTMLElement {
                                     if (k === "") {
                                         if (Array.isArray(v)) {
                                             if (v.length === 3) return v.map(child => {
-                                                if (!!Array.isArray(v)) {
+                                                if (!Array.isArray(v)) {
                                                     flag = true;
                                                     throw new Error("debug-target (but isn't nand, it's normal-form-0010 ... length must be 3) is wrong format. it must be multidimensional array of json (when nand : string array) (TIP : NON-ARRAY)");
                                                 }
@@ -1349,7 +1350,7 @@ export class DevEzbus extends HTMLElement {
                                     if (k === "") {
                                         if (Array.isArray(v)) {
                                             if (v.length === 3) return v.map(child => {
-                                                if (!!Array.isArray(v)) {
+                                                if (!Array.isArray(v)) {
                                                     flag = true;
                                                     throw new Error("debug-target (but isn't nand, it's normal-form-0100 ... length must be 3) is wrong format. it must be multidimensional array of json (when nand : string array) (TIP : NON-ARRAY)");
                                                 }
