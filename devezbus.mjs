@@ -430,7 +430,6 @@ export class DevEzbus extends HTMLElement {
                         get debugTarget() {
                             let flag = false;
                             if (!this.hasAttribute('debug-target')) return;
-							console.log(this.getAttribute('debug-target'));
                             try {
                                 let result = JSON.parse(this.getAttribute('debug-target'), (k, v) => {
                                     if (k !== "" && typeof v !== 'string') {
@@ -525,6 +524,7 @@ export class DevEzbus extends HTMLElement {
                         get debugTarget() {
                             let flag = false;
                             if (!this.hasAttribute('debug-target')) return;
+							console.log(this.getAttribute('debug-target'));
                             try {
                                 return JSON.parse(this.getAttribute('debug-target'), (k, v) => {
                                     if (k === "") {
@@ -532,6 +532,8 @@ export class DevEzbus extends HTMLElement {
                                         if (Array.isArray(v)) return v.map(child => {
                                             if (!Array.isArray(v)) {
                                                 flag = true;
+												console.log(k);
+												console.log(v);
                                                 throw new Error("debug-target (but isn't nand, it's not ... only 0 index is used, after one is ignored) is wrong format. it must be multidimensional array of json (when nand : string array) (TIP : NON-ARRAY)");
                                             }
                                             return JSON.stringify(child);
