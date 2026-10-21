@@ -23,18 +23,30 @@ x = f'''\
   }}*/
 
   .debug-boxed[debug-target] {{
-      --debug-boxed-transform: scale(0);
+      --debug-boxed-transform: initial;
+      --debug-boxed-position: initial;
+      --debug-boxed-overflow: initial;
+      --debug-boxed-width: initial;
+      --debug-boxed-height: initial;
       --debug-boxed-border: 1px solid #333333;
   }}
 
   :root {{
       --debug-boxed-transform: scale(0);
+      --debug-boxed-position: absolute;
+      --debug-boxed-overflow: hidden;
+      --debug-boxed-width: 0;
+      --debug-boxed-height: 0;
       --debug-boxed-border: none;
   }}
 
   .debug-calm-box {{
       display: inline-block;
       transform: var(--debug-boxed-transform);
+      position: var(--debug-boxed-position);
+      overflow: var(--debug-boxed-overflow);
+      width: var(--debug-boxed-width);
+      height: var(--debug-boxed-height);
       border: var(--debug-boxed-border);
   }}
 
