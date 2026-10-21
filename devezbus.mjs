@@ -524,22 +524,18 @@ export class DevEzbus extends HTMLElement {
                         get debugTarget() {
                             let flag = false;
                             if (!this.hasAttribute('debug-target')) return;
-							console.log(this.getAttribute('debug-target'));
                             try {
                                 return JSON.parse(this.getAttribute('debug-target'), (k, v) => {
                                     if (k === "") {
-										console.log(v);
-                                        if (Array.isArray(v)) return v.map(child => {
-                                            if (!Array.isArray(v)) {
-                                                flag = true;
-												console.log(k);
-												console.log(v);
-                                                throw new Error("debug-target (but isn't nand, it's not ... only 0 index is used, after one is ignored) is wrong format. it must be multidimensional array of json (when nand : string array) (TIP : NON-ARRAY)");
-                                            }
-                                            return JSON.stringify(child);
-                                        });
+                                        if (Array.isArray(v)) return v;
                                         throw new Error("debug-target (but isn't nand, it's not ... only 0 index is used, after one is ignored) is wrong format. it must be multidimensional array of json (when nand : string array) (TIP : NON-ARRAY-JSON-OR-NON-JSON)");
                                     }
+                                }).map(child => {
+                                	if (!Array.isArray(v)) {
+                                        flag = true;
+                                        throw new Error("debug-target (but isn't nand, it's not ... only 0 index is used, after one is ignored) is wrong format. it must be multidimensional array of json (when nand : string array) (TIP : NON-ARRAY)");
+                                    }
+                                    return JSON.stringify(child);
                                 });
                             } catch {
                                 console.warn(`debug-target (but isn't nand, it's not ... only 0 index is used, after one is ignored) is wrong format. it must be multidimensional array of json (when nand : string array) (tip : NON-${flag?'ARRAY':'ARRAY-JSON-OR-NON-JSON'})`);
@@ -612,22 +608,25 @@ export class DevEzbus extends HTMLElement {
                             let flag = false;
                             if (!this.hasAttribute('debug-target')) return;
                             try {
-                                return JSON.parse(this.getAttribute('debug-target'), (k, v) => {
+                                const result = JSON.parse(this.getAttribute('debug-target'), (k, v) => {
                                     if (k === "") {
-                                        if (Array.isArray(v)) {
-                                            if (v.length === 2) return v.map(child => {
-                                                if (!Array.isArray(v)) {
-                                                    flag = true;
-                                                    throw new Error("debug-target (but isn't nand, it's and ... length must be 2) is wrong format. it must be multidimensional array of json (when nand : string array) (TIP : NON-ARRAY)");
-                                                }
-                                                return JSON.stringify(child)
-                                            });
-                                        }
-                                        throw new Error("debug-target (but isn't nand, it's and ... length must be 2) is wrong format. it must be multidimensional array of json (when nand : string array) (TIP : NON-ARRAY-JSON-OR-NON-FIT-LENGTH-OR-NON-JSON)");
+                                        if (Array.isArray(v)) return v;
+                                        throw new Error("debug-target (but isn't nand, it's and ... length must be 2) is wrong format. it must be multidimensional array of json (when nand : string array) (TIP : NON-ARRAY-JSON-OR-NON-JSON)");
                                     }
+                                }).map(child => {
+                                    if (!Array.isArray(v)) {
+                                        flag = true;
+                                        throw new Error("debug-target (but isn't nand, it's and ... length must be 2) is wrong format. it must be multidimensional array of json (when nand : string array) (TIP : NON-ARRAY)");
+                                    }
+                                    return JSON.stringify(child)
                                 });
+                                if (result.length !== 2) {
+                                    flag = null;
+                                    throw new Error("debug-target (but isn't nand, it's and ... length must be 2) is wrong format. it must be multidimensional array of json (when nand : string array) (TIP : NON-FIT-LENGTH)");
+								}
+								return result;
                             } catch {
-                                console.warn(`debug-target (but isn't nand, it's and ... length must be 2) is wrong format. it must be multidimensional array of json (when nand : string array) (tip : NON-${flag?'STRING':'ARRAY-JSON-OR-NON-FIT-LENGTH-OR-NON-JSON'})`);
+                                console.warn(`debug-target (but isn't nand, it's and ... length must be 2) is wrong format. it must be multidimensional array of json (when nand : string array) (tip : NON-${(flag===null)?'FIT-LENGTH':flag?'STRING':'ARRAY-JSON-OR-NON-JSON'})`);
                                 return;
                             }
                         }
@@ -704,22 +703,25 @@ export class DevEzbus extends HTMLElement {
                             let flag = false;
                             if (!this.hasAttribute('debug-target')) return;
                             try {
-                                return JSON.parse(this.getAttribute('debug-target'), (k, v) => {
+                                const result = JSON.parse(this.getAttribute('debug-target'), (k, v) => {
                                     if (k === "") {
-                                        if (Array.isArray(v)) {
-                                            if (v.length === 3) return v.map(child => {
-                                                if (!Array.isArray(v)) {
-                                                    flag = true;
-                                                    throw new Error("debug-target (but isn't nand, it's or ... length must be 3) is wrong format. it must be multidimensional array of json (when nand : string array) (TIP : NON-ARRAY)");
-                                                }
-                                                return JSON.stringify(child);
-                                            });
-                                        }
-                                        throw new Error("debug-target (but isn't nand, it's or ... length must be 3) is wrong format. it must be multidimensional array of json (when nand : string array) (TIP : NON-ARRAY-JSON-OR-NON-FIT-LENGTH-OR-NON-JSON)");
+                                        if (Array.isArray(v)) return v;
+                                        throw new Error("debug-target (but isn't nand, it's or ... length must be 3) is wrong format. it must be multidimensional array of json (when nand : string array) (TIP : NON-ARRAY-JSON-OR-NON-JSON)");
                                     }
+                                }).map(child => {
+                                    if (!Array.isArray(v)) {
+                                        flag = true;
+                                        throw new Error("debug-target (but isn't nand, it's or ... length must be 3) is wrong format. it must be multidimensional array of json (when nand : string array) (TIP : NON-ARRAY)");
+                                    }
+                                    return JSON.stringify(child);
                                 });
+                                if (v.length !== 3) {
+                                    flag = null;
+                                    throw new Error("debug-target (but isn't nand, it's or ... length must be 3) is wrong format. it must be multidimensional array of json (when nand : string array) (TIP : NON-FIT-LENGTH)");
+                                }
+                                return result;
                             } catch {
-                                console.warn(`debug-target (but isn't nand, it's or ... length must be 3) is wrong format. it must be multidimensional array of json (when nand : string array) (tip : NON-${flag?'STRING':'ARRAY-JSON-OR-NON-FIT-LENGTH-OR-NON-JSON'})`);
+                                console.warn(`debug-target (but isn't nand, it's or ... length must be 3) is wrong format. it must be multidimensional array of json (when nand : string array) (tip : NON-${(flag===null)?'FIT-LENGTH':flag?'STRING':'ARRAY-JSON-OR-NON-JSON'})`);
                                 return;
                             }
                         }
@@ -796,22 +798,25 @@ export class DevEzbus extends HTMLElement {
                             let flag = false;
                             if (!this.hasAttribute('debug-target')) return;
                             try {
-                                return JSON.parse(this.getAttribute('debug-target'), (k, v) => {
+                                const result = JSON.parse(this.getAttribute('debug-target'), (k, v) => {
                                     if (k === "") {
-                                        if (Array.isArray(v)) {
-                                            if (v.length === 3) return v.map(child => {
-                                                if (!Array.isArray(v)) {
-                                                    flag = true;
-                                                    throw new Error("debug-target (but isn't nand, it's nor ... length must be 4) is wrong format. it must be multidimensional array of json (when nand : string array) (TIP : NON-ARRAY)");
-                                                }
-                                                return JSON.stringify(child);
-                                            });
-                                        }
-                                        throw new Error("debug-target (but isn't nand, it's nor ... length must be 4) is wrong format. it must be multidimensional array of json (when nand : string array) (TIP : NON-ARRAY-JSON-OR-NON-FIT-LENGTH-OR-NON-JSON)");
+                                        if (Array.isArray(v)) return v;
+                                        throw new Error("debug-target (but isn't nand, it's nor ... length must be 4) is wrong format. it must be multidimensional array of json (when nand : string array) (TIP : NON-ARRAY-JSON-OR-NON-JSON)");
                                     }
+                                }).map(child => {
+                                    if (!Array.isArray(v)) {
+                                        flag = true;
+                                        throw new Error("debug-target (but isn't nand, it's nor ... length must be 4) is wrong format. it must be multidimensional array of json (when nand : string array) (TIP : NON-ARRAY)");
+                                    }
+                                    return JSON.stringify(child);
                                 });
+                                if (v.length !== 3) {
+                                    flag = null;
+									throw new Error("debug-target (but isn't nand, it's nor ... length must be 4) is wrong format. it must be multidimensional array of json (when nand : string array) (TIP : NON-FIT-LENGTH)");
+                                }
+                                return result;
                             } catch {
-                                console.warn(`debug-target (but isn't nand, it's nor ... length must be 4) is wrong format. it must be multidimensional array of json (when nand : string array) (tip : NON-${flag?'STRING':'ARRAY-JSON-OR-NON-FIT-LENGTH-OR-NON-JSON'})`);
+                                console.warn(`debug-target (but isn't nand, it's nor ... length must be 4) is wrong format. it must be multidimensional array of json (when nand : string array) (tip : NON-${(flag==null)?'FIT-LENGTH':flag?'STRING':'ARRAY-JSON-OR-NON-JSON'})`);
                                 return;
                             }
                         }
@@ -888,22 +893,25 @@ export class DevEzbus extends HTMLElement {
                             let flag = false;
                             if (!this.hasAttribute('debug-target')) return;
                             try {
-                                return JSON.parse(this.getAttribute('debug-target'), (k, v) => {
+                                const result = JSON.parse(this.getAttribute('debug-target'), (k, v) => {
                                     if (k === "") {
-                                        if (Array.isArray(v)) {
-                                            if (v.length === 4) return v.map(child => {
-                                                if (!Array.isArray(v)) {
-                                                    flag = true;
-                                                    throw new Error("debug-target (but isn't nand, it's xor ... length must be 4) is wrong format. it must be multidimensional array of json (when nand : string array) (TIP : NON-ARRAY)");
-                                                }
-                                                return JSON.stringify(child);
-                                            });
-                                        }
-                                        throw new Error("debug-target (but isn't nand, it's xor ... length must be 4) is wrong format. it must be multidimensional array of json (when nand : string array) (TIP : NON-ARRAY-JSON-OR-NON-FIT-LENGTH-OR-NON-JSON)");
+                                        if (Array.isArray(v)) return v;
+                                        throw new Error("debug-target (but isn't nand, it's xor ... length must be 4) is wrong format. it must be multidimensional array of json (when nand : string array) (TIP : NON-ARRAY-JSON-OR-NON-JSON)");
                                     }
+                                }).map(child => {
+                                    if (!Array.isArray(v)) {
+                                        flag = true;
+                                        throw new Error("debug-target (but isn't nand, it's xor ... length must be 4) is wrong format. it must be multidimensional array of json (when nand : string array) (TIP : NON-ARRAY)");
+                                    }
+                                    return JSON.stringify(child);
                                 });
+                                if (v.length !== 4) {
+                                    flag = null;
+                                    throw new Error("debug-target (but isn't nand, it's xor ... length must be 4) is wrong format. it must be multidimensional array of json (when nand : string array) (TIP : NON-FIT-LENGTH)");
+								}
+                                return result;
                             } catch {
-                                console.warn(`debug-target (but isn't nand, it's xor ... length must be 4) is wrong format. it must be multidimensional array of json (when nand : string array) (tip : NON-${flag?'STRING':'ARRAY-JSON-OR-NON-FIT-LENGTH-OR-NON-JSON'})`);
+                                console.warn(`debug-target (but isn't nand, it's xor ... length must be 4) is wrong format. it must be multidimensional array of json (when nand : string array) (tip : NON-${(flag===null)?'FIT-LENGTH':flag?'STRING':'ARRAY-JSON-OR-NON-JSON'})`);
                                 return;
                             }
                         }
@@ -980,22 +988,25 @@ export class DevEzbus extends HTMLElement {
                             let flag = false;
                             if (!this.hasAttribute('debug-target')) return;
                             try {
-                                return JSON.parse(this.getAttribute('debug-target'), (k, v) => {
+                                const result = JSON.parse(this.getAttribute('debug-target'), (k, v) => {
                                     if (k === "") {
-                                        if (Array.isArray(v)) {
-                                            if (v.length === 5) return v.map(child => {
-                                                if (!Array.isArray(v)) {
-                                                    flag = true;
-                                                    throw new Error("debug-target (but isn't nand, it's nxor ... length must be 5) is wrong format. it must be multidimensional array of json (when nand : string array) (TIP : NON-ARRAY)");
-                                                }
-                                                return JSON.stringify(child);
-                                            });
-                                        }
-                                        throw new Error("debug-target (but isn't nand, it's nxor ... length must be 5) is wrong format. it must be multidimensional array of json (when nand : string array) (TIP : NON-ARRAY-JSON-OR-NON-FIT-LENGTH-OR-NON-JSON)");
+                                        if (Array.isArray(v)) return v;
+                                        throw new Error("debug-target (but isn't nand, it's nxor ... length must be 5) is wrong format. it must be multidimensional array of json (when nand : string array) (TIP : NON-ARRAY-JSON-OR-NON-JSON)");
                                     }
+                                }).map(child => {
+                                    if (!Array.isArray(v)) {
+                                        flag = true;
+                                        throw new Error("debug-target (but isn't nand, it's nxor ... length must be 5) is wrong format. it must be multidimensional array of json (when nand : string array) (TIP : NON-ARRAY)");
+                                    }
+                                    return JSON.stringify(child);
                                 });
+                                if (v.length !== 5) {
+                                    flag = null;
+                                    throw new Error("debug-target (but isn't nand, it's nxor ... length must be 5) is wrong format. it must be multidimensional array of json (when nand : string array) (TIP : NON-FIT-LENGTH)");
+								}
+                                return result;
                             } catch {
-                                console.warn(`debug-target (but isn't nand, it's nxor ... length must be 5) is wrong format. it must be multidimensional array of json (when nand : string array) (tip : NON-${flag?'STRING':'ARRAY-JSON-OR-NON-FIT-LENGTH-OR-NON-JSON'})`);
+                                console.warn(`debug-target (but isn't nand, it's nxor ... length must be 5) is wrong format. it must be multidimensional array of json (when nand : string array) (tip : NON-${(flag===null)?'FIT-LENGTH':flag?'STRING':'ARRAY-JSON-OR-NON-JSON'})`);
                                 return;
                             }
                         }
@@ -1072,22 +1083,25 @@ export class DevEzbus extends HTMLElement {
                             let flag = false;
                             if (!this.hasAttribute('debug-target')) return;
                             try {
-                                return JSON.parse(this.getAttribute('debug-target'), (k, v) => {
+                                const result = JSON.parse(this.getAttribute('debug-target'), (k, v) => {
                                     if (k === "") {
-                                        if (Array.isArray(v)) {
-                                            if (v.length === 2) return v.map(child => {
-                                                if (!Array.isArray(v)) {
-                                                    flag = true;
-                                                    throw new Error("debug-target (but isn't nand, it's normal-form-1011 ... length must be 2) is wrong format. it must be multidimensional array of json (when nand : string array) (TIP : NON-ARRAY)");
-                                                }
-                                                return JSON.stringify(child);
-                                            });
-                                        }
-                                        throw new Error("debug-target (but isn't nand, it's normal-form-1011 ... length must be 2) is wrong format. it must be multidimensional array of json (when nand : string array) (TIP : NON-ARRAY-JSON-OR-NON-FIT-LENGTH-OR-NON-JSON)");
+                                        if (Array.isArray(v)) return v;
+                                        throw new Error("debug-target (but isn't nand, it's normal-form-1011 ... length must be 2) is wrong format. it must be multidimensional array of json (when nand : string array) (TIP : NON-ARRAY-JSON-OR-NON-JSON)");
                                     }
+                                }).map(child => {
+                                    if (!Array.isArray(v)) {
+                                        flag = true;
+                                        throw new Error("debug-target (but isn't nand, it's normal-form-1011 ... length must be 2) is wrong format. it must be multidimensional array of json (when nand : string array) (TIP : NON-ARRAY)");
+                                    }
+                                    return JSON.stringify(child);
                                 });
+                                if (v.length !== 2) {
+                                    flag = null;
+                                    throw new Error("debug-target (but isn't nand, it's normal-form-1011 ... length must be 2) is wrong format. it must be multidimensional array of json (when nand : string array) (TIP : NON-FIT-LENGTH)");
+								}
+                                return result;
                             } catch {
-                                console.warn(`debug-target (but isn't nand, it's normal-form-1011 ... length must be 2) is wrong format. it must be multidimensional array of json (when nand : string array) (tip : NON-${flag?'STRING':'ARRAY-JSON-OR-NON-FIT-LENGTH-OR-NON-JSON'})`);
+                                console.warn(`debug-target (but isn't nand, it's normal-form-1011 ... length must be 2) is wrong format. it must be multidimensional array of json (when nand : string array) (tip : NON-${(flag===null)?'FIT-LENGTH':flag?'STRING':'ARRAY-JSON-OR-NON-JSON'})`);
                                 return;
                             }
                         }
@@ -1164,23 +1178,26 @@ export class DevEzbus extends HTMLElement {
                             let flag = false;
                             if (!this.hasAttribute('debug-target')) return;
                             try {
-                                return JSON.parse(this.getAttribute('debug-target'), (k, v) => {
+                                const result = JSON.parse(this.getAttribute('debug-target'), (k, v) => {
                                     
                                     if (k === "") {
-                                        if (Array.isArray(v)) {
-                                            if (v.length === 2) return v.map(child => {
-                                                if (!Array.isArray(v)) {
-                                                    flag = true;
-                                                    throw new Error("debug-target (but isn't nand, it's normal-form-1101 ... length must be 2) is wrong format. it must be multidimensional array of json (when nand : string array) (TIP : NON-ARRAY)");
-                                                }
-                                                return JSON.stringify(child);
-                                            });
-                                        }
-                                        throw new Error("debug-target (but isn't nand, it's normal-form-1101 ... length must be 2) is wrong format. it must be multidimensional array of json (when nand : string array) (TIP : NON-ARRAY-JSON-OR-NON-FIT-LENGTH-OR-NON-JSON)");
+                                        if (Array.isArray(v)) return v;
+                                        throw new Error("debug-target (but isn't nand, it's normal-form-1101 ... length must be 2) is wrong format. it must be multidimensional array of json (when nand : string array) (TIP : NON-ARRAY-JSON-OR-NON-JSON)");
                                     }
+                                }).map(child => {
+                                    if (!Array.isArray(v)) {
+                                        flag = true;
+                                        throw new Error("debug-target (but isn't nand, it's normal-form-1101 ... length must be 2) is wrong format. it must be multidimensional array of json (when nand : string array) (TIP : NON-ARRAY)");
+                                    }
+                                    return JSON.stringify(child);
                                 });
+                                if (v.length !== 2) {
+                                    flag = null;
+                                    throw new Error("debug-target (but isn't nand, it's normal-form-1101 ... length must be 2) is wrong format. it must be multidimensional array of json (when nand : string array) (TIP : NON-FIT-LENGTH)");
+                                }
+                                return result;
                             } catch {
-                                console.warn(`debug-target (but isn't nand, it's normal-form-1101 ... length must be 2) is wrong format. it must be multidimensional array of json (when nand : string array) (tip : NON-${flag?'STRING':'ARRAY-JSON-OR-NON-FIT-LENGTH-OR-NON-JSON'})`);
+                                console.warn(`debug-target (but isn't nand, it's normal-form-1101 ... length must be 2) is wrong format. it must be multidimensional array of json (when nand : string array) (tip : NON-${(flag===null)?'FIT-LENGTH':flag?'STRING':'ARRAY-JSON-OR-NON-JSON'})`);
                                 return;
                             }
                         }
@@ -1257,22 +1274,25 @@ export class DevEzbus extends HTMLElement {
                             let flag = false;
                             if (!this.hasAttribute('debug-target')) return;
                             try {
-                                return JSON.parse(this.getAttribute('debug-target'), (k, v) => {
+                                const result = JSON.parse(this.getAttribute('debug-target'), (k, v) => {
                                     if (k === "") {
-                                        if (Array.isArray(v)) {
-                                            if (v.length === 3) return v.map(child => {
-                                                if (!Array.isArray(v)) {
-                                                    flag = true;
-                                                    throw new Error("debug-target (but isn't nand, it's normal-form-0010 ... length must be 3) is wrong format. it must be multidimensional array of json (when nand : string array) (TIP : NON-ARRAY)");
-                                                }
-                                                return JSON.stringify(child);
-                                            });
-                                        }
-                                        throw new Error("debug-target (but isn't nand, it's normal-form-0010 ... length must be 3) is wrong format. it must be multidimensional array of json (when nand : string array) (TIP : NON-ARRAY-JSON-OR-NON-FIT-LENGTH-OR-NON-JSON)");
+                                        if (Array.isArray(v)) return v;
+                                        throw new Error("debug-target (but isn't nand, it's normal-form-0010 ... length must be 3) is wrong format. it must be multidimensional array of json (when nand : string array) (TIP : NON-ARRAY-JSON-OR-NON-JSON)");
                                     }
+                                }).map(child => {
+                                    if (!Array.isArray(v)) {
+                                        flag = true;
+                                        throw new Error("debug-target (but isn't nand, it's normal-form-0010 ... length must be 3) is wrong format. it must be multidimensional array of json (when nand : string array) (TIP : NON-ARRAY)");
+                                    }
+                                    return JSON.stringify(child);
                                 });
+                                if (v.length !== 3) {
+                                    flag = null;
+                                    throw new Error("debug-target (but isn't nand, it's normal-form-0010 ... length must be 3) is wrong format. it must be multidimensional array of json (when nand : string array) (TIP : NON-FIT-LENGTH)");
+                                }
+                                return result;
                             } catch {
-                                console.warn(`debug-target (but isn't nand, it's normal-form-0010 ... length must be 3) is wrong format. it must be multidimensional array of json (when nand : string array) (tip : NON-${flag?'STRING':'ARRAY-JSON-OR-NON-FIT-LENGTH-OR-NON-JSON'})`);
+                                console.warn(`debug-target (but isn't nand, it's normal-form-0010 ... length must be 3) is wrong format. it must be multidimensional array of json (when nand : string array) (tip : NON-${(flag===null)?'FIT-LENGTH':flag?'STRING':'ARRAY-JSON-OR-NON-JSON'})`);
                                 return;
                             }
                         }
@@ -1349,22 +1369,25 @@ export class DevEzbus extends HTMLElement {
                             let flag = false;
                             if (!this.hasAttribute('debug-target')) return;
                             try {
-                                return JSON.parse(this.getAttribute('debug-target'), (k, v) => {
+                                const result = JSON.parse(this.getAttribute('debug-target'), (k, v) => {
                                     if (k === "") {
-                                        if (Array.isArray(v)) {
-                                            if (v.length === 3) return v.map(child => {
-                                                if (!Array.isArray(v)) {
-                                                    flag = true;
-                                                    throw new Error("debug-target (but isn't nand, it's normal-form-0100 ... length must be 3) is wrong format. it must be multidimensional array of json (when nand : string array) (TIP : NON-ARRAY)");
-                                                }
-                                                return JSON.stringify(child);
-                                            });
-                                        }
-                                        throw new Error("debug-target (but isn't nand, it's normal-form-0100 ... length must be 3) is wrong format. it must be multidimensional array of json (when nand : string array) (TIP : NON-ARRAY-JSON-OR-NON-FIT-LENGTH-OR-NON-JSON)");
+                                        if (Array.isArray(v)) return v;
+                                        throw new Error("debug-target (but isn't nand, it's normal-form-0100 ... length must be 3) is wrong format. it must be multidimensional array of json (when nand : string array) (TIP : NON-ARRAY-JSON-OR-NON-JSON)");
                                     }
+                                }).map(child => {
+                                    if (!Array.isArray(v)) {
+                                        flag = true;
+                                        throw new Error("debug-target (but isn't nand, it's normal-form-0100 ... length must be 3) is wrong format. it must be multidimensional array of json (when nand : string array) (TIP : NON-ARRAY)");
+                                    }
+                                    return JSON.stringify(child);
                                 });
+                                if (v.length !== 3) {
+                                    flag = null;
+                                    throw new Error("debug-target (but isn't nand, it's normal-form-0100 ... length must be 3) is wrong format. it must be multidimensional array of json (when nand : string array) (TIP : NON-FIT-LENGTH)");
+                                }
+                                return result;
                             } catch {
-                                console.warn(`debug-target (but isn't nand, it's normal-form-0100 ... length must be 3) is wrong format. it must be multidimensional array of json (when nand : string array) (tip : NON-${flag?'STRING':'ARRAY-JSON-OR-NON-FIT-LENGTH-OR-NON-JSON'})`);
+                                console.warn(`debug-target (but isn't nand, it's normal-form-0100 ... length must be 3) is wrong format. it must be multidimensional array of json (when nand : string array) (tip : NON-${(flag===null)?'FIT-LENGTH':flag?'STRING':'ARRAY-JSON-OR-NON-FIT-LENGTH-OR-NON-JSON'})`);
                                 return;
                             }
                         }
