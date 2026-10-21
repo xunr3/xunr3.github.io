@@ -622,8 +622,8 @@ export class DevEzbus extends HTMLElement {
                             let classv = this.hasAttribute("class")?this.getAttribute("class"):'';
                             if (!(classv.includes("debug-boxed"))) this.setAttribute("class", classv?`${classv} debug-boxed`:"debug-boxed");
                             
-                            let i = this.dataI?` data-i0=${this.dataI} data-i1=${this.dataI}`:'';
-                            let o = this.dataO?` data-o=${this.dataO}`:'';
+                            let i = this.dataI?` data-i0="${this.dataI}" data-i1="${this.dataI}"`:'';
+                            let o = this.dataO?` data-o="${this.dataO}"`:'';
 
                             this.innerHTML = `<div class="debug-calm-box"><div class="devezbus-debugbox" devezbus-debugpanel="mod15-pan15"${debugMarkup}><p  class="devezbus-debughint" devezbus-debugpanel="mod15-pan15"> not(x) = nand(x, x) : </p><dev-ezbus-nand${i}${o}${debugtarget}></dev-ezbus-nand></div></div>`;
                         }
@@ -738,9 +738,9 @@ export class DevEzbus extends HTMLElement {
                             classv = this.hasAttribute("class")?this.getAttribute("class"):'';
                             if (!(classv.includes("debug-boxed"))) this.setAttribute("class", classv?`${classv} debug-boxed`:"debug-boxed");
                             
-                            let i0 = this.dataI0?` data-i0=${this.dataI0}`:'';
-                            let i1 = this.dataI1?` data-i1=${this.dataI1}`:'';
-                            let o = this.dataO?` data-o=${this.dataO}`:'';
+                            let i0 = this.dataI0?` data-i0="${this.dataI0}"`:'';
+                            let i1 = this.dataI1?` data-i1="${this.dataI1}"`:'';
+                            let o = this.dataO?` data-o="${this.dataO}"`:'';
 
                             this.innerHTML = `<div class="debug-calm-box"><div class="devezbus-debugbox" devezbus-debugpanel="mod15-pan15"${debugMarkup[0]}><p class="devezbus-debughint" devezbus-debugpanel="mod15-pan15"> (and) wps-w15-i15 = nand(i0, i1)-o : </p><dev-ezbus-nand${i0}${i1} data-o="wps-w15-i15"${debugtarget[0]}></dev-ezbus-nand></div><div class="devezbus-debugbox" devezbus-debugpanel="mod15-pan14"${debugMarkup[1]}><p class="devezbus-debughint" devezbus-debugpanel="mod15-pan14"> (and) o = not(wps-w15-o15) : </p><dev-ezbus-not data-i="wps-w15-o15"${o}${debugtarget[1]}></dev-ezbus-not></div></div>`;
                         }
