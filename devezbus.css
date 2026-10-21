@@ -12,17 +12,18 @@
   }*/
 
   .debug-boxed[debug-target] {
-      --debug-boxed-display: inline-block;
+      --debug-boxed-content-visibility: visible;
       --debug-boxed-border: 1px solid #333333;
   }
 
   :root {
-      --debug-boxed-display: none;
+      --debug-boxed-content-visibility: hidden;
       --debug-boxed-border: none;
   }
 
   .debug-calm-box {
-      display: var(--debug-boxed-display);
+      display: inline-block;
+      content-visibility: var(--debug-boxed-content-visibility);
       border: var(--debug-boxed-border);
   }
 
