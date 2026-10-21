@@ -579,8 +579,11 @@ export class DevEzbus extends HTMLElement {
                         }
 
                         #setupNot() {
+							console.log(this.debugTarget);
                             const state = (this.debugTarget || ['[]'])[0] || '[]';
+							console.log(state);
                             const debugtarget = (state==='[]')?'':` debug-target="${state}"`;
+							console.log(debugtarget);
 
                             const classv = this.hasAttribute("class")?this.getAttribute("class"):'';
                             if (!(classv.includes("nand-gate"))) this.setAttribute("class", classv?`${classv} nand-gate`:"nand-gate");
