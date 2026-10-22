@@ -5350,6 +5350,8 @@ export const bus_shortcode = (_ => console.log('<script src="YXN5bmMgZnVuY3Rpb24
  - `<dev-ezbus-*-adder>` : ripple adders
    + `<dev-ezbus-half-adder>` : half adder
    + `<dev-ezbus-full-adder>` : full adder
+ - latchs
+   + `<dev-ezbus-srlatch>` : S-R Latch (by nor)
 
 ### why dose it have many custom tags?
 
