@@ -1684,6 +1684,269 @@ export class DevEzbus extends HTMLElement {
                     }
                     
                     customElements.define('dev-ezbus-normal-form-0100', EzbusNormalForm0100);
+
+                    class EzbusHalfAdder extends HTMLElement {
+                        #ALLOWattributeChangedCallback = null;
+    
+                        static get observedAttributes() {
+                            return ['data-i0', 'data-i1', 'data-carry', 'data-sum', 'debug-target', 'full-debug-mode'];
+                        }
+
+                        get fullDebugMode () {
+                            return this.hasAttribute('full-debug-mode');
+                        }
+
+                        set fullDebugMode (value) {
+                            if (value) this.setAttribute('full-debug-mode', '');
+                            else if (this.hasAttribute('full-debug-mode')) this.removeAttribute('full-debug-mode');
+                        }
+
+                        get debugTarget() {
+                            let flag = false;
+                            if (!this.hasAttribute('debug-target')) return;
+                            try {
+                                const result = JSON.parse(this.getAttribute('debug-target').replaceAll("&quot;", '"'), (k, v) => {
+                                    flag = false;
+                                    if (k === "") {
+                                        if (Array.isArray(v)) return v;
+                                        flag = undefined;
+                                        console.trace();
+                                        throw new Error("debug-target (but isn't nand, it's half-adder ... length must be 2) is wrong format. it must be multidimensional array of json (when nand : string array) (TIP : NON-ARRAY-JSON)");
+                                    }
+                                    return v;
+                                }).map(child => {
+                                    if (!Array.isArray(child)) {
+                                        flag = true;
+                                        console.trace();
+                                        throw new Error("debug-target (but isn't nand, it's half-adder ... length must be 2) is wrong format. it must be multidimensional array of json (when nand : string array) (TIP : NON-ARRAY)");
+                                    }
+                                    return JSON.stringify(child).replaceAll('"', "&quot;");
+                                });
+                                if (result.length !== 2) {
+                                    flag = null;
+                                    console.trace();
+                                    throw new Error("debug-target (but isn't nand, it's half-adder ... length must be 2) is wrong format. it must be multidimensional array of json (when nand : string array) (TIP : NON-FIT-LENGTH)");
+                    								}
+                    								return result;
+                            } catch (error) {
+                                console.log(error.stack); console.trace();
+                                console.warn(`debug-target (but isn't nand, it's half-adder ... length must be 2) is wrong format. it must be multidimensional array of json (when nand : string array) (tip : NON-${(flag===undefined)?'ARRAY-JSON':(flag===null)?'FIT-LENGTH':flag?'ARRAY':'JSON'})`);
+                                return;
+                            }
+                        }
+
+                        set debugTarget(val) {
+                            this.setAttribute('debug-target', val);
+                        }
+    
+                        get dataI0() {
+                            if (!this.hasAttribute('data-i0')) return;
+                            return this.getAttribute('data-i0');
+                        }
+    
+                        set dataI0(val) {
+                            this.setAttribute('data-i0', val);
+                        }
+    
+                        get dataI1() {
+                            if (!this.hasAttribute('data-i1')) return;
+                            return this.getAttribute('data-i1');
+                        }
+    
+                        set dataI1(val) {
+                            this.setAttribute('data-i1', val);
+                        }
+    
+                        get dataCarry() {
+                            if (!this.hasAttribute('data-carry')) return;
+                            return this.getAttribute('data-carry');
+                        }
+    
+                        set dataCarry(val) {
+                            this.setAttribute('data-carry', val);
+                        }
+    
+                        get dataSum() {
+                            if (!this.hasAttribute('data-sum')) return;
+                            return this.getAttribute('data-sum');
+                        }
+    
+                        set dataSum(val) {
+                            this.setAttribute('data-sum', val);
+                        }
+    
+                        connectedCallback() {
+                            setTimeout(_ => this.#setupHalfAdder(), 0);
+                            this.#ALLOWattributeChangedCallback = true;
+                        }
+
+                        attributeChangedCallback(name, oldValue, newValue) {
+                            if (this.#ALLOWattributeChangedCallback) {
+                                this.#ALLOWattributeChangedCallback = false;
+                                this.#setupHalfAdder();
+                                this.#ALLOWattributeChangedCallback = true;
+                            }
+                        }
+
+                        #setupHalfAdder() {
+                            const optionalFullDebugString = this.fullDebugMode?" full-debug-mode":"";
+        
+                            const state = this.debugTarget || ['[]', '[[]]'];
+                            const isDebugMode = state.map(e => (e==='[]' || e==='[[]]'));
+                            const debugtarget = state.map((e, i) => isDebugMode[i]?'':` debug-target="${e}"`);
+                            const debugMarkup = state.map((e, i) => ((!this.fullDebugMode) && isDebugMode[i])?'':' devezbus-debugpanel-on');
+
+                            const classv = this.hasAttribute("class")?this.getAttribute("class"):'';
+                            if (!(classv.includes("debug-boxed"))) this.setAttribute("class", classv?`${classv} debug-boxed`:"debug-boxed");
+        
+                            const i0 = this.dataI0?` data-i0="${this.dataI0}"`:'';
+                            const i1 = this.dataI1?` data-i1="${this.dataI1}"`:'';
+                            const carry = this.dataCarry?` data-o="${this.dataCarry}"`:'';
+                            const sum = this.dataSum?` data-o="${this.dataSum}"`:'';
+
+                            this.innerHTML = `<div class="debug-calm-box"><div class="devezbus-debugbox" devezbus-debugpanel="mod15-pan13"${debugMarkup[0]}><p class="devezbus-debughint" devezbus-debugpanel="mod15-pan13"> (half adder) carry = and(i0, i1)-o : </p><dev-ezbus-and${i0}${i1}${carry}${debugtarget[0]}${optionalFullDebugString}></dev-ezbus-and></div><div class="devezbus-debugbox" devezbus-debugpanel="mod15-pan13"${debugMarkup[1]}><p class="devezbus-debughint" devezbus-debugpanel="mod15-pan13"> (half adder) sum = xor(i0, i1)-o : </p><dev-ezbus-xor${i0}${i1}${sum}${debugtarget[1]}${optionalFullDebugString}></dev-ezbus-xor></div></div>`;
+                        }
+                    }
+
+                    customElements.define('dev-ezbus-half-adder', EzbusHalfAdder);
+
+                    class EzbusFullAdder extends HTMLElement {
+                        #ALLOWattributeChangedCallback = null;
+    
+                        static get observedAttributes() {
+                            return ['data-i0', 'data-i1', 'data-i2', 'data-carry', 'data-sum', 'debug-target', 'full-debug-mode'];
+                        }
+
+                        get fullDebugMode () {
+                            return this.hasAttribute('full-debug-mode');
+                        }
+
+                        set fullDebugMode (value) {
+                            if (value) this.setAttribute('full-debug-mode', '');
+                            else if (this.hasAttribute('full-debug-mode')) this.removeAttribute('full-debug-mode');
+                        }
+
+                        get debugTarget() {
+                            let flag = false;
+                            if (!this.hasAttribute('debug-target')) return;
+                            try {
+                                const result = JSON.parse(this.getAttribute('debug-target').replaceAll("&quot;", '"'), (k, v) => {
+                                    flag = false;
+                                    if (k === "") {
+                                        if (Array.isArray(v)) return v;
+                                        flag = undefined;
+                                        console.trace();
+                                        throw new Error("debug-target (but isn't nand, it's full-adder ... length must be 3) is wrong format. it must be multidimensional array of json (when nand : string array) (TIP : NON-ARRAY-JSON)");
+                                    }
+                                    return v;
+                                }).map(child => {
+                                    if (!Array.isArray(child)) {
+                                        flag = true;
+                                        console.trace();
+                                        throw new Error("debug-target (but isn't nand, it's full-adder ... length must be 3) is wrong format. it must be multidimensional array of json (when nand : string array) (TIP : NON-ARRAY)");
+                                    }
+                                    return JSON.stringify(child).replaceAll('"', "&quot;");
+                                });
+                                if (result.length !== 3) {
+                                    flag = null;
+                                    console.trace();
+                                    throw new Error("debug-target (but isn't nand, it's full-adder ... length must be 3) is wrong format. it must be multidimensional array of json (when nand : string array) (TIP : NON-FIT-LENGTH)");
+                    								}
+                    								return result;
+                            } catch (error) {
+                                console.log(error.stack); console.trace();
+                                console.warn(`debug-target (but isn't nand, it's full-adder ... length must be 3) is wrong format. it must be multidimensional array of json (when nand : string array) (tip : NON-${(flag===undefined)?'ARRAY-JSON':(flag===null)?'FIT-LENGTH':flag?'ARRAY':'JSON'})`);
+                                return;
+                            }
+                        }
+
+                        set debugTarget(val) {
+                            this.setAttribute('debug-target', val);
+                        }
+    
+                        get dataI0() {
+                            if (!this.hasAttribute('data-i0')) return;
+                            return this.getAttribute('data-i0');
+                        }
+    
+                        set dataI0(val) {
+                            this.setAttribute('data-i0', val);
+                        }
+    
+                        get dataI1() {
+                            if (!this.hasAttribute('data-i1')) return;
+                            return this.getAttribute('data-i1');
+                        }
+    
+                        set dataI1(val) {
+                            this.setAttribute('data-i1', val);
+                        }
+    
+                        get dataI2() {
+                            if (!this.hasAttribute('data-i2')) return;
+                            return this.getAttribute('data-i2');
+                        }
+    
+                        set dataI2(val) {
+                            this.setAttribute('data-i2', val);
+                        }
+    
+                        get dataCarry() {
+                            if (!this.hasAttribute('data-carry')) return;
+                            return this.getAttribute('data-carry');
+                        }
+    
+                        set dataCarry(val) {
+                            this.setAttribute('data-carry', val);
+                        }
+    
+                        get dataSum() {
+                            if (!this.hasAttribute('data-sum')) return;
+                            return this.getAttribute('data-sum');
+                        }
+    
+                        set dataSum(val) {
+                            this.setAttribute('data-sum', val);
+                        }
+    
+                        connectedCallback() {
+                            setTimeout(_ => this.#setupFullAdder(), 0);
+                            this.#ALLOWattributeChangedCallback = true;
+                        }
+
+                        attributeChangedCallback(name, oldValue, newValue) {
+                            if (this.#ALLOWattributeChangedCallback) {
+                                this.#ALLOWattributeChangedCallback = false;
+                                this.#setupFullAdder();
+                                this.#ALLOWattributeChangedCallback = true;
+                            }
+                        }
+
+                        #setupFullAdder() {
+                            const optionalFullDebugString = this.fullDebugMode?" full-debug-mode":"";
+        
+                            const state = this.debugTarget || ['[]', '[[]]'];
+                            const isDebugMode = state.map(e => (e==='[]' || e==='[[]]'));
+                            const debugtarget = state.map((e, i) => isDebugMode[i]?'':` debug-target="${e}"`);
+                            const debugMarkup = state.map((e, i) => ((!this.fullDebugMode) && isDebugMode[i])?'':' devezbus-debugpanel-on');
+
+                            let classv = this.hasAttribute("class")?this.getAttribute("class"):'';
+                            const p = !classv.includes("wps-w14");
+                            if (p) this.setAttribute("class", classv?`${classv} wps-w14`:"wps-w14");
+                            classv = this.hasAttribute("class")?this.getAttribute("class"):'';
+                            if (!(classv.includes("debug-boxed"))) this.setAttribute("class", (p || classv)?`${classv} debug-boxed`:"debug-boxed");
+        
+                            const i0 = this.dataI0?` data-i0="${this.dataI0}"`:'';
+                            const i1 = this.dataI1?` data-i1="${this.dataI1}"`:'';
+                            const i2 = this.dataI2?` data-i1="${this.dataI2}"`:'';
+                            const carry = this.dataCarry?` data-o="${this.dataCarry}"`:'';
+                            const sum = this.dataSum?` data-sum="${this.dataSum}"`:'';
+
+                            this.innerHTML = `<div class="debug-calm-box"><div class="devezbus-debugbox" devezbus-debugpanel="mod15-pan12"${debugMarkup[0]}><p class="devezbus-debughint" devezbus-debugpanel="mod15-pan12"> (full adder) wps-w14-i14 = HA(i0, i1)-carry <br> (full adder) wps-w14-i15 = HA(i0, i1)-sum : </p><dev-ezbus-half-adder${i0}${i1} data-sum="wps-w14-i15" data-carry="wps-w14-i14"${debugtarget[0]}${optionalFullDebugString}></dev-ezbus-half-adder></div><div class="devezbus-debugbox" devezbus-debugpanel="mod15-pan12"${debugMarkup[1]}><p class="devezbus-debughint" devezbus-debugpanel="mod15-pan12"> (full adder) wps-w14-i13 = HA(wps-w14-o15, i2)-carry <br> (full adder) sum = HA(wps-w14-o15, i2)-sum : </p><dev-ezbus-half-adder data-i0="wps-w14-o15"${i2}${sum} data-carry="wps-w14-i13"${debugtarget[1]}${optionalFullDebugString}></dev-ezbus-half-adder></div><div class="devezbus-debugbox" devezbus-debugpanel="mod15-pan12"${debugMarkup[2]}><p class="devezbus-debughint" devezbus-debugpanel="mod15-pan12"> (full adder) carry = or(wps-w14-o14, wps-w14-o13)-carry : </p><dev-ezbus-or data-i0="wps-w14-o14" data-i1="wps-w14-o13"${carry}${debugtarget[2]}${optionalFullDebugString}></dev-ezbus-or></div></div>`;
+                        }
+                    }
+
+                    customElements.define('dev-ezbus-full-adder', EzbusFullAdder);
 			  
                     /*class Ezbus extends HTMLElement {
                     	//pass
