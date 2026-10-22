@@ -5382,7 +5382,7 @@ for styling debugmode panel
       flex-direction: row;
   }*/
 
-  .debug-boxed[debug-target] {
+  .debug-boxed:is([debug-target], [full-debug-mode]) {
       --debug-boxed-transform: initial;
       --debug-boxed-position: initial;
       --debug-boxed-overflow: initial;
