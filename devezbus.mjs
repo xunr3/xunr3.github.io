@@ -1952,7 +1952,7 @@ export class DevEzbus extends HTMLElement {
                         #ALLOWattributeChangedCallback = null;
                         
                         static get observedAttributes() {
-                            return ['data-i0', 'data-i1', 'data-o', 'debug-target', 'full-debug-mode'];
+                            return ['data-set', 'data-reset', 'data-o', 'debug-target', 'full-debug-mode'];
                         }
 
                         get fullDebugMode () {
