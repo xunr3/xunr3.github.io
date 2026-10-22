@@ -10319,9 +10319,8 @@ export const devezbus_shortcode = (_ => console.log('IT CANNOT HAVE AN SHORTCODE
                 </dev-ezbus-box>
             </div>
 
-            <div class="wps-w0">
-                <dev-ezbus-nor data-i0="wps-p0-o0" data-i1="wps-w0-o1" data-o="wps-w0-i0" full-debug-mode></dev-ezbus-nor>
-                <dev-ezbus-nor data-i0="wps-w0-o0" data-i1="wps-p0-o1" data-o="wps-w0-i1 wps-p0-i2" full-debug-mode></dev-ezbus-nor>
+            <div>
+                <dev-ezbus-srlatch data-set="wps-p0-o0" data-reset="wps-p0-o1" data-o="wps-p0-i2" full-debug-mode></dev-ezbus-srlatch>
             </div>
 
         </div>
@@ -10364,9 +10363,8 @@ export const devezbus_shortcode = (_ => console.log('IT CANNOT HAVE AN SHORTCODE
                 </dev-ezbus-box>
             </div>
 
-            <div class="wps-w0">
-                <dev-ezbus-nor data-i0="wps-p0-o0" data-i1="wps-w0-o1" data-o="wps-w0-i0"></dev-ezbus-nor>
-                <dev-ezbus-nor data-i0="wps-w0-o0" data-i1="wps-p0-o1" data-o="wps-w0-i1 wps-p0-i2"></dev-ezbus-nor>
+            <div>
+                <dev-ezbus-srlatch data-set="wps-p0-o0" data-reset="wps-p0-o1" data-o="wps-p0-i2"></dev-ezbus-srlatch>
             </div>
 
         </div>
@@ -10390,9 +10388,8 @@ export const devezbus_shortcode = (_ => console.log('IT CANNOT HAVE AN SHORTCODE
                 </dev-ezbus-box>
             </div>
 
-            <div class="wps-w0">
-                <dev-ezbus-nor data-i0="wps-p0-o0" data-i1="wps-w0-o1" data-o="wps-w0-i0"></dev-ezbus-nor>
-                <dev-ezbus-nor data-i0="wps-w0-o0" data-i1="wps-p0-o1" data-o="wps-w0-i1 wps-p0-i2"></dev-ezbus-nor>
+            <div>
+                <dev-ezbus-srlatch data-set="wps-p0-o0" data-reset="wps-p0-o1" data-o="wps-p0-i2"></dev-ezbus-srlatch>
             </div>
 
         </div>
@@ -10416,9 +10413,8 @@ export const devezbus_shortcode = (_ => console.log('IT CANNOT HAVE AN SHORTCODE
                 </dev-ezbus-box>
             </div>
 
-            <div class="wps-w0">
-                <dev-ezbus-nor data-i0="wps-p0-o0" data-i1="wps-w0-o1" data-o="wps-w0-i0"></dev-ezbus-nor>
-                <dev-ezbus-nor data-i0="wps-w0-o0" data-i1="wps-p0-o1" data-o="wps-w0-i1 wps-p0-i2"></dev-ezbus-nor>
+            <div>
+                <dev-ezbus-srlatch data-set="wps-p0-o0" data-reset="wps-p0-o1" data-o="wps-p0-i2"></dev-ezbus-srlatch>
             </div>
 
         </div>
@@ -10442,9 +10438,8 @@ export const devezbus_shortcode = (_ => console.log('IT CANNOT HAVE AN SHORTCODE
                 </dev-ezbus-box>
             </div>
 
-            <div class="wps-w0">
-                <dev-ezbus-nor data-i0="wps-p0-o0" data-i1="wps-w0-o1" data-o="wps-w0-i0"></dev-ezbus-nor>
-                <dev-ezbus-nor data-i0="wps-w0-o0" data-i1="wps-p0-o1" data-o="wps-w0-i1 wps-p0-i2"></dev-ezbus-nor>
+            <div>
+                <dev-ezbus-srlatch data-set="wps-p0-o0" data-reset="wps-p0-o1" data-o="wps-p0-i2"></dev-ezbus-srlatch>
             </div>
 
         </div>
@@ -10468,9 +10463,8 @@ export const devezbus_shortcode = (_ => console.log('IT CANNOT HAVE AN SHORTCODE
                 </dev-ezbus-box>
             </div>
 
-            <div class="wps-w0">
-                <dev-ezbus-nor data-i0="wps-p0-o0" data-i1="wps-w0-o1" data-o="wps-w0-i0"></dev-ezbus-nor>
-                <dev-ezbus-nor data-i0="wps-w0-o0" data-i1="wps-p0-o1" data-o="wps-w0-i1 wps-p0-i2"></dev-ezbus-nor>
+            <div>
+                <dev-ezbus-srlatch data-set="wps-p0-o0" data-reset="wps-p0-o1" data-o="wps-p0-i2"></dev-ezbus-srlatch>
             </div>
 
         </div>
@@ -10494,9 +10488,8 @@ export const devezbus_shortcode = (_ => console.log('IT CANNOT HAVE AN SHORTCODE
                 </dev-ezbus-box>
             </div>
 
-            <div class="wps-w0">
-                <dev-ezbus-nor data-i0="wps-p0-o0" data-i1="wps-w0-o1" data-o="wps-w0-i0"></dev-ezbus-nor>
-                <dev-ezbus-nor data-i0="wps-w0-o0" data-i1="wps-p0-o1" data-o="wps-w0-i1 wps-p0-i2"></dev-ezbus-nor>
+            <div>
+                <dev-ezbus-srlatch data-set="wps-p0-o0" data-reset="wps-p0-o1" data-o="wps-p0-i2"></dev-ezbus-srlatch>
             </div>
 
         </div>
@@ -10520,9 +10513,8 @@ export const devezbus_shortcode = (_ => console.log('IT CANNOT HAVE AN SHORTCODE
                 </dev-ezbus-box>
             </div>
 
-            <div class="wps-w0">
-                <dev-ezbus-nor data-i0="wps-p0-o0" data-i1="wps-w0-o1" data-o="wps-w0-i0"></dev-ezbus-nor>
-                <dev-ezbus-nor data-i0="wps-w0-o0" data-i1="wps-p0-o1" data-o="wps-w0-i1 wps-p0-i2"></dev-ezbus-nor>
+            <div>
+                <dev-ezbus-srlatch data-set="wps-p0-o0" data-reset="wps-p0-o1" data-o="wps-p0-i2"></dev-ezbus-srlatch>
             </div>
 
         </div>
@@ -10546,9 +10538,8 @@ export const devezbus_shortcode = (_ => console.log('IT CANNOT HAVE AN SHORTCODE
                 </dev-ezbus-box>
             </div>
 
-            <div class="wps-w0">
-                <dev-ezbus-nor data-i0="wps-p0-o0" data-i1="wps-w0-o1" data-o="wps-w0-i0"></dev-ezbus-nor>
-                <dev-ezbus-nor data-i0="wps-w0-o0" data-i1="wps-p0-o1" data-o="wps-w0-i1 wps-p0-i2"></dev-ezbus-nor>
+            <div>
+                <dev-ezbus-srlatch data-set="wps-p0-o0" data-reset="wps-p0-o1" data-o="wps-p0-i2"></dev-ezbus-srlatch>
             </div>
 
         </div>
