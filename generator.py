@@ -17,7 +17,7 @@ x = f'''\
       flex-direction: column;
   }}
 
-  .devezbus-debugbox[debug-mode] {{
+  .devezbus-debugbox:is([debug-target], [full-debug-mode]) {{
       display: flex;
       flex-direction: row;
   }}*/
