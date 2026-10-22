@@ -1947,6 +1947,123 @@ export class DevEzbus extends HTMLElement {
                     }
 
                     customElements.define('dev-ezbus-full-adder', EzbusFullAdder);
+
+                    class EzbusSRLatch extends HTMLElement {
+                        #ALLOWattributeChangedCallback = null;
+                        
+                        static get observedAttributes() {
+                            return ['data-i0', 'data-i1', 'data-o', 'debug-target', 'full-debug-mode'];
+                        }
+
+                        get fullDebugMode () {
+                            return this.hasAttribute('full-debug-mode');
+                        }
+
+                        set fullDebugMode (value) {
+                            if (value) this.setAttribute('full-debug-mode', '');
+                            else if (this.hasAttribute('full-debug-mode')) this.removeAttribute('full-debug-mode');
+                        }
+
+                        get debugTarget() {
+                            let flag = false;
+                            if (!this.hasAttribute('debug-target')) return;
+                            try {
+                                const result = JSON.parse(this.getAttribute('debug-target').replaceAll("&quot;", '"'), (k, v) => {
+                                    flag = false;
+                                    if (k === "") {
+                                        if (Array.isArray(v)) return v;
+                                        flag = undefined;
+                                        console.trace();
+                                        throw new Error("debug-target (but isn't nand, it's SRLatch ... length must be 2) is wrong format. it must be multidimensional array of json (when nand : string array) (TIP : NON-ARRAY-JSON)");
+                                    }
+                                    return v;
+                                }).map(child => {
+                                    if (!Array.isArray(child)) {
+                                        flag = true;
+                                        console.trace();
+                                        throw new Error("debug-target (but isn't nand, it's SRLatch ... length must be 2) is wrong format. it must be multidimensional array of json (when nand : string array) (TIP : NON-ARRAY)");
+                                    }
+                                    return JSON.stringify(child).replaceAll('"', "&quot;");
+                                });
+                                if (result.length !== 2) {
+                                    flag = null;
+                                    console.trace();
+                                    throw new Error("debug-target (but isn't nand, it's SRLatch ... length must be 2) is wrong format. it must be multidimensional array of json (when nand : string array) (TIP : NON-FIT-LENGTH)");
+                    			}
+                    			return result;
+                            } catch (error) {
+                                console.log(error.stack); console.trace();
+                                console.warn(`debug-target (but isn't nand, it's SRLatch ... length must be 2) is wrong format. it must be multidimensional array of json (when nand : string array) (tip : NON-${(flag===undefined)?'ARRAY-JSON':(flag===null)?'FIT-LENGTH':flag?'ARRAY':'JSON'})`);
+                                return;
+                            }
+                        }
+
+                        set debugTarget(val) {
+                            this.setAttribute('debug-target', val);
+                        }
+                        
+                        get dataSet() {
+                            if (!this.hasAttribute('data-set')) return;
+                            return this.getAttribute('data-set');
+                        }
+                        
+                        set dataSet(val) {
+                            this.setAttribute('data-set', val);
+                        }
+                        
+                        get dataReset() {
+                            if (!this.hasAttribute('data-reset')) return;
+                            return this.getAttribute('data-reset');
+                        }
+                        
+                        set dataReset(val) {
+                            this.setAttribute('data-reset', val);
+                        }
+                        
+                        get dataO() {
+                            if (!this.hasAttribute('data-o')) return;
+                            return this.getAttribute('data-o');
+                        }
+                        
+                        set dataO(val) {
+                            this.setAttribute('data-o', val);
+                        }
+                        
+                        connectedCallback() {
+                            setTimeout(_ => this.#setupSRLatch(), 0);
+                            this.#ALLOWattributeChangedCallback = true;
+                        }
+
+                        attributeChangedCallback(name, oldValue, newValue) {
+                            if (this.#ALLOWattributeChangedCallback) {
+                                this.#ALLOWattributeChangedCallback = false;
+                                this.#setupSRLatch();
+                                this.#ALLOWattributeChangedCallback = true;
+                            }
+                        }
+
+                        #setupSRLatch() {
+                            const optionalFullDebugString = this.fullDebugMode?" full-debug-mode":"";
+
+                            const state = this.debugTarget || ['[]', '[[]]'];
+                            const isDebugMode = state.map(e => (e==='[]' || e==='[[]]'));
+                            const debugtarget = state.map((e, i) => isDebugMode[i]?'':` debug-target="${e}"`);
+                            const debugMarkup = state.map((e, i) => ((!this.fullDebugMode) && isDebugMode[i])?'':' devezbus-debugpanel-on');
+
+                            let classv = this.hasAttribute("class")?this.getAttribute("class"):'';
+                            if (!(classv.includes("wps-w14"))) this.setAttribute("class", classv?`${classv} wps-w14`:"wps-w14");
+                            classv = this.hasAttribute("class")?this.getAttribute("class"):'';
+                            if (!(classv.includes("debug-boxed"))) this.setAttribute("class", classv?`${classv} debug-boxed`:"debug-boxed");
+                            
+                            const s = this.dataSet?` data-i0="${this.dataSet}"`:'';
+                            const r = this.dataReset?` data-i1="${this.dataReset}"`:'';
+                            const o = this.dataO?` data-o="wps-w14-i14 ${this.dataO}"`:' data-o="wps-w14-i14"';
+
+                            this.innerHTML = `<div class="debug-calm-box"><div class="devezbus-debugbox" devezbus-debugpanel="mod15-pan13"${debugMarkup[0]}><p class="devezbus-debughint" devezbus-debugpanel="mod15-pan13"> (nor SR Latch) wps-w15-i15 = nor(i0, wps-w14-o14)-o : </p><dev-ezbus-nor${s} data-i1="wps-w14-o14" data-o="wps-w14-i15"${debugtarget[0]}${optionalFullDebugString}></dev-ezbus-nor></div><div class="devezbus-debugbox" devezbus-debugpanel="mod15-pan13"${debugMarkup[1]}><p class="devezbus-debughint" devezbus-debugpanel="mod15-pan13"> (nor SR Latch) o = wps-w14-i14 = nor(wps-w14-o15, i1)-o : </p><dev-ezbus-nor data-i0="wps-w14-o15"${r}${o}${debugtarget[1]}${optionalFullDebugString}></dev-ezbus-nor></div></div>`;
+                        }
+                    }
+                    
+                    customElements.define('dev-ezbus-srlatch', EzbusSRLatch);
 			  
                     /*class Ezbus extends HTMLElement {
                     	//pass
