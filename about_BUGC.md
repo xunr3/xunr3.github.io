@@ -9549,6 +9549,124 @@ export class DevEzbus extends HTMLElement {
                     
                     customElements.define('dev-ezbus-srlatch', EzbusSRLatch);
 
+                    class EzbusDLatch extends HTMLElement {
+                        #ALLOWattributeChangedCallback = null;
+                        
+                        static get observedAttributes() {
+                            return ['data-data', 'data-enable', 'data-o', 'debug-target', 'full-debug-mode'];
+                        }
+
+                        get fullDebugMode () {
+                            return this.hasAttribute('full-debug-mode');
+                        }
+
+                        set fullDebugMode (value) {
+                            if (value) this.setAttribute('full-debug-mode', '');
+                            else if (this.hasAttribute('full-debug-mode')) this.removeAttribute('full-debug-mode');
+                        }
+
+                        get debugTarget() {
+                            let flag = false;
+                            if (!this.hasAttribute('debug-target')) return;
+                            try {
+                                const result = JSON.parse(this.getAttribute('debug-target').replaceAll("&quot;", '"'), (k, v) => {
+                                    flag = false;
+                                    if (k === "") {
+                                        if (Array.isArray(v)) return v;
+                                        flag = undefined;
+                                        console.trace();
+                                        throw new Error("debug-target (but isn't nand, it's SRLatch ... length must be 4) is wrong format. it must be multidimensional array of json (when nand : string array) (TIP : NON-ARRAY-JSON)");
+                                    }
+                                    return v;
+                                }).map(child => {
+                                    if (!Array.isArray(child)) {
+                                        flag = true;
+                                        console.trace();
+                                        throw new Error("debug-target (but isn't nand, it's D-Latch ... length must be 4) is wrong format. it must be multidimensional array of json (when nand : string array) (TIP : NON-ARRAY)");
+                                    }
+                                    return JSON.stringify(child).replaceAll('"', "&quot;");
+                                });
+                                if (result.length !== 4) {
+                                    flag = null;
+                                    console.trace();
+                                    throw new Error("debug-target (but isn't nand, it's D-Latch ... length must be 4) is wrong format. it must be multidimensional array of json (when nand : string array) (TIP : NON-FIT-LENGTH)");
+                    			}
+                    			return result;
+                            } catch (error) {
+                                console.log(error.stack); console.trace();
+                                console.warn(`debug-target (but isn't nand, it's D-Latch ... length must be 4) is wrong format. it must be multidimensional array of json (when nand : string array) (tip : NON-${(flag===undefined)?'ARRAY-JSON':(flag===null)?'FIT-LENGTH':flag?'ARRAY':'JSON'})`);
+                                return;
+                            }
+                        }
+
+                        set debugTarget(val) {
+                            this.setAttribute('debug-target', val);
+                        }
+                        
+                        get dataData() {
+                            if (!this.hasAttribute('data-data')) return;
+                            return this.getAttribute('data-data');
+                        }
+                        
+                        set dataData(val) {
+                            this.setAttribute('data-data', val);
+                        }
+                        
+                        get dataEnable() {
+                            if (!this.hasAttribute('data-enable')) return;
+                            return this.getAttribute('data-enable');
+                        }
+                        
+                        set dataEnable(val) {
+                            this.setAttribute('data-enable', val);
+                        }
+                        
+                        get dataO() {
+                            if (!this.hasAttribute('data-o')) return;
+                            return this.getAttribute('data-o');
+                        }
+                        
+                        set dataO(val) {
+                            this.setAttribute('data-o', val);
+                        }
+                        
+                        connectedCallback() {
+                            setTimeout(_ => this.#setupDLatch(), 0);
+                            this.#ALLOWattributeChangedCallback = true;
+                        }
+
+                        attributeChangedCallback(name, oldValue, newValue) {
+                            if (this.#ALLOWattributeChangedCallback) {
+                                this.#ALLOWattributeChangedCallback = false;
+                                this.#setupDLatch();
+                                this.#ALLOWattributeChangedCallback = true;
+                            }
+                        }
+
+                        #setupDLatch() {
+                            const optionalFullDebugString = this.fullDebugMode?" full-debug-mode":"";
+
+                            const state = this.debugTarget || ['[]', '[[]]'];
+                            const isDebugMode = state.map(e => (e==='[]' || e==='[[]]'));
+                            const debugtarget = state.map((e, i) => isDebugMode[i]?'':` debug-target="${e}"`);
+                            const debugMarkup = state.map((e, i) => ((!this.fullDebugMode) && isDebugMode[i])?'':' devezbus-debugpanel-on');
+                            const optionalSRstr = ((!this.fullDebugMode) && (isDebugMode[2] || isDebugMode[3]))?['', '']:[' devezbus-debugpanel-on', ' debug-target'];
+
+                            let classv = this.hasAttribute("class")?this.getAttribute("class"):'';
+                            if (!(classv.includes("wps-w14"))) this.setAttribute("class", classv?`${classv} wps-w15`:"wps-w15");
+                            classv = this.hasAttribute("class")?this.getAttribute("class"):'';
+                            if (!(classv.includes("debug-boxed"))) this.setAttribute("class", classv?`${classv} debug-boxed`:"debug-boxed");
+                            
+                            const data = this.dataData?` data-i0="${this.dataData}"`:'';
+                            const enable = this.dataEnable?` data-i1="${this.dataEnable}"`:'';
+                            const o = this.dataO?` ${this.dataO}`:'';
+
+                            this.innerHTML = `<div class="debug-calm-box"><div class="devezbus-debugbox" devezbus-debugpanel="mod15-pan13"${debugMarkup[0]}><p class="devezbus-debughint" devezbus-debugpanel="mod15-pan13"> ((nand) D Latch) wps-w15-i14 = nand(data, enable)-o : </p><dev-ezbus-nand${data}${enable} data-o="wps-w15-i14"${debugtarget[0]}${optionalFullDebugString}></dev-ezbus-nand></div><div class="devezbus-debugbox" devezbus-debugpanel="mod15-pan13"${debugMarkup[1]}><p class="devezbus-debughint" devezbus-debugpanel="mod15-pan13"> ((nand) D Latch) wps-w15-i13 = nf1101(data, enable)-o : </p><dev-ezbus-normal-form-1101${data}${enable} data-o="wps-w15-i13"${debugtarget[1]}${optionalFullDebugString}></dev-ezbus-normal-form-1101></div><div class="devezbus-debugbox" devezbus-debugpanel="mod15-pan12"${optionalSRstr[0]}></div><p class="devezbus-debughint" devezbus-debugpanel="mod15-pan12"> ((nand) D Latch) o = nandsrlatch(wps-w15-o14, wps-w15-o13)-o... so, bellow is nand SR Latch (I don't think that nand srlatch is srlatch. because it dosen't satisfies it's implementation. so, srlatch tag is implemented by nor. so... bellow one is not actually tag) </p><div class="debug-boxed"${optionalSRstr[1]}><div class="debug-calm-box"><div clas="devezbus-debugbox" devezbus-debugpanel="mod15-pan13"${debugMarkup[2]}><p class="devezbus-debughint" devezbus-debugpanel="mod15-pan13"> (nand SR Latch (n.b. this is not tag)) nand SR Latch's output (i.e. output of "THAT" d-latch) = wps-w15-i12 = nand(nand SR Latch's Input 0 (i.e. wps-w15-p14), wps-w15-o11)-o : </p><dev-ezbus-nand data-i0="wps-w15-o14" data-i1="wps-w15-o11" data-o="wps-w15-i12${o}"${debugtarget[2]}${optionalFullDebugString}></dev-ezbus-nand></div><div clas="devezbus-debugbox" devezbus-debugpanel="mod15-pan13"${debugMarkup[3]}><p class="devezbus-debughint" devezbus-debugpanel="mod15-pan13"> (nand SR Latch (n.b. this is not tag)) wps-w15-i11 = nand(wps-w15-i12, nand SR Latch's Input 1 (i.e. wps-w15-p13))-o : </p><dev-ezbus-nand data-i0="wps-w15-o12" data-i1="wps-w15-o13" data-o="wps-w15-i11" full-debug-mode${debugtarget[3]}${optionalFullDebugString}></dev-ezbus-nand></div></div></div></div></div>`;
+                        }
+                    }
+                    
+                    customElements.define('dev-ezbus-dlatch', EzbusDLatch);
+
                     /*class Ezbus extends HTMLElement {
                             //pass
                     }
