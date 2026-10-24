@@ -7526,45 +7526,45 @@ export class DevEzbus extends HTMLElement {
 <style>
     @import url("https://xunr3.github.io/devezbus.css");
     @layer usingBugc{
-            dev-ezbus {
-                    display: block !important;
-                    width: 0 !important;
-                    height: 0 !important;
-                    overflow: hidden !important;
-                    visibility: hidden !important;
-                    pointer-events: none !important;
-                    user-select: none !important;
-            }
+  	  dev-ezbus {
+		    display: block !important;
+		    width: 0 !important;
+		    height: 0 !important;
+	  	  overflow: hidden !important;
+		    visibility: hidden !important;
+	  	  pointer-events: none !important;
+		    user-select: none !important;
+  	  }
     }
 </style>
                     `;
-
+                    
                     class EzbusBox extends HTMLElement {
                         #box = null;
                         #ALLOWattributeChangedCallback = null;
-
+                        
                         connectedCallback() {
                             setTimeout(() => {
-                                    this.#box = Object.assign(document.createElement('anime-box'), {innerHTML: this.innerHTML});
-                                    this.innerHTML = "";
-                                    this.appendChild(this.#box);
-                                    this.#box = this.querySelector('anime-box');
-                                    (async () => {
-                                          while (!this.#box.available) await new Promise(resolve => requestAnimationFrame(resolve));
-                                        this.#compileAttribute();
-                                        this.#ALLOWattributeChangedCallback = true;
-                                    })();
+                            	this.#box = Object.assign(document.createElement('anime-box'), {innerHTML: this.innerHTML});
+                            	this.innerHTML = "";
+                	            this.appendChild(this.#box);
+                            	this.#box = this.querySelector('anime-box');
+                            	(async () => {
+                              	    while (!this.#box.available) await new Promise(resolve => requestAnimationFrame(resolve));
+                            	    this.#compileAttribute();
+                            	    this.#ALLOWattributeChangedCallback = true;
+                            	})();
                             }, 0);
                         }
-
+                        
                         static get observedAttributes() {
                             return ['width', 'height', 'non-checkbox', 'detecter-on', 'debug-mode'];
                         }
-
+                        
                         get nonCheckbox() {
                             return this.hasAttribute('non-checkbox');
                         }
-
+                        
                         set nonCheckbox(val)  {
                             if (val) {
                                 this.setAttribute('non-checkbox', '');
@@ -7572,11 +7572,11 @@ export class DevEzbus extends HTMLElement {
                                 this.removeAttribute('non-checkbox');
                             }
                         }
-
+                        
                         get detecterOn() {
                             return this.hasAttribute('detecter-on');
                         }
-
+                        
                         set detecterOn(val)  {
                             if (val) {
                                 this.setAttribute('detecter-on', '');
@@ -7584,11 +7584,11 @@ export class DevEzbus extends HTMLElement {
                                 this.removeAttribute('detecter-on');
                             }
                         }
-
+                        
                         get debugMode() {
                             return this.hasAttribute('debug-mode');
                         }
-
+                        
                         set debugMode(val)  {
                             if (val) {
                                 this.setAttribute('debug-mode', '');
@@ -7596,25 +7596,25 @@ export class DevEzbus extends HTMLElement {
                                 this.removeAttribute('debug-mode');
                             }
                         }
-
+                        
                         get width() {
                             if (!this.hasAttribute('width')) return;
                             return this.getAttribute('width');
                         }
-
+                        
                         set width(value) {
                             this.setAttribute('width', value);
                         }
-
+                        
                         get height() {
                             if (!this.hasAttribute('height')) return;
                             return this.getAttribute('height');
                         }
-
+                        
                         set height(value) {
                             this.setAttribute('height', value);
                         }
-
+                        
                         #compileAttribute() {
                             if (this.#ALLOWattributeChangedCallback === null) {
                                 if (this.width) {
@@ -7633,7 +7633,7 @@ export class DevEzbus extends HTMLElement {
                                 } else {
                                     this.#setupDetecterOn(this.detecterOn);
                                 }
-                                                        } else if (this.#ALLOWattributeChangedCallback) {
+							} else if (this.#ALLOWattributeChangedCallback) {
                                 this.#ALLOWattributeChangedCallback = false;
                                 if (this.width) {
                                     this.#setupWidth();
@@ -7654,52 +7654,52 @@ export class DevEzbus extends HTMLElement {
                                 this.#ALLOWattributeChangedCallback = true;
                             }
                         }
-
+                        
                         attributeChangedCallback(name, oldValue, newValue) {
                             if (this.#ALLOWattributeChangedCallback !== null) this.#compileAttribute();
                         }
-
+                        
                         #setupWidth() {
                             this.#box.width = this.width;
                         }
-
+                        
                         #removeWidth() {
-                                if (this.#box.hasAttribute("width")) this.#box.removeAttribute("width");
+                        	if (this.#box.hasAttribute("width")) this.#box.removeAttribute("width");
                         }
-
+                        
                         #setupHeight() {
                             this.#box.height = this.height;
                         }
-
+                        
                         #removeHeight() {
-                                if (this.#box.hasAttribute("height")) this.#box.removeAttribute("height");
+                        	if (this.#box.hasAttribute("height")) this.#box.removeAttribute("height");
                         }
-
+                        
                         #setupNonCheckbox() {
                             this.#box.animeInputTargeting = this.nonCheckbox;
                         }
-
+                        
                         #setupDetecterOn(isDetecterOn) {
                             this.#box.animeBoxBordering = isDetecterOn;
                             this.#box.animeColoring = isDetecterOn;
                         }
                     }
-
+                    
                     customElements.define('dev-ezbus-box', EzbusBox);
-
+                    
                     const alerters = [["devezbus", "devezbus_webcode", "devezbus_shortcode"], ["bugc", "bugc_webcode", "bugc_shortcode"], ["bus", "bus_webcode", "bus_shortcode"], ["ab", "ab_webcode", "ab_shortcode"], ["af", "af_webcode", "af_shortcode"]];
-
+                    
                     for (const name of alerters) {
                         customElements.define(`dev-ezbus-alert-${name[0]}`, class extends HTMLElement {
                             #name1 = name[1];
                             #name2 = name[2];
-
+                            
                             connectedCallback() {
                                 this.innerHTML = `<button onclick="log2alert(${this.#name1})"> click to alert about ${this.#name1} </button><button onclick="log2alert(${this.#name2})"> click to alert about ${this.#name2} </button>`;
                             }
                         });
                     }
-
+                    
                     class EzbusInfo extends HTMLElement {
                         connectedCallback() {
                             this.innerHTML = `
@@ -7901,12 +7901,12 @@ export class DevEzbus extends HTMLElement {
                             `;
                         }
                     }
-
+                    
                     customElements.define('dev-ezbus-info', EzbusInfo);
 
                     class EzbusNand extends HTMLElement {
                         #ALLOWattributeChangedCallback = null;
-
+                        
                         static get observedAttributes() {
                             return ['data-i0', 'data-i1', 'data-o', 'debug-target', 'full-debug-mode'];
                         }
@@ -7923,6 +7923,7 @@ export class DevEzbus extends HTMLElement {
                         get debugTarget() {
                             let flag = false;
                             if (!this.hasAttribute('debug-target')) return;
+                            else if (this.getAttribute('debug-target') === "[]") return;
                             try {
                                 let result = JSON.parse(this.getAttribute('debug-target').replaceAll("&quot;", '"'), (k, v) => {
                                     if (k !== "" && typeof v !== 'string') {
@@ -7953,34 +7954,34 @@ export class DevEzbus extends HTMLElement {
                         set debugTarget(val) {
                             this.setAttribute('debug-target', val);
                         }
-
+                        
                         get dataI0() {
                             if (!this.hasAttribute('data-i0')) return;
                             return this.getAttribute('data-i0');
                         }
-
+                        
                         set dataI0(val) {
                             this.setAttribute('data-i0', val);
                         }
-
+                        
                         get dataI1() {
                             if (!this.hasAttribute('data-i1')) return;
                             return this.getAttribute('data-i1');
                         }
-
+                        
                         set dataI1(val) {
                             this.setAttribute('data-i1', val);
                         }
-
+                        
                         get dataO() {
                             if (!this.hasAttribute('data-o')) return;
                             return this.getAttribute('data-o');
                         }
-
+                        
                         set dataO(val) {
                             this.setAttribute('data-o', val);
                         }
-
+                        
                         connectedCallback() {
                             setTimeout(_ => this.#setupNand(), 0);
                             this.#ALLOWattributeChangedCallback = true;
@@ -8002,23 +8003,23 @@ export class DevEzbus extends HTMLElement {
                             if (!(classv.includes("nand-gate"))) this.setAttribute("class", classv?`${classv} nand-gate`:"nand-gate");
                             classv = this.hasAttribute("class")?this.getAttribute("class"):'';
                             if (!(classv.includes("debug-boxed"))) this.setAttribute("class", classv?`${classv} debug-boxed`:"debug-boxed");
-
+                            
                             let i0 = this.dataI0?` ${this.dataI0}`:'';
                             let i1 = this.dataI1?` ${this.dataI1}`:'';
                             let o = this.dataO?` ${this.dataO}`:'';
-
+                            
                             i0 = `<dev-ezbus-box class="devezbus-debugbox" non-checkbox${state.i0?' debug-mode':''}><p class="devezbus-debughint"> (nand) i0 : </p><anime-input class="nand-gate-i0${i0}"></anime-input></dev-ezbus-box>`;
                             i1 = `<dev-ezbus-box class="devezbus-debugbox" non-checkbox${state.i1?' debug-mode':''}><p class="devezbus-debughint"> (nand) i1 : </p><anime-input class="nand-gate-i1${i1}"></anime-input></dev-ezbus-box>`;
                             o = `<dev-ezbus-box class="devezbus-debugbox" non-checkbox${state.o?' debug-mode':''}><p class="devezbus-debughint"> (nand) o : </p><anime-input class="nand-gate-o${o}"></anime-input></dev-ezbus-box>`;
                             this.innerHTML = `<div class="debug-calm-box">${i0}${i1}${o}</div>`;
                         }
                     }
-
+                    
                     customElements.define('dev-ezbus-nand', EzbusNand);
 
                     class EzbusNot extends HTMLElement {
                         #ALLOWattributeChangedCallback = null;
-
+                        
                         static get observedAttributes() {
                             return ['data-i', 'data-o', 'debug-target', 'full-debug-mode'];
                         }
@@ -8035,6 +8036,7 @@ export class DevEzbus extends HTMLElement {
                         get debugTarget() {
                             let flag = false;
                             if (!this.hasAttribute('debug-target')) return;
+                            else if (this.getAttribute('debug-target') === "[]") return;
                             try {
                                 return JSON.parse(this.getAttribute('debug-target').replaceAll("&quot;", '"'), (k, v) => {
                                     flag = false;
@@ -8046,7 +8048,7 @@ export class DevEzbus extends HTMLElement {
                                     }
                                     return v;
                                 }).map(child => {
-                                        if (!Array.isArray(child)) {
+                                	if (!Array.isArray(child)) {
                                         flag = true;
                                         console.trace();
                                         throw new Error("debug-target (but isn't nand, it's not ... only 0 index is used, after one is ignored) is wrong format. it must be multidimensional array of json (when nand : string array) (TIP : NON-ARRAY)");
@@ -8063,25 +8065,25 @@ export class DevEzbus extends HTMLElement {
                         set debugTarget(val) {
                             this.setAttribute('debug-target', val);
                         }
-
+                        
                         get dataI() {
                             if (!this.hasAttribute('data-i')) return;
                             return this.getAttribute('data-i');
                         }
-
+                        
                         set dataI(val) {
                             this.setAttribute('data-i', val);
                         }
-
+                        
                         get dataO() {
                             if (!this.hasAttribute('data-o')) return;
                             return this.getAttribute('data-o');
                         }
-
+                        
                         set dataO(val) {
                             this.setAttribute('data-o', val);
                         }
-
+                        
                         connectedCallback() {
                             setTimeout(_ => this.#setupNot(), 0);
                             this.#ALLOWattributeChangedCallback = true;
@@ -8097,27 +8099,27 @@ export class DevEzbus extends HTMLElement {
 
                         #setupNot() {
                             if (this.fullDebugMode) this.debugTarget = "[[&quot;i0&quot;, &quot;i1&quot;, &quot;o&quot;]]";
-
+                            
                             const state = (this.debugTarget || ['[]'])[0] || '[]';
                             const isDebugMode = (state==='[]');
                             const debugtarget = isDebugMode?'':` debug-target="${state}"`;
                             const debugMarkup = isDebugMode?'':' devezbus-debugpanel-on';
-
+                            
                             let classv = this.hasAttribute("class")?this.getAttribute("class"):'';
                             if (!(classv.includes("debug-boxed"))) this.setAttribute("class", classv?`${classv} debug-boxed`:"debug-boxed");
-
+                            
                             let i = this.dataI?` data-i0="${this.dataI}" data-i1="${this.dataI}"`:'';
                             let o = this.dataO?` data-o="${this.dataO}"`:'';
 
                             this.innerHTML = `<div class="debug-calm-box"><div class="devezbus-debugbox" devezbus-debugpanel="mod15-pan15"${debugMarkup}><p  class="devezbus-debughint" devezbus-debugpanel="mod15-pan15"> not(x) = nand(x, x) : </p><dev-ezbus-nand${i}${o}${debugtarget}></dev-ezbus-nand></div></div>`;
                         }
                     }
-
+                    
                     customElements.define('dev-ezbus-not', EzbusNot);
 
                     class EzbusAnd extends HTMLElement {
                         #ALLOWattributeChangedCallback = null;
-
+                        
                         static get observedAttributes() {
                             return ['data-i0', 'data-i1', 'data-o', 'debug-target', 'full-debug-mode'];
                         }
@@ -8134,6 +8136,7 @@ export class DevEzbus extends HTMLElement {
                         get debugTarget() {
                             let flag = false;
                             if (!this.hasAttribute('debug-target')) return;
+                            else if (this.getAttribute('debug-target') === "[]") return;
                             try {
                                 const result = JSON.parse(this.getAttribute('debug-target').replaceAll("&quot;", '"'), (k, v) => {
                                     flag = false;
@@ -8156,8 +8159,8 @@ export class DevEzbus extends HTMLElement {
                                     flag = null;
                                     console.trace();
                                     throw new Error("debug-target (but isn't nand, it's and ... length must be 2) is wrong format. it must be multidimensional array of json (when nand : string array) (TIP : NON-FIT-LENGTH)");
-                                                                }
-                                                                return result;
+								}
+								return result;
                             } catch (error) {
                                 console.log(error.stack); console.trace();
                                 console.warn(`debug-target (but isn't nand, it's and ... length must be 2) is wrong format. it must be multidimensional array of json (when nand : string array) (tip : NON-${(flag===undefined)?'ARRAY-JSON':(flag===null)?'FIT-LENGTH':flag?'ARRAY':'JSON'})`);
@@ -8168,34 +8171,34 @@ export class DevEzbus extends HTMLElement {
                         set debugTarget(val) {
                             this.setAttribute('debug-target', val);
                         }
-
+                        
                         get dataI0() {
                             if (!this.hasAttribute('data-i0')) return;
                             return this.getAttribute('data-i0');
                         }
-
+                        
                         set dataI0(val) {
                             this.setAttribute('data-i0', val);
                         }
-
+                        
                         get dataI1() {
                             if (!this.hasAttribute('data-i1')) return;
                             return this.getAttribute('data-i1');
                         }
-
+                        
                         set dataI1(val) {
                             this.setAttribute('data-i1', val);
                         }
-
+                        
                         get dataO() {
                             if (!this.hasAttribute('data-o')) return;
                             return this.getAttribute('data-o');
                         }
-
+                        
                         set dataO(val) {
                             this.setAttribute('data-o', val);
                         }
-
+                        
                         connectedCallback() {
                             setTimeout(_ => this.#setupAnd(), 0);
                             this.#ALLOWattributeChangedCallback = true;
@@ -8211,7 +8214,7 @@ export class DevEzbus extends HTMLElement {
 
                         #setupAnd() {
                             if (this.fullDebugMode) this.debugTarget = "[[&quot;i0&quot;, &quot;i1&quot;, &quot;o&quot;], [[&quot;i0&quot;, &quot;i1&quot;, &quot;o&quot;]]]";
-
+                            
                             const state = this.debugTarget || ['[]', '[[]]'];
                             const isDebugMode = state.map(e => (e==='[]' || e==='[[]]'));
                             const debugtarget = state.map((e, i) => isDebugMode[i]?'':` debug-target="${e}"`);
@@ -8221,7 +8224,7 @@ export class DevEzbus extends HTMLElement {
                             if (!(classv.includes("wps-w15"))) this.setAttribute("class", classv?`${classv} wps-w15`:"wps-w15");
                             classv = this.hasAttribute("class")?this.getAttribute("class"):'';
                             if (!(classv.includes("debug-boxed"))) this.setAttribute("class", classv?`${classv} debug-boxed`:"debug-boxed");
-
+                            
                             let i0 = this.dataI0?` data-i0="${this.dataI0}"`:'';
                             let i1 = this.dataI1?` data-i1="${this.dataI1}"`:'';
                             let o = this.dataO?` data-o="${this.dataO}"`:'';
@@ -8229,12 +8232,12 @@ export class DevEzbus extends HTMLElement {
                             this.innerHTML = `<div class="debug-calm-box"><div class="devezbus-debugbox" devezbus-debugpanel="mod15-pan15"${debugMarkup[0]}><p class="devezbus-debughint" devezbus-debugpanel="mod15-pan15"> (and) wps-w15-i15 = nand(i0, i1)-o : </p><dev-ezbus-nand${i0}${i1} data-o="wps-w15-i15"${debugtarget[0]}></dev-ezbus-nand></div><div class="devezbus-debugbox" devezbus-debugpanel="mod15-pan14"${debugMarkup[1]}><p class="devezbus-debughint" devezbus-debugpanel="mod15-pan14"> (and) o = not(wps-w15-o15) : </p><dev-ezbus-not data-i="wps-w15-o15"${o}${debugtarget[1]}></dev-ezbus-not></div></div>`;
                         }
                     }
-
+                    
                     customElements.define('dev-ezbus-and', EzbusAnd);
 
                     class EzbusOr extends HTMLElement {
                         #ALLOWattributeChangedCallback = null;
-
+                        
                         static get observedAttributes() {
                             return ['data-i0', 'data-i1', 'data-o', 'debug-target', 'full-debug-mode'];
                         }
@@ -8251,6 +8254,7 @@ export class DevEzbus extends HTMLElement {
                         get debugTarget() {
                             let flag = false;
                             if (!this.hasAttribute('debug-target')) return;
+                            else if (this.getAttribute('debug-target') === "[]") return;
                             try {
                                 const result = JSON.parse(this.getAttribute('debug-target').replaceAll("&quot;", '"'), (k, v) => {
                                     flag = false;
@@ -8285,34 +8289,34 @@ export class DevEzbus extends HTMLElement {
                         set debugTarget(val) {
                             this.setAttribute('debug-target', val);
                         }
-
+                        
                         get dataI0() {
                             if (!this.hasAttribute('data-i0')) return;
                             return this.getAttribute('data-i0');
                         }
-
+                        
                         set dataI0(val) {
                             this.setAttribute('data-i0', val);
                         }
-
+                        
                         get dataI1() {
                             if (!this.hasAttribute('data-i1')) return;
                             return this.getAttribute('data-i1');
                         }
-
+                        
                         set dataI1(val) {
                             this.setAttribute('data-i1', val);
                         }
-
+                        
                         get dataO() {
                             if (!this.hasAttribute('data-o')) return;
                             return this.getAttribute('data-o');
                         }
-
+                        
                         set dataO(val) {
                             this.setAttribute('data-o', val);
                         }
-
+                        
                         connectedCallback() {
                             setTimeout(_ => this.#setupOr(), 0);
                             this.#ALLOWattributeChangedCallback = true;
@@ -8328,18 +8332,18 @@ export class DevEzbus extends HTMLElement {
 
                         #setupOr() {
                             if (this.fullDebugMode) this.debugTarget = "[[[&quot;i0&quot;, &quot;i1&quot;, &quot;o&quot;]], [[&quot;i0&quot;, &quot;i1&quot;, &quot;o&quot;]], [&quot;i0&quot;, &quot;i1&quot;, &quot;o&quot;]]";
-
+                            
                             const state = this.debugTarget || ['[[]]', '[[]]', '[]'];
                             const isDebugMode = state.map(e => (e==='[]' || e==='[[]]'));
                             const debugtarget = state.map((e, i) => isDebugMode[i]?'':` debug-target="${e}"`);
                             const debugMarkup = state.map((e, i) => isDebugMode[i]?'':' devezbus-debugpanel-on');
 
-
+                            
                             let classv = this.hasAttribute("class")?this.getAttribute("class"):'';
                             if (!(classv.includes("wps-w15"))) this.setAttribute("class", classv?`${classv} wps-w15`:"wps-w15");
                             classv = this.hasAttribute("class")?this.getAttribute("class"):'';
                             if (!(classv.includes("debug-boxed"))) this.setAttribute("class", classv?`${classv} debug-boxed`:"debug-boxed");
-
+                            
                             const i0 = this.dataI0?`<div class="devezbus-debugbox" devezbus-debugpanel="mod15-pan14"${debugMarkup[0]}><p class="devezbus-debughint" devezbus-debugpanel="mod15-pan14"> (or) wps-w15-i15 = not(i0) : </p><dev-ezbus-not data-i="${this.dataI0}" data-o="wps-w15-i15"${debugtarget[0]}></dev-ezbus-not></div>`:`<div class="devezbus-debugbox" devezbus-debugpanel="mod15-pan14"${debugMarkup[0]}><p class="devezbus-debughint" devezbus-debugpanel="mod15-pan14"> (or) wps-w15-i15 = not(i0) : </p><dev-ezbus-not data-o="wps-w15-i15"${debugtarget[0]}></dev-ezbus-not></div>`;
                             const i1 = this.dataI1?`<div class="devezbus-debugbox" devezbus-debugpanel="mod15-pan14"${debugMarkup[1]}><p class="devezbus-debughint" devezbus-debugpanel="mod15-pan14"> (or) wps-w15-i14 = not(i0) : </p><dev-ezbus-not data-i="${this.dataI1}" data-o="wps-w15-i14"${debugtarget[1]}></dev-ezbus-not></div>`:`<div class="devezbus-debugbox" devezbus-debugpanel="mod15-pan14"${debugMarkup[1]}><p class="devezbus-debughint" devezbus-debugpanel="mod15-pan14"> (or) wps-w15-i14 = not(i0) : </p><dev-ezbus-not data-o="wps-w15-i14"${debugtarget[1]}></dev-ezbus-not></div>`;
                             const o = this.dataO?`<div class="devezbus-debugbox" devezbus-debugpanel="mod15-pan15"${debugMarkup[2]}><p class="devezbus-debughint" devezbus-debugpanel="mod15-pan15"> (or) o = nand(wps-w15-o15, wps-w15-o14)-o : </p><dev-ezbus-nand data-i0="wps-w15-o15" data-i1="wps-w15-o14" data-o="${this.dataO}"${debugtarget[2]}></dev-ezbus-nand></div>`:`<div class="devezbus-debugbox" devezbus-debugpanel="mod15-pan15"${debugMarkup[2]}><p class="devezbus-debughint" devezbus-debugpanel="mod15-pan15"> (or) o = nand(wps-w15-o15, wps-w15-o14)-o : </p><dev-ezbus-nand data-i0="wps-w15-o15" data-i1="wps-w15-o14"${debugtarget[2]}></dev-ezbus-nand></div>`;
@@ -8347,12 +8351,12 @@ export class DevEzbus extends HTMLElement {
                             this.innerHTML = `<div class="debug-calm-box">${i0}${i1}${o}</div>`;
                         }
                     }
-
+                    
                     customElements.define('dev-ezbus-or', EzbusOr);
 
                     class EzbusNor extends HTMLElement {
                         #ALLOWattributeChangedCallback = null;
-
+                        
                         static get observedAttributes() {
                             return ['data-i0', 'data-i1', 'data-o', 'debug-target', 'full-debug-mode'];
                         }
@@ -8369,6 +8373,7 @@ export class DevEzbus extends HTMLElement {
                         get debugTarget() {
                             let flag = false;
                             if (!this.hasAttribute('debug-target')) return;
+                            else if (this.getAttribute('debug-target') === "[]") return;
                             try {
                                 const result = JSON.parse(this.getAttribute('debug-target').replaceAll("&quot;", '"'), (k, v) => {
                                     flag = false;
@@ -8390,7 +8395,7 @@ export class DevEzbus extends HTMLElement {
                                 if (result.length !== 4) {
                                     flag = null;
                                     console.trace();
-                                                                        throw new Error("debug-target (but isn't nand, it's nor ... length must be 4) is wrong format. it must be multidimensional array of json (when nand : string array) (TIP : NON-FIT-LENGTH)");
+									throw new Error("debug-target (but isn't nand, it's nor ... length must be 4) is wrong format. it must be multidimensional array of json (when nand : string array) (TIP : NON-FIT-LENGTH)");
                                 }
                                 return result;
                             } catch (error) {
@@ -8403,34 +8408,34 @@ export class DevEzbus extends HTMLElement {
                         set debugTarget(val) {
                             this.setAttribute('debug-target', val);
                         }
-
+                        
                         get dataI0() {
                             if (!this.hasAttribute('data-i0')) return;
                             return this.getAttribute('data-i0');
                         }
-
+                        
                         set dataI0(val) {
                             this.setAttribute('data-i0', val);
                         }
-
+                        
                         get dataI1() {
                             if (!this.hasAttribute('data-i1')) return;
                             return this.getAttribute('data-i1');
                         }
-
+                        
                         set dataI1(val) {
                             this.setAttribute('data-i1', val);
                         }
-
+                        
                         get dataO() {
                             if (!this.hasAttribute('data-o')) return;
                             return this.getAttribute('data-o');
                         }
-
+                        
                         set dataO(val) {
                             this.setAttribute('data-o', val);
                         }
-
+                        
                         connectedCallback() {
                             setTimeout(_ => this.#setupNor(), 0);
                             this.#ALLOWattributeChangedCallback = true;
@@ -8446,17 +8451,17 @@ export class DevEzbus extends HTMLElement {
 
                         #setupNor() {
                             if (this.fullDebugMode) this.debugTarget = "[[[&quot;i0&quot;, &quot;i1&quot;, &quot;o&quot;]], [[&quot;i0&quot;, &quot;i1&quot;, &quot;o&quot;]], [&quot;i0&quot;, &quot;i1&quot;, &quot;o&quot;], [[&quot;i0&quot;, &quot;i1&quot;, &quot;o&quot;]]]";
-
+                            
                             const state = this.debugTarget || ['[[]]', '[[]]', '[]', '[[]]'];
                             const isDebugMode = state.map(e => (e==='[]' || e==='[[]]'));
                             const debugtarget = state.map((e, i) => isDebugMode[i]?'':` debug-target="${e}"`);
                             const debugMarkup = state.map((e, i) => isDebugMode[i]?'':' devezbus-debugpanel-on');
-
+                            
                             let classv = this.hasAttribute("class")?this.getAttribute("class"):'';
                             if (!(classv.includes("wps-w15"))) this.setAttribute("class", classv?`${classv} wps-w15`:"wps-w15");
                             classv = this.hasAttribute("class")?this.getAttribute("class"):'';
                             if (!(classv.includes("debug-boxed"))) this.setAttribute("class", classv?`${classv} debug-boxed`:"debug-boxed");
-
+                            
                             const i0 = this.dataI0?`<div class="devezbus-debugbox" devezbus-debugpanel="mod15-pan14"${debugMarkup[0]}><p class="devezbus-debughint" devezbus-debugpanel="mod15-pan14"> (nor) wps-w15-i15 = not(i0) : </p><dev-ezbus-not data-i="${this.dataI0}" data-o="wps-w15-i15"${debugtarget[0]}></dev-ezbus-not></div>`:`<div class="devezbus-debugbox" devezbus-debugpanel="mod15-pan14"${debugMarkup[0]}><p class="devezbus-debughint" devezbus-debugpanel="mod15-pan14"> (nor) wps-w15-i15 = not(i0) : </p><dev-ezbus-not data-o="wps-w15-i15"${debugtarget[0]}></dev-ezbus-not></div>`;
                             const i1 = this.dataI1?`<div class="devezbus-debugbox" devezbus-debugpanel="mod15-pan14"${debugMarkup[1]}><p class="devezbus-debughint" devezbus-debugpanel="mod15-pan14"> (nor) wps-w15-i14 = not(i1) : </p><dev-ezbus-not data-i="${this.dataI1}" data-o="wps-w15-i14"${debugtarget[1]}></dev-ezbus-not></div>`:`<div class="devezbus-debugbox" devezbus-debugpanel="mod15-pan14"${debugMarkup[1]}><p class="devezbus-debughint" devezbus-debugpanel="mod15-pan14"> (nor) wps-w15-i14 = not(i1) : </p><dev-ezbus-not data-o="wps-w15-i14"${debugtarget[1]}></dev-ezbus-not></div>`;
                             const o = this.dataO?`<div class="devezbus-debugbox" devezbus-debugpanel="mod15-pan14"${debugMarkup[3]}><p class="devezbus-debughint" devezbus-debugpanel="mod15-pan14"> (nor) o = not(wps-w15-o13) : </p><dev-ezbus-not data-i="wps-w15-o13" data-o="${this.dataO}"${debugtarget[3]}></dev-ezbus-not></div>`:`<div class="devezbus-debugbox" devezbus-debugpanel="mod15-pan14"${debugMarkup[3]}><p class="devezbus-debughint" devezbus-debugpanel="mod15-pan14"> (nor) o = not(wps-w15-o13) : </p><dev-ezbus-not data-i="wps-w15-o13"${debugtarget[3]}></dev-ezbus-not></div>`;
@@ -8464,12 +8469,12 @@ export class DevEzbus extends HTMLElement {
                             this.innerHTML = `<div class="debug-calm-box">${i0}${i1}<div class="devezbus-debugbox" devezbus-debugpanel="mod15-pan15"${debugMarkup[2]}><p class="devezbus-debughint" devezbus-debugpanel="mod15-pan15"> (not) wps-w15-i13 = nand(wps-w15-o15, wps-w15-o14)-o : </p><dev-ezbus-nand data-i0="wps-w15-o15" data-i1="wps-w15-o14" data-o="wps-w15-i13"${debugtarget[2]}></dev-ezbus-nand></div>${o}</div>`;
                         }
                     }
-
+                    
                     customElements.define('dev-ezbus-nor', EzbusNor);
 
                     class EzbusXor extends HTMLElement {
                         #ALLOWattributeChangedCallback = null;
-
+                        
                         static get observedAttributes() {
                             return ['data-i0', 'data-i1', 'data-o', 'debug-target', 'full-debug-mode'];
                         }
@@ -8486,6 +8491,7 @@ export class DevEzbus extends HTMLElement {
                         get debugTarget() {
                             let flag = false;
                             if (!this.hasAttribute('debug-target')) return;
+                            else if (this.getAttribute('debug-target') === "[]") return;
                             try {
                                 const result = JSON.parse(this.getAttribute('debug-target').replaceAll("&quot;", '"'), (k, v) => {
                                     flag = false;
@@ -8508,7 +8514,7 @@ export class DevEzbus extends HTMLElement {
                                     flag = null;
                                     console.trace();
                                     throw new Error("debug-target (but isn't nand, it's xor ... length must be 4) is wrong format. it must be multidimensional array of json (when nand : string array) (TIP : NON-FIT-LENGTH)");
-                                                                }
+								}
                                 return result;
                             } catch (error) {
                                 console.log(error.stack); console.trace();
@@ -8520,34 +8526,34 @@ export class DevEzbus extends HTMLElement {
                         set debugTarget(val) {
                             this.setAttribute('debug-target', val);
                         }
-
+                        
                         get dataI0() {
                             if (!this.hasAttribute('data-i0')) return;
                             return this.getAttribute('data-i0');
                         }
-
+                        
                         set dataI0(val) {
                             this.setAttribute('data-i0', val);
                         }
-
+                        
                         get dataI1() {
                             if (!this.hasAttribute('data-i1')) return;
                             return this.getAttribute('data-i1');
                         }
-
+                        
                         set dataI1(val) {
                             this.setAttribute('data-i1', val);
                         }
-
+                        
                         get dataO() {
                             if (!this.hasAttribute('data-o')) return;
                             return this.getAttribute('data-o');
                         }
-
+                        
                         set dataO(val) {
                             this.setAttribute('data-o', val);
                         }
-
+                        
                         connectedCallback() {
                             setTimeout(_ => this.#setupXor(), 0);
                             this.#ALLOWattributeChangedCallback = true;
@@ -8563,17 +8569,17 @@ export class DevEzbus extends HTMLElement {
 
                         #setupXor() {
                             if (this.fullDebugMode) this.debugTarget = "[[&quot;i0&quot;, &quot;i1&quot;, &quot;o&quot;], [&quot;i0&quot;, &quot;i1&quot;, &quot;o&quot;], [&quot;i0&quot;, &quot;i1&quot;, &quot;o&quot;], [&quot;i0&quot;, &quot;i1&quot;, &quot;o&quot;]]";
-
+                            
                             const state = this.debugTarget || ['[]', '[]', '[]', '[]'];
                             const isDebugMode = state.map(e => (e==='[]' || e==='[[]]'));
                             const debugtarget = state.map((e, i) => isDebugMode[i]?'':` debug-target="${e}"`);
                             const debugMarkup = state.map((e, i) => isDebugMode[i]?'':' devezbus-debugpanel-on');
-
+                            
                             let classv = this.hasAttribute("class")?this.getAttribute("class"):'';
                             if (!(classv.includes("wps-w15"))) this.setAttribute("class", classv?`${classv} wps-w15`:"wps-w15");
                             classv = this.hasAttribute("class")?this.getAttribute("class"):'';
                             if (!(classv.includes("debug-boxed"))) this.setAttribute("class", classv?`${classv} debug-boxed`:"debug-boxed");
-
+                            
                             const i0 = this.dataI0?` data-i0="${this.dataI0}"`:'';
                             const i1 = this.dataI1?` data-i1="${this.dataI1}"`:'';
                             const o = this.dataO?`<div class="devezbus-debugbox" devezbus-debugpanel="mod15-pan15"${debugMarkup[3]}><p class="devezbus-debughint" devezbus-debugpanel="mod15-pan15"> (xor) o = nand(wps-w15-o14, wps-w15-o13)-o : </p><dev-ezbus-nand data-i0="wps-w15-o14" data-i1="wps-w15-o13" data-o="${this.dataO}"${debugtarget[3]}></dev-ezbus-nand></div>`:`<div class="devezbus-debugbox" devezbus-debugpanel="mod15-pan15"${debugMarkup[3]}><p class="devezbus-debughint" devezbus-debugpanel="mod15-pan15"> (xor) o = nand(wps-w15-o14, wps-w15-o13)-o : </p><dev-ezbus-nand data-i0="wps-w15-o14" data-i1="wps-w15-o13"${debugtarget[3]}></dev-ezbus-nand></div>`;
@@ -8581,12 +8587,12 @@ export class DevEzbus extends HTMLElement {
                             this.innerHTML = `<div class="debug-calm-box"><div class="devezbus-debugbox" devezbus-debugpanel="mod15-pan15"${debugMarkup[0]}><p class="devezbus-debughint" devezbus-debugpanel="mod15-pan15"> (xor) wps-w15-i15 = nand(i0, i1)-o : </p><dev-ezbus-nand${i0}${i1} data-o="wps-w15-i15"${debugtarget[0]}></dev-ezbus-nand></div><div class="devezbus-debugbox" devezbus-debugpanel="mod15-pan15"${debugMarkup[1]}><p class="devezbus-debughint" devezbus-debugpanel="mod15-pan15"> (xor) wps-w15-i14 = nand(i0, wps-w15-o15)-o : </p><dev-ezbus-nand${i0} data-i1="wps-w15-o15" data-o="wps-w15-i14"${debugtarget[1]}></dev-ezbus-nand></div><div class="devezbus-debugbox" devezbus-debugpanel="mod15-pan15"${debugMarkup[2]}><p class="devezbus-debughint" devezbus-debugpanel="mod15-pan15"> (xor) wps-w15-i13 = nand(wps-w15-o15, i1)-o : </p><dev-ezbus-nand data-i0="wps-w15-o15"${i1} data-o="wps-w15-i13"${debugtarget[2]}></dev-ezbus-nand></div>${o}</div>`;
                         }
                     }
-
+                    
                     customElements.define('dev-ezbus-xor', EzbusXor);
 
                     class EzbusNxor extends HTMLElement {
                         #ALLOWattributeChangedCallback = null;
-
+                        
                         static get observedAttributes() {
                             return ['data-i0', 'data-i1', 'data-o', 'debug-target', 'full-debug-mode'];
                         }
@@ -8625,7 +8631,7 @@ export class DevEzbus extends HTMLElement {
                                     flag = null;
                                     console.trace();
                                     throw new Error("debug-target (but isn't nand, it's nxor ... length must be 5) is wrong format. it must be multidimensional array of json (when nand : string array) (TIP : NON-FIT-LENGTH)");
-                                                                }
+								}
                                 return result;
                             } catch (error) {
                                 console.log(error.stack); console.trace();
@@ -8637,34 +8643,34 @@ export class DevEzbus extends HTMLElement {
                         set debugTarget(val) {
                             this.setAttribute('debug-target', val);
                         }
-
+                        
                         get dataI0() {
                             if (!this.hasAttribute('data-i0')) return;
                             return this.getAttribute('data-i0');
                         }
-
+                        
                         set dataI0(val) {
                             this.setAttribute('data-i0', val);
                         }
-
+                        
                         get dataI1() {
                             if (!this.hasAttribute('data-i1')) return;
                             return this.getAttribute('data-i1');
                         }
-
+                        
                         set dataI1(val) {
                             this.setAttribute('data-i1', val);
                         }
-
+                        
                         get dataO() {
                             if (!this.hasAttribute('data-o')) return;
                             return this.getAttribute('data-o');
                         }
-
+                        
                         set dataO(val) {
                             this.setAttribute('data-o', val);
                         }
-
+                        
                         connectedCallback() {
                             setTimeout(_ => this.#setupNxor(), 0);
                             this.#ALLOWattributeChangedCallback = true;
@@ -8680,30 +8686,30 @@ export class DevEzbus extends HTMLElement {
 
                         #setupNxor() {
                             if (this.fullDebugMode) this.debugTarget = "[[&quot;i0&quot;, &quot;i1&quot;, &quot;o&quot;], [&quot;i0&quot;, &quot;i1&quot;, &quot;o&quot;], [&quot;i0&quot;, &quot;i1&quot;, &quot;o&quot;], [&quot;i0&quot;, &quot;i1&quot;, &quot;o&quot;], [[&quot;i0&quot;, &quot;i1&quot;, &quot;o&quot;]]]";
-
+                            
                             const state = this.debugTarget || ['[]', '[]', '[]', '[]', '[[]]'];
                             const isDebugMode = state.map(e => (e==='[]' || e==='[[]]'));
                             const debugtarget = state.map((e, i) => isDebugMode[i]?'':` debug-target="${e}"`);
                             const debugMarkup = state.map((e, i) => isDebugMode[i]?'':' devezbus-debugpanel-on');
-
+                            
                             let classv = this.hasAttribute("class")?this.getAttribute("class"):'';
                             if (!(classv.includes("wps-w15"))) this.setAttribute("class", classv?`${classv} wps-w15`:"wps-w15");
                             classv = this.hasAttribute("class")?this.getAttribute("class"):'';
                             if (!(classv.includes("debug-boxed"))) this.setAttribute("class", classv?`${classv} debug-boxed`:"debug-boxed");
-
+                            
                             const i0 = this.dataI0?` data-i0="${this.dataI0}"`:'';
                             const i1 = this.dataI1?` data-i1="${this.dataI1}"`:'';
                             const o = this.dataO?`<div class="devezbus-debugbox" devezbus-debugpanel="mod15-pan14"${debugMarkup[4]}><p class="devezbus-debughint" devezbus-debugpanel="mod15-pan14"> (nxor) o = not(wps-w15-o12) : </p><dev-ezbus-not data-i="wps-w15-o12" data-o="${this.dataO}"${debugtarget[4]}></dev-ezbus-not></div>`:`<div class="devezbus-debugbox" devezbus-debugpanel="mod15-pan14"${debugMarkup[4]}><p class="devezbus-debughint" devezbus-debugpanel="mod15-pan14"> (nxor) o = not(wps-w15-o12) : </p><dev-ezbus-not data-i="wps-w15-o12"${debugtarget[4]}></dev-ezbus-not></div>`;
-
+                            
                             this.innerHTML = `<div class="debug-calm-box"><div class="devezbus-debugbox" devezbus-debugpanel="mod15-pan15"${debugMarkup[0]}><p class="devezbus-debughint" devezbus-debugpanel="mod15-pan15"> (nxor) wps-w15-i15 = nand(i0, i1)-o : </p><dev-ezbus-nand${i0}${i1} data-o="wps-w15-i15"${debugtarget[0]}></dev-ezbus-nand></div><div class="devezbus-debugbox" devezbus-debugpanel="mod15-pan15"${debugMarkup[1]}><p class="devezbus-debughint" devezbus-debugpanel="mod15-pan15"> (nxor) wps-w15-i14 = nand(i0, wps-w15-o15)-o : </p><dev-ezbus-nand${i0} data-i1="wps-w15-o15" data-o="wps-w15-i14"${debugtarget[1]}></dev-ezbus-nand></div><div class="devezbus-debugbox" devezbus-debugpanel="mod15-pan15"${debugMarkup[2]}><p class="devezbus-debughint" devezbus-debugpanel="mod15-pan15"> (nxor) wps-w15-i13 = nand(wps-w15-o15, i1)-o : </p><dev-ezbus-nand data-i0="wps-w15-o15"${i1} data-o="wps-w15-i13"${debugtarget[2]}></dev-ezbus-nand></div><div class="devezbus-debugbox" devezbus-debugpanel="mod15-pan15"${debugMarkup[3]}><p class="devezbus-debughint" devezbus-debugpanel="mod15-pan15"> (nxor) wps-w15-i12 = nand(wps-w15-o13, wps-w15-o13)-o : </p><dev-ezbus-nand data-i0="wps-w15-o14" data-i1="wps-w15-o13" data-o="wps-w15-i12"${debugtarget[3]}></dev-ezbus-nand>${o}</div></div>`;
                         }
                     }
-
+                    
                     customElements.define('dev-ezbus-nxor', EzbusNxor);
 
                     class EzbusNormalForm1011 extends HTMLElement {
                         #ALLOWattributeChangedCallback = null;
-
+                        
                         static get observedAttributes() {
                             return ['data-i0', 'data-i1', 'data-o', 'debug-target', 'full-debug-mode'];
                         }
@@ -8720,6 +8726,7 @@ export class DevEzbus extends HTMLElement {
                         get debugTarget() {
                             let flag = false;
                             if (!this.hasAttribute('debug-target')) return;
+                            else if (this.getAttribute('debug-target') === "[]") return;
                             try {
                                 const result = JSON.parse(this.getAttribute('debug-target').replaceAll("&quot;", '"'), (k, v) => {
                                     flag = false;
@@ -8742,7 +8749,7 @@ export class DevEzbus extends HTMLElement {
                                     flag = null;
                                     console.trace();
                                     throw new Error("debug-target (but isn't nand, it's normal-form-1011 ... length must be 2) is wrong format. it must be multidimensional array of json (when nand : string array) (TIP : NON-FIT-LENGTH)");
-                                                                }
+								}
                                 return result;
                             } catch (error) {
                                 console.log(error.stack); console.trace();
@@ -8754,34 +8761,34 @@ export class DevEzbus extends HTMLElement {
                         set debugTarget(val) {
                             this.setAttribute('debug-target', val);
                         }
-
+                        
                         get dataI0() {
                             if (!this.hasAttribute('data-i0')) return;
                             return this.getAttribute('data-i0');
                         }
-
+                        
                         set dataI0(val) {
                             this.setAttribute('data-i0', val);
                         }
-
+                        
                         get dataI1() {
                             if (!this.hasAttribute('data-i1')) return;
                             return this.getAttribute('data-i1');
                         }
-
+                        
                         set dataI1(val) {
                             this.setAttribute('data-i1', val);
                         }
-
+                        
                         get dataO() {
                             if (!this.hasAttribute('data-o')) return;
                             return this.getAttribute('data-o');
                         }
-
+                        
                         set dataO(val) {
                             this.setAttribute('data-o', val);
                         }
-
+                        
                         connectedCallback() {
                             setTimeout(_ => this.#setupNormalForm1011(), 0);
                             this.#ALLOWattributeChangedCallback = true;
@@ -8797,17 +8804,17 @@ export class DevEzbus extends HTMLElement {
 
                         #setupNormalForm1011() {
                             if (this.fullDebugMode) this.debugTarget = "[[[&quot;i0&quot;, &quot;i1&quot;, &quot;o&quot;]], [&quot;i0&quot;, &quot;i1&quot;, &quot;o&quot;]]";
-
+                            
                             const state = this.debugTarget || ['[[]]', '[]'];
                             const isDebugMode = state.map(e => (e==='[]' || e==='[[]]'));
                             const debugtarget = state.map((e, i) => isDebugMode[i]?'':` debug-target="${e}"`);
                             const debugMarkup = state.map((e, i) => isDebugMode[i]?'':' devezbus-debugpanel-on');
-
+                            
                             let classv = this.hasAttribute("class")?this.getAttribute("class"):'';
                             if (!(classv.includes("wps-w15"))) this.setAttribute("class", classv?`${classv} wps-w15`:"wps-w15");
                             classv = this.hasAttribute("class")?this.getAttribute("class"):'';
                             if (!(classv.includes("debug-boxed"))) this.setAttribute("class", classv?`${classv} debug-boxed`:"debug-boxed");
-
+                            
                             const i0 = this.dataI0?` data-i0="${this.dataI0}"`:'';
                             const i1 = this.dataI1?`<div class="devezbus-debugbox" devezbus-debugpanel="mod15-pan14"${debugMarkup[0]}><p class="devezbus-debughint" devezbus-debugpanel="mod15-pan14"> (nf1011) wps-w15-i15 = not(i1) : </p><dev-ezbus-not data-i="${this.dataI1}" data-o="wps-w15-i15"${debugtarget[0]}></dev-ezbus-not></div>`:`<div class="devezbus-debugbox" devezbus-debugpanel="mod15-pan14"${debugMarkup[0]}><p class="devezbus-debughint" devezbus-debugpanel="mod15-pan14"> (nf1011) wps-w15-i15 = not(i1) : </p><dev-ezbus-not data-o="wps-w15-i15"${debugtarget[0]}></dev-ezbus-not></div>`;
                             const o = this.dataO?`<div class="devezbus-debugbox" devezbus-debugpanel="mod15-pan15"${debugMarkup[1]}><p class="devezbus-debughint" devezbus-debugpanel="mod15-pan15"> (nf1011) o = nand(i0, wps-w15-o15)-o : </p><dev-ezbus-nand${i0} data-i1="wps-w15-o15" data-o="${this.dataO}"${debugtarget[1]}></dev-ezbus-nand></div>`:`<div class="devezbus-debugbox" devezbus-debugpanel="mod15-pan15"${debugMarkup[1]}><p class="devezbus-debughint" devezbus-debugpanel="mod15-pan15"> (nf1011) o = nand(i0, wps-w15-o15)-o : </p><dev-ezbus-nand${i0} data-i1="wps-w15-o15"${debugtarget[1]}></dev-ezbus-nand></div>`;
@@ -8815,12 +8822,12 @@ export class DevEzbus extends HTMLElement {
                             this.innerHTML = `<div class="debug-calm-box">${i1}${o}</div>`;
                         }
                     }
-
+                    
                     customElements.define('dev-ezbus-normal-form-1011', EzbusNormalForm1011);
 
                     class EzbusNormalForm1101 extends HTMLElement {
                         #ALLOWattributeChangedCallback = null;
-
+                        
                         static get observedAttributes() {
                             return ['data-i0', 'data-i1', 'data-o', 'debug-target', 'full-debug-mode'];
                         }
@@ -8837,6 +8844,7 @@ export class DevEzbus extends HTMLElement {
                         get debugTarget() {
                             let flag = false;
                             if (!this.hasAttribute('debug-target')) return;
+                            else if (this.getAttribute('debug-target') === "[]") return;
                             try {
                                 const result = JSON.parse(this.getAttribute('debug-target').replaceAll("&quot;", '"'), (k, v) => {
                                     flag = false;
@@ -8871,34 +8879,34 @@ export class DevEzbus extends HTMLElement {
                         set debugTarget(val) {
                             this.setAttribute('debug-target', val);
                         }
-
+                        
                         get dataI0() {
                             if (!this.hasAttribute('data-i0')) return;
                             return this.getAttribute('data-i0');
                         }
-
+                        
                         set dataI0(val) {
                             this.setAttribute('data-i0', val);
                         }
-
+                        
                         get dataI1() {
                             if (!this.hasAttribute('data-i1')) return;
                             return this.getAttribute('data-i1');
                         }
-
+                        
                         set dataI1(val) {
                             this.setAttribute('data-i1', val);
                         }
-
+                        
                         get dataO() {
                             if (!this.hasAttribute('data-o')) return;
                             return this.getAttribute('data-o');
                         }
-
+                        
                         set dataO(val) {
                             this.setAttribute('data-o', val);
                         }
-
+                        
                         connectedCallback() {
                             setTimeout(_ => this.#setupNormalForm1101(), 0);
                             this.#ALLOWattributeChangedCallback = true;
@@ -8914,17 +8922,17 @@ export class DevEzbus extends HTMLElement {
 
                         #setupNormalForm1101() {
                             if (this.fullDebugMode) this.debugTarget = "[[[&quot;i0&quot;, &quot;i1&quot;, &quot;o&quot;]], [&quot;i0&quot;, &quot;i1&quot;, &quot;o&quot;]]";
-
+                            
                             const state = this.debugTarget || ['[[]]', '[]'];
                             const isDebugMode = state.map(e => (e==='[]' || e==='[[]]'));
                             const debugtarget = state.map((e, i) => isDebugMode[i]?'':` debug-target="${e}"`);
                             const debugMarkup = state.map((e, i) => isDebugMode[i]?'':' devezbus-debugpanel-on');
-
+                            
                             let classv = this.hasAttribute("class")?this.getAttribute("class"):'';
                             if (!(classv.includes("wps-w15"))) this.setAttribute("class", classv?`${classv} wps-w15`:"wps-w15");
                             classv = this.hasAttribute("class")?this.getAttribute("class"):'';
                             if (!(classv.includes("debug-boxed"))) this.setAttribute("class", classv?`${classv} debug-boxed`:"debug-boxed");
-
+                            
                             const i0 = this.dataI0?`<div class="devezbus-debugbox" devezbus-debugpanel="mod15-pan14"${debugMarkup[0]}><p class="devezbus-debughint" devezbus-debugpanel="mod15-pan14"> (nf1101) wps-w15-i15 = not(i0) : </p><dev-ezbus-not data-i="${this.dataI0}" data-o="wps-w15-i15"${debugtarget[0]}></dev-ezbus-not></div>`:`<div class="devezbus-debugbox" devezbus-debugpanel="mod15-pan14"${debugMarkup[0]}><p class="devezbus-debughint" devezbus-debugpanel="mod15-pan14"> (nf1101) wps-w15-i15 = not(i0) : </p><dev-ezbus-not data-o="wps-w15-i15"${debugtarget[0]}></dev-ezbus-not></div>`;
                             const i1 = this.dataI1?` data-i1="${this.dataI1}"`:'';
                             const o = this.dataO?`<div class="devezbus-debugbox" devezbus-debugpanel="mod15-pan15"${debugMarkup[1]}><p class="devezbus-debughint" devezbus-debugpanel="mod15-pan15"> (nf1101) o = nand(wps-w15-o15, i1)-o : </p><dev-ezbus-nand data-i0="wps-w15-o15"${i1} data-o="${this.dataO}"${debugtarget[1]}></dev-ezbus-nand></div>`:`<div class="devezbus-debugbox" devezbus-debugpanel="mod15-pan15"${debugMarkup[1]}><p class="devezbus-debughint" devezbus-debugpanel="mod15-pan15"> (nf1101) o = nand(wps-w15-o15, i1)-o : </p><dev-ezbus-nand data-i0="wps-w15-o15"${i1}${debugtarget[1]}></dev-ezbus-nand></div>`;
@@ -8932,12 +8940,12 @@ export class DevEzbus extends HTMLElement {
                             this.innerHTML = `<div class="debug-calm-box">${i0}${o}</div>`;
                         }
                     }
-
+                    
                     customElements.define('dev-ezbus-normal-form-1101', EzbusNormalForm1101);
 
                     class EzbusNormalForm0010 extends HTMLElement {
                         #ALLOWattributeChangedCallback = null;
-
+                        
                         static get observedAttributes() {
                             return ['data-i0', 'data-i1', 'data-o', 'debug-target', 'full-debug-mode'];
                         }
@@ -8954,6 +8962,7 @@ export class DevEzbus extends HTMLElement {
                         get debugTarget() {
                             let flag = false;
                             if (!this.hasAttribute('debug-target')) return;
+                            else if (this.getAttribute('debug-target') === "[]") return;
                             try {
                                 const result = JSON.parse(this.getAttribute('debug-target').replaceAll("&quot;", '"'), (k, v) => {
                                     flag = false;
@@ -8988,34 +8997,34 @@ export class DevEzbus extends HTMLElement {
                         set debugTarget(val) {
                             this.setAttribute('debug-target', val);
                         }
-
+                        
                         get dataI0() {
                             if (!this.hasAttribute('data-i0')) return;
                             return this.getAttribute('data-i0');
                         }
-
+                        
                         set dataI0(val) {
                             this.setAttribute('data-i0', val);
                         }
-
+                        
                         get dataI1() {
                             if (!this.hasAttribute('data-i1')) return;
                             return this.getAttribute('data-i1');
                         }
-
+                        
                         set dataI1(val) {
                             this.setAttribute('data-i1', val);
                         }
-
+                        
                         get dataO() {
                             if (!this.hasAttribute('data-o')) return;
                             return this.getAttribute('data-o');
                         }
-
+                        
                         set dataO(val) {
                             this.setAttribute('data-o', val);
                         }
-
+                        
                         connectedCallback() {
                             setTimeout(_ => this.#setupNormalForm0010(), 0);
                             this.#ALLOWattributeChangedCallback = true;
@@ -9031,17 +9040,17 @@ export class DevEzbus extends HTMLElement {
 
                         #setupNormalForm0010() {
                             if (this.fullDebugMode) this.debugTarget = "[[[&quot;i0&quot;, &quot;i1&quot;, &quot;o&quot;]], [&quot;i0&quot;, &quot;i1&quot;, &quot;o&quot;], [[&quot;i0&quot;, &quot;i1&quot;, &quot;o&quot;]]]";
-
+                            
                             const state = this.debugTarget || ['[[]]', '[]', '[[]]'];
                             const isDebugMode = state.map(e => (e==='[]' || e==='[[]]'));
                             const debugtarget = state.map((e, i) => isDebugMode[i]?'':` debug-target="${e}"`);
                             const debugMarkup = state.map((e, i) => isDebugMode[i]?'':' devezbus-debugpanel-on');
-
+                            
                             let classv = this.hasAttribute("class")?this.getAttribute("class"):'';
                             if (!(classv.includes("wps-w15"))) this.setAttribute("class", classv?`${classv} wps-w15`:"wps-w15");
                             classv = this.hasAttribute("class")?this.getAttribute("class"):'';
                             if (!(classv.includes("debug-boxed"))) this.setAttribute("class", classv?`${classv} debug-boxed`:"debug-boxed");
-
+                            
                             const i0 = this.dataI0?`<div class="devezbus-debugbox" devezbus-debugpanel="mod15-pan14"${debugMarkup[0]}><p class="devezbus-debughint" devezbus-debugpanel="mod15-pan14"> (nf0010) wps-w15-i15 = not(i1) : </p><dev-ezbus-not data-i="${this.dataI0}" data-o="wps-w15-i15"${debugtarget[0]}></dev-ezbus-not></div>`:`<div class="devezbus-debugbox" devezbus-debugpanel="mod15-pan14"${debugMarkup[0]}><p class="devezbus-debughint" devezbus-debugpanel="mod15-pan14"> (nf0010) wps-w15-i15 = not(i1) : </p><dev-ezbus-not data-o="wps-w15-i15"${debugtarget[0]}></dev-ezbus-not></div>`;
                             const i1 = this.dataI1?`<div class="devezbus-debugbox" devezbus-debugpanel="mod15-pan15"${debugMarkup[1]}><p class="devezbus-debughint" devezbus-debugpanel="mod15-pan15"> (nf0010) wps-w15-i14 = nand(i0, wps-w15-o15)-o : </p><dev-ezbus-nand data-i0="wps-w15-o15" data-i1="${this.dataI1}" data-o="wps-w15-i14"${debugtarget[1]}></dev-ezbus-nand></div>`:`<div class="devezbus-debugbox" devezbus-debugpanel="mod15-pan15"${debugMarkup[1]}><p class="devezbus-debughint" devezbus-debugpanel="mod15-pan15"> (nf0010) wps-w15-i14 = nand(i0, wps-w15-o15)-o : </p><dev-ezbus-nand data-i0="wps-w15-o15" data-o="wps-w15-i14"${debugtarget[1]}></dev-ezbus-nand></div>`;
                             const o = this.dataO?`<div class="devezbus-debugbox" devezbus-debugpanel="mod15-pan14"${debugMarkup[2]}><p class="devezbus-debughint" devezbus-debugpanel="mod15-pan14"> (nf0010) o = not(wps-w15-o14)-o : </p><dev-ezbus-not data-i="wps-w15-o14" data-o="${this.dataO}"${debugtarget[2]}></data-ezbus-not></div>`:`<div class="devezbus-debugbox" devezbus-debugpanel="mod15-pan14"${debugMarkup[2]}><p class="devezbus-debughint" devezbus-debugpanel="mod15-pan14"> (nf0010) o = not(wps-w15-o14)-o : </p><dev-ezbus-not data-i="wps-w15-o14"${debugtarget[2]}></dev-ezbus-not></div>`;
@@ -9049,12 +9058,12 @@ export class DevEzbus extends HTMLElement {
                             this.innerHTML = `<div class="debug-calm-box">${i0}${i1}${o}</div>`;
                         }
                     }
-
+                    
                     customElements.define('dev-ezbus-normal-form-0010', EzbusNormalForm0010);
 
                     class EzbusNormalForm0100 extends HTMLElement {
                         #ALLOWattributeChangedCallback = null;
-
+                        
                         static get observedAttributes() {
                             return ['data-i0', 'data-i1', 'data-o', 'debug-target', 'full-debug-mode'];
                         }
@@ -9071,6 +9080,7 @@ export class DevEzbus extends HTMLElement {
                         get debugTarget() {
                             let flag = false;
                             if (!this.hasAttribute('debug-target')) return;
+                            else if (this.getAttribute('debug-target') === "[]") return;
                             try {
                                 const result = JSON.parse(this.getAttribute('debug-target').replaceAll("&quot;", '"'), (k, v) => {
                                     flag = false;
@@ -9105,34 +9115,34 @@ export class DevEzbus extends HTMLElement {
                         set debugTarget(val) {
                             this.setAttribute('debug-target', val);
                         }
-
+                        
                         get dataI0() {
                             if (!this.hasAttribute('data-i0')) return;
                             return this.getAttribute('data-i0');
                         }
-
+                        
                         set dataI0(val) {
                             this.setAttribute('data-i0', val);
                         }
-
+                        
                         get dataI1() {
                             if (!this.hasAttribute('data-i1')) return;
                             return this.getAttribute('data-i1');
                         }
-
+                        
                         set dataI1(val) {
                             this.setAttribute('data-i1', val);
                         }
-
+                        
                         get dataO() {
                             if (!this.hasAttribute('data-o')) return;
                             return this.getAttribute('data-o');
                         }
-
+                        
                         set dataO(val) {
                             this.setAttribute('data-o', val);
                         }
-
+                        
                         connectedCallback() {
                             setTimeout(_ => this.#setupNormalForm0100(), 0);
                             this.#ALLOWattributeChangedCallback = true;
@@ -9148,17 +9158,17 @@ export class DevEzbus extends HTMLElement {
 
                         #setupNormalForm0100() {
                             if (this.fullDebugMode) this.debugTarget = "[[[&quot;i0&quot;, &quot;i1&quot;, &quot;o&quot;]], [&quot;i0&quot;, &quot;i1&quot;, &quot;o&quot;], [[&quot;i0&quot;, &quot;i1&quot;, &quot;o&quot;]]]";
-
+                            
                             const state = this.debugTarget || ['[[]]', '[]', '[[]]'];
                             const isDebugMode = state.map(e => (e==='[]' || e==='[[]]'));
                             const debugtarget = state.map((e, i) => isDebugMode[i]?'':` debug-target="${e}"`);
                             const debugMarkup = state.map((e, i) => isDebugMode[i]?'':' devezbus-debugpanel-on');
-
+                            
                             let classv = this.hasAttribute("class")?this.getAttribute("class"):'';
                             if (!(classv.includes("wps-w15"))) this.setAttribute("class", classv?`${classv} wps-w15`:"wps-w15");
                             classv = this.hasAttribute("class")?this.getAttribute("class"):'';
                             if (!(classv.includes("debug-boxed"))) this.setAttribute("class", classv?`${classv} debug-boxed`:"debug-boxed");
-
+                            
                             const i0 = this.dataI0?` data-i0="${this.dataI0}"`:'';
                             const i1 = this.dataI1?`<div class="devezbus-debugbox" devezbus-debugpanel="mod15-pan14"${debugMarkup[0]}><p class="devezbus-debughint" devezbus-debugpanel="mod15-pan14"> (nf0100) wps-w15-i15 = not(i0) : </p><dev-ezbus-not data-i="${this.dataI1}" data-o="wps-w15-i15"${debugtarget[0]}></dev-ezbus-not></div><div class="devezbus-debugbox" devezbus-debugpanel="mod15-pan15"${debugMarkup[1]}><p class="devezbus-debughint" devezbus-debugpanel="mod15-pan15"> (nf0100) wps-w15-i14 = nand(wps-w15-o15, i1)-o : </p><dev-ezbus-nand${i0} data-i1="wps-w15-o15" data-o="wps-w15-i14"${debugtarget[1]}></dev-ezbus-nand></div>`:`<div class="devezbus-debugbox" devezbus-debugpanel="mod15-pan14"${debugMarkup[0]}><p class="devezbus-debughint" devezbus-debugpanel="mod15-pan14"> (nf0100) wps-w15-i15 = not(i0) : </p><dev-ezbus-not data-o="wps-w15-i15"${debugtarget[0]}></dev-ezbus-not></div><div class="devezbus-debugbox" devezbus-debugpanel="mod15-pan15"${debugMarkup[1]}><p class="devezbus-debughint" devezbus-debugpanel="mod15-pan15"> (nf0100) wps-w15-i14 = nand(wps-w15-o15, i1)-o : </p><dev-ezbus-nand${i0} data-i1="wps-w15-o15" data-o="wps-w15-i14"${debugtarget[1]}></dev-ezbus-nand></div>`;
                             const o = this.dataO?`<div class="devezbus-debugbox" devezbus-debugpanel="mod15-pan14"${debugMarkup[2]}><p class="devezbus-debughint" devezbus-debugpanel="mod15-pan14"> (nf0100) o = not(wps-w15-o14)-o : </p><dev-ezbus-not data-i="wps-w15-o14" data-o="${this.dataO}"${debugtarget[2]}></dev-ezbus-not></div>`:`<div class="devezbus-debugbox" devezbus-debugpanel="mod15-pan14"${debugMarkup[2]}><p class="devezbus-debughint" devezbus-debugpanel="mod15-pan14"> (nf0100) o = not(wps-w15-o14)-o : </p><dev-ezbus-not data-i="wps-w15-o14"${debugtarget[2]}></dev-ezbus-not></div>`;
@@ -9166,7 +9176,7 @@ export class DevEzbus extends HTMLElement {
                             this.innerHTML = `<div class="debug-calm-box">${i1}${o}</div>`;
                         }
                     }
-
+                    
                     customElements.define('dev-ezbus-normal-form-0100', EzbusNormalForm0100);
 
                     class EzbusHalfAdder extends HTMLElement {
@@ -9188,6 +9198,7 @@ export class DevEzbus extends HTMLElement {
                         get debugTarget() {
                             let flag = false;
                             if (!this.hasAttribute('debug-target')) return;
+                            else if (this.getAttribute('debug-target') === "[]") return;
                             try {
                                 const result = JSON.parse(this.getAttribute('debug-target').replaceAll("&quot;", '"'), (k, v) => {
                                     flag = false;
@@ -9313,6 +9324,7 @@ export class DevEzbus extends HTMLElement {
                         get debugTarget() {
                             let flag = false;
                             if (!this.hasAttribute('debug-target')) return;
+                            else if (this.getAttribute('debug-target') === "[]") return;
                             try {
                                 const result = JSON.parse(this.getAttribute('debug-target').replaceAll("&quot;", '"'), (k, v) => {
                                     flag = false;
@@ -9451,6 +9463,7 @@ export class DevEzbus extends HTMLElement {
                         get debugTarget() {
                             let flag = false;
                             if (!this.hasAttribute('debug-target')) return;
+                            else if (this.getAttribute('debug-target') === "[]") return;
                             try {
                                 const result = JSON.parse(this.getAttribute('debug-target').replaceAll("&quot;", '"'), (k, v) => {
                                     flag = false;
@@ -9543,7 +9556,7 @@ export class DevEzbus extends HTMLElement {
                             const r = this.dataReset?` data-i1="${this.dataReset}"`:'';
                             const o = this.dataO?` data-o="wps-w14-i14 ${this.dataO}"`:' data-o="wps-w14-i14"';
 
-                            this.innerHTML = `<div class="debug-calm-box"><div class="devezbus-debugbox" devezbus-debugpanel="mod15-pan13"${debugMarkup[0]}><p class="devezbus-debughint" devezbus-debugpanel="mod15-pan13"> (nor SR Latch) wps-w14-i15 = nor(i0, wps-w14-o14)-o : </p><dev-ezbus-nor${s} data-i1="wps-w14-o14" data-o="wps-w14-i15"${debugtarget[0]}${optionalFullDebugString}></dev-ezbus-nor></div><div class="devezbus-debugbox" devezbus-debugpanel="mod15-pan13"${debugMarkup[1]}><p class="devezbus-debughint" devezbus-debugpanel="mod15-pan13"> (nor SR Latch) o = wps-w14-i14 = nor(wps-w14-o15, i1)-o : </p><dev-ezbus-nor data-i0="wps-w14-o15"${r}${o}${debugtarget[1]}${optionalFullDebugString}></dev-ezbus-nor></div></div>`;
+                            this.innerHTML = `<div class="debug-calm-box"><div class="devezbus-debugbox" devezbus-debugpanel="mod15-pan13"${debugMarkup[0]}><p class="devezbus-debughint" devezbus-debugpanel="mod15-pan13"> (nor SR Latch) wps-w14-i15 = nor(set, wps-w14-o14)-o : </p><dev-ezbus-nor${s} data-i1="wps-w14-o14" data-o="wps-w14-i15"${debugtarget[0]}${optionalFullDebugString}></dev-ezbus-nor></div><div class="devezbus-debugbox" devezbus-debugpanel="mod15-pan13"${debugMarkup[1]}><p class="devezbus-debughint" devezbus-debugpanel="mod15-pan13"> (nor SR Latch) o = wps-w14-i14 = nor(wps-w14-o15, reset)-o : </p><dev-ezbus-nor data-i0="wps-w14-o15"${r}${o}${debugtarget[1]}${optionalFullDebugString}></dev-ezbus-nor></div></div>`;
                         }
                     }
                     
@@ -9568,6 +9581,7 @@ export class DevEzbus extends HTMLElement {
                         get debugTarget() {
                             let flag = false;
                             if (!this.hasAttribute('debug-target')) return;
+                            else if (this.getAttribute('debug-target') === "[]") return;
                             try {
                                 const result = JSON.parse(this.getAttribute('debug-target').replaceAll("&quot;", '"'), (k, v) => {
                                     flag = false;
@@ -9667,8 +9681,140 @@ export class DevEzbus extends HTMLElement {
                     
                     customElements.define('dev-ezbus-dlatch', EzbusDLatch);
 
+                    class EzbusJKLatch extends HTMLElement {
+                        #ALLOWattributeChangedCallback = null;
+                        
+                        static get observedAttributes() {
+                            return ['data-j', 'data-k', 'data-o', 'debug-target', 'full-debug-mode'];
+                        }
+
+                        get fullDebugMode () {
+                            return this.hasAttribute('full-debug-mode');
+                        }
+
+                        set fullDebugMode (value) {
+                            if (value) this.setAttribute('full-debug-mode', '');
+                            else if (this.hasAttribute('full-debug-mode')) this.removeAttribute('full-debug-mode');
+                        }
+
+                        get debugTarget() {
+                            let flag = false;
+                            if (!this.hasAttribute('debug-target')) return;
+                            else if (this.getAttribute('debug-target') === "[]") return;
+                            try {
+                                const result = JSON.parse(this.getAttribute('debug-target').replaceAll("&quot;", '"'), (k, v) => {
+                                    flag = false;
+                                    if (k === "") {
+                                        if (Array.isArray(v)) return v;
+                                        flag = undefined;
+                                        console.trace();
+                                        throw new Error("debug-target (but isn't nand, it's JKLatch ... length must be 3) is wrong format. it must be multidimensional array of json (when nand : string array) (TIP : NON-ARRAY-JSON)");
+                                    }
+                                    return v;
+                                }).map(child => {
+                                    if (!Array.isArray(child)) {
+                                        flag = true;
+                                        console.trace();
+                                        throw new Error("debug-target (but isn't nand, it's JKLatch ... length must be 3) is wrong format. it must be multidimensional array of json (when nand : string array) (TIP : NON-ARRAY)");
+                                    }
+                                    return JSON.stringify(child).replaceAll('"', "&quot;");
+                                });
+                                if (result.length !== 3) {
+                                    flag = null;
+                                    console.trace();
+                                    throw new Error("debug-target (but isn't nand, it's JKLatch ... length must be 3) is wrong format. it must be multidimensional array of json (when nand : string array) (TIP : NON-FIT-LENGTH)");
+                    			}
+                    			return result;
+                            } catch (error) {
+                                console.log(error.stack); console.trace();
+                                console.warn(`debug-target (but isn't nand, it's JKLatch ... length must be 3) is wrong format. it must be multidimensional array of json (when nand : string array) (tip : NON-${(flag===undefined)?'ARRAY-JSON':(flag===null)?'FIT-LENGTH':flag?'ARRAY':'JSON'})`);
+                                return;
+                            }
+                        }
+
+                        set debugTarget(val) {
+                            this.setAttribute('debug-target', val);
+                        }
+                        
+                        get dataJ() {
+                            if (!this.hasAttribute('data-j')) return;
+                            return this.getAttribute('data-j');
+                        }
+                        
+                        set dataJ(val) {
+                            this.setAttribute('data-j', val);
+                        }
+                        
+                        get dataK() {
+                            if (!this.hasAttribute('data-k')) return;
+                            return this.getAttribute('data-k');
+                        }
+                        
+                        set dataK(val) {
+                            this.setAttribute('data-k', val);
+                        }
+                        
+                        get dataO() {
+                            if (!this.hasAttribute('data-o')) return;
+                            return this.getAttribute('data-o');
+                        }
+                        
+                        set dataO(val) {
+                            this.setAttribute('data-o', val);
+                        }
+                        
+                        connectedCallback() {
+                            setTimeout(_ => this.#setupJKLatch(), 0);
+                            this.#ALLOWattributeChangedCallback = true;
+                        }
+
+                        attributeChangedCallback(name, oldValue, newValue) {
+                            if (this.#ALLOWattributeChangedCallback) {
+                                this.#ALLOWattributeChangedCallback = false;
+                                this.#setupJKLatch();
+                                this.#ALLOWattributeChangedCallback = true;
+                            }
+                        }
+
+                        #setupJKLatch() {
+                            const optionalFullDebugString = this.fullDebugMode?" full-debug-mode":"";
+
+                            const state = this.debugTarget || ['[]', '[]', '[]'];
+                            const isDebugMode = state.map(e => (e==='[]' || e==='[[]]'));
+                            const debugtarget = state.map((e, i) => isDebugMode[i]?'':` debug-target="${e}"`);
+                            const debugMarkup = state.map((e, i) => ((!this.fullDebugMode) && isDebugMode[i])?'':' devezbus-debugpanel-on');
+
+                            let classv = this.hasAttribute("class")?this.getAttribute("class"):'';
+                            if (!(classv.includes("wps-w14"))) this.setAttribute("class", classv?`${classv} wps-w14`:"wps-w14");
+                            classv = this.hasAttribute("class")?this.getAttribute("class"):'';
+                            if (!(classv.includes("debug-boxed"))) this.setAttribute("class", classv?`${classv} debug-boxed`:"debug-boxed");
+                            
+                            const J = this.dataJ?` data-i0="${this.dataJ}"`:'';
+                            const K = this.dataK?` data-i1="${this.dataK}"`:'';
+                            const o = this.dataO?` data-o="wps-w14-i10 ${this.dataO}"`:' data-o="wps-w14-i10"';
+
+                            this.innerHTML = `
+<div class="debug-calm-box">
+    <div class="devezbus-debugbox" devezbus-debugpanel="mod15-pan13"${debugMarkup[0]}>
+        <p class="devezbus-debughint" devezbus-debugpanel="mod15-pan13"> (J-K Latch) wps-w14-i12 = nf1011(J, wps-w14-o10)-o : </p>
+        <dev-ezbus-normal-form-1011${J} data-i1="wps-w14-o10" data-o="wps-w14-i12"${debugtarget[0]}${optionalFullDebugString}></dev-ezbus-normal-form-1011>
+    </div>
+    <div class="devezbus-debugbox" devezbus-debugpanel="mod15-pan13"${debugMarkup[1]}>
+        <p class="devezbus-debughint" devezbus-debugpanel="mod15-pan13"> (J-K Latch) wps-w14-i11 = nor(wps-w14-o10, K)-o : </p>
+        <dev-ezbus-and data-i0="wps-w14-o10"${K} data-o="wps-w14-i11"${debugtarget[1]}${optionalFullDebugString}></dev-ezbus-and>
+    </div>
+    <div class="devezbus-debugbox" devezbus-debugpanel="mod15-pan12"${debugMarkup[2]}>
+        <p class="devezbus-debughint" devezbus-debugpanel="mod15-pan12"> (J-K Latch) o = wps-w14-i10 = srlatch(wps-w14-o12, wps-w14-o11)-o : </p>
+        <dev-ezbus-srlatch data-set="wps-w14-o12" data-reset="wps-w14-o11"${O}${debugtarget[2]}${optionalFullDebugString}></dev-ezbus-srlatch>
+    </div>
+</div>`;
+                        }
+                    }
+                    
+                    customElements.define('dev-ezbus-jklatch', EzbusJKLatch);
+			  
                     /*class Ezbus extends HTMLElement {
-                            //pass
+                    	//pass
                     }
                     
                     customElements.define('dev-ezbus', Ezbus);*/
