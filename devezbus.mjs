@@ -1469,7 +1469,6 @@ export class DevEzbus extends HTMLElement {
                         get debugTarget() {
                             let flag = false;
                             if (!this.hasAttribute('debug-target')) return;
-                            else if (this.getAttribute('debug-target') === "[]") return;
                             try {
                                 const result = JSON.parse(this.getAttribute('debug-target').replaceAll("&quot;", '"'), (k, v) => {
                                     flag = false;
@@ -1534,6 +1533,7 @@ export class DevEzbus extends HTMLElement {
                         
                         connectedCallback() {
                             setTimeout(_ => this.#setupNormalForm0010(), 0);
+                            this.#ALLOWattributeChangedCallback = true;
                         }
 
                         attributeChangedCallback(name, oldValue, newValue) {
@@ -1544,7 +1544,7 @@ export class DevEzbus extends HTMLElement {
                             }
                         }
 
-                        #setupNormalForm0010() { this. #ALLOWattributeChangedCallback = false;
+                        #setupNormalForm0010() {
                             if (this.fullDebugMode) this.debugTarget = "[[[&quot;i0&quot;, &quot;i1&quot;, &quot;o&quot;]], [&quot;i0&quot;, &quot;i1&quot;, &quot;o&quot;], [[&quot;i0&quot;, &quot;i1&quot;, &quot;o&quot;]]]";
                             
                             const state = this.debugTarget || ['[[]]', '[]', '[[]]'];
@@ -1557,11 +1557,11 @@ export class DevEzbus extends HTMLElement {
                             classv = this.hasAttribute("class")?this.getAttribute("class"):'';
                             if (!(classv.includes("debug-boxed"))) this.setAttribute("class", classv?`${classv} debug-boxed`:"debug-boxed");
                             
-                            const i1 = this.dataI1?`<div class="devezbus-debugbox" devezbus-debugpanel="mod15-pan14"${debugMarkup[1]}><p class="devezbus-debughint" devezbus-debugpanel="mod15-pan14"> (nf0010) wps-w15-i15 = not(i1) : </p><dev-ezbus-not data-i="${this.dataI1}" data-o="wps-w15-i15"${debugtarget[1]}></dev-ezbus-not></div>`:`<div class="devezbus-debugbox" devezbus-debugpanel="mod15-pan14"${debugMarkup[1]}><p class="devezbus-debughint" devezbus-debugpanel="mod15-pan14"> (nf0010) wps-w15-i15 = not(i1) : </p><dev-ezbus-not data-o="wps-w15-i15"${debugtarget[1]}></dev-ezbus-not></div>`;
-                            const i0 = this.dataI0?`<div class="devezbus-debugbox" devezbus-debugpanel="mod15-pan15"${debugMarkup[0]}><p class="devezbus-debughint" devezbus-debugpanel="mod15-pan15"> (nf0010) wps-w15-i14 = nand(i0, wps-w15-o15)-o : </p><dev-ezbus-nand data-i1="wps-w15-o15" data-i0="${this.dataI0}" data-o="wps-w15-i14"${debugtarget[0]}></dev-ezbus-nand></div>`:`<div class="devezbus-debugbox" devezbus-debugpanel="mod15-pan15"${debugMarkup[0]}><p class="devezbus-debughint" devezbus-debugpanel="mod15-pan15"> (nf0010) wps-w15-i14 = nand(i0, wps-w15-o15)-o : </p><dev-ezbus-nand data-i1="wps-w15-o15" data-o="wps-w15-i14"${debugtarget[0]}></dev-ezbus-nand></div>`;
+                            const i0 = this.dataI0?`<div class="devezbus-debugbox" devezbus-debugpanel="mod15-pan14"${debugMarkup[0]}><p class="devezbus-debughint" devezbus-debugpanel="mod15-pan14"> (nf0010) wps-w15-i15 = not(i1) : </p><dev-ezbus-not data-i="${this.dataI0}" data-o="wps-w15-i15"${debugtarget[0]}></dev-ezbus-not></div>`:`<div class="devezbus-debugbox" devezbus-debugpanel="mod15-pan14"${debugMarkup[0]}><p class="devezbus-debughint" devezbus-debugpanel="mod15-pan14"> (nf0010) wps-w15-i15 = not(i1) : </p><dev-ezbus-not data-o="wps-w15-i15"${debugtarget[0]}></dev-ezbus-not></div>`;
+                            const i1 = this.dataI1?`<div class="devezbus-debugbox" devezbus-debugpanel="mod15-pan15"${debugMarkup[1]}><p class="devezbus-debughint" devezbus-debugpanel="mod15-pan15"> (nf0010) wps-w15-i14 = nand(i0, wps-w15-o15)-o : </p><dev-ezbus-nand data-i0="wps-w15-o15" data-i1="${this.dataI1}" data-o="wps-w15-i14"${debugtarget[1]}></dev-ezbus-nand></div>`:`<div class="devezbus-debugbox" devezbus-debugpanel="mod15-pan15"${debugMarkup[1]}><p class="devezbus-debughint" devezbus-debugpanel="mod15-pan15"> (nf0010) wps-w15-i14 = nand(i0, wps-w15-o15)-o : </p><dev-ezbus-nand data-i0="wps-w15-o15" data-o="wps-w15-i14"${debugtarget[1]}></dev-ezbus-nand></div>`;
                             const o = this.dataO?`<div class="devezbus-debugbox" devezbus-debugpanel="mod15-pan14"${debugMarkup[2]}><p class="devezbus-debughint" devezbus-debugpanel="mod15-pan14"> (nf0010) o = not(wps-w15-o14)-o : </p><dev-ezbus-not data-i="wps-w15-o14" data-o="${this.dataO}"${debugtarget[2]}></data-ezbus-not></div>`:`<div class="devezbus-debugbox" devezbus-debugpanel="mod15-pan14"${debugMarkup[2]}><p class="devezbus-debughint" devezbus-debugpanel="mod15-pan14"> (nf0010) o = not(wps-w15-o14)-o : </p><dev-ezbus-not data-i="wps-w15-o14"${debugtarget[2]}></dev-ezbus-not></div>`;
 
-                            this.innerHTML = `<div class="debug-calm-box">${i0}${i1}${o}</div>`;this.#ALLOWattributeChangedCallback = true;
+                            this.innerHTML = `<div class="debug-calm-box">${i0}${i1}${o}</div>`;
                         }
                     }
                     
@@ -1586,7 +1586,6 @@ export class DevEzbus extends HTMLElement {
                         get debugTarget() {
                             let flag = false;
                             if (!this.hasAttribute('debug-target')) return;
-                            else if (this.getAttribute('debug-target') === "[]") return;
                             try {
                                 const result = JSON.parse(this.getAttribute('debug-target').replaceAll("&quot;", '"'), (k, v) => {
                                     flag = false;
@@ -1651,6 +1650,7 @@ export class DevEzbus extends HTMLElement {
                         
                         connectedCallback() {
                             setTimeout(_ => this.#setupNormalForm0100(), 0);
+                            this.#ALLOWattributeChangedCallback = true;
                         }
 
                         attributeChangedCallback(name, oldValue, newValue) {
@@ -1661,7 +1661,7 @@ export class DevEzbus extends HTMLElement {
                             }
                         }
 
-                        #setupNormalForm0100() { this. #ALLOWattributeChangedCallback = false;
+                        #setupNormalForm0100() {
                             if (this.fullDebugMode) this.debugTarget = "[[[&quot;i0&quot;, &quot;i1&quot;, &quot;o&quot;]], [&quot;i0&quot;, &quot;i1&quot;, &quot;o&quot;], [[&quot;i0&quot;, &quot;i1&quot;, &quot;o&quot;]]]";
                             
                             const state = this.debugTarget || ['[[]]', '[]', '[[]]'];
@@ -1675,10 +1675,10 @@ export class DevEzbus extends HTMLElement {
                             if (!(classv.includes("debug-boxed"))) this.setAttribute("class", classv?`${classv} debug-boxed`:"debug-boxed");
                             
                             const i0 = this.dataI0?` data-i0="${this.dataI0}"`:'';
-                            const i1 = this.dataI1?`<div class="devezbus-debugbox" devezbus-debugpanel="mod15-pan14"${debugMarkup[0]}><p class="devezbus-debughint" devezbus-debugpanel="mod15-pan14"> (nf0100) wps-w15-i15 = not(i0) : </p><dev-ezbus-not${i0}data-o="wps-w15-i15"${debugtarget[0]}></dev-ezbus-not></div><div class="devezbus-debugbox" devezbus-debugpanel="mod15-pan15"${debugMarkup[1]}><p class="devezbus-debughint" devezbus-debugpanel="mod15-pan15"> (nf0100) wps-w15-i14 = nand(wps-w15-o15, i1)-o : </p><dev-ezbus-nand data-i0="wps-w15-o15" data-i1="${i1}" data-o="wps-w15-i14"${debugtarget[1]}></dev-ezbus-nand></div>`:`<div class="devezbus-debugbox" devezbus-debugpanel="mod15-pan14"${debugMarkup[0]}><p class="devezbus-debughint" devezbus-debugpanel="mod15-pan14"> (nf0100) wps-w15-i15 = not(i0) : </p><dev-ezbus-not4${i0} data-o="wps-w15-i15"${debugtarget[0]}></dev-ezbus-not></div><div class="devezbus-debugbox" devezbus-debugpanel="mod15-pan15"${debugMarkup[1]}><p class="devezbus-debughint" devezbus-debugpanel="mod15-pan15"> (nf0100) wps-w15-i14 = nand(wps-w15-o15, i1)-o : </p><dev-ezbus-nand data-i0="wps-w15-o15" data-o="wps-w15-i14"${debugtarget[1]}></dev-ezbus-nand></div>`;
+                            const i1 = this.dataI1?`<div class="devezbus-debugbox" devezbus-debugpanel="mod15-pan14"${debugMarkup[0]}><p class="devezbus-debughint" devezbus-debugpanel="mod15-pan14"> (nf0100) wps-w15-i15 = not(i0) : </p><dev-ezbus-not data-i="${this.dataI1}" data-o="wps-w15-i15"${debugtarget[0]}></dev-ezbus-not></div><div class="devezbus-debugbox" devezbus-debugpanel="mod15-pan15"${debugMarkup[1]}><p class="devezbus-debughint" devezbus-debugpanel="mod15-pan15"> (nf0100) wps-w15-i14 = nand(wps-w15-o15, i1)-o : </p><dev-ezbus-nand${i0} data-i1="wps-w15-o15" data-o="wps-w15-i14"${debugtarget[1]}></dev-ezbus-nand></div>`:`<div class="devezbus-debugbox" devezbus-debugpanel="mod15-pan14"${debugMarkup[0]}><p class="devezbus-debughint" devezbus-debugpanel="mod15-pan14"> (nf0100) wps-w15-i15 = not(i0) : </p><dev-ezbus-not data-o="wps-w15-i15"${debugtarget[0]}></dev-ezbus-not></div><div class="devezbus-debugbox" devezbus-debugpanel="mod15-pan15"${debugMarkup[1]}><p class="devezbus-debughint" devezbus-debugpanel="mod15-pan15"> (nf0100) wps-w15-i14 = nand(wps-w15-o15, i1)-o : </p><dev-ezbus-nand${i0} data-i1="wps-w15-o15" data-o="wps-w15-i14"${debugtarget[1]}></dev-ezbus-nand></div>`;
                             const o = this.dataO?`<div class="devezbus-debugbox" devezbus-debugpanel="mod15-pan14"${debugMarkup[2]}><p class="devezbus-debughint" devezbus-debugpanel="mod15-pan14"> (nf0100) o = not(wps-w15-o14)-o : </p><dev-ezbus-not data-i="wps-w15-o14" data-o="${this.dataO}"${debugtarget[2]}></dev-ezbus-not></div>`:`<div class="devezbus-debugbox" devezbus-debugpanel="mod15-pan14"${debugMarkup[2]}><p class="devezbus-debughint" devezbus-debugpanel="mod15-pan14"> (nf0100) o = not(wps-w15-o14)-o : </p><dev-ezbus-not data-i="wps-w15-o14"${debugtarget[2]}></dev-ezbus-not></div>`;
 
-                            this.innerHTML = `<div class="debug-calm-box">${i1}${o}</div>`;this.#ALLOWattributeChangedCallback = true;
+                            this.innerHTML = `<div class="debug-calm-box">${i1}${o}</div>`;
                         }
                     }
                     
