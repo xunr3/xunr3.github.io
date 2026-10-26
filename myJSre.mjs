@@ -1,5 +1,14 @@
 import { RE2 } from 'https://esm.sh/@re2tools/re2-wasm';
 
+let isInitialized = false;
+
+export async function initRE2() {
+  if (!isInitialized) {
+    await RE2.initialize(); // fukcing good! thanks for gemini
+    isInitialized = true;
+  }
+}
+
 /** 
   * # class SubstituatorValueHolder
   * 
