@@ -27,7 +27,7 @@ export class SlsuRegexNameSpace {
     
     processor(opcode, data, firstArg, lastArg) {
         if (typeof data !== "string") throw new TypeError("SlsuRegexNameSpace instant method SlsuRegexNameSpace's parmeter data must be string");
-        return opcode?this.substituators.set(data, new SLSU(firstArg, lastArg)):this.substituators.get(data).use(firstArg, lastArg);
+        return opcode?this.#substituators.set(data, new SLSU(firstArg, lastArg)):this.#substituators.get(data).use(firstArg, lastArg);
     }
 }
 
