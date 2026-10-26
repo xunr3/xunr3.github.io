@@ -1,4 +1,4 @@
-import { RE2 } from 'https://esm.sh/@adguard/re2-wasm';
+import { RE2 } from 'https://esm.sh/@re2tools/re2-wasm';
 
 /** 
   * # class SubstituatorValueHolder
